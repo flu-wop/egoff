@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EGOFF Essentials — Essentially Rooted</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          emerald: { DEFAULT: '#1B5E3B', light: '#2E7D52', pale: '#E8F5EE' },
+          gold: { DEFAULT: '#C9941A', light: '#F0B429', pale: '#FDF6E3' },
+          onyx: { DEFAULT: '#1A1A1A', soft: '#2D2D2D' },
+          terra: { DEFAULT: '#B5451B', light: '#D4623A' },
+          cream: { DEFAULT: '#FAF7F0', warm: '#F5EDD8' },
+        },
+        fontFamily: {
+          serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+          display: ['Playfair Display', 'Georgia', 'serif'],
+          sans: ['Jost', 'system-ui', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  :root {
+    --emerald: #1B5E3B;
+    --gold: #C9941A;
+    --gold-light: #F0B429;
+    --onyx: #1A1A1A;
+    --terra: #B5451B;
+    --cream: #FAF7F0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background-color: var(--cream);
+    color: var(--onyx);
+    overflow-x: hidden;
+  }
+
+  /* ========== PATTERNS & TEXTURES ========== */
+  .leaf-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cellipse cx='30' cy='30' rx='8' ry='14' fill='none' stroke='%231B5E3B' stroke-opacity='0.08' stroke-width='1.5' transform='rotate(30 30 30)'/%3E%3Cellipse cx='10' cy='10' rx='5' ry='9' fill='none' stroke='%23C9941A' stroke-opacity='0.06' stroke-width='1' transform='rotate(-20 10 10)'/%3E%3Cellipse cx='50' cy='50' rx='5' ry='9' fill='none' stroke='%231B5E3B' stroke-opacity='0.06' stroke-width='1' transform='rotate(60 50 50)'/%3E%3C/svg%3E");
+  }
+
+  .diagonal-stripe {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 10px,
+      rgba(201,148,26,0.04) 10px,
+      rgba(201,148,26,0.04) 20px
+    );
+  }
+
+  /* ========== NAVIGATION ========== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(250,247,240,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,148,26,0.2);
+    transition: all 0.3s ease;
+  }
+
+  nav.scrolled {
+    background: rgba(250,247,240,0.98);
+    box-shadow: 0 2px 20px rgba(27,94,59,0.1);
+  }
+
+  .nav-link {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--onyx);
+    position: relative;
+    padding-bottom: 2px;
+    transition: color 0.3s;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute; bottom: -2px; left: 0; right: 100%;
+    height: 1.5px; background: var(--gold);
+    transition: right 0.3s ease;
+  }
+
+  .nav-link:hover { color: var(--emerald); }
+  .nav-link:hover::after { right: 0; }
+
+  /* ========== LOGO SVG ========== */
+  .logo-mark {
+    width: 52px; height: 52px;
+  }
+
+  /* ========== HERO ========== */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0F3522 0%, #1B5E3B 40%, #1A1A1A 70%, #2C1810 100%);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    background-image: 
+      radial-gradient(ellipse at 20% 50%, rgba(201,148,26,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(27,94,59,0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 80%, rgba(181,69,27,0.1) 0%, transparent 40%);
+  }
+
+  .hero-leaf-1, .hero-leaf-2, .hero-leaf-3 {
+    position: absolute;
+    opacity: 0.08;
+  }
+
+  /* Floating soap mockup */
+  .soap-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .soap-float:nth-child(2) { animation-delay: 2s; }
+  .soap-float:nth-child(3) { animation-delay: 4s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(1deg); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .animate-fade-up { animation: fadeUp 0.9s ease forwards; }
+  .animate-fade-up-delay { animation: fadeUp 0.9s ease 0.3s forwards; opacity: 0; }
+  .animate-fade-up-delay-2 { animation: fadeUp 0.9s ease 0.6s forwards; opacity: 0; }
+  .animate-scale-in { animation: scaleIn 1s ease forwards; }
+
+  /* ========== BUTTONS ========== */
+  .btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold), #E8A820);
+    color: var(--onyx);
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    border: none; cursor: pointer;
+    position: relative; overflow: hidden;
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,148,26,0.4);
+  }
+
+  .btn-outline {
+    display: inline-block;
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+
+  .btn-outline:hover {
+    background: var(--gold);
+    color: var(--onyx);
+  }
+
+  .btn-cart {
+    width: 100%;
+    background: var(--emerald);
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 13px;
+    border: none; cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-cart:hover {
+    background: #154d30;
+    transform: translateY(-1px);
+  }
+
+  /* ========== SECTION TITLES ========== */
+  .section-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .section-label::before, .section-label::after {
+    content: '';
+    height: 1px; flex: 1;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    max-width: 60px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--onyx);
+  }
+
+  /* ========== PRODUCT CARDS ========== */
+  .product-card {
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid rgba(201,148,26,0.12);
+  }
+
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(27,94,59,0.15);
+  }
+
+  .product-badge {
+    position: absolute; top: 16px; left: 16px; z-index: 2;
+    background: var(--emerald);
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+  }
+
+  .product-img-wrap {
+    height: 280px;
+    background: linear-gradient(135deg, #F5EDD8, #EDE3CC);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* SOAP ILLUSTRATIONS */
+  .soap-illustration {
+    width: 160px; height: 110px;
+    border-radius: 16px;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2), inset 0 2px 4px rgba(255,255,255,0.3);
+    transition: transform 0.4s ease;
+  }
+
+  .product-card:hover .soap-illustration {
+    transform: scale(1.05) rotate(2deg);
+  }
+
+  /* ========== VALUES SECTION ========== */
+  .value-card {
+    text-align: center;
+    padding: 40px 32px;
+    background: #fff;
+    border: 1px solid rgba(201,148,26,0.15);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .value-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(27,94,59,0.1);
+  }
+
+  /* ========== TREE LOGO SVG ========== */
+  .tree-logo-full { width: 280px; height: 280px; }
+
+  /* ========== INGREDIENT PILLS ========== */
+  .ingredient-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: white;
+    border: 1px solid rgba(27,94,59,0.2);
+    color: var(--emerald);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 0;
+    transition: all 0.3s ease;
+  }
+
+  .ingredient-pill:hover {
+    background: var(--emerald);
+    color: #fff;
+    border-color: var(--emerald);
+  }
+
+  /* ========== HAMBURGER ========== */
+  .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span {
+    display: block; width: 24px; height: 1.5px;
+    background: var(--onyx);
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  .mobile-menu {
+    position: fixed; top: 70px; left: 0; right: 0;
+    background: rgba(250,247,240,0.98);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,148,26,0.2);
+    transform: translateY(-110%);
+    transition: transform 0.4s ease;
+    z-index: 999;
+    padding: 24px 0;
+  }
+
+  .mobile-menu.open { transform: translateY(0); }
+
+  /* ========== SCROLL REVEAL ========== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ========== DIVIDERS ========== */
+  .gold-divider {
+    width: 80px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 20px auto;
+  }
+
+  /* ========== CART NOTIFICATION ========== */
+  .cart-toast {
+    position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+    background: var(--emerald);
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    padding: 14px 24px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.4s ease;
+  }
+
+  .cart-toast.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* ========== FOOTER ========== */
+  .footer-link {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    transition: color 0.3s;
+  }
+  .footer-link:hover { color: var(--gold-light); }
+
+  /* ========== QUOTE BLOCK ========== */
+  .quote-block {
+    border-left: 3px solid var(--gold);
+    padding-left: 24px;
+  }
+
+  /* Jamaican flag diagonal accent */
+  .jam-accent {
+    position: relative;
+  }
+  .jam-accent::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    left: -20px; right: -20px;
+    background: linear-gradient(135deg, 
+      var(--emerald) 0%, var(--emerald) 33%,
+      var(--onyx) 33%, var(--onyx) 66%,
+      #C9941A 66%, #C9941A 100%
+    );
+    opacity: 0.08;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- CART TOAST -->
+<div class="cart-toast" id="cartToast">✓ Added to cart</div>
+
+<!-- ========== NAVIGATION ========== -->
+<nav id="navbar">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;height:70px;display:flex;align-items:center;justify-content:space-between;">
+    <!-- Logo -->
+    <a href="#home" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+      <svg class="logo-mark" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="40" r="38" fill="none" stroke="#C9941A" stroke-width="1.5"/>
+        <!-- Tree canopy left (green) -->
+        <ellipse cx="28" cy="26" rx="16" ry="13" fill="#1B5E3B" opacity="0.85"/>
+        <!-- Tree canopy right (gold) -->
+        <ellipse cx="52" cy="26" rx="16" ry="13" fill="#C9941A" opacity="0.85"/>
+        <!-- Center black -->
+        <ellipse cx="40" cy="24" rx="10" ry="12" fill="#1A1A1A" opacity="0.85"/>
+        <!-- Woman silhouette trunk -->
+        <path d="M34 46 Q40 38 46 46 L44 60 Q40 62 36 60Z" fill="#5C3A1E"/>
+        <circle cx="40" cy="42" r="4" fill="#5C3A1E"/>
+        <!-- Arms -->
+        <path d="M34 46 Q28 38 24 32" stroke="#5C3A1E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M46 46 Q52 38 56 32" stroke="#5C3A1E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Roots -->
+        <path d="M36 60 Q32 68 28 72M40 61 Q40 68 40 74M44 60 Q48 68 52 72" stroke="#5C3A1E" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <!-- Hoop earrings -->
+        <circle cx="36.5" cy="43" r="2" fill="none" stroke="#C9941A" stroke-width="1.5"/>
+        <circle cx="43.5" cy="43" r="2" fill="none" stroke="#C9941A" stroke-width="1.5"/>
+      </svg>
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.1rem;color:#1A1A1A;line-height:1;">EGOFF</div>
+        <div style="font-family:'Jost',sans-serif;font-weight:500;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:#C9941A;">ESSENTIALS</div>
+      </div>
+    </a>
+
+    <!-- Desktop Nav -->
+    <div style="display:flex;align-items:center;gap:32px;" class="hidden md:flex">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#shop" class="nav-link">Shop</a>
+      <a href="#story" class="nav-link">Our Story</a>
+      <a href="#ingredients" class="nav-link">Ingredients</a>
+      <a href="#roots" class="nav-link">Jamaican Roots</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+
+    <!-- Cart + Hamburger -->
+    <div style="display:flex;align-items:center;gap:20px;">
+      <button onclick="showCart()" style="background:none;border:none;cursor:pointer;position:relative;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="1.5">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <span id="cartCount" style="position:absolute;top:-6px;right:-6px;background:var(--terra);color:#fff;font-size:0.6rem;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-weight:600;">0</span>
+      </button>
+      <div class="hamburger md:hidden" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:24px;">
+    <a href="#home" class="nav-link" onclick="toggleMenu()">Home</a>
+    <a href="#shop" class="nav-link" onclick="toggleMenu()">Shop</a>
+    <a href="#story" class="nav-link" onclick="toggleMenu()">Our Story</a>
+    <a href="#ingredients" class="nav-link" onclick="toggleMenu()">Ingredients</a>
+    <a href="#roots" class="nav-link" onclick="toggleMenu()">Jamaican Roots</a>
+    <a href="#contact" class="nav-link" onclick="toggleMenu()">Contact</a>
+  </div>
+</div>
+
+<!-- ========== HERO ========== -->
+<section id="home" class="hero">
+  <div class="hero-bg-pattern"></div>
+
+  <!-- Decorative tropical leaves SVG -->
+  <svg style="position:absolute;top:5%;left:2%;width:180px;opacity:0.07;" viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100 280 Q10 200 20 80 Q60 40 100 20 Q100 20 100 280Z" fill="#C9941A"/>
+    <path d="M100 280 Q190 200 180 80 Q140 40 100 20 Q100 20 100 280Z" fill="#1B5E3B"/>
+    <line x1="100" y1="280" x2="100" y2="20" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  </svg>
+  <svg style="position:absolute;bottom:10%;right:3%;width:140px;opacity:0.06;transform:rotate(30deg);" viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100 280 Q10 200 20 80 Q60 40 100 20 Q100 20 100 280Z" fill="#C9941A"/>
+    <path d="M100 280 Q190 200 180 80 Q140 40 100 20 Q100 20 100 280Z" fill="#C9941A"/>
+  </svg>
+
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;" class="hero-grid">
+    <!-- Left: Text -->
+    <div style="color:#fff;">
+      <div class="animate-fade-up" style="font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#C9941A;margin-bottom:20px;display:flex;align-items:center;gap:12px;">
+        <span style="width:40px;height:1px;background:#C9941A;display:inline-block;"></span>
+        Egoff Enterprise L.L.C.
+        <span style="width:40px;height:1px;background:#C9941A;display:inline-block;"></span>
+      </div>
+      <h1 class="animate-fade-up-delay" style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(3rem,6vw,5.5rem);line-height:1;color:#fff;margin-bottom:12px;">
+        Essentially<br><em style="color:#C9941A;font-style:italic;">Rooted</em>
+      </h1>
+      <p class="animate-fade-up-delay-2" style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:rgba(255,255,255,0.75);line-height:1.6;margin-bottom:8px;">
+        in Jamaican Heritage
+      </p>
+      <div class="animate-fade-up-delay-2" style="margin-bottom:32px;">
+        <div style="font-family:'Jost',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.2em;color:rgba(255,255,255,0.5);margin-top:8px;">
+          GOD &nbsp;•&nbsp; LOVE &nbsp;•&nbsp; POWER
+        </div>
+      </div>
+      <p class="animate-fade-up-delay-2" style="font-size:0.95rem;line-height:1.7;color:rgba(255,255,255,0.65);margin-bottom:36px;max-width:380px;">
+        Handcrafted natural soaps and skincare rooted in the rich botanical traditions of Jamaica. Made with love, guided by purpose.
+      </p>
+      <div class="animate-fade-up-delay-2" style="display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="#shop" class="btn-primary">Shop Our Collection</a>
+        <a href="#story" class="btn-outline">Our Story</a>
+      </div>
+    </div>
+
+    <!-- Right: Soaps + Logo -->
+    <div class="animate-scale-in" style="display:flex;flex-direction:column;align-items:center;gap:0;position:relative;">
+      <!-- Big Tree Logo -->
+      <img src="egoff-new-logo.jpg" alt="EGOFF Essentials — Essentially Rooted logo" style="width:min(360px,90vw);filter:drop-shadow(0 20px 60px rgba(0,0,0,0.4));mix-blend-mode:multiply;" />
+
+      <!-- Floating soap bars beneath logo -->
+      <div style="display:flex;gap:16px;justify-content:center;margin-top:-20px;">
+        <div class="soap-float" style="width:70px;height:48px;background:linear-gradient(135deg,#E8D878,#D4C45A);border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.3);transform:rotate(-8deg);"></div>
+        <div class="soap-float" style="width:85px;height:55px;background:linear-gradient(135deg,#F5EFD0,#EDE3B0);border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.3);position:relative;overflow:hidden;">
+          <div style="position:absolute;inset:0;background-image:radial-gradient(circle 3px at 20% 30%, #6B4423 0%, transparent 0%), radial-gradient(circle 2px at 50% 60%, #6B4423 0%, transparent 0%), radial-gradient(circle 2px at 75% 25%, #6B4423 0%, transparent 0%);background-size:20px 20px;"></div>
+        </div>
+        <div class="soap-float" style="width:70px;height:48px;background:linear-gradient(135deg,#E8D878,#C9B840);border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.3);transform:rotate(6deg);"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div style="position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;">
+    <div style="font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);">Scroll</div>
+    <div style="width:1px;height:40px;background:linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);animation:float 2s ease-in-out infinite;"></div>
+  </div>
+</section>
+
+<!-- ========== MARQUEE STRIP ========== -->
+<div style="background:#1B5E3B;padding:14px 0;overflow:hidden;white-space:nowrap;">
+  <div style="animation:marquee 20s linear infinite;display:inline-block;">
+    <span style="font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#FAF7F0;margin-right:48px;">✦ Handcrafted in Jamaica ✦ All Natural Ingredients ✦ Family Rooted ✦ God · Love · Power ✦ Essentially Rooted ✦ Hot Flash &amp; Menstrual Relief ✦ Handcrafted in Jamaica ✦ All Natural Ingredients ✦ Family Rooted ✦ God · Love · Power ✦ Essentially Rooted ✦ Hot Flash &amp; Menstrual Relief ✦</span>
+  </div>
+</div>
+<style>
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (max-width:768px) {
+  .hero-grid { grid-template-columns: 1fr !important; padding-top: 100px; padding-bottom: 60px; text-align: center; }
+  .hero-grid > div:first-child > div, .hero-grid > div:first-child > h1, .hero-grid > div:first-child > p, .hero-grid > div:first-child > div:last-child { display: flex; justify-content: center; text-align: center; }
+  .hero-grid > div:first-child > p { max-width: 100% !important; }
+}
+</style>
+
+<!-- ========== OUR STORY ========== -->
+<section id="story" style="padding:100px 0;background:#FAF7F0;" class="leaf-pattern">
+  <div style="max-width:1100px;margin:0 auto;padding:0 24px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;" class="story-grid reveal">
+      <!-- Left -->
+      <div>
+        <div class="section-label">Our Story</div>
+        <h2 class="section-title" style="font-size:clamp(2.5rem,4vw,3.8rem);margin-bottom:24px;">
+          Rooted in<br><em style="color:#1B5E3B;font-style:italic;">Family,<br>Rooted in Faith</em>
+        </h2>
+        <div class="quote-block" style="margin-bottom:28px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:#5C3A1E;line-height:1.6;">
+            "Every bar of soap tells a story — of our ancestors, our land, our love."
+          </p>
+          <p style="font-family:'Jost',sans-serif;font-size:0.75rem;letter-spacing:0.12em;color:#C9941A;margin-top:8px;">— Ericka Goff, Founder</p>
+        </div>
+        <p style="font-size:0.95rem;line-height:1.85;color:#444;margin-bottom:20px;">
+          EGOFF Essentials was born from a deep love of family, heritage, and the healing power of nature. Founded by <strong>Ericka Goff</strong>, the brand is a living tribute to Jamaican botanical wisdom passed down through generations of the Goff-Caliste family.
+        </p>
+        <p style="font-size:0.95rem;line-height:1.85;color:#444;margin-bottom:32px;">
+          What began as a personal calling to create clean, purposeful skincare has grown into a full family endeavor — united under the banner of <strong>EGOFF Enterprise L.L.C.</strong> with two wings: the <em>EGOFF Foundation</em> (community giving) and <em>EGOFF Essentials</em> (natural skincare).
+        </p>
+        <!-- Family names -->
+        <div style="display:flex;flex-wrap:wrap;gap:10px;">
+          <span style="font-family:'Jost',sans-serif;font-size:0.75rem;padding:6px 14px;border:1px solid rgba(201,148,26,0.3);color:#C9941A;">Hilda Smith Caliste</span>
+          <span style="font-family:'Jost',sans-serif;font-size:0.75rem;padding:6px 14px;border:1px solid rgba(27,94,59,0.3);color:#1B5E3B;">Alma Sanchez Thomas</span>
+          <span style="font-family:'Jost',sans-serif;font-size:0.75rem;padding:6px 14px;border:1px solid rgba(201,148,26,0.3);color:#C9941A;">Lorchild B. Thomas</span>
+          <span style="font-family:'Jost',sans-serif;font-size:0.75rem;padding:6px 14px;border:1px solid rgba(27,94,59,0.3);color:#1B5E3B;">Alice Fields Goff</span>
+          <span style="font-family:'Jost',sans-serif;font-size:0.75rem;padding:6px 14px;border:1px solid rgba(181,69,27,0.3);color:#B5451B;">Ruby Caliste Sumler</span>
+          <span style="font-family:'Jost',sans-serif;font-size:0.75rem;padding:6px 14px;border:1px solid rgba(27,94,59,0.3);color:#1B5E3B;">Elizabeth Collior</span>
+          <span style="font-family:'Jost',sans-serif;font-size:0.75rem;padding:6px 14px;border:1px solid rgba(201,148,26,0.3);color:#C9941A;">Geraldine Goff Rollins</span>
+        </div>
+      </div>
+      <!-- Right: Visual -->
+      <div style="position:relative;">
+        <div style="background:linear-gradient(135deg, #1B5E3B 0%, #0F3522 100%);padding:48px 40px;position:relative;overflow:hidden;">
+          <!-- Diagonal accent -->
+          <div style="position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 80px 80px 0;border-color:transparent #C9941A transparent transparent;opacity:0.4;"></div>
+          <!-- GOD LOVE POWER cards -->
+          <div style="display:flex;flex-direction:column;gap:24px;">
+            <div style="display:flex;gap:20px;align-items:flex-start;">
+              <div style="min-width:44px;height:44px;background:rgba(201,148,26,0.2);border:1px solid rgba(201,148,26,0.4);display:flex;align-items:center;justify-content:center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9941A" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#C9941A;margin-bottom:6px;">GOD</div>
+                <p style="font-size:0.85rem;line-height:1.7;color:rgba(255,255,255,0.7);">Every creation begins with gratitude. Our formulas are crafted in prayer and intention, honoring the divine gifts of the earth.</p>
+              </div>
+            </div>
+            <div style="height:1px;background:rgba(255,255,255,0.1);"></div>
+            <div style="display:flex;gap:20px;align-items:flex-start;">
+              <div style="min-width:44px;height:44px;background:rgba(201,148,26,0.2);border:1px solid rgba(201,148,26,0.4);display:flex;align-items:center;justify-content:center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9941A" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              </div>
+              <div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#C9941A;margin-bottom:6px;">LOVE</div>
+                <p style="font-size:0.85rem;line-height:1.7;color:rgba(255,255,255,0.7);">Every bar is handmade with the love of a family. The care we put into our craft reflects the care we have for your skin and wellbeing.</p>
+              </div>
+            </div>
+            <div style="height:1px;background:rgba(255,255,255,0.1);"></div>
+            <div style="display:flex;gap:20px;align-items:flex-start;">
+              <div style="min-width:44px;height:44px;background:rgba(201,148,26,0.2);border:1px solid rgba(201,148,26,0.4);display:flex;align-items:center;justify-content:center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9941A" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#C9941A;margin-bottom:6px;">POWER</div>
+                <p style="font-size:0.85rem;line-height:1.7;color:rgba(255,255,255,0.7);">Nature's most potent botanicals, harvested with purpose. The power to heal, to nourish, to transform — rooted in centuries of wisdom.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Decorative offset box -->
+        <div style="position:absolute;bottom:-16px;right:-16px;width:120px;height:120px;border:2px solid rgba(201,148,26,0.3);z-index:-1;"></div>
+        <div style="position:absolute;top:-16px;left:-16px;width:60px;height:60px;background:rgba(27,94,59,0.1);z-index:-1;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+@media (max-width:768px) {
+  .story-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+}
+</style>
+
+<!-- ========== SHOP ========== -->
+<section id="shop" style="padding:100px 0;background:#F5EDD8;" class="diagonal-stripe">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+    <div class="reveal" style="text-align:center;margin-bottom:64px;">
+      <div class="section-label" style="justify-content:center;">The Collection</div>
+      <h2 class="section-title" style="font-size:clamp(2.5rem,4vw,3.5rem);">Handcrafted with Purpose</h2>
+      <div class="gold-divider"></div>
+      <p style="font-size:0.95rem;color:#666;max-width:520px;margin:0 auto;line-height:1.8;">Each bar is formulated with intention — using Jamaica's finest natural botanicals to address real needs of the body and spirit.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;" class="shop-grid reveal">
+
+      <!-- Product 1: Hot Flash & Menstrual -->
+      <div class="product-card">
+        <div class="product-badge">Bestseller</div>
+        <div class="product-img-wrap" style="background:linear-gradient(135deg,#FDF6E3,#F0E4B0);">
+          <!-- Yellow soap illustration -->
+          <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:16px;">
+            <div style="width:140px;height:55px;background:linear-gradient(145deg,#E8D878,#D4C450,#C9B830);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.15),inset 0 2px 4px rgba(255,255,255,0.4);position:relative;">
+              <div style="position:absolute;top:8px;left:12px;right:12px;height:1px;background:rgba(255,255,255,0.5);border-radius:1px;"></div>
+              <div style="position:absolute;bottom:8px;left:12px;right:12px;height:1px;background:rgba(255,255,255,0.3);border-radius:1px;"></div>
+            </div>
+            <div style="background:rgba(201,148,26,0.15);border:1px dashed rgba(201,148,26,0.4);padding:6px 14px;font-family:'Jost',sans-serif;font-size:0.7rem;letter-spacing:0.05em;color:#5C3A1E;">Hot Flash &amp; Menstrual</div>
+          </div>
+        </div>
+        <div style="padding:28px;">
+          <div style="font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#C9941A;margin-bottom:8px;">Wellness Bar</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:#1A1A1A;margin-bottom:8px;">Hot Flash &amp; Menstrual Relief</h3>
+          <p style="font-size:0.85rem;line-height:1.7;color:#666;margin-bottom:20px;">A carefully formulated bar to ease the discomfort of hot flashes and menstrual cycles. Crafted with cooling and balancing botanicals.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#1B5E3B;">$12.50</div>
+            <div style="font-family:'Jost',sans-serif;font-size:0.7rem;color:#999;">Per Bar</div>
+          </div>
+          <button class="btn-cart" onclick="addToCart(this, 'Hot Flash & Menstrual Soap')">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 2: White Speckled Bar -->
+      <div class="product-card">
+        <div class="product-badge" style="background:#1B5E3B;">Natural</div>
+        <div class="product-img-wrap" style="background:linear-gradient(135deg,#F0EDE8,#E8E2D8);">
+          <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:16px;">
+            <!-- White speckled soap -->
+            <div style="width:150px;height:100px;background:linear-gradient(145deg,#F5F0E8,#EDE8DC,#E8E0D0);border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.12),inset 0 2px 4px rgba(255,255,255,0.6);position:relative;overflow:hidden;">
+              <!-- Speckles -->
+              <div style="position:absolute;top:18%;left:22%;width:6px;height:6px;border-radius:50%;background:#6B4423;opacity:0.7;"></div>
+              <div style="position:absolute;top:35%;left:55%;width:5px;height:5px;border-radius:50%;background:#6B4423;opacity:0.6;"></div>
+              <div style="position:absolute;top:60%;left:30%;width:4px;height:4px;border-radius:50%;background:#5C3A1E;opacity:0.5;"></div>
+              <div style="position:absolute;top:50%;left:70%;width:6px;height:6px;border-radius:50%;background:#6B4423;opacity:0.7;"></div>
+              <div style="position:absolute;top:75%;left:48%;width:4px;height:4px;border-radius:50%;background:#5C3A1E;opacity:0.5;"></div>
+              <div style="position:absolute;top:25%;left:78%;width:5px;height:5px;border-radius:50%;background:#6B4423;opacity:0.6;"></div>
+              <div style="position:absolute;top:80%;left:15%;width:5px;height:5px;border-radius:50%;background:#6B4423;opacity:0.5;"></div>
+              <!-- Twine bow top -->
+              <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:50px;height:14px;display:flex;justify-content:center;align-items:center;">
+                <div style="width:2px;height:14px;background:#8B6914;"></div>
+              </div>
+            </div>
+            <div style="font-family:'Jost',sans-serif;font-size:0.7rem;letter-spacing:0.05em;color:#5C3A1E;background:rgba(107,68,35,0.08);padding:5px 12px;">Natural Botanicals</div>
+          </div>
+        </div>
+        <div style="padding:28px;">
+          <div style="font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#1B5E3B;margin-bottom:8px;">Artisan Bar</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:#1A1A1A;margin-bottom:8px;">Botanical Herb &amp; Spice Bar</h3>
+          <p style="font-size:0.85rem;line-height:1.7;color:#666;margin-bottom:20px;">A creamy white artisan bar infused with dried herbs and botanicals, gift-wrapped with natural twine. Perfect for daily nourishing cleanse.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#1B5E3B;">$14.00</div>
+            <div style="font-family:'Jost',sans-serif;font-size:0.7rem;color:#999;">Per Bar</div>
+          </div>
+          <button class="btn-cart" onclick="addToCart(this, 'Botanical Herb & Spice Bar')">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 3: Plain Yellow Bar -->
+      <div class="product-card">
+        <div class="product-badge" style="background:#B5451B;">Pure</div>
+        <div class="product-img-wrap" style="background:linear-gradient(135deg,#FDFAED,#F5EDCC);">
+          <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:16px;">
+            <!-- Clean yellow bar -->
+            <div style="width:145px;height:95px;background:linear-gradient(145deg,#EDD878,#DEC840,#CDB430);border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.12),inset 0 2px 4px rgba(255,255,255,0.5);position:relative;">
+              <div style="position:absolute;top:6px;left:10px;right:10px;height:1px;background:rgba(255,255,255,0.4);"></div>
+              <!-- Subtle pink speckles -->
+              <div style="position:absolute;top:40%;left:30%;width:4px;height:4px;border-radius:50%;background:rgba(181,69,27,0.3);"></div>
+              <div style="position:absolute;top:60%;left:65%;width:3px;height:3px;border-radius:50%;background:rgba(181,69,27,0.25);"></div>
+            </div>
+            <div style="font-family:'Jost',sans-serif;font-size:0.7rem;color:#5C3A1E;background:rgba(201,148,26,0.1);padding:5px 12px;">Pure &amp; Simple</div>
+          </div>
+        </div>
+        <div style="padding:28px;">
+          <div style="font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#B5451B;margin-bottom:8px;">Classic Bar</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:#1A1A1A;margin-bottom:8px;">Golden Root Cleansing Bar</h3>
+          <p style="font-size:0.85rem;line-height:1.7;color:#666;margin-bottom:20px;">Our signature golden bar — pure, clean, and gentle. Infused with turmeric and shea, ideal for sensitive skin and everyday use.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#1B5E3B;">$12.00</div>
+            <div style="font-family:'Jost',sans-serif;font-size:0.7rem;color:#999;">Per Bar</div>
+          </div>
+          <button class="btn-cart" onclick="addToCart(this, 'Golden Root Cleansing Bar')">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coming Soon -->
+    <div class="reveal" style="margin-top:60px;padding:40px;background:linear-gradient(135deg,#1B5E3B,#0F3522);text-align:center;">
+      <div style="font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#C9941A;margin-bottom:12px;">Coming Soon</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:#fff;margin-bottom:12px;">Luxurious Body Butters</h3>
+      <p style="font-size:0.9rem;color:rgba(255,255,255,0.65);max-width:400px;margin:0 auto 24px;">Rich, whipped body butters made with shea, mango, and Jamaican botanicals — coming soon to the EGOFF Essentials collection.</p>
+      <a href="#contact" class="btn-outline" style="border-color:rgba(201,148,26,0.6);color:#C9941A;">Get Notified</a>
+    </div>
+  </div>
+</section>
+<style>
+@media (max-width:900px) {
+  .shop-grid { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width:600px) {
+  .shop-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+<!-- ========== INGREDIENTS ========== -->
+<section id="ingredients" style="padding:100px 0;background:#FAF7F0;">
+  <div style="max-width:1100px;margin:0 auto;padding:0 24px;">
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;" class="ing-grid">
+      <!-- Left visual -->
+      <div style="position:relative;">
+        <div style="background:linear-gradient(135deg,#E8F5EE,#D4EAD8);padding:48px;display:flex;flex-direction:column;gap:20px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:-20px;right:-20px;width:120px;height:120px;border-radius:50%;background:rgba(201,148,26,0.08);"></div>
+          <div style="position:absolute;bottom:-30px;left:-30px;width:160px;height:160px;border-radius:50%;background:rgba(27,94,59,0.06);"></div>
+
+          <!-- Ingredient icons grid -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative;z-index:1;">
+            <div style="background:#fff;padding:20px;text-align:center;border:1px solid rgba(27,94,59,0.1);">
+              <div style="font-size:1.8rem;margin-bottom:8px;">🫚</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;font-weight:600;color:#1B5E3B;">Shea Butter</div>
+              <div style="font-size:0.7rem;color:#888;margin-top:4px;">Deep moisture</div>
+            </div>
+            <div style="background:#fff;padding:20px;text-align:center;border:1px solid rgba(27,94,59,0.1);">
+              <div style="font-size:1.8rem;margin-bottom:8px;">🌿</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;font-weight:600;color:#1B5E3B;">Turmeric</div>
+              <div style="font-size:0.7rem;color:#888;margin-top:4px;">Anti-inflammatory</div>
+            </div>
+            <div style="background:#fff;padding:20px;text-align:center;border:1px solid rgba(27,94,59,0.1);">
+              <div style="font-size:1.8rem;margin-bottom:8px;">🌺</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;font-weight:600;color:#1B5E3B;">Hibiscus</div>
+              <div style="font-size:0.7rem;color:#888;margin-top:4px;">Antioxidant rich</div>
+            </div>
+            <div style="background:#fff;padding:20px;text-align:center;border:1px solid rgba(27,94,59,0.1);">
+              <div style="font-size:1.8rem;margin-bottom:8px;">🫙</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;font-weight:600;color:#1B5E3B;">Coconut Oil</div>
+              <div style="font-size:0.7rem;color:#888;margin-top:4px;">Cleansing lather</div>
+            </div>
+            <div style="background:#fff;padding:20px;text-align:center;border:1px solid rgba(27,94,59,0.1);">
+              <div style="font-size:1.8rem;margin-bottom:8px;">🌱</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;font-weight:600;color:#1B5E3B;">Aloe Vera</div>
+              <div style="font-size:0.7rem;color:#888;margin-top:4px;">Soothing &amp; cooling</div>
+            </div>
+            <div style="background:#fff;padding:20px;text-align:center;border:1px solid rgba(27,94,59,0.1);">
+              <div style="font-size:1.8rem;margin-bottom:8px;">🍃</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;font-weight:600;color:#1B5E3B;">Moringa</div>
+              <div style="font-size:0.7rem;color:#888;margin-top:4px;">Skin purifying</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right text -->
+      <div>
+        <div class="section-label">What's Inside</div>
+        <h2 class="section-title" style="font-size:clamp(2.2rem,3.5vw,3.2rem);margin-bottom:24px;">
+          Nature's Finest,<br><em style="color:#1B5E3B;font-style:italic;">Carefully Chosen</em>
+        </h2>
+        <p style="font-size:0.95rem;line-height:1.85;color:#555;margin-bottom:24px;">
+          We source only the finest natural ingredients — many with deep roots in Jamaican herbal tradition. No synthetic fragrances. No harsh chemicals. Just the pure power of plants.
+        </p>
+        <p style="font-size:0.95rem;line-height:1.85;color:#555;margin-bottom:32px;">
+          Our formulations address real wellness needs: hormonal balance, inflammation, deep moisture, and skin clarity — using ingredients our grandmothers knew and trusted.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;">
+          <span class="ingredient-pill">✓ Vegan-friendly options</span>
+          <span class="ingredient-pill">✓ No synthetic dyes</span>
+          <span class="ingredient-pill">✓ Small-batch crafted</span>
+          <span class="ingredient-pill">✓ Cold processed</span>
+          <span class="ingredient-pill">✓ No parabens</span>
+          <span class="ingredient-pill">✓ Natural scents only</span>
+        </div>
+        <a href="#shop" class="btn-primary">Explore the Products</a>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+@media (max-width:768px) {
+  .ing-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+}
+</style>
+
+<!-- ========== JAMAICAN ROOTS ========== -->
+<section id="roots" style="padding:100px 0;background:linear-gradient(135deg,#0F3522 0%,#1B5E3B 50%,#1A1A1A 100%);position:relative;overflow:hidden;">
+  <!-- Background pattern -->
+  <div style="position:absolute;inset:0;opacity:0.04;">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="leaf" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+          <ellipse cx="40" cy="40" rx="12" ry="22" fill="#C9941A" transform="rotate(30 40 40)"/>
+          <ellipse cx="20" cy="20" rx="8" ry="15" fill="#FAF7F0" transform="rotate(-20 20 20)"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#leaf)"/>
+    </svg>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:0 24px;position:relative;z-index:1;">
+    <div class="reveal" style="text-align:center;margin-bottom:64px;">
+      <div class="section-label" style="justify-content:center;color:#C9941A;">
+        <span style="background:rgba(201,148,26,0.3);width:40px;height:1px;display:inline-block;"></span>
+        Jamaica
+        <span style="background:rgba(201,148,26,0.3);width:40px;height:1px;display:inline-block;"></span>
+      </div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4vw,3.8rem);font-weight:600;color:#fff;margin-bottom:16px;">
+        Where Our Roots<br><em style="color:#C9941A;font-style:italic;">Grow Deep</em>
+      </h2>
+      <div class="gold-divider"></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;margin-bottom:60px;" class="roots-grid reveal">
+      <div style="text-align:center;padding:36px 24px;background:rgba(255,255,255,0.04);border:1px solid rgba(201,148,26,0.2);">
+        <div style="font-size:2.4rem;margin-bottom:16px;">🇯🇲</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#C9941A;margin-bottom:12px;">Island Heritage</h3>
+        <p style="font-size:0.85rem;line-height:1.8;color:rgba(255,255,255,0.65);">Jamaica's lush landscape has gifted healers for centuries with aloe, turmeric, moringa, and herbs that modern science now confirms as powerhouses of wellness.</p>
+      </div>
+      <div style="text-align:center;padding:36px 24px;background:rgba(201,148,26,0.08);border:1px solid rgba(201,148,26,0.3);">
+        <div style="font-size:2.4rem;margin-bottom:16px;">👩🏾</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#C9941A;margin-bottom:12px;">Women's Wisdom</h3>
+        <p style="font-size:0.85rem;line-height:1.8;color:rgba(255,255,255,0.65);">Jamaican women have long been the keepers of botanical knowledge — mixing, brewing, and crafting remedies passed mother to daughter through the generations. Ericka carries this torch.</p>
+      </div>
+      <div style="text-align:center;padding:36px 24px;background:rgba(255,255,255,0.04);border:1px solid rgba(201,148,26,0.2);">
+        <div style="font-size:2.4rem;margin-bottom:16px;">🌿</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#C9941A;margin-bottom:12px;">Botanical Legacy</h3>
+        <p style="font-size:0.85rem;line-height:1.8;color:rgba(255,255,255,0.65);">From the Blue Mountains to the coast, Jamaica's biodiversity is unmatched. We honor this gift by sourcing thoughtfully, giving back through our Foundation, and letting the island's spirit guide every formula.</p>
+      </div>
+    </div>
+
+    <!-- Jamaican flag inspired divider -->
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr 1fr;height:6px;margin-bottom:60px;">
+      <div style="background:#1B5E3B;"></div>
+      <div style="background:#1A1A1A;"></div>
+      <div style="background:#C9941A;"></div>
+    </div>
+
+    <div class="reveal" style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,148,26,0.2);padding:48px;text-align:center;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-style:italic;color:#fff;line-height:1.6;max-width:680px;margin:0 auto 20px;">
+        "The Jamaican flag's black, gold and green — the hardships we've overcome, the natural wealth of our land, and the hope and agricultural riches — live in every bar we create."
+      </p>
+      <div style="font-family:'Jost',sans-serif;font-size:0.75rem;letter-spacing:0.15em;color:#C9941A;">— The EGOFF Family</div>
+    </div>
+  </div>
+</section>
+<style>
+@media (max-width:768px) {
+  .roots-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" style="padding:100px 0;background:#FAF7F0;">
+  <div style="max-width:900px;margin:0 auto;padding:0 24px;">
+    <div class="reveal" style="text-align:center;margin-bottom:56px;">
+      <div class="section-label" style="justify-content:center;">Get In Touch</div>
+      <h2 class="section-title" style="font-size:clamp(2.2rem,3.5vw,3.2rem);">Let's Connect</h2>
+      <div class="gold-divider"></div>
+      <p style="font-size:0.95rem;color:#666;max-width:480px;margin:0 auto;line-height:1.8;">Questions about our products, bulk orders, or want to be notified when body butters drop? We'd love to hear from you.</p>
+    </div>
+
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;">
+      <!-- Form -->
+      <div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div>
+            <label style="font-family:'Jost',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#666;display:block;margin-bottom:8px;">Your Name</label>
+            <input type="text" placeholder="Full name" style="width:100%;border:1px solid rgba(201,148,26,0.25);background:#fff;padding:13px 16px;font-family:'Jost',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.3s;" onfocus="this.style.borderColor='#C9941A'" onblur="this.style.borderColor='rgba(201,148,26,0.25)'">
+          </div>
+          <div>
+            <label style="font-family:'Jost',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#666;display:block;margin-bottom:8px;">Email</label>
+            <input type="email" placeholder="your@email.com" style="width:100%;border:1px solid rgba(201,148,26,0.25);background:#fff;padding:13px 16px;font-family:'Jost',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.3s;" onfocus="this.style.borderColor='#C9941A'" onblur="this.style.borderColor='rgba(201,148,26,0.25)'">
+          </div>
+          <div>
+            <label style="font-family:'Jost',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#666;display:block;margin-bottom:8px;">Message</label>
+            <textarea rows="5" placeholder="How can we help you?" style="width:100%;border:1px solid rgba(201,148,26,0.25);background:#fff;padding:13px 16px;font-family:'Jost',sans-serif;font-size:0.9rem;outline:none;resize:none;transition:border-color 0.3s;" onfocus="this.style.borderColor='#C9941A'" onblur="this.style.borderColor='rgba(201,148,26,0.25)'"></textarea>
+          </div>
+          <button class="btn-primary" onclick="showToast('Message sent! We\'ll be in touch soon. ✓')" style="align-self:flex-start;">Send Message</button>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div style="display:flex;flex-direction:column;gap:32px;">
+        <div>
+          <div style="font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#C9941A;margin-bottom:8px;">Brand</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:#1A1A1A;">EGOFF Essentials</div>
+          <div style="font-size:0.85rem;color:#666;margin-top:4px;">EGOFF Enterprise L.L.C.</div>
+        </div>
+        <div>
+          <div style="font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#C9941A;margin-bottom:8px;">Founded by</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:#1A1A1A;">Ericka Goff</div>
+        </div>
+        <div>
+          <div style="font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#C9941A;margin-bottom:12px;">Follow Us</div>
+          <div style="display:flex;gap:12px;">
+            <a href="#" style="width:40px;height:40px;border:1px solid rgba(201,148,26,0.3);display:flex;align-items:center;justify-content:center;text-decoration:none;color:#C9941A;transition:all 0.3s;" onmouseover="this.style.background='#C9941A';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#C9941A'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#" style="width:40px;height:40px;border:1px solid rgba(201,148,26,0.3);display:flex;align-items:center;justify-content:center;text-decoration:none;color:#C9941A;transition:all 0.3s;" onmouseover="this.style.background='#C9941A';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#C9941A'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" style="width:40px;height:40px;border:1px solid rgba(201,148,26,0.3);display:flex;align-items:center;justify-content:center;text-decoration:none;color:#C9941A;transition:all 0.3s;" onmouseover="this.style.background='#C9941A';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#C9941A'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.07a8.16 8.16 0 004.77 1.52V7.14a4.85 4.85 0 01-1-.45z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div style="background:#E8F5EE;padding:24px;border-left:3px solid #1B5E3B;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:#1B5E3B;line-height:1.6;">"Supporting EGOFF Essentials also supports the EGOFF Foundation — our community giving arm rooted in service."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+@media (max-width:768px) {
+  #contact .reveal > div { grid-template-columns: 1fr !important; }
+}
+</style>
+
+<!-- ========== FOOTER ========== -->
+<footer style="background:#0F3522;color:#fff;padding:64px 0 0;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.08);" class="footer-grid">
+      <!-- Brand -->
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+          <svg width="50" height="50" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="38" fill="none" stroke="#C9941A" stroke-width="1.5"/>
+            <ellipse cx="28" cy="26" rx="16" ry="13" fill="#1B5E3B"/>
+            <ellipse cx="52" cy="26" rx="16" ry="13" fill="#C9941A"/>
+            <ellipse cx="40" cy="24" rx="10" ry="12" fill="#1A1A1A"/>
+            <path d="M34 46 Q40 38 46 46 L44 60 Q40 62 36 60Z" fill="#5C3A1E"/>
+            <circle cx="40" cy="42" r="4" fill="#5C3A1E"/>
+            <path d="M34 46 Q28 38 24 32" stroke="#5C3A1E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M46 46 Q52 38 56 32" stroke="#5C3A1E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M36 60 Q32 68 28 72M40 61 Q40 68 40 74M44 60 Q48 68 52 72" stroke="#5C3A1E" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+            <circle cx="36.5" cy="43" r="2" fill="none" stroke="#C9941A" stroke-width="1.5"/>
+            <circle cx="43.5" cy="43" r="2" fill="none" stroke="#C9941A" stroke-width="1.5"/>
+          </svg>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.2rem;color:#fff;">EGOFF</div>
+            <div style="font-family:'Jost',sans-serif;font-weight:500;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:#C9941A;">ESSENTIALS</div>
+          </div>
+        </div>
+        <p style="font-size:0.85rem;line-height:1.8;color:rgba(255,255,255,0.55);max-width:280px;margin-bottom:20px;">
+          Handcrafted natural soaps and skincare rooted in Jamaican botanical heritage. GOD · LOVE · POWER.
+        </p>
+        <div style="font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.15em;color:rgba(255,255,255,0.3);">EGOFF ENTERPRISE L.L.C.</div>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <div style="font-family:'Jost',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C9941A;margin-bottom:20px;">Navigate</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href="#home" class="footer-link">Home</a>
+          <a href="#shop" class="footer-link">Shop</a>
+          <a href="#story" class="footer-link">Our Story</a>
+          <a href="#ingredients" class="footer-link">Ingredients</a>
+          <a href="#roots" class="footer-link">Jamaican Roots</a>
+          <a href="#contact" class="footer-link">Contact</a>
+        </div>
+      </div>
+
+      <!-- Products -->
+      <div>
+        <div style="font-family:'Jost',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C9941A;margin-bottom:20px;">Products</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href="#shop" class="footer-link">Hot Flash &amp; Menstrual Bar</a>
+          <a href="#shop" class="footer-link">Botanical Herb Bar</a>
+          <a href="#shop" class="footer-link">Golden Root Bar</a>
+          <a href="#shop" class="footer-link" style="color:rgba(201,148,26,0.6);">Body Butters (Coming Soon)</a>
+        </div>
+      </div>
+
+      <!-- Family -->
+      <div>
+        <div style="font-family:'Jost',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C9941A;margin-bottom:20px;">Our Family</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#F0B429;display:inline-block;"></span><span class="footer-link">Hilda Smith Caliste</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#9B59B6;display:inline-block;"></span><span class="footer-link">Alma Sanchez Thomas</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#2ECC71;display:inline-block;"></span><span class="footer-link">Alice Fields Goff</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#E74C3C;display:inline-block;"></span><span class="footer-link">Ruby Caliste Sumler</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#3498DB;display:inline-block;"></span><span class="footer-link">Elizabeth Collior</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#E67E22;display:inline-block;"></span><span class="footer-link">Lorchild B. Thomas</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jamaican stripe -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;height:3px;">
+      <div style="background:#1B5E3B;opacity:0.6;"></div>
+      <div style="background:#1A1A1A;"></div>
+      <div style="background:#C9941A;opacity:0.6;"></div>
+    </div>
+
+    <!-- Bottom -->
+    <div style="padding:24px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+      <div style="font-family:'Jost',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.35);">
+        © 2024 EGOFF Enterprise L.L.C. — Essentially Rooted. All rights reserved.
+      </div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:rgba(201,148,26,0.6);">
+        GOD · LOVE · POWER
+      </div>
+    </div>
+  </div>
+</footer>
+<style>
+@media (max-width:900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width:600px) {
+  .footer-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const hamburger = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    hamburger.classList.toggle('open');
+  }
+
+  // Cart
+  let cartCount = 0;
+  function addToCart(btn, name) {
+    cartCount++;
+    document.getElementById('cartCount').textContent = cartCount;
+    
+    const original = btn.textContent;
+    btn.textContent = '✓ Added!';
+    btn.style.background = '#C9941A';
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.style.background = '';
+    }, 1500);
+
+    showToast(`${name} added to cart`);
+  }
+
+  function showCart() {
+    showToast(`You have ${cartCount} item${cartCount !== 1 ? 's' : ''} in your cart`);
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('cartToast');
+    toast.textContent = '✓ ' + msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
