@@ -76,7 +76,7 @@ body{font-family:'Inter',sans-serif;background:#FAF8F2;color:#111;overflow-x:hid
 </nav>
 
 <!-- MOBILE MENU -->
-<div id="mm" class="fixed inset-x-0 top-[66px] z-40 bg-[#FAF8F2]/97 backdrop-blur-md border-b-2 border-[#F4C430] -translate-y-full transition-transform duration-300 py-8">
+<div id="mm" class="fixed inset-x-0 top-[66px] z-40 bg-[#FAF8F2]/97 backdrop-blur-md border-b-2 border-[#F4C430] transition-transform duration-300 py-8" style="transform:translateY(-200%);display:block">
   <div class="flex flex-col items-center gap-6">
     <a href="#shop"    class="nlink text-[.9rem]" onclick="toggleMenu()">Shop</a>
     <a href="#story"   class="nlink text-[.9rem]" onclick="toggleMenu()">Our Story</a>
@@ -460,11 +460,11 @@ body{font-family:'Inter',sans-serif;background:#FAF8F2;color:#111;overflow-x:hid
   function toggleMenu(){
     const m=document.getElementById('mm'),h=document.getElementById('ham')
     const open=m.style.transform==='translateY(0px)'
-    m.style.transform=open?'':' translateY(0px)'
+    m.style.transform=open?'translateY(-200%)':'translateY(0px)'
     m.classList.toggle('open',!open)
     h.classList.toggle('open',!open)
   }
-  document.getElementById('mm').style.transform='translateY(-110%)'
+  
 
   // Cart
   let n=0
