@@ -1,549 +1,488 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>EGOFF Essentials — Essentially Rooted</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          forest:  '#006400',
-          gold:    '#F4C430',
-          golddark:'#C8960C',
-          cream:   '#FAF8F2',
-          warm:    '#F2ECD8',
-          ink:     '#0D0D0D',
-        },
-        fontFamily: {
-          serif: ['"Playfair Display"','Georgia','serif'],
-          sans:  ['Inter','system-ui','sans-serif'],
-        }
-      }
-    }
-  }
-</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:#FAF8F2;color:#0D0D0D;overflow-x:hidden}
-
-#nav{position:fixed;inset:0 0 auto;z-index:100;transition:background .4s,box-shadow .4s}
-#nav.scrolled{background:rgba(250,248,242,.96);backdrop-filter:blur(14px);box-shadow:0 1px 24px rgba(0,100,0,.07)}
-.nlink{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#0D0D0D;text-decoration:none;position:relative;padding-bottom:2px;transition:color .25s}
-.nlink::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:#F4C430;transition:width .3s}
-.nlink:hover{color:#006400}.nlink:hover::after{width:100%}
-
-.hero{min-height:100vh;background:linear-gradient(155deg,#001800 0%,#003800 35%,#005c00 65%,#001800 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.hero-x{position:absolute;inset:0;pointer-events:none}
-.hero-x::before,.hero-x::after{content:'';position:absolute;inset:0}
-.hero-x::before{background:linear-gradient(to bottom right,transparent 49.5%,rgba(244,196,48,.055) 49.5%,rgba(244,196,48,.055) 50.5%,transparent 50.5%)}
-.hero-x::after{background:linear-gradient(to bottom left,transparent 49.5%,rgba(244,196,48,.055) 49.5%,rgba(244,196,48,.055) 50.5%,transparent 50.5%)}
-
-.btn-gold{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#F4C430,#E8B820);color:#0D0D0D;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:16px 40px;border:none;cursor:pointer;text-decoration:none;transition:all .3s;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
-.btn-gold:hover{background:linear-gradient(135deg,#FFD700,#F4C430);transform:translateY(-2px);box-shadow:0 10px 36px rgba(244,196,48,.4)}
-.btn-green{display:inline-flex;align-items:center;justify-content:center;background:#006400;color:#FAF8F2;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:13px 28px;border:none;cursor:pointer;text-decoration:none;transition:all .3s;width:100%}
-.btn-green:hover{background:#004d00;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,100,0,.3)}
-.btn-outline{display:inline-flex;align-items:center;border:1.5px solid rgba(244,196,48,.5);color:#F4C430;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:13px 28px;text-decoration:none;transition:all .3s}
-.btn-outline:hover{border-color:#F4C430;background:rgba(244,196,48,.08)}
-
-.pcard{background:#fff;border:1px solid rgba(0,100,0,.08);position:relative;overflow:hidden;transition:transform .4s,box-shadow .4s}
-.pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#006400,#F4C430);transform:scaleX(0);transition:transform .4s;transform-origin:left}
-.pcard:hover{transform:translateY(-6px);box-shadow:0 20px 56px rgba(0,100,0,.12)}
-.pcard:hover::before{transform:scaleX(1)}
-
-.slabel{font-size:.67rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:#C8960C;display:flex;align-items:center;gap:14px;margin-bottom:18px}
-.slabel::before,.slabel::after{content:'';flex:1;max-width:50px;height:1px;background:linear-gradient(90deg,transparent,#C8960C,transparent)}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+body{font-family:'Inter',sans-serif;background:#FAF8F2;color:#111;overflow-x:hidden}
+.serif{font-family:'Playfair Display',serif}
+.hero-bg{background:linear-gradient(150deg,#001800,#003d00,#006400,#001800)}
+.gold-text{background:linear-gradient(90deg,#C8960C,#FFD700,#C8960C);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3s linear infinite}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes pulse-ring{0%{transform:scale(1);opacity:.4}100%{transform:scale(1.08);opacity:0}}
-@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
-
-.a1{animation:fadeUp .8s ease both}
-.a2{animation:fadeUp .8s .18s ease both}
-.a3{animation:fadeUp .8s .34s ease both}
-.a4{animation:fadeUp .8s .5s ease both}
-.a5{animation:fadeUp .8s .66s ease both}
-.float{animation:float 7s ease-in-out infinite}
-.shimmer{background:linear-gradient(90deg,#C8960C 0%,#FFD700 40%,#F4C430 60%,#C8960C 100%);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3s linear infinite}
-
-.rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
-.rv.on{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}
-
-.leafpat{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Cellipse cx='36' cy='36' rx='8' ry='17' fill='none' stroke='%23006400' stroke-opacity='.045' stroke-width='1.5' transform='rotate(20 36 36)'/%3E%3Cellipse cx='12' cy='12' rx='5' ry='11' fill='none' stroke='%23F4C430' stroke-opacity='.035' stroke-width='1' transform='rotate(-25 12 12)'/%3E%3Cellipse cx='60' cy='60' rx='5' ry='11' fill='none' stroke='%23006400' stroke-opacity='.035' stroke-width='1' transform='rotate(55 60 60)'/%3E%3C/svg%3E")}
-
-.ham{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
-.ham span{display:block;width:24px;height:1.5px;background:currentColor;transition:all .3s;transform-origin:center}
-.ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+@keyframes ring{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.1);opacity:0}}
+.float{animation:float 6s ease-in-out infinite}
+.a1{animation:fadeUp .7s .0s both}
+.a2{animation:fadeUp .7s .15s both}
+.a3{animation:fadeUp .7s .3s both}
+.a4{animation:fadeUp .7s .45s both}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rv.show{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.btn-gold{background:linear-gradient(135deg,#F4C430,#E8A800);color:#111;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;padding:15px 38px;clip-path:polygon(0 0,calc(100%-12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100%-12px));transition:all .3s;display:inline-block;text-decoration:none}
+.btn-gold:hover{background:linear-gradient(135deg,#FFD700,#F4C430);transform:translateY(-2px);box-shadow:0 10px 32px rgba(244,196,48,.4)}
+.btn-green{background:#006400;color:#FAF8F2;font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;padding:13px 24px;transition:all .3s;display:inline-block;text-decoration:none;width:100%;text-align:center}
+.btn-green:hover{background:#004d00;transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,100,0,.28)}
+.nlink{font-size:.72rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:#111;text-decoration:none;position:relative;padding-bottom:2px}
+.nlink::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:#F4C430;transition:width .3s}
+.nlink:hover::after,.nlink:focus::after{width:100%}
+.card{background:#fff;border:1px solid rgba(0,100,0,.08);position:relative;overflow:hidden;transition:transform .35s,box-shadow .35s}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#006400,#F4C430);transform:scaleX(0);transition:transform .35s;transform-origin:left}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(0,100,0,.12)}
+.card:hover::before{transform:scaleX(1)}
+.ham span{display:block;width:23px;height:1.5px;background:#111;transition:.3s;transform-origin:center}
+.ham.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
 .ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-.ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mmenu{position:fixed;top:68px;inset:0 0 auto;background:rgba(250,248,242,.98);backdrop-filter:blur(16px);border-bottom:2px solid #F4C430;transform:translateY(-110%);transition:transform .4s;z-index:99;padding:36px 0}
-.mmenu.open{transform:translateY(0)}
-
-.toast-el{position:fixed;bottom:28px;right:28px;z-index:9999;background:#006400;color:#fff;font-size:.84rem;padding:13px 22px;box-shadow:0 8px 28px rgba(0,0,0,.18);transform:translateY(70px);opacity:0;transition:all .35s}
-.toast-el.on{transform:translateY(0);opacity:1}
-
-.grule{width:72px;height:2px;background:linear-gradient(90deg,transparent,#F4C430,transparent);margin:18px auto}
-.flagbar{display:grid;grid-template-columns:1fr 1fr 1fr;height:4px}
-
-@media(max-width:768px){
-  .hgrid{grid-template-columns:1fr!important;text-align:center}
-  .hgrid .htxt{order:2}.hgrid .hlogo{order:1}
-  .s2col,.vcol3,.rcol3,.fgrid{grid-template-columns:1fr!important}
-  .s2col{gap:36px!important}
-  .btnrow{flex-direction:column;align-items:center}
-  .htxt .slabel{justify-content:center}
-}
-@media(max-width:960px){
-  .pcol3{grid-template-columns:1fr 1fr!important}
-  .vcol3{grid-template-columns:1fr 1fr!important}
-}
-@media(max-width:580px){
-  .pcol3,.vcol3,.rcol3{grid-template-columns:1fr!important}
-}
+.ham.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.slabel{font-size:.65rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#C8960C;display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.slabel::before,.slabel::after{content:'';flex:1;max-width:44px;height:1px;background:linear-gradient(90deg,transparent,#C8960C,transparent)}
+.toast{position:fixed;bottom:24px;right:24px;z-index:999;background:#006400;color:#fff;font-size:.83rem;padding:12px 20px;transform:translateY(60px);opacity:0;transition:.35s}
+.toast.show{transform:none;opacity:1}
+@media(max-width:768px){.hg{grid-template-columns:1fr!important;text-align:center}.hg .ht{order:2}.hg .hl{order:1}.br{flex-direction:column;align-items:center}.sg,.vg,.rg,.fg{grid-template-columns:1fr!important}.sg{gap:32px!important}}
+@media(max-width:900px){.pg{grid-template-columns:1fr 1fr!important}}
+@media(max-width:560px){.pg{grid-template-columns:1fr!important}}
 </style>
 </head>
 <body>
-
-<div class="toast-el" id="toast"></div>
+<div class="toast" id="toast"></div>
 
 <!-- NAV -->
-<nav id="nav">
-  <div style="max-width:1240px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between">
-    <a href="#home" style="display:flex;align-items:center;gap:11px;text-decoration:none">
-      <svg width="44" height="44" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="44" cy="44" r="42" fill="none" stroke="#F4C430" stroke-width="1.4"/>
-        <ellipse cx="29" cy="27" rx="19" ry="14" fill="#006400"/>
-        <ellipse cx="44" cy="24" rx="12" ry="14" fill="#0D0D0D"/>
-        <ellipse cx="59" cy="27" rx="19" ry="14" fill="#F4C430"/>
-        <circle cx="44" cy="45" r="5" fill="#3a1a06"/>
-        <path d="M38 51 Q44 44 50 51 L48 67 Q44 70 40 67Z" fill="#3a1a06"/>
-        <path d="M39 53 Q31 43 25 31" stroke="#3a1a06" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-        <path d="M49 53 Q57 43 63 31" stroke="#3a1a06" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-        <circle cx="39" cy="47" r="2.4" fill="none" stroke="#F4C430" stroke-width="1.7"/>
-        <circle cx="49" cy="47" r="2.4" fill="none" stroke="#F4C430" stroke-width="1.7"/>
-        <path d="M40 67 Q36 75 32 80M44 68 Q44 76 44 82M48 67 Q52 75 56 80" stroke="#3a1a06" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".65"/>
-      </svg>
-      <div>
-        <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:#0D0D0D;line-height:1">EGOFF</div>
-        <div style="font-size:.48rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#C8960C;margin-top:1px">ESSENTIALS</div>
-      </div>
+<nav id="nav" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+  <div class="max-w-6xl mx-auto px-6 h-[66px] flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3 no-underline">
+      <svg width="42" height="42" viewBox="0 0 84 84"><circle cx="42" cy="42" r="40" fill="none" stroke="#F4C430" stroke-width="1.3"/><ellipse cx="28" cy="26" rx="18" ry="13" fill="#006400"/><ellipse cx="42" cy="23" rx="11" ry="13" fill="#111"/><ellipse cx="56" cy="26" rx="18" ry="13" fill="#F4C430"/><circle cx="42" cy="43" r="4.5" fill="#3a1a06"/><path d="M37 49 Q42 43 47 49 L45.5 64 Q42 67 38.5 64Z" fill="#3a1a06"/><path d="M38 51 Q30 42 24 30" stroke="#3a1a06" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M46 51 Q54 42 60 30" stroke="#3a1a06" stroke-width="3.2" fill="none" stroke-linecap="round"/><circle cx="37.5" cy="45" r="2.2" fill="none" stroke="#F4C430" stroke-width="1.6"/><circle cx="46.5" cy="45" r="2.2" fill="none" stroke="#F4C430" stroke-width="1.6"/><path d="M38.5 64 Q35 72 31 77M42 65 Q42 73 42 78M45.5 64 Q49 72 53 77" stroke="#3a1a06" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".6"/></svg>
+      <div><div class="serif font-bold text-[1.05rem] leading-none text-[#111]">EGOFF</div><div class="text-[.46rem] font-semibold tracking-[.22em] uppercase text-[#C8960C] mt-[2px]">ESSENTIALS</div></div>
     </a>
-    <div style="display:flex;align-items:center;gap:32px" class="hidden md:flex">
-      <a href="#shop" class="nlink">Shop</a>
-      <a href="#story" class="nlink">Our Story</a>
-      <a href="#roots" class="nlink">Jamaican Roots</a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#shop"    class="nlink">Shop</a>
+      <a href="#story"   class="nlink">Our Story</a>
+      <a href="#roots"   class="nlink">Jamaican Roots</a>
       <a href="#contact" class="nlink">Contact</a>
-      <a href="#shop" class="btn-green" style="padding:9px 22px;font-size:.7rem;width:auto">Shop Now</a>
+      <a href="#shop" class="btn-green" style="width:auto;padding:9px 20px;font-size:.68rem">Shop Now</a>
     </div>
-    <div style="display:flex;align-items:center;gap:14px">
-      <button onclick="toast('Cart coming soon!')" style="background:none;border:none;cursor:pointer;position:relative;padding:4px;color:#0D0D0D">
-        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
-        <span id="badge" style="position:absolute;top:-5px;right:-5px;background:#B5451B;color:#fff;font-size:.56rem;width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700">0</span>
+    <div class="flex items-center gap-3">
+      <button onclick="toastMsg('Cart coming soon!')" class="relative p-1" style="background:none;border:none;cursor:pointer;color:#111">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+        <span id="badge" class="absolute -top-1 -right-1 bg-red-600 text-white text-[.54rem] w-[14px] h-[14px] rounded-full flex items-center justify-center font-bold">0</span>
       </button>
-      <div class="ham md:hidden" id="ham" onclick="toggleMenu()" style="color:#0D0D0D"><span></span><span></span><span></span></div>
+      <button class="ham md:hidden flex flex-col gap-[5px] p-1 cursor-pointer border-none bg-transparent" id="ham" onclick="toggleMenu()"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
 
-<div class="mmenu" id="mm">
-  <div style="display:flex;flex-direction:column;align-items:center;gap:26px">
-    <a href="#shop"    class="nlink" style="font-size:.9rem" onclick="toggleMenu()">Shop</a>
-    <a href="#story"   class="nlink" style="font-size:.9rem" onclick="toggleMenu()">Our Story</a>
-    <a href="#roots"   class="nlink" style="font-size:.9rem" onclick="toggleMenu()">Jamaican Roots</a>
-    <a href="#contact" class="nlink" style="font-size:.9rem" onclick="toggleMenu()">Contact</a>
+<!-- MOBILE MENU -->
+<div id="mm" class="fixed inset-x-0 top-[66px] z-40 bg-[#FAF8F2]/97 backdrop-blur-md border-b-2 border-[#F4C430] -translate-y-full transition-transform duration-300 py-8">
+  <div class="flex flex-col items-center gap-6">
+    <a href="#shop"    class="nlink text-[.9rem]" onclick="toggleMenu()">Shop</a>
+    <a href="#story"   class="nlink text-[.9rem]" onclick="toggleMenu()">Our Story</a>
+    <a href="#roots"   class="nlink text-[.9rem]" onclick="toggleMenu()">Jamaican Roots</a>
+    <a href="#contact" class="nlink text-[.9rem]" onclick="toggleMenu()">Contact</a>
     <a href="#shop" class="btn-gold" onclick="toggleMenu()">Shop Now</a>
   </div>
 </div>
 
 <!-- HERO -->
-<section id="home" class="hero">
-  <div class="hero-x"></div>
-  <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 60% at 50% 50%,rgba(244,196,48,.07) 0%,transparent 70%)"></div>
-  <div style="position:absolute;top:8%;left:3%;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(0,100,0,.22),transparent 70%);pointer-events:none"></div>
-  <div style="position:absolute;bottom:8%;right:4%;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(244,196,48,.09),transparent 70%);pointer-events:none"></div>
-  <svg style="position:absolute;bottom:0;left:0;width:200px;opacity:.1;pointer-events:none" viewBox="0 0 200 360" fill="none"><path d="M100 360 Q10 260 20 100 Q70 30 100 0 Q100 0 100 360Z" fill="#F4C430"/><path d="M100 360 Q190 260 180 100 Q130 30 100 0 Q100 0 100 360Z" fill="#006400"/><line x1="100" y1="360" x2="100" y2="0" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/></svg>
-  <svg style="position:absolute;top:6%;right:2%;width:160px;opacity:.08;pointer-events:none;transform:rotate(22deg) scaleX(-1)" viewBox="0 0 200 360" fill="none"><path d="M100 360 Q10 260 20 100 Q70 30 100 0 Q100 0 100 360Z" fill="#F4C430"/><path d="M100 360 Q190 260 180 100 Q130 30 100 0 Q100 0 100 360Z" fill="#006400"/></svg>
+<section id="home" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+  <!-- Ambient -->
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(244,196,48,.07),transparent 70%)"></div>
+  <!-- Flag X lines -->
+  <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-[.05]" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice"><line x1="0" y1="0" x2="1400" y2="800" stroke="#F4C430" stroke-width="4"/><line x1="1400" y1="0" x2="0" y2="800" stroke="#F4C430" stroke-width="4"/></svg>
+  <!-- Leaves -->
+  <svg class="absolute bottom-0 left-0 w-[180px] opacity-10 pointer-events-none" viewBox="0 0 200 360" fill="none"><path d="M100 360 Q10 260 20 100 Q70 30 100 0Q100 0 100 360Z" fill="#F4C430"/><path d="M100 360 Q190 260 180 100 Q130 30 100 0Q100 0 100 360Z" fill="#006400"/></svg>
+  <svg class="absolute top-[8%] right-[2%] w-[140px] opacity-[.07] pointer-events-none" style="transform:rotate(22deg) scaleX(-1)" viewBox="0 0 200 360" fill="none"><path d="M100 360 Q10 260 20 100 Q70 30 100 0Q100 0 100 360Z" fill="#F4C430"/><path d="M100 360 Q190 260 180 100 Q130 30 100 0Q100 0 100 360Z" fill="#006400"/></svg>
 
-  <div style="max-width:1240px;margin:0 auto;padding:100px 24px 70px;width:100%;display:grid;grid-template-columns:1fr 1.05fr;gap:72px;align-items:center" class="hgrid">
-    <div class="htxt">
-      <div class="slabel a1" style="color:rgba(244,196,48,.75)">
-        <span style="background:rgba(244,196,48,.4);flex:1;max-width:44px;height:1px"></span>
-        Egoff Enterprise L.L.C.
-        <span style="background:rgba(244,196,48,.4);flex:1;max-width:44px;height:1px"></span>
-      </div>
-      <h1 class="a2" style="font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(3.2rem,6vw,5.6rem);line-height:1.03;color:#fff;margin-bottom:14px">
-        Essentially<br><em class="shimmer" style="font-style:italic">Rooted</em>
+  <div class="max-w-6xl mx-auto px-6 w-full pt-24 pb-16 grid grid-cols-2 gap-16 items-center hg">
+    <!-- TEXT -->
+    <div class="ht">
+      <div class="slabel a1" style="color:rgba(244,196,48,.75)"><span style="background:rgba(244,196,48,.4);height:1px;flex:1;max-width:40px"></span>Egoff Enterprise L.L.C.<span style="background:rgba(244,196,48,.4);height:1px;flex:1;max-width:40px"></span></div>
+      <h1 class="serif a2 text-white leading-[1.04]" style="font-size:clamp(3rem,5.5vw,5.2rem);font-weight:900;margin-bottom:12px">
+        Essentially<br><em class="gold-text not-italic">Rooted</em>
       </h1>
-      <p class="a3" style="font-family:'Playfair Display',serif;font-size:clamp(1rem,1.8vw,1.35rem);color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:6px">Jamaican Heritage &nbsp;•&nbsp; Handcrafted with</p>
-      <p class="a3" style="font-size:.8rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(244,196,48,.65);margin-bottom:36px">GOD &nbsp;·&nbsp; LOVE &nbsp;·&nbsp; POWER</p>
-      <p class="a4" style="font-size:.94rem;line-height:1.88;color:rgba(255,255,255,.58);max-width:390px;margin-bottom:40px">Handcrafted natural soaps and skincare rooted in the rich botanical traditions of Jamaica — made with love, guided by purpose, blessed by faith.</p>
-      <div class="a4 btnrow" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px">
+      <p class="serif a3 text-white/70 leading-relaxed" style="font-size:clamp(.95rem,1.6vw,1.3rem);margin-bottom:6px">Jamaican Heritage &nbsp;•&nbsp; Handcrafted with</p>
+      <p class="a3 font-semibold tracking-[.22em] uppercase text-[.75rem] mb-8" style="color:rgba(244,196,48,.65)">GOD &nbsp;·&nbsp; LOVE &nbsp;·&nbsp; POWER</p>
+      <p class="a4 text-white/55 leading-[1.85] max-w-[380px] mb-10" style="font-size:.93rem">Handcrafted natural soaps and skincare rooted in the rich botanical traditions of Jamaica — made with love, guided by purpose, blessed by faith.</p>
+      <div class="a4 flex gap-3 flex-wrap br mb-12">
         <a href="#shop" class="btn-gold">Shop the Collection</a>
-        <a href="#story" class="btn-outline">Our Story</a>
+        <a href="#story" class="btn-gold" style="background:transparent;color:#F4C430;border:1.5px solid rgba(244,196,48,.45);clip-path:none;padding:14px 28px;font-size:.75rem">Our Story</a>
       </div>
-      <div class="a5" style="padding-top:28px;border-top:1px solid rgba(244,196,48,.15)">
-        <div style="font-size:.62rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(244,196,48,.45);margin-bottom:12px">Rooted in family</div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px 14px">
-          <span style="font-family:'Playfair Display',serif;font-style:italic;font-size:.87rem;color:rgba(255,255,255,.45)">Hilda Smith Caliste</span>
-          <span style="color:rgba(244,196,48,.25)">•</span>
-          <span style="font-family:'Playfair Display',serif;font-style:italic;font-size:.87rem;color:rgba(255,255,255,.45)">Alma Sanchez Thomas</span>
-          <span style="color:rgba(244,196,48,.25)">•</span>
-          <span style="font-family:'Playfair Display',serif;font-style:italic;font-size:.87rem;color:rgba(255,255,255,.45)">Alice Fields Goff</span>
-          <span style="color:rgba(244,196,48,.25)">•</span>
-          <span style="font-family:'Playfair Display',serif;font-style:italic;font-size:.87rem;color:rgba(255,255,255,.45)">Ruby Caliste Sumler</span>
+      <div class="a4 pt-6 border-t border-[rgba(244,196,48,.15)]">
+        <div class="text-[.6rem] font-semibold tracking-[.22em] uppercase mb-3" style="color:rgba(244,196,48,.42)">Rooted in family</div>
+        <div class="flex flex-wrap gap-2">
+          <span class="serif italic text-[.83rem] text-white/40">Hilda Smith Caliste</span><span class="text-[rgba(244,196,48,.22)]">•</span>
+          <span class="serif italic text-[.83rem] text-white/40">Alma Sanchez Thomas</span><span class="text-[rgba(244,196,48,.22)]">•</span>
+          <span class="serif italic text-[.83rem] text-white/40">Alice Fields Goff</span><span class="text-[rgba(244,196,48,.22)]">•</span>
+          <span class="serif italic text-[.83rem] text-white/40">Ruby Caliste Sumler</span>
         </div>
       </div>
     </div>
 
-    <div class="hlogo a2" style="display:flex;flex-direction:column;align-items:center;gap:20px">
-      <div class="float" style="position:relative;display:inline-block">
-        <div style="position:absolute;inset:-20px;border-radius:50%;border:1px solid rgba(244,196,48,.2);animation:pulse-ring 3s ease-out infinite"></div>
-        <div style="position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(244,196,48,.25)"></div>
-        <img src="egoff-new-logo.jpg" alt="EGOFF Essentials circular Tree of Life logo featuring a strong Black woman silhouette with arms raised as branches, Jamaican flag canopy colors green black and gold, GOD LOVE POWER overlay, family names encircling the design, Essentially Rooted at the bottom" style="width:min(430px,86vw);border-radius:50%;display:block;mix-blend-mode:lighten;filter:drop-shadow(0 0 48px rgba(244,196,48,.28)) drop-shadow(0 28px 70px rgba(0,0,0,.65))"/>
+    <!-- LOGO -->
+    <div class="hl flex flex-col items-center gap-5 a2">
+      <div class="float relative inline-block">
+        <div class="absolute rounded-full border border-[rgba(244,196,48,.22)]" style="inset:-8px"></div>
+        <div class="absolute rounded-full" style="inset:-20px;border:1px solid rgba(244,196,48,.18);animation:ring 3s ease-out infinite"></div>
+        <img src="egoff-new-logo.jpg"
+          alt="EGOFF Essentials circular Tree of Life logo — Black woman silhouette with arms as branches, Jamaican flag canopy colors, GOD LOVE POWER, family names, Essentially Rooted"
+          style="width:min(420px,84vw);border-radius:50%;display:block;mix-blend-mode:lighten;filter:drop-shadow(0 0 44px rgba(244,196,48,.25)) drop-shadow(0 24px 64px rgba(0,0,0,.6))"/>
       </div>
-      <div style="background:rgba(244,196,48,.1);border:1px solid rgba(244,196,48,.28);padding:11px 30px;backdrop-filter:blur(8px)">
-        <span style="font-size:.62rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#F4C430">Essentially Rooted</span>
+      <div style="background:rgba(244,196,48,.1);border:1px solid rgba(244,196,48,.28);padding:10px 28px">
+        <span class="text-[.6rem] font-semibold tracking-[.3em] uppercase text-[#F4C430]">Essentially Rooted</span>
       </div>
     </div>
   </div>
 
-  <div style="position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:7px">
-    <div style="font-size:.58rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.28)">Scroll</div>
-    <div style="width:1px;height:40px;background:linear-gradient(to bottom,rgba(244,196,48,.45),transparent)"></div>
+  <!-- Scroll cue -->
+  <div class="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+    <span class="text-[.56rem] font-medium tracking-[.2em] uppercase text-white/25">Scroll</span>
+    <div style="width:1px;height:38px;background:linear-gradient(to bottom,rgba(244,196,48,.4),transparent)"></div>
   </div>
 </section>
 
 <!-- MARQUEE -->
-<div style="background:#006400;padding:13px 0;overflow:hidden;white-space:nowrap">
-  <div style="animation:marquee 24s linear infinite;display:inline-block">
-    <span style="font-size:.67rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#FAF8F2">
-      ✦ &nbsp;Handcrafted in the Spirit of Jamaica &nbsp;&nbsp; ✦ &nbsp;All Natural Ingredients &nbsp;&nbsp; ✦ &nbsp;Family Owned &amp; Operated &nbsp;&nbsp; ✦ &nbsp;GOD · LOVE · POWER &nbsp;&nbsp; ✦ &nbsp;Essentially Rooted &nbsp;&nbsp; ✦ &nbsp;Handcrafted in the Spirit of Jamaica &nbsp;&nbsp; ✦ &nbsp;All Natural Ingredients &nbsp;&nbsp; ✦ &nbsp;Family Owned &amp; Operated &nbsp;&nbsp; ✦ &nbsp;GOD · LOVE · POWER &nbsp;&nbsp; ✦ &nbsp;Essentially Rooted &nbsp;&nbsp;
-    </span>
+<div class="bg-[#006400] py-[13px] overflow-hidden whitespace-nowrap">
+  <div style="animation:marquee 22s linear infinite;display:inline-block">
+    <span class="text-[.65rem] font-semibold tracking-[.2em] uppercase text-[#FAF8F2]">✦ &nbsp;Handcrafted in the Spirit of Jamaica &nbsp;&nbsp; ✦ &nbsp;All Natural Ingredients &nbsp;&nbsp; ✦ &nbsp;Family Owned &amp; Operated &nbsp;&nbsp; ✦ &nbsp;GOD · LOVE · POWER &nbsp;&nbsp; ✦ &nbsp;Essentially Rooted &nbsp;&nbsp; ✦ &nbsp;Handcrafted in the Spirit of Jamaica &nbsp;&nbsp; ✦ &nbsp;All Natural Ingredients &nbsp;&nbsp; ✦ &nbsp;Family Owned &amp; Operated &nbsp;&nbsp; ✦ &nbsp;GOD · LOVE · POWER &nbsp;&nbsp; ✦ &nbsp;Essentially Rooted &nbsp;&nbsp;</span>
   </div>
 </div>
 
 <!-- OUR STORY -->
-<section id="story" style="padding:108px 0;background:#FAF8F2" class="leafpat">
-  <div style="max-width:1160px;margin:0 auto;padding:0 24px">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:76px;align-items:center" class="s2col">
-      <div class="rv" style="position:relative">
-        <div style="background:linear-gradient(148deg,#003000,#006400);padding:48px 40px;position:relative;overflow:hidden">
-          <div style="position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 64px 64px 0;border-color:transparent rgba(244,196,48,.28) transparent transparent"></div>
-          <div style="position:absolute;bottom:0;left:0;width:0;height:0;border-style:solid;border-width:56px 0 0 56px;border-color:transparent transparent transparent rgba(244,196,48,.1)"></div>
-          <div style="font-size:.6rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:rgba(244,196,48,.65);margin-bottom:14px">Founded by</div>
-          <h3 style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:#fff;margin-bottom:18px">Ericka Goff</h3>
-          <div style="width:44px;height:2px;background:#F4C430;margin-bottom:22px"></div>
-          <p style="font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:rgba(255,255,255,.78);line-height:1.75;margin-bottom:26px">"Every bar of soap carries the memory of our ancestors, the spirit of our island, and the love of our family."</p>
-          <div style="display:flex;flex-direction:column;gap:14px">
-            <div style="display:flex;align-items:center;gap:12px"><div style="width:30px;height:30px;border-radius:50%;background:rgba(244,196,48,.18);border:1px solid rgba(244,196,48,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F4C430" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><span style="font-size:.86rem;color:rgba(255,255,255,.6)">7 founding family members</span></div>
-            <div style="display:flex;align-items:center;gap:12px"><div style="width:30px;height:30px;border-radius:50%;background:rgba(244,196,48,.18);border:1px solid rgba(244,196,48,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F4C430" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><span style="font-size:.86rem;color:rgba(255,255,255,.6)">100% natural, handcrafted formulas</span></div>
-            <div style="display:flex;align-items:center;gap:12px"><div style="width:30px;height:30px;border-radius:50%;background:rgba(244,196,48,.18);border:1px solid rgba(244,196,48,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F4C430" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><span style="font-size:.86rem;color:rgba(255,255,255,.6)">Generations of Jamaican botanical wisdom</span></div>
-          </div>
+<section id="story" class="py-28 bg-[#FAF8F2]">
+  <div class="max-w-5xl mx-auto px-6 grid grid-cols-2 gap-20 items-center sg">
+    <div class="rv relative">
+      <div style="background:linear-gradient(148deg,#002800,#006400);padding:44px 38px;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 60px 60px 0;border-color:transparent rgba(244,196,48,.3) transparent transparent"></div>
+        <div class="text-[.58rem] font-semibold tracking-[.22em] uppercase mb-3" style="color:rgba(244,196,48,.6)">Founded by</div>
+        <h3 class="serif text-white mb-4" style="font-size:2.3rem;font-weight:700">Ericka Goff</h3>
+        <div style="width:40px;height:2px;background:#F4C430;margin-bottom:18px"></div>
+        <p class="serif italic text-white/75 leading-[1.75] mb-6" style="font-size:1.05rem">"Every bar of soap carries the memory of our ancestors, the spirit of our island, and the love of our family."</p>
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:rgba(244,196,48,.18);border:1px solid rgba(244,196,48,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F4C430" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><span class="text-white/58 text-[.84rem]">7 founding family members</span></div>
+          <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:rgba(244,196,48,.18);border:1px solid rgba(244,196,48,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F4C430" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><span class="text-white/58 text-[.84rem]">100% natural, handcrafted</span></div>
+          <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:rgba(244,196,48,.18);border:1px solid rgba(244,196,48,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F4C430" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><span class="text-white/58 text-[.84rem]">Generations of Jamaican botanical wisdom</span></div>
         </div>
-        <div style="position:absolute;bottom:-16px;right:-16px;width:90px;height:90px;border:2px solid rgba(244,196,48,.22);z-index:-1"></div>
-        <div style="position:absolute;top:-16px;left:-16px;width:56px;height:56px;background:rgba(0,100,0,.07);z-index:-1"></div>
       </div>
+      <div style="position:absolute;bottom:-14px;right:-14px;width:80px;height:80px;border:2px solid rgba(244,196,48,.2);z-index:-1"></div>
+    </div>
 
-      <div class="rv d1">
-        <div class="slabel">Our Story</div>
-        <h2 style="font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2.2rem,3.5vw,3.4rem);line-height:1.08;margin-bottom:26px">Rooted in Family,<br><em style="color:#006400;font-style:italic">Rooted in Faith</em></h2>
-        <div style="width:52px;height:2px;background:#F4C430;margin-bottom:26px"></div>
-        <p style="font-size:.94rem;line-height:1.9;color:#4a4a4a;margin-bottom:18px">EGOFF Essentials was born from a deep love of family, heritage, and the healing power of nature. Founded by <strong>Ericka Goff</strong>, the brand is a living tribute to Jamaican botanical wisdom passed down through generations of the Goff-Caliste family tree.</p>
-        <p style="font-size:.94rem;line-height:1.9;color:#4a4a4a;margin-bottom:32px">What began as a personal calling to create clean, purposeful skincare has grown into a full family endeavor — united under <strong>EGOFF Enterprise L.L.C.</strong>, with two branches: the <em>EGOFF Foundation</em> for community giving, and <em>EGOFF Essentials</em> for natural skincare rooted in love.</p>
-        <div style="background:#EFF7EF;border-left:3px solid #006400;padding:18px 22px;margin-bottom:30px">
-          <div style="font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#006400;margin-bottom:12px">Our Family Tree</div>
-          <div style="display:flex;flex-wrap:wrap;gap:8px 16px">
-            <span style="font-family:'Playfair Display',serif;font-size:.9rem;color:#222;display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:50%;background:#FFD700;display:inline-block"></span>Hilda Smith Caliste</span>
-            <span style="font-family:'Playfair Display',serif;font-size:.9rem;color:#222;display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:50%;background:#9B59B6;display:inline-block"></span>Alma Sanchez Thomas</span>
-            <span style="font-family:'Playfair Display',serif;font-size:.9rem;color:#222;display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:50%;background:#006400;display:inline-block"></span>Lorchild B. Thomas</span>
-            <span style="font-family:'Playfair Display',serif;font-size:.9rem;color:#222;display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:50%;background:#2ECC71;display:inline-block"></span>Alice Fields Goff</span>
-            <span style="font-family:'Playfair Display',serif;font-size:.9rem;color:#222;display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:50%;background:#E74C3C;display:inline-block"></span>Ruby Caliste Sumler</span>
-            <span style="font-family:'Playfair Display',serif;font-size:.9rem;color:#222;display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:50%;background:#3498DB;display:inline-block"></span>Elizabeth Collior</span>
-            <span style="font-family:'Playfair Display',serif;font-size:.9rem;color:#222;display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:50%;background:#E67E22;display:inline-block"></span>Geraldine Goff Rollins</span>
-          </div>
+    <div class="rv d1">
+      <div class="slabel">Our Story</div>
+      <h2 class="serif leading-[1.08] mb-6" style="font-size:clamp(2rem,3vw,3.2rem);font-weight:900">Rooted in Family,<br><em style="color:#006400">Rooted in Faith</em></h2>
+      <div style="width:48px;height:2px;background:#F4C430;margin-bottom:22px"></div>
+      <p class="text-[#4a4a4a] leading-[1.9] mb-4" style="font-size:.93rem">EGOFF Essentials was born from a deep love of family, heritage, and the healing power of nature. Founded by <strong>Ericka Goff</strong>, the brand is a living tribute to Jamaican botanical wisdom passed down through generations of the Goff-Caliste family tree.</p>
+      <p class="text-[#4a4a4a] leading-[1.9] mb-7" style="font-size:.93rem">United under <strong>EGOFF Enterprise L.L.C.</strong>, with two branches: the <em>EGOFF Foundation</em> for community giving, and <em>EGOFF Essentials</em> for natural skincare rooted in love.</p>
+      <div style="background:#EFF7EF;border-left:3px solid #006400;padding:16px 20px;margin-bottom:26px">
+        <div class="text-[.58rem] font-semibold tracking-[.22em] uppercase text-[#006400] mb-2">Our Family Tree</div>
+        <div class="flex flex-wrap gap-x-4 gap-y-2">
+          <span class="serif text-[.87rem] flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#FFD700] inline-block"></span>Hilda Smith Caliste</span>
+          <span class="serif text-[.87rem] flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#9B59B6] inline-block"></span>Alma Sanchez Thomas</span>
+          <span class="serif text-[.87rem] flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#006400] inline-block"></span>Lorchild B. Thomas</span>
+          <span class="serif text-[.87rem] flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#2ECC71] inline-block"></span>Alice Fields Goff</span>
+          <span class="serif text-[.87rem] flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#E74C3C] inline-block"></span>Ruby Caliste Sumler</span>
+          <span class="serif text-[.87rem] flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#3498DB] inline-block"></span>Elizabeth Collior</span>
+          <span class="serif text-[.87rem] flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#E67E22] inline-block"></span>Geraldine Goff Rollins</span>
         </div>
-        <a href="#shop" class="btn-green" style="width:auto;display:inline-flex;padding:14px 32px">Explore Products</a>
       </div>
+      <a href="#shop" class="btn-green" style="width:auto;display:inline-block;padding:13px 28px">Explore Products</a>
     </div>
   </div>
 </section>
 
 <!-- SHOP -->
-<section id="shop" style="padding:108px 0;background:#F2ECD8" class="leafpat">
-  <div style="max-width:1160px;margin:0 auto;padding:0 24px">
-    <div class="rv" style="text-align:center;margin-bottom:68px">
-      <div class="slabel" style="justify-content:center">The Collection</div>
-      <h2 style="font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2.2rem,4vw,3.6rem)">Handcrafted with Purpose</h2>
-      <div class="grule"></div>
-      <p style="font-size:.94rem;color:#555;max-width:500px;margin:0 auto;line-height:1.88">Each bar is formulated with intention — using Jamaica's finest natural botanicals to address real needs of the body and spirit.</p>
+<section id="shop" class="py-28 bg-[#F2ECD8]">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="rv text-center mb-16">
+      <div class="slabel justify-center">The Collection</div>
+      <h2 class="serif font-black" style="font-size:clamp(2rem,3.8vw,3.4rem)">Handcrafted with Purpose</h2>
+      <div style="width:64px;height:2px;background:linear-gradient(90deg,transparent,#F4C430,transparent);margin:16px auto"></div>
+      <p class="text-[#555] max-w-md mx-auto leading-[1.88]" style="font-size:.92rem">Each bar is formulated with intention — Jamaica's finest botanicals for real body and spirit needs.</p>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px" class="pcol3">
-      <!-- Card 1 -->
-      <div class="pcard rv">
-        <div style="position:absolute;top:14px;left:14px;z-index:2;background:#006400;color:#FAF8F2;padding:5px 13px;font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase">Bestseller</div>
-        <div style="height:270px;background:linear-gradient(145deg,#FDFAED,#F5E898);display:flex;align-items:center;justify-content:center;overflow:hidden">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
-            <div style="width:148px;height:94px;background:linear-gradient(145deg,#EDD870,#D4C040,#C8B010);border-radius:14px;box-shadow:0 12px 32px rgba(0,0,0,.14),inset 0 2px 6px rgba(255,255,255,.4);position:relative">
-              <div style="position:absolute;top:10px;left:14px;right:14px;height:1px;background:rgba(255,255,255,.42)"></div>
-              <div style="position:absolute;bottom:10px;left:14px;right:14px;height:1px;background:rgba(255,255,255,.22)"></div>
-              <div style="position:absolute;top:42%;left:28%;width:5px;height:5px;border-radius:50%;background:rgba(181,69,27,.24)"></div>
-              <div style="position:absolute;top:60%;left:64%;width:4px;height:4px;border-radius:50%;background:rgba(181,69,27,.18)"></div>
+    <div class="grid grid-cols-3 gap-6 pg">
+      <!-- P1 -->
+      <div class="card rv">
+        <div class="absolute top-3 left-3 z-10 bg-[#006400] text-[#FAF8F2] px-3 py-[4px] text-[.58rem] font-semibold tracking-[.1em] uppercase">Bestseller</div>
+        <div class="flex items-center justify-center h-[260px]" style="background:linear-gradient(145deg,#FDFAED,#F5E898)">
+          <div class="flex flex-col items-center gap-3">
+            <div class="rounded-xl relative" style="width:145px;height:90px;background:linear-gradient(145deg,#EDD870,#D4C040,#C8B010);box-shadow:0 10px 28px rgba(0,0,0,.13),inset 0 2px 5px rgba(255,255,255,.38)">
+              <div class="absolute left-3 right-3 top-[9px] h-px bg-white/40"></div>
+              <div class="absolute left-3 right-3 bottom-[9px] h-px bg-white/2"></div>
+              <div class="absolute w-[5px] h-[5px] rounded-full" style="top:42%;left:28%;background:rgba(181,69,27,.22)"></div>
+              <div class="absolute w-[4px] h-[4px] rounded-full" style="top:62%;left:65%;background:rgba(181,69,27,.17)"></div>
             </div>
-            <div style="font-size:.68rem;color:#5a3a10;background:rgba(200,150,12,.12);border:1px dashed rgba(200,150,12,.38);padding:5px 14px">Hot Flash &amp; Menstrual · $12.50</div>
+            <div class="text-[.65rem] text-[#5a3a10] px-3 py-1" style="background:rgba(200,150,12,.12);border:1px dashed rgba(200,150,12,.35)">Hot Flash &amp; Menstrual</div>
           </div>
         </div>
-        <div style="padding:26px">
-          <div style="font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#C8960C;margin-bottom:8px">Wellness Bar</div>
-          <h3 style="font-family:'Playfair Display',serif;font-size:1.38rem;font-weight:700;margin-bottom:9px">Hot Flash &amp; Menstrual Wellness</h3>
-          <p style="font-size:.86rem;line-height:1.78;color:#666;margin-bottom:20px">Formulated with cooling and balancing botanicals to ease hot flashes and menstrual discomfort. Your body, cared for naturally.</p>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
-            <span style="font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:700;color:#006400">$12.50</span>
-            <span style="font-size:.68rem;color:#aaa">Per Bar</span>
+        <div class="p-6">
+          <div class="text-[.58rem] font-semibold tracking-[.16em] uppercase text-[#C8960C] mb-2">Wellness Bar</div>
+          <h3 class="serif font-bold mb-2" style="font-size:1.3rem">Hot Flash &amp; Menstrual Wellness</h3>
+          <p class="text-[#666] leading-[1.76] mb-5" style="font-size:.84rem">Cooling and balancing botanicals to ease hot flashes and menstrual discomfort. Your body, cared for naturally.</p>
+          <div class="flex items-center justify-between mb-4">
+            <span class="serif font-bold text-[#006400]" style="font-size:1.8rem">$12.50</span>
+            <span class="text-[.66rem] text-[#aaa]">Per Bar</span>
           </div>
           <button class="btn-green" onclick="addCart(this,'Hot Flash & Menstrual Wellness')">Add to Cart</button>
         </div>
       </div>
 
-      <!-- Card 2 -->
-      <div class="pcard rv d1">
-        <div style="position:absolute;top:14px;left:14px;z-index:2;background:#C8960C;color:#0D0D0D;padding:5px 13px;font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase">Artisan</div>
-        <div style="height:270px;background:linear-gradient(145deg,#F5F0E8,#EBE0D0);display:flex;align-items:center;justify-content:center;overflow:hidden">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
-            <div style="width:148px;height:98px;background:linear-gradient(145deg,#F8F4EC,#EDE7DA);border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.11),inset 0 2px 5px rgba(255,255,255,.58);position:relative;overflow:hidden">
-              <div style="position:absolute;top:18%;left:22%;width:6px;height:6px;border-radius:50%;background:#7B5433;opacity:.62"></div>
-              <div style="position:absolute;top:34%;left:56%;width:5px;height:5px;border-radius:50%;background:#7B5433;opacity:.52"></div>
-              <div style="position:absolute;top:60%;left:30%;width:5px;height:5px;border-radius:50%;background:#6B4423;opacity:.48"></div>
-              <div style="position:absolute;top:50%;left:73%;width:6px;height:6px;border-radius:50%;background:#7B5433;opacity:.58"></div>
-              <div style="position:absolute;top:76%;left:50%;width:4px;height:4px;border-radius:50%;background:#6B4423;opacity:.43"></div>
-              <div style="position:absolute;top:24%;left:78%;width:5px;height:5px;border-radius:50%;background:#7B5433;opacity:.52"></div>
-              <div style="position:absolute;top:82%;left:18%;width:5px;height:5px;border-radius:50%;background:#6B4423;opacity:.44"></div>
+      <!-- P2 -->
+      <div class="card rv d1">
+        <div class="absolute top-3 left-3 z-10 bg-[#C8960C] text-[#111] px-3 py-[4px] text-[.58rem] font-semibold tracking-[.1em] uppercase">Artisan</div>
+        <div class="flex items-center justify-center h-[260px]" style="background:linear-gradient(145deg,#F5F0E8,#EBE0D0)">
+          <div class="flex flex-col items-center gap-3">
+            <div class="rounded-xl relative overflow-hidden" style="width:145px;height:95px;background:linear-gradient(145deg,#F8F4EC,#EDE7DA);box-shadow:0 10px 28px rgba(0,0,0,.1),inset 0 2px 4px rgba(255,255,255,.55)">
+              <div class="absolute w-[6px] h-[6px] rounded-full bg-[#7B5433]" style="top:18%;left:22%;opacity:.6"></div>
+              <div class="absolute w-[5px] h-[5px] rounded-full bg-[#7B5433]" style="top:34%;left:56%;opacity:.5"></div>
+              <div class="absolute w-[5px] h-[5px] rounded-full bg-[#6B4423]" style="top:60%;left:30%;opacity:.46"></div>
+              <div class="absolute w-[6px] h-[6px] rounded-full bg-[#7B5433]" style="top:50%;left:73%;opacity:.56"></div>
+              <div class="absolute w-[4px] h-[4px] rounded-full bg-[#6B4423]" style="top:76%;left:50%;opacity:.42"></div>
+              <div class="absolute w-[5px] h-[5px] rounded-full bg-[#7B5433]" style="top:24%;left:78%;opacity:.5"></div>
             </div>
-            <div style="display:flex;align-items:center;gap:8px;font-size:.68rem;color:#6B4423"><div style="width:20px;height:1.5px;background:#8B6914"></div>Natural twine wrapped<div style="width:20px;height:1.5px;background:#8B6914"></div></div>
+            <div class="text-[.65rem] text-[#6B4423] flex items-center gap-2"><div style="width:18px;height:1px;background:#8B6914"></div>Twine wrapped<div style="width:18px;height:1px;background:#8B6914"></div></div>
           </div>
         </div>
-        <div style="padding:26px">
-          <div style="font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#C8960C;margin-bottom:8px">Artisan Bar</div>
-          <h3 style="font-family:'Playfair Display',serif;font-size:1.38rem;font-weight:700;margin-bottom:9px">Botanical Herb &amp; Spice Bar</h3>
-          <p style="font-size:.86rem;line-height:1.78;color:#666;margin-bottom:20px">A creamy artisan bar infused with dried herbs and botanicals, gift-wrapped with natural twine. A luxurious daily cleansing ritual.</p>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
-            <span style="font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:700;color:#006400">$14.00</span>
-            <span style="font-size:.68rem;color:#aaa">Per Bar</span>
+        <div class="p-6">
+          <div class="text-[.58rem] font-semibold tracking-[.16em] uppercase text-[#C8960C] mb-2">Artisan Bar</div>
+          <h3 class="serif font-bold mb-2" style="font-size:1.3rem">Botanical Herb &amp; Spice Bar</h3>
+          <p class="text-[#666] leading-[1.76] mb-5" style="font-size:.84rem">Creamy artisan bar infused with dried herbs and botanicals, gift-wrapped with natural twine.</p>
+          <div class="flex items-center justify-between mb-4">
+            <span class="serif font-bold text-[#006400]" style="font-size:1.8rem">$12.50</span>
+            <span class="text-[.66rem] text-[#aaa]">Per Bar</span>
           </div>
           <button class="btn-green" onclick="addCart(this,'Botanical Herb & Spice Bar')">Add to Cart</button>
         </div>
       </div>
 
-      <!-- Card 3 -->
-      <div class="pcard rv d2">
-        <div style="position:absolute;top:14px;left:14px;z-index:2;background:#B5451B;color:#fff;padding:5px 13px;font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase">Pure</div>
-        <div style="height:270px;background:linear-gradient(145deg,#FDFAED,#F5EBC0);display:flex;align-items:center;justify-content:center;overflow:hidden">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
-            <div style="width:148px;height:98px;background:linear-gradient(145deg,#EDD870,#DECC40,#CBBA28);border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.11),inset 0 2px 5px rgba(255,255,255,.44);position:relative">
-              <div style="position:absolute;top:8px;left:13px;right:13px;height:1px;background:rgba(255,255,255,.38)"></div>
-              <div style="position:absolute;top:38%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(181,69,27,.26)"></div>
-              <div style="position:absolute;top:64%;left:66%;width:4px;height:4px;border-radius:50%;background:rgba(181,69,27,.2)"></div>
+      <!-- P3 -->
+      <div class="card rv d2">
+        <div class="absolute top-3 left-3 z-10 bg-[#B5451B] text-white px-3 py-[4px] text-[.58rem] font-semibold tracking-[.1em] uppercase">Pure</div>
+        <div class="flex items-center justify-center h-[260px]" style="background:linear-gradient(145deg,#FDFAED,#F5EBC0)">
+          <div class="flex flex-col items-center gap-3">
+            <div class="rounded-xl relative" style="width:145px;height:95px;background:linear-gradient(145deg,#EDD870,#DECC40,#CBBA28);box-shadow:0 10px 28px rgba(0,0,0,.1),inset 0 2px 4px rgba(255,255,255,.4)">
+              <div class="absolute left-3 right-3 top-[8px] h-px bg-white/36"></div>
+              <div class="absolute w-[5px] h-[5px] rounded-full" style="top:38%;left:30%;background:rgba(181,69,27,.24)"></div>
+              <div class="absolute w-[4px] h-[4px] rounded-full" style="top:64%;left:66%;background:rgba(181,69,27,.18)"></div>
             </div>
-            <div style="font-size:.68rem;color:#5a3a10;background:rgba(200,150,12,.1);border:1px solid rgba(200,150,12,.2);padding:5px 14px">Pure &amp; Golden</div>
+            <div class="text-[.65rem] text-[#5a3a10] px-3 py-1" style="background:rgba(200,150,12,.1);border:1px solid rgba(200,150,12,.2)">Pure &amp; Golden</div>
           </div>
         </div>
-        <div style="padding:26px">
-          <div style="font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#B5451B;margin-bottom:8px">Classic Bar</div>
-          <h3 style="font-family:'Playfair Display',serif;font-size:1.38rem;font-weight:700;margin-bottom:9px">Golden Root Cleansing Bar</h3>
-          <p style="font-size:.86rem;line-height:1.78;color:#666;margin-bottom:20px">Our signature golden bar — pure, clean, and gentle. Infused with turmeric and shea for sensitive skin and everyday radiance.</p>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
-            <span style="font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:700;color:#006400">$12.00</span>
-            <span style="font-size:.68rem;color:#aaa">Per Bar</span>
+        <div class="p-6">
+          <div class="text-[.58rem] font-semibold tracking-[.16em] uppercase text-[#B5451B] mb-2">Classic Bar</div>
+          <h3 class="serif font-bold mb-2" style="font-size:1.3rem">Golden Root Cleansing Bar</h3>
+          <p class="text-[#666] leading-[1.76] mb-5" style="font-size:.84rem">Our signature golden bar with turmeric and shea — pure, gentle, and radiant for everyday use.</p>
+          <div class="flex items-center justify-between mb-4">
+            <span class="serif font-bold text-[#006400]" style="font-size:1.8rem">$12.50</span>
+            <span class="text-[.66rem] text-[#aaa]">Per Bar</span>
           </div>
           <button class="btn-green" onclick="addCart(this,'Golden Root Cleansing Bar')">Add to Cart</button>
         </div>
       </div>
     </div>
 
-    <div class="rv" style="margin-top:52px;background:linear-gradient(135deg,#002800,#006400);padding:48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px">
+    <!-- Banner -->
+    <div class="rv mt-12 flex items-center justify-between flex-wrap gap-6 px-10 py-10" style="background:linear-gradient(135deg,#002800,#006400)">
       <div>
-        <div style="font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(244,196,48,.65);margin-bottom:9px">Coming Soon</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#fff;margin-bottom:8px">Luxurious Body Butters</h3>
-        <p style="font-size:.9rem;color:rgba(255,255,255,.58);max-width:380px;line-height:1.76">Rich, whipped body butters made with shea, mango, and Jamaican botanicals — expanding the EGOFF Essentials collection.</p>
+        <div class="text-[.58rem] font-semibold tracking-[.22em] uppercase mb-2" style="color:rgba(244,196,48,.62)">Coming Soon</div>
+        <h3 class="serif text-white font-bold mb-2" style="font-size:1.9rem">Luxurious Body Butters</h3>
+        <p class="text-white/55 leading-[1.75]" style="font-size:.88rem;max-width:360px">Rich, whipped body butters with shea, mango, and Jamaican botanicals.</p>
       </div>
-      <a href="#contact" class="btn-gold" style="white-space:nowrap">Get Notified</a>
+      <a href="#contact" class="btn-gold whitespace-nowrap">Get Notified</a>
     </div>
   </div>
 </section>
 
 <!-- VALUES -->
-<section style="padding:108px 0;background:#FAF8F2" class="leafpat">
-  <div style="max-width:1160px;margin:0 auto;padding:0 24px">
-    <div class="rv" style="text-align:center;margin-bottom:68px">
-      <div class="slabel" style="justify-content:center">Core Values</div>
-      <h2 style="font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2.2rem,4vw,3.6rem)">GOD &nbsp;·&nbsp; LOVE &nbsp;·&nbsp; POWER</h2>
-      <div class="grule"></div>
-      <p style="font-size:.94rem;color:#555;max-width:480px;margin:0 auto;line-height:1.88">Three words. One mission. The spirit behind every formula we create.</p>
+<section class="py-28 bg-[#FAF8F2]">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="rv text-center mb-16">
+      <div class="slabel justify-center">Core Values</div>
+      <h2 class="serif font-black" style="font-size:clamp(2rem,3.8vw,3.4rem)">GOD &nbsp;·&nbsp; LOVE &nbsp;·&nbsp; POWER</h2>
+      <div style="width:64px;height:2px;background:linear-gradient(90deg,transparent,#F4C430,transparent);margin:16px auto"></div>
+      <p class="text-[#555] max-w-[420px] mx-auto leading-[1.88]" style="font-size:.92rem">Three words. One mission. The spirit behind every formula.</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px" class="vcol3">
-      <div class="rv" style="background:#fff;border:1px solid rgba(0,100,0,.08);padding:42px 34px;position:relative;overflow:hidden;transition:all .35s" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 18px 50px rgba(0,100,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:#F4C430"></div>
-        <div style="width:58px;height:58px;border-radius:50%;background:#FDF8E1;border:1px solid rgba(200,150,12,.2);display:flex;align-items:center;justify-content:center;margin-bottom:22px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:#C8960C;margin-bottom:11px">GOD</h3>
-        <div style="width:32px;height:1.5px;background:#C8960C;margin-bottom:16px"></div>
-        <p style="font-size:.89rem;line-height:1.86;color:#555">Every creation begins with gratitude and prayer. Our formulas are crafted in divine intention, honoring the sacred gifts of the earth and the Creator who provides them.</p>
+    <div class="grid grid-cols-3 gap-5 vg">
+      <div class="rv bg-white p-10 relative border border-[rgba(0,100,0,.07)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_44px_rgba(0,100,0,.1)]">
+        <div class="absolute top-0 left-0 right-0 h-[2.5px] bg-[#F4C430]"></div>
+        <div class="w-14 h-14 rounded-full bg-[#FDF8E1] border border-[rgba(200,150,12,.18)] flex items-center justify-center mb-5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <h3 class="serif font-bold text-[#C8960C] mb-3" style="font-size:1.8rem">GOD</h3>
+        <div style="width:28px;height:1.5px;background:#C8960C;margin-bottom:14px"></div>
+        <p class="text-[#555] leading-[1.85]" style="font-size:.88rem">Every creation begins with gratitude and prayer. Our formulas are crafted in divine intention, honoring the sacred gifts of the earth.</p>
       </div>
-      <div class="rv d1" style="background:#fff;border:1px solid rgba(0,100,0,.08);padding:42px 34px;position:relative;overflow:hidden;transition:all .35s" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 18px 50px rgba(0,100,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:#006400"></div>
-        <div style="width:58px;height:58px;border-radius:50%;background:#EFF7EF;border:1px solid rgba(0,100,0,.14);display:flex;align-items:center;justify-content:center;margin-bottom:22px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#006400" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:#006400;margin-bottom:11px">LOVE</h3>
-        <div style="width:32px;height:1.5px;background:#006400;margin-bottom:16px"></div>
-        <p style="font-size:.89rem;line-height:1.86;color:#555">Every bar is handmade with the love of a family. The care poured into our craft reflects our deep care for your skin, your wellbeing, and our community.</p>
+      <div class="rv d1 bg-white p-10 relative border border-[rgba(0,100,0,.07)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_44px_rgba(0,100,0,.1)]">
+        <div class="absolute top-0 left-0 right-0 h-[2.5px] bg-[#006400]"></div>
+        <div class="w-14 h-14 rounded-full bg-[#EFF7EF] border border-[rgba(0,100,0,.14)] flex items-center justify-center mb-5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#006400" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+        <h3 class="serif font-bold text-[#006400] mb-3" style="font-size:1.8rem">LOVE</h3>
+        <div style="width:28px;height:1.5px;background:#006400;margin-bottom:14px"></div>
+        <p class="text-[#555] leading-[1.85]" style="font-size:.88rem">Every bar is handmade with the love of a family. The care we pour into our craft reflects our deep care for your skin and wellbeing.</p>
       </div>
-      <div class="rv d2" style="background:#fff;border:1px solid rgba(0,100,0,.08);padding:42px 34px;position:relative;overflow:hidden;transition:all .35s" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 18px 50px rgba(0,100,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:#B5451B"></div>
-        <div style="width:58px;height:58px;border-radius:50%;background:#FDF0EC;border:1px solid rgba(181,69,27,.14);display:flex;align-items:center;justify-content:center;margin-bottom:22px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B5451B" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:#B5451B;margin-bottom:11px">POWER</h3>
-        <div style="width:32px;height:1.5px;background:#B5451B;margin-bottom:16px"></div>
-        <p style="font-size:.89rem;line-height:1.86;color:#555">Nature's most potent botanicals, harvested with purpose. The power to heal, nourish, and transform — rooted in centuries of Jamaican herbal wisdom and ancestral knowledge.</p>
+      <div class="rv d2 bg-white p-10 relative border border-[rgba(0,100,0,.07)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_44px_rgba(0,100,0,.1)]">
+        <div class="absolute top-0 left-0 right-0 h-[2.5px] bg-[#B5451B]"></div>
+        <div class="w-14 h-14 rounded-full bg-[#FDF0EC] border border-[rgba(181,69,27,.14)] flex items-center justify-center mb-5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B5451B" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3 class="serif font-bold text-[#B5451B] mb-3" style="font-size:1.8rem">POWER</h3>
+        <div style="width:28px;height:1.5px;background:#B5451B;margin-bottom:14px"></div>
+        <p class="text-[#555] leading-[1.85]" style="font-size:.88rem">Nature's most potent botanicals, harvested with purpose — the power to heal, nourish, and transform, rooted in Jamaican ancestral wisdom.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- JAMAICAN ROOTS -->
-<section id="roots" style="padding:108px 0;background:linear-gradient(158deg,#001400 0%,#003200 38%,#006400 75%,#001400 100%);position:relative;overflow:hidden">
-  <div style="position:absolute;inset:0;pointer-events:none;opacity:.05"><svg width="100%" height="100%" viewBox="0 0 1400 640" preserveAspectRatio="xMidYMid slice"><line x1="0" y1="0" x2="1400" y2="640" stroke="#F4C430" stroke-width="4"/><line x1="1400" y1="0" x2="0" y2="640" stroke="#F4C430" stroke-width="4"/></svg></div>
-  <div style="max-width:1160px;margin:0 auto;padding:0 24px;position:relative;z-index:1">
-    <div class="rv" style="text-align:center;margin-bottom:68px">
-      <div class="slabel" style="color:rgba(244,196,48,.72);justify-content:center"><span style="background:rgba(244,196,48,.3);flex:1;max-width:48px;height:1px"></span>Cultural Heritage<span style="background:rgba(244,196,48,.3);flex:1;max-width:48px;height:1px"></span></div>
-      <h2 style="font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2.2rem,4vw,3.6rem);color:#fff;margin-bottom:12px">Where Our Roots<br><em class="shimmer" style="font-style:italic">Grow Deep</em></h2>
-      <div class="grule"></div>
-      <p style="font-size:.94rem;color:rgba(255,255,255,.55);max-width:500px;margin:0 auto;line-height:1.88">The Jamaican flag's black, gold, and green live in everything we create.</p>
+<section id="roots" class="py-28 relative overflow-hidden" style="background:linear-gradient(155deg,#001400,#003200,#006400,#001400)">
+  <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-[.045]" viewBox="0 0 1400 640" preserveAspectRatio="xMidYMid slice"><line x1="0" y1="0" x2="1400" y2="640" stroke="#F4C430" stroke-width="4"/><line x1="1400" y1="0" x2="0" y2="640" stroke="#F4C430" stroke-width="4"/></svg>
+  <div class="max-w-5xl mx-auto px-6 relative z-10">
+    <div class="rv text-center mb-14">
+      <div class="slabel justify-center" style="color:rgba(244,196,48,.7)"><span style="background:rgba(244,196,48,.3);height:1px;flex:1;max-width:44px"></span>Cultural Heritage<span style="background:rgba(244,196,48,.3);height:1px;flex:1;max-width:44px"></span></div>
+      <h2 class="serif text-white font-black mb-3" style="font-size:clamp(2rem,3.8vw,3.4rem)">Where Our Roots<br><em class="gold-text not-italic">Grow Deep</em></h2>
+      <div style="width:64px;height:2px;background:linear-gradient(90deg,transparent,#F4C430,transparent);margin:14px auto"></div>
+      <p class="text-white/52 max-w-md mx-auto leading-[1.88]" style="font-size:.92rem">The Jamaican flag's black, gold, and green live in everything we create.</p>
     </div>
 
-    <div class="rv" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;max-width:580px;margin:0 auto 56px">
-      <div style="text-align:center;padding:18px;border-top:4px solid #006400"><div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:#2ECC71;margin-bottom:5px">Green</div><div style="font-size:.78rem;color:rgba(255,255,255,.5)">Wealth &amp; hope</div></div>
-      <div style="text-align:center;padding:18px;border-top:4px solid #222"><div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:#fff;margin-bottom:5px">Black</div><div style="font-size:.78rem;color:rgba(255,255,255,.5)">Strength &amp; power</div></div>
-      <div style="text-align:center;padding:18px;border-top:4px solid #F4C430"><div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:#FFD700;margin-bottom:5px">Gold</div><div style="font-size:.78rem;color:rgba(255,255,255,.5)">Sunlight &amp; wealth</div></div>
+    <!-- Flag legend -->
+    <div class="rv grid grid-cols-3 max-w-md mx-auto mb-12">
+      <div class="text-center py-4 border-t-4 border-[#006400]"><div class="serif font-bold text-[#2ECC71] mb-1">Green</div><div class="text-white/48 text-[.76rem]">Wealth &amp; hope</div></div>
+      <div class="text-center py-4 border-t-4 border-[#222]"><div class="serif font-bold text-white mb-1">Black</div><div class="text-white/48 text-[.76rem]">Strength &amp; power</div></div>
+      <div class="text-center py-4 border-t-4 border-[#F4C430]"><div class="serif font-bold text-[#FFD700] mb-1">Gold</div><div class="text-white/48 text-[.76rem]">Sunlight &amp; wealth</div></div>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px;margin-bottom:56px" class="rcol3 rv">
-      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(244,196,48,.17);padding:34px 26px;text-align:center;transition:background .3s" onmouseover="this.style.background='rgba(244,196,48,.06)'" onmouseout="this.style.background='rgba(255,255,255,.04)'"><div style="font-size:2rem;margin-bottom:16px">🇯🇲</div><h3 style="font-family:'Playfair Display',serif;font-size:1.28rem;font-weight:600;color:#F4C430;margin-bottom:12px">Island Heritage</h3><p style="font-size:.86rem;line-height:1.8;color:rgba(255,255,255,.58)">Jamaica's lush landscape has gifted healers for centuries — aloe, turmeric, moringa, and herbs that modern science confirms as powerful wellness allies.</p></div>
-      <div style="background:rgba(244,196,48,.07);border:1px solid rgba(244,196,48,.27);padding:34px 26px;text-align:center;transition:background .3s" onmouseover="this.style.background='rgba(244,196,48,.12)'" onmouseout="this.style.background='rgba(244,196,48,.07)'"><div style="font-size:2rem;margin-bottom:16px">👩🏾</div><h3 style="font-family:'Playfair Display',serif;font-size:1.28rem;font-weight:600;color:#F4C430;margin-bottom:12px">Women's Wisdom</h3><p style="font-size:.86rem;line-height:1.8;color:rgba(255,255,255,.58)">Jamaican women have long been keepers of botanical knowledge — mixing, brewing, and crafting remedies passed mother to daughter through generations.</p></div>
-      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(244,196,48,.17);padding:34px 26px;text-align:center;transition:background .3s" onmouseover="this.style.background='rgba(244,196,48,.06)'" onmouseout="this.style.background='rgba(255,255,255,.04)'"><div style="font-size:2rem;margin-bottom:16px">🌿</div><h3 style="font-family:'Playfair Display',serif;font-size:1.28rem;font-weight:600;color:#F4C430;margin-bottom:12px">Botanical Legacy</h3><p style="font-size:.86rem;line-height:1.8;color:rgba(255,255,255,.58)">From the Blue Mountains to the coast, Jamaica's biodiversity is unmatched. We honor this gift by sourcing thoughtfully and letting the island's spirit guide every formula.</p></div>
+    <div class="rv grid grid-cols-3 gap-6 mb-12 rg">
+      <div class="text-center p-8 transition-colors duration-300 hover:bg-[rgba(244,196,48,.06)]" style="background:rgba(255,255,255,.04);border:1px solid rgba(244,196,48,.17)"><div class="text-[1.9rem] mb-4">🇯🇲</div><h3 class="serif text-[#F4C430] font-bold mb-3" style="font-size:1.22rem">Island Heritage</h3><p class="text-white/55 leading-[1.8]" style="font-size:.85rem">Jamaica's lush landscape has gifted healers for centuries — aloe, turmeric, moringa, and herbs confirmed by modern science.</p></div>
+      <div class="text-center p-8 transition-colors duration-300 hover:bg-[rgba(244,196,48,.1)]" style="background:rgba(244,196,48,.06);border:1px solid rgba(244,196,48,.26)"><div class="text-[1.9rem] mb-4">👩🏾</div><h3 class="serif text-[#F4C430] font-bold mb-3" style="font-size:1.22rem">Women's Wisdom</h3><p class="text-white/55 leading-[1.8]" style="font-size:.85rem">Jamaican women have long been keepers of botanical knowledge — remedies passed mother to daughter through generations.</p></div>
+      <div class="text-center p-8 transition-colors duration-300 hover:bg-[rgba(244,196,48,.06)]" style="background:rgba(255,255,255,.04);border:1px solid rgba(244,196,48,.17)"><div class="text-[1.9rem] mb-4">🌿</div><h3 class="serif text-[#F4C430] font-bold mb-3" style="font-size:1.22rem">Botanical Legacy</h3><p class="text-white/55 leading-[1.8]" style="font-size:.85rem">From the Blue Mountains to the coast, Jamaica's biodiversity is unmatched. We let the island's spirit guide every formula.</p></div>
     </div>
 
-    <div class="rv" style="background:rgba(255,255,255,.04);border:1px solid rgba(244,196,48,.18);padding:52px;text-align:center">
-      <div style="font-family:'Playfair Display',serif;font-size:2.4rem;color:#F4C430;margin-bottom:14px;line-height:1">"</div>
-      <p style="font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.4vw,1.55rem);font-style:italic;color:#fff;line-height:1.65;max-width:680px;margin:0 auto 18px">The Jamaican flag's black, gold, and green — the hardships we have overcome, the natural wealth of our land, and the hope and agricultural riches — live in every bar we create.</p>
-      <div style="font-size:.62rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#F4C430;opacity:.7">— The EGOFF Family</div>
+    <div class="rv text-center p-12" style="background:rgba(255,255,255,.04);border:1px solid rgba(244,196,48,.17)">
+      <div class="serif text-[#F4C430] leading-none mb-3" style="font-size:2.2rem">"</div>
+      <p class="serif italic text-white leading-[1.65] max-w-[640px] mx-auto mb-4" style="font-size:clamp(1.05rem,2.2vw,1.48rem)">The Jamaican flag's black, gold, and green — the hardships we have overcome, the natural wealth of our land, and the hope and agricultural riches — live in every bar we create.</p>
+      <div class="text-[.6rem] font-semibold tracking-[.22em] uppercase text-[#F4C430]/65">— The EGOFF Family</div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" style="padding:108px 0;background:#FAF8F2" class="leafpat">
-  <div style="max-width:960px;margin:0 auto;padding:0 24px">
-    <div class="rv" style="text-align:center;margin-bottom:60px">
-      <div class="slabel" style="justify-content:center">Get In Touch</div>
-      <h2 style="font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2.2rem,3.5vw,3.2rem)">Let's Connect</h2>
-      <div class="grule"></div>
-      <p style="font-size:.94rem;color:#555;max-width:440px;margin:0 auto;line-height:1.88">Questions, bulk orders, or want early access to body butters? We'd love to hear from you.</p>
+<section id="contact" class="py-28 bg-[#FAF8F2]">
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="rv text-center mb-12">
+      <div class="slabel justify-center">Get In Touch</div>
+      <h2 class="serif font-black" style="font-size:clamp(2rem,3.5vw,3rem)">Let's Connect</h2>
+      <div style="width:64px;height:2px;background:linear-gradient(90deg,transparent,#F4C430,transparent);margin:14px auto"></div>
+      <p class="text-[#555] max-w-sm mx-auto leading-[1.88]" style="font-size:.92rem">Questions, bulk orders, or want early access to body butters?</p>
     </div>
-    <div class="rv s2col" style="display:grid;grid-template-columns:1.1fr 1fr;gap:56px">
-      <div style="display:flex;flex-direction:column;gap:16px">
-        <div><label style="font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#888;display:block;margin-bottom:7px">Your Name</label><input type="text" placeholder="Full name" style="width:100%;border:1.5px solid rgba(200,150,12,.2);background:#fff;padding:13px 16px;font-family:'Inter',sans-serif;font-size:.9rem;outline:none;transition:border-color .3s" onfocus="this.style.borderColor='#F4C430'" onblur="this.style.borderColor='rgba(200,150,12,.2)'"/></div>
-        <div><label style="font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#888;display:block;margin-bottom:7px">Email</label><input type="email" placeholder="your@email.com" style="width:100%;border:1.5px solid rgba(200,150,12,.2);background:#fff;padding:13px 16px;font-family:'Inter',sans-serif;font-size:.9rem;outline:none;transition:border-color .3s" onfocus="this.style.borderColor='#F4C430'" onblur="this.style.borderColor='rgba(200,150,12,.2)'"/></div>
-        <div><label style="font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#888;display:block;margin-bottom:7px">Message</label><textarea rows="5" placeholder="How can we help?" style="width:100%;border:1.5px solid rgba(200,150,12,.2);background:#fff;padding:13px 16px;font-family:'Inter',sans-serif;font-size:.9rem;outline:none;resize:none;transition:border-color .3s" onfocus="this.style.borderColor='#F4C430'" onblur="this.style.borderColor='rgba(200,150,12,.2)'"></textarea></div>
-        <button class="btn-gold" style="align-self:flex-start" onclick="toast('Message sent! We\'ll be in touch soon ✓')">Send Message</button>
+    <div class="rv sg grid grid-cols-2 gap-12">
+      <div class="flex flex-col gap-4">
+        <div><label class="text-[.58rem] font-semibold tracking-[.22em] uppercase text-[#888] block mb-2">Your Name</label><input type="text" placeholder="Full name" class="w-full border bg-white px-4 py-3 text-[.9rem] outline-none transition-colors focus:border-[#F4C430]" style="border-color:rgba(200,150,12,.2);font-family:'Inter',sans-serif"/></div>
+        <div><label class="text-[.58rem] font-semibold tracking-[.22em] uppercase text-[#888] block mb-2">Email</label><input type="email" placeholder="your@email.com" class="w-full border bg-white px-4 py-3 text-[.9rem] outline-none transition-colors focus:border-[#F4C430]" style="border-color:rgba(200,150,12,.2);font-family:'Inter',sans-serif"/></div>
+        <div><label class="text-[.58rem] font-semibold tracking-[.22em] uppercase text-[#888] block mb-2">Message</label><textarea rows="4" placeholder="How can we help?" class="w-full border bg-white px-4 py-3 text-[.9rem] outline-none transition-colors resize-none focus:border-[#F4C430]" style="border-color:rgba(200,150,12,.2);font-family:'Inter',sans-serif"></textarea></div>
+        <button class="btn-gold self-start" onclick="toastMsg('Message sent! We\'ll be in touch ✓')">Send Message</button>
       </div>
-      <div style="display:flex;flex-direction:column;gap:28px">
-        <div><div style="font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#C8960C;margin-bottom:8px">Brand</div><div style="font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:600">EGOFF Essentials</div><div style="font-size:.86rem;color:#777;margin-top:3px">EGOFF Enterprise L.L.C.</div></div>
-        <div><div style="font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#C8960C;margin-bottom:8px">Founded by</div><div style="font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:600">Ericka Goff</div></div>
+      <div class="flex flex-col gap-6">
+        <div><div class="text-[.58rem] font-semibold tracking-[.22em] uppercase text-[#C8960C] mb-2">Brand</div><div class="serif font-bold" style="font-size:1.3rem">EGOFF Essentials</div><div class="text-[.84rem] text-[#777] mt-1">EGOFF Enterprise L.L.C.</div></div>
+        <div><div class="text-[.58rem] font-semibold tracking-[.22em] uppercase text-[#C8960C] mb-2">Founded by</div><div class="serif font-bold" style="font-size:1.3rem">Ericka Goff</div></div>
         <div>
-          <div style="font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#C8960C;margin-bottom:12px">Follow Us</div>
-          <div style="display:flex;gap:10px">
-            <a href="#" style="width:40px;height:40px;border:1.5px solid rgba(200,150,12,.3);display:flex;align-items:center;justify-content:center;color:#C8960C;text-decoration:none;transition:all .3s" onmouseover="this.style.background='#C8960C';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#C8960C'"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-            <a href="#" style="width:40px;height:40px;border:1.5px solid rgba(200,150,12,.3);display:flex;align-items:center;justify-content:center;color:#C8960C;text-decoration:none;transition:all .3s" onmouseover="this.style.background='#C8960C';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#C8960C'"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-            <a href="#" style="width:40px;height:40px;border:1.5px solid rgba(200,150,12,.3);display:flex;align-items:center;justify-content:center;color:#C8960C;text-decoration:none;transition:all .3s" onmouseover="this.style.background='#C8960C';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#C8960C'"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.07a8.16 8.16 0 004.77 1.52V7.14a4.85 4.85 0 01-1-.45z"/></svg></a>
+          <div class="text-[.58rem] font-semibold tracking-[.22em] uppercase text-[#C8960C] mb-3">Follow Us</div>
+          <div class="flex gap-2">
+            <a href="#" class="w-10 h-10 flex items-center justify-center border text-[#C8960C] transition-all hover:bg-[#C8960C] hover:text-white" style="border-color:rgba(200,150,12,.3)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            <a href="#" class="w-10 h-10 flex items-center justify-center border text-[#C8960C] transition-all hover:bg-[#C8960C] hover:text-white" style="border-color:rgba(200,150,12,.3)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="#" class="w-10 h-10 flex items-center justify-center border text-[#C8960C] transition-all hover:bg-[#C8960C] hover:text-white" style="border-color:rgba(200,150,12,.3)"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.07a8.16 8.16 0 004.77 1.52V7.14a4.85 4.85 0 01-1-.45z"/></svg></a>
           </div>
         </div>
-        <div style="background:#EFF7EF;border-left:3px solid #006400;padding:18px 20px"><p style="font-family:'Playfair Display',serif;font-size:.96rem;font-style:italic;color:#006400;line-height:1.65">"Supporting EGOFF Essentials also supports the EGOFF Foundation — our community giving arm rooted in service and love."</p></div>
+        <div class="bg-[#EFF7EF] border-l-[3px] border-[#006400] p-4"><p class="serif italic text-[#006400] leading-[1.65]" style="font-size:.93rem">"Supporting EGOFF Essentials also supports the EGOFF Foundation — community giving rooted in service and love."</p></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer style="background:#001000;color:#fff;padding:76px 0 0">
-  <div style="max-width:1240px;margin:0 auto;padding:0 24px">
-    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.06)" class="fgrid">
+<footer class="bg-[#001000] text-white pt-16">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-4 gap-10 pb-12 border-b border-white/[.06] fg">
       <div>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-          <svg width="48" height="48" viewBox="0 0 88 88"><circle cx="44" cy="44" r="42" fill="none" stroke="#F4C430" stroke-width="1.4"/><ellipse cx="29" cy="27" rx="19" ry="14" fill="#006400"/><ellipse cx="44" cy="24" rx="12" ry="14" fill="#0D0D0D"/><ellipse cx="59" cy="27" rx="19" ry="14" fill="#F4C430"/><circle cx="44" cy="45" r="5" fill="#3a1a06"/><path d="M38 51 Q44 44 50 51 L48 67 Q44 70 40 67Z" fill="#3a1a06"/><path d="M39 53 Q31 43 25 31" stroke="#3a1a06" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M49 53 Q57 43 63 31" stroke="#3a1a06" stroke-width="3.5" fill="none" stroke-linecap="round"/><circle cx="39" cy="47" r="2.4" fill="none" stroke="#F4C430" stroke-width="1.7"/><circle cx="49" cy="47" r="2.4" fill="none" stroke="#F4C430" stroke-width="1.7"/></svg>
-          <div><div style="font-family:'Playfair Display',serif;font-weight:700;font-size:1.2rem;color:#fff;line-height:1">EGOFF</div><div style="font-size:.48rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#F4C430;margin-top:2px">ESSENTIALS</div></div>
+        <div class="flex items-center gap-3 mb-5">
+          <svg width="46" height="46" viewBox="0 0 84 84"><circle cx="42" cy="42" r="40" fill="none" stroke="#F4C430" stroke-width="1.3"/><ellipse cx="28" cy="26" rx="18" ry="13" fill="#006400"/><ellipse cx="42" cy="23" rx="11" ry="13" fill="#111"/><ellipse cx="56" cy="26" rx="18" ry="13" fill="#F4C430"/><circle cx="42" cy="43" r="4.5" fill="#3a1a06"/><path d="M37 49 Q42 43 47 49 L45.5 64 Q42 67 38.5 64Z" fill="#3a1a06"/><path d="M38 51 Q30 42 24 30" stroke="#3a1a06" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M46 51 Q54 42 60 30" stroke="#3a1a06" stroke-width="3.2" fill="none" stroke-linecap="round"/><circle cx="37.5" cy="45" r="2.2" fill="none" stroke="#F4C430" stroke-width="1.6"/><circle cx="46.5" cy="45" r="2.2" fill="none" stroke="#F4C430" stroke-width="1.6"/></svg>
+          <div><div class="serif font-bold text-[1.15rem] text-white leading-none">EGOFF</div><div class="text-[.46rem] font-semibold tracking-[.22em] uppercase text-[#F4C430] mt-[2px]">ESSENTIALS</div></div>
         </div>
-        <p style="font-size:.86rem;line-height:1.86;color:rgba(255,255,255,.48);max-width:268px;margin-bottom:16px">Handcrafted natural soaps and skincare rooted in Jamaican botanical heritage. GOD · LOVE · POWER.</p>
-        <div style="font-size:.56rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:6px">EGOFF Enterprise L.L.C.</div>
-        <div style="font-family:'Playfair Display',serif;font-size:.88rem;font-style:italic;color:rgba(244,196,48,.46)">Proudly Jamaican-American Family Owned</div>
+        <p class="text-white/45 leading-[1.85] mb-3" style="font-size:.84rem;max-width:220px">Handcrafted natural soaps rooted in Jamaican botanical heritage. GOD · LOVE · POWER.</p>
+        <div class="text-[.54rem] font-semibold tracking-[.18em] uppercase text-white/2 mb-1">EGOFF Enterprise L.L.C.</div>
+        <div class="serif italic text-[.85rem]" style="color:rgba(244,196,48,.42)">Proudly Jamaican-American Family Owned</div>
       </div>
       <div>
-        <div style="font-size:.58rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#F4C430;margin-bottom:20px">Navigate</div>
-        <div style="display:flex;flex-direction:column;gap:13px">
-          <a href="#shop"    style="font-size:.86rem;color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Shop</a>
-          <a href="#story"   style="font-size:.86rem;color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Our Story</a>
-          <a href="#roots"   style="font-size:.86rem;color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Jamaican Roots</a>
-          <a href="#contact" style="font-size:.86rem;color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Contact</a>
-        </div>
-      </div>
-      <div>
-        <div style="font-size:.58rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#F4C430;margin-bottom:20px">Products</div>
-        <div style="display:flex;flex-direction:column;gap:13px">
-          <a href="#shop" style="font-size:.86rem;color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Hot Flash &amp; Menstrual</a>
-          <a href="#shop" style="font-size:.86rem;color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Botanical Herb Bar</a>
-          <a href="#shop" style="font-size:.86rem;color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s" onmouseover="this.style.color='#FFD700'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Golden Root Bar</a>
-          <a href="#shop" style="font-size:.86rem;color:rgba(244,196,48,.4);text-decoration:none">Body Butters — Soon</a>
+        <div class="text-[.56rem] font-semibold tracking-[.22em] uppercase text-[#F4C430] mb-5">Navigate</div>
+        <div class="flex flex-col gap-3">
+          <a href="#shop"    class="text-white/48 text-[.84rem] no-underline hover:text-[#FFD700] transition-colors">Shop</a>
+          <a href="#story"   class="text-white/48 text-[.84rem] no-underline hover:text-[#FFD700] transition-colors">Our Story</a>
+          <a href="#roots"   class="text-white/48 text-[.84rem] no-underline hover:text-[#FFD700] transition-colors">Jamaican Roots</a>
+          <a href="#contact" class="text-white/48 text-[.84rem] no-underline hover:text-[#FFD700] transition-colors">Contact</a>
         </div>
       </div>
       <div>
-        <div style="font-size:.58rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#F4C430;margin-bottom:20px">Our Family</div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:#FFD700;display:inline-block;flex-shrink:0"></span><span style="font-size:.83rem;color:rgba(255,255,255,.5)">Hilda Smith Caliste</span></div>
-          <div style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:#9B59B6;display:inline-block;flex-shrink:0"></span><span style="font-size:.83rem;color:rgba(255,255,255,.5)">Alma Sanchez Thomas</span></div>
-          <div style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:#2ECC71;display:inline-block;flex-shrink:0"></span><span style="font-size:.83rem;color:rgba(255,255,255,.5)">Alice Fields Goff</span></div>
-          <div style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:#E74C3C;display:inline-block;flex-shrink:0"></span><span style="font-size:.83rem;color:rgba(255,255,255,.5)">Ruby Caliste Sumler</span></div>
-          <div style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:#3498DB;display:inline-block;flex-shrink:0"></span><span style="font-size:.83rem;color:rgba(255,255,255,.5)">Elizabeth Collior</span></div>
-          <div style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:#E67E22;display:inline-block;flex-shrink:0"></span><span style="font-size:.83rem;color:rgba(255,255,255,.5)">Lorchild B. Thomas</span></div>
-          <div style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:#F4C430;display:inline-block;flex-shrink:0"></span><span style="font-size:.83rem;color:rgba(255,255,255,.5)">Geraldine Goff Rollins</span></div>
+        <div class="text-[.56rem] font-semibold tracking-[.22em] uppercase text-[#F4C430] mb-5">Products</div>
+        <div class="flex flex-col gap-3">
+          <a href="#shop" class="text-white/48 text-[.84rem] no-underline hover:text-[#FFD700] transition-colors">Hot Flash &amp; Menstrual</a>
+          <a href="#shop" class="text-white/48 text-[.84rem] no-underline hover:text-[#FFD700] transition-colors">Botanical Herb Bar</a>
+          <a href="#shop" class="text-white/48 text-[.84rem] no-underline hover:text-[#FFD700] transition-colors">Golden Root Bar</a>
+          <span class="text-[.84rem]" style="color:rgba(244,196,48,.38)">Body Butters — Soon</span>
+        </div>
+      </div>
+      <div>
+        <div class="text-[.56rem] font-semibold tracking-[.22em] uppercase text-[#F4C430] mb-5">Our Family</div>
+        <div class="flex flex-col gap-[9px]">
+          <div class="flex items-center gap-2"><span class="w-[6px] h-[6px] rounded-full bg-[#FFD700] flex-shrink-0"></span><span class="text-white/48 text-[.81rem]">Hilda Smith Caliste</span></div>
+          <div class="flex items-center gap-2"><span class="w-[6px] h-[6px] rounded-full bg-[#9B59B6] flex-shrink-0"></span><span class="text-white/48 text-[.81rem]">Alma Sanchez Thomas</span></div>
+          <div class="flex items-center gap-2"><span class="w-[6px] h-[6px] rounded-full bg-[#2ECC71] flex-shrink-0"></span><span class="text-white/48 text-[.81rem]">Alice Fields Goff</span></div>
+          <div class="flex items-center gap-2"><span class="w-[6px] h-[6px] rounded-full bg-[#E74C3C] flex-shrink-0"></span><span class="text-white/48 text-[.81rem]">Ruby Caliste Sumler</span></div>
+          <div class="flex items-center gap-2"><span class="w-[6px] h-[6px] rounded-full bg-[#3498DB] flex-shrink-0"></span><span class="text-white/48 text-[.81rem]">Elizabeth Collior</span></div>
+          <div class="flex items-center gap-2"><span class="w-[6px] h-[6px] rounded-full bg-[#E67E22] flex-shrink-0"></span><span class="text-white/48 text-[.81rem]">Lorchild B. Thomas</span></div>
+          <div class="flex items-center gap-2"><span class="w-[6px] h-[6px] rounded-full bg-[#F4C430] flex-shrink-0"></span><span class="text-white/48 text-[.81rem]">Geraldine Goff Rollins</span></div>
         </div>
       </div>
     </div>
-    <div class="flagbar" style="margin:0 -24px"><div style="background:#006400"></div><div style="background:#111"></div><div style="background:#F4C430"></div></div>
-    <div style="padding:22px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
-      <div style="font-size:.73rem;color:rgba(255,255,255,.28)">© 2024 EGOFF Enterprise L.L.C. · Proudly Jamaican-American Family Owned · All rights reserved.</div>
-      <div style="font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:rgba(244,196,48,.45)">GOD · LOVE · POWER</div>
+    <!-- Flag stripe -->
+    <div class="grid grid-cols-3 h-1 -mx-6"><div class="bg-[#006400]"></div><div class="bg-[#111]"></div><div class="bg-[#F4C430]"></div></div>
+    <div class="py-5 flex items-center justify-between flex-wrap gap-3">
+      <div class="text-white/25 text-[.71rem]">© 2024 EGOFF Enterprise L.L.C. · Proudly Jamaican-American Family Owned · All rights reserved.</div>
+      <div class="serif italic text-[.95rem]" style="color:rgba(244,196,48,.42)">GOD · LOVE · POWER</div>
     </div>
   </div>
 </footer>
 
 <script>
-  window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',scrollY>55)})
-  function toggleMenu(){document.getElementById('mm').classList.toggle('open');document.getElementById('ham').classList.toggle('open')}
+  // Nav scroll
+  window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('bg-[#FAF8F2]/96',scrollY>50))
+  window.addEventListener('scroll',()=>{
+    const n=document.getElementById('nav')
+    if(scrollY>50){n.style.background='rgba(250,248,242,.96)';n.style.backdropFilter='blur(14px)';n.style.boxShadow='0 1px 22px rgba(0,100,0,.07)'}
+    else{n.style.background='';n.style.backdropFilter='';n.style.boxShadow=''}
+  })
+
+  // Mobile menu
+  function toggleMenu(){
+    const m=document.getElementById('mm'),h=document.getElementById('ham')
+    const open=m.style.transform==='translateY(0px)'
+    m.style.transform=open?'':' translateY(0px)'
+    m.classList.toggle('open',!open)
+    h.classList.toggle('open',!open)
+  }
+  document.getElementById('mm').style.transform=''
+
+  // Cart
   let n=0
   function addCart(btn,name){
     n++;document.getElementById('badge').textContent=n
     const o=btn.textContent;btn.textContent='✓ Added!';btn.style.background='#C8960C'
     setTimeout(()=>{btn.textContent=o;btn.style.background=''},1600)
-    toast(name+' added to cart ✓')
+    toastMsg(name+' added ✓')
   }
-  function toast(msg){
-    const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on')
-    clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),3200)
+  function toastMsg(msg){
+    const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show')
+    clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),3e3)
   }
-  const io=new IntersectionObserver(es=>{es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*70);io.unobserve(e.target)}})},{threshold:.1})
+
+  // Scroll reveal
+  const io=new IntersectionObserver(es=>{es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('show'),i*65);io.unobserve(e.target)}})},{threshold:.1})
   document.querySelectorAll('.rv').forEach(el=>io.observe(el))
 </script>
 </body>
