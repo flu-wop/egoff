@@ -9,28 +9,39 @@
   <meta property="og:description" content="Handcrafted soaps rooted in Jamaican heritage and New Orleans love. Essentially Rooted."/>
   <meta property="og:type" content="website"/>
   <title>EGOFF Essentials | Luxury Natural Handcrafted Soap</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23064e3b'/><!-- Jamaican flag diagonal --><path d='M0 16 L16 8 L32 16 L16 24Z' fill='%23f5c518' opacity='0.25'/><!-- Tree canopy left (green) --><path d='M16 14 C12 14 7 11 7 7 C7 4 10 2 13 4 C13 2 15 1 16 3Z' fill='%23166534'/><!-- Tree canopy right (gold) --><path d='M16 14 C20 14 25 11 25 7 C25 4 22 2 19 4 C19 2 17 1 16 3Z' fill='%23b7791f'/><!-- Woman body --><path d='M16 13 C15 13 14 14 14 15 L14 20 C14 21 15 22 16 22 C17 22 18 21 18 20 L18 15 C18 14 17 13 16 13Z' fill='%231a1a1a'/><!-- Arms raised left --><path d='M14 16 C12 15 9 13 8 11 C10 10 12 12 14 14Z' fill='%231a1a1a'/><!-- Arms raised right --><path d='M18 16 C20 15 23 13 24 11 C22 10 20 12 18 14Z' fill='%231a1a1a'/><!-- Head --><circle cx='16' cy='12' r='1.8' fill='%231a1a1a'/><!-- Trunk --><path d='M15 22 C15 24 14 26 14 28 L18 28 C18 26 17 24 17 22Z' fill='%235c3a1e'/><!-- Roots --><path d='M14 27 C12 28 10 29 9 30' stroke='%235c3a1e' stroke-width='1' fill='none'/><path d='M16 28 C16 29 15 30 14 31' stroke='%235c3a1e' stroke-width='1' fill='none'/><path d='M18 27 C20 28 22 29 23 30' stroke='%235c3a1e' stroke-width='1' fill='none'/><!-- Gold ring border --><circle cx='16' cy='16' r='15.2' fill='none' stroke='%23b7791f' stroke-width='0.8' opacity='0.6'/></svg>"/>
+
+  <!-- ── FAVICON ── -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23064e3b'/><path d='M0 16 L16 8 L32 16 L16 24Z' fill='%23f5c518' opacity='0.25'/><path d='M16 14 C12 14 7 11 7 7 C7 4 10 2 13 4 C13 2 15 1 16 3Z' fill='%23166534'/><path d='M16 14 C20 14 25 11 25 7 C25 4 22 2 19 4 C19 2 17 1 16 3Z' fill='%23b7791f'/><path d='M16 13 C15 13 14 14 14 15 L14 20 C14 21 15 22 16 22 C17 22 18 21 18 20 L18 15 C18 14 17 13 16 13Z' fill='%231a1a1a'/><path d='M14 16 C12 15 9 13 8 11 C10 10 12 12 14 14Z' fill='%231a1a1a'/><path d='M18 16 C20 15 23 13 24 11 C22 10 20 12 18 14Z' fill='%231a1a1a'/><circle cx='16' cy='12' r='1.8' fill='%231a1a1a'/><path d='M15 22 C15 24 14 26 14 28 L18 28 C18 26 17 24 17 22Z' fill='%235c3a1e'/><path d='M14 27 C12 28 10 29 9 30' stroke='%235c3a1e' stroke-width='1' fill='none'/><path d='M16 28 C16 29 15 30 14 31' stroke='%235c3a1e' stroke-width='1' fill='none'/><path d='M18 27 C20 28 22 29 23 30' stroke='%235c3a1e' stroke-width='1' fill='none'/><circle cx='16' cy='16' r='15.2' fill='none' stroke='%23b7791f' stroke-width='0.8' opacity='0.6'/></svg>"/>
+
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root {
-      --gold: #b7791f;
-      --gold-light: #d97706;
-      --gold-pale: #fef3c7;
-      --emerald: #064e3b;
-      --emerald-mid: #065f46;
-      --emerald-light: #d1fae5;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Lato', sans-serif; background: #fffdf7; color: #1a1a1a; overflow-x: hidden; }
 
-    /* SHIMMER */
+  <style>
+    /* ══════════════════════════════════════
+       CSS VARIABLES & BASE
+    ══════════════════════════════════════ */
+    :root {
+      --gold:        #b7791f;
+      --gold-bright: #d97706;
+      --gold-pale:   #fef3c7;
+      --emerald:     #064e3b;
+      --deep:        #022c22;
+      --cream:       #fffdf7;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a; overflow-x: hidden; }
+
+    /* ── FONT HELPERS ── */
+    .font-cinzel    { font-family: 'Cinzel', serif; }
+    .font-cormorant { font-family: 'Cormorant Garamond', serif; }
+
+    /* ── GOLD SHIMMER ANIMATION ── */
     @keyframes shimmer {
-      0% { background-position: -200% center; }
-      100% { background-position: 200% center; }
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
     }
     .gold-shimmer {
       background: linear-gradient(90deg, #b7791f 0%, #fde68a 40%, #b7791f 60%, #d97706 100%);
@@ -41,131 +52,201 @@
       animation: shimmer 4s linear infinite;
     }
 
-    /* TICKER */
+    /* ── ANNOUNCEMENT TICKER ── */
     @keyframes ticker {
-      0% { transform: translateX(0); }
+      0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-    .ticker-track { display: flex; width: max-content; animation: ticker 28s linear infinite; }
+    .ticker-track { display: flex; width: max-content; animation: ticker 30s linear infinite; }
     .ticker-track:hover { animation-play-state: paused; }
 
-    /* FLOAT */
+    /* ── HERO LOGO FLOAT ── */
     @keyframes floatLogo {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-12px); }
     }
     .float-logo { animation: floatLogo 5s ease-in-out infinite; }
 
-    /* FADE UP */
+    /* ── SCROLL FADE-UP ── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(28px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     .fade-up { opacity: 0; }
-    .fade-up.visible { animation: fadeUp 0.7s ease forwards; }
+    .fade-up.visible { animation: fadeUp 0.65s ease forwards; }
 
-    /* FONTS */
-    .font-cinzel    { font-family: 'Cinzel', serif; }
-    .font-cormorant { font-family: 'Cormorant Garamond', serif; }
-    .font-lato      { font-family: 'Lato', sans-serif; }
+    /* ── NAVBAR ── */
+    #navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #022c22;
+      border-bottom: 1px solid rgba(183,121,31,0.3);
+      box-shadow: 0 4px 28px rgba(2,44,34,0.6);
+    }
+    .nav-link {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #a7f3d0;
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-link:hover { color: #fde68a; border-color: #b7791f; }
 
-    /* CART DRAWER */
-    #cart-drawer { transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
-    #cart-drawer.open { transform: translateX(0); }
-    #cart-overlay { display: none; }
-    #cart-overlay.open { display: block; }
-
-    /* MOBILE MENU */
+    /* ── MOBILE MENU ── */
     #mobile-menu { display: none; }
     #mobile-menu.open { display: flex; }
 
-    /* ACCORDION */
-    .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    /* ── CART DRAWER ── */
+    #cart-drawer  { transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
+    #cart-drawer.open  { transform: translateX(0); }
+    #cart-overlay { display: none; }
+    #cart-overlay.open { display: block; }
+
+    /* ── FAQ ACCORDION ── */
+    .faq-body  { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
     .faq-body.open { max-height: 600px; }
     .faq-arrow { transition: transform 0.3s ease; }
     .faq-arrow.open { transform: rotate(180deg); }
 
-    /* TOAST */
+    /* ── TOAST ── */
     #toast { transition: opacity 0.4s ease, transform 0.4s ease; }
 
-    /* PRODUCT CARD HOVER */
+    /* ── PRODUCT CARD HOVER ── */
     .product-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(6,78,59,0.15); }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(6,78,59,0.18), 0 0 0 1px rgba(183,121,31,0.18);
+    }
 
-    /* TESTIMONIAL */
-    .tcard { border-top: 3px solid var(--gold); }
+    /* ── UNIFIED ADD TO CART BUTTON ── */
+    .btn-cart {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: #064e3b;
+      color: #fff;
+      border: 1px solid rgba(183,121,31,0.4);
+      padding: 8px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .btn-cart:hover {
+      background: #065f46;
+      box-shadow: 0 0 0 2px rgba(183,121,31,0.4);
+    }
 
-    /* SCROLLBAR */
-    ::-webkit-scrollbar { width: 6px; }
+    /* ── GOLD SECTION DIVIDER ── */
+    .gold-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(183,121,31,0.45) 20%,
+        rgba(253,230,138,0.65) 50%,
+        rgba(183,121,31,0.45) 80%,
+        transparent 100%);
+    }
+
+    /* ── TESTIMONIAL TOP BORDER ── */
+    .tcard { border-top: 3px solid #b7791f; }
+
+    /* ── FOOTER SOCIAL ICONS ── */
+    .social-icon {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(183,121,31,0.4);
+      display: flex; align-items: center; justify-content: center;
+      color: #a7f3d0;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .social-icon:hover {
+      background: rgba(183,121,31,0.2);
+      border-color: #b7791f;
+      color: #fde68a;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: #f0fdf4; }
     ::-webkit-scrollbar-thumb { background: #b7791f; border-radius: 3px; }
 
+    /* ── MOBILE POLISH ── */
     @media (max-width: 640px) {
-      .hero-logo { max-width: 220px !important; }
-      h1.hero-title { font-size: clamp(2rem, 8vw, 3.5rem) !important; }
+      .hero-logo { max-width: 175px !important; }
+      h1.hero-title { font-size: clamp(2rem, 9vw, 3rem) !important; }
     }
   </style>
 </head>
-<body class="bg-amber-50">
+<body>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ════════════════════════════════════════════════════
      TOAST NOTIFICATION
-═══════════════════════════════════════════════ -->
-<div id="toast" class="fixed top-6 right-6 z-[200] bg-emerald-800 text-white px-5 py-3 rounded-xl shadow-xl text-sm font-lato opacity-0 pointer-events-none flex items-center gap-2" style="transform:translateY(-10px)">
+════════════════════════════════════════════════════ -->
+<div id="toast"
+     class="fixed top-6 right-6 z-[200] text-white px-5 py-3 rounded-xl shadow-2xl text-sm opacity-0 pointer-events-none flex items-center gap-2"
+     style="background:#022c22; border:1px solid rgba(183,121,31,0.45); transform:translateY(-10px);">
   <span>🌿</span><span id="toast-msg">Added to cart</span>
 </div>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ════════════════════════════════════════════════════
      CART OVERLAY
-═══════════════════════════════════════════════ -->
-<div id="cart-overlay" class="fixed inset-0 bg-black/50 z-[90] backdrop-blur-sm" onclick="closeCart()"></div>
+════════════════════════════════════════════════════ -->
+<div id="cart-overlay" class="fixed inset-0 bg-black/60 z-[90] backdrop-blur-sm" onclick="closeCart()"></div>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ════════════════════════════════════════════════════
      CART DRAWER
-═══════════════════════════════════════════════ -->
+════════════════════════════════════════════════════ -->
 <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-sm bg-white z-[100] shadow-2xl flex flex-col">
-  <div class="bg-emerald-900 px-5 py-4 flex items-center justify-between">
-    <h2 class="font-cinzel text-white text-lg tracking-wide">Your Selections</h2>
-    <button onclick="closeCart()" class="text-amber-300 hover:text-white text-2xl leading-none">&times;</button>
+  <div class="px-5 py-4 flex items-center justify-between" style="background:#022c22; border-bottom:1px solid rgba(183,121,31,0.3);">
+    <h2 class="font-cinzel text-white text-base tracking-widest">Your Selections</h2>
+    <button onclick="closeCart()" class="text-amber-300 hover:text-white text-2xl leading-none transition-colors">&times;</button>
   </div>
   <div id="cart-items" class="flex-1 overflow-y-auto px-4 py-4 space-y-3"></div>
   <div class="border-t border-emerald-100 px-5 py-4 bg-amber-50">
     <div class="flex justify-between items-center mb-1">
-      <span class="font-lato text-emerald-800 font-bold text-sm uppercase tracking-wide">Subtotal</span>
+      <span class="font-cinzel text-emerald-800 text-xs uppercase tracking-widest">Subtotal</span>
       <span id="cart-subtotal" class="font-cinzel text-emerald-900 text-lg">$0.00</span>
     </div>
-    <p class="text-xs text-emerald-600 mb-3">Shipping calculated at checkout · 5–7 business days</p>
-    <button onclick="sendOrder()" class="w-full bg-emerald-800 hover:bg-emerald-700 text-white font-cinzel tracking-widest py-3 rounded-xl text-sm transition-colors mb-2">Send My Order ✦</button>
+    <p class="font-lato text-xs text-emerald-600 mb-4">Shipping calculated at checkout · 5–7 business days</p>
+    <button onclick="sendOrder()" class="w-full text-white font-cinzel tracking-widest py-3 rounded-xl text-xs mb-2 transition-colors" style="background:#064e3b;">Send My Order ✦</button>
     <button onclick="clearCartConfirm()" class="w-full border border-red-200 text-red-400 hover:bg-red-50 py-2 rounded-xl text-xs font-lato transition-colors">Clear Cart</button>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ════════════════════════════════════════════════════
      ANNOUNCEMENT TICKER
-═══════════════════════════════════════════════ -->
-<div class="bg-emerald-900 text-amber-300 py-2 overflow-hidden text-xs font-lato tracking-widest uppercase">
-  <div class="ticker-track">
-    <span class="px-8">✦ Free Shipping on Orders Over $75</span>
-    <span class="px-8">✦ Handcrafted with Love in New Orleans</span>
-    <span class="px-8">✦ Rooted in Jamaican Heritage</span>
-    <span class="px-8">✦ All Natural · No Harsh Chemicals</span>
-    <span class="px-8">✦ Essentially Rooted · GOD · LOVE · POWER</span>
-    <span class="px-8">✦ Free Shipping on Orders Over $75</span>
-    <span class="px-8">✦ Handcrafted with Love in New Orleans</span>
-    <span class="px-8">✦ Rooted in Jamaican Heritage</span>
-    <span class="px-8">✦ All Natural · No Harsh Chemicals</span>
-    <span class="px-8">✦ Essentially Rooted · GOD · LOVE · POWER</span>
+════════════════════════════════════════════════════ -->
+<div class="overflow-hidden py-2" style="background:#022c22;">
+  <div class="ticker-track font-cinzel text-amber-300 text-xs tracking-widest">
+    <span class="px-10">✦ Free Shipping on Orders Over $75</span>
+    <span class="px-10">✦ Handcrafted with Love in New Orleans</span>
+    <span class="px-10">✦ Rooted in Jamaican Heritage</span>
+    <span class="px-10">✦ All Natural · No Harsh Chemicals</span>
+    <span class="px-10">✦ Essentially Rooted · GOD · LOVE · POWER</span>
+    <span class="px-10">✦ Free Shipping on Orders Over $75</span>
+    <span class="px-10">✦ Handcrafted with Love in New Orleans</span>
+    <span class="px-10">✦ Rooted in Jamaican Heritage</span>
+    <span class="px-10">✦ All Natural · No Harsh Chemicals</span>
+    <span class="px-10">✦ Essentially Rooted · GOD · LOVE · POWER</span>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     NAVBAR
-═══════════════════════════════════════════════ -->
-<nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-amber-100 shadow-sm">
-  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-    <!-- Logo -->
-    <a href="#hero" class="flex items-center gap-2 group">
-      <svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+<!-- ════════════════════════════════════════════════════
+     STICKY NAVBAR — Deep emerald + gold
+════════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+
+    <!-- Logo + wordmark -->
+    <a href="#hero" class="flex items-center gap-3 flex-shrink-0">
+      <svg style="width:52px;height:52px;" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
         <circle cx="18" cy="18" r="18" fill="#064e3b"/>
         <path d="M2 18 L18 10 L34 18 L18 26Z" fill="#f5c518" opacity="0.18"/>
         <path d="M18 16 C13 16 7 13 7 8 C7 5 10 3 13 5 C13 2 16 1 18 4Z" fill="#166534"/>
@@ -178,375 +259,411 @@
         <path d="M15.5 30 C13 31 11 32 10 33" stroke="#5c3a1e" stroke-width="1.2" fill="none" stroke-linecap="round"/>
         <path d="M18 31 C18 32.5 17 34 16 35" stroke="#5c3a1e" stroke-width="1.2" fill="none" stroke-linecap="round"/>
         <path d="M20.5 30 C23 31 25 32 26 33" stroke="#5c3a1e" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-        <circle cx="18" cy="18" r="17" fill="none" stroke="#b7791f" stroke-width="0.8" opacity="0.5"/>
+        <circle cx="18" cy="18" r="17" fill="none" stroke="#b7791f" stroke-width="1" opacity="0.65"/>
       </svg>
-      <span class="font-cinzel text-emerald-900 text-base tracking-widest font-semibold">EGOFF<span class="text-amber-600"> Essentials</span></span>
+      <div class="hidden sm:block leading-tight">
+        <p class="font-cinzel text-white text-sm tracking-widest">EGOFF <span style="color:#d97706;">Essentials</span></p>
+        <p class="font-cormorant italic text-xs" style="color:#6ee7b7;">Essentially Rooted</p>
+      </div>
     </a>
 
-    <!-- Desktop Nav -->
-    <div class="hidden md:flex items-center gap-6 font-lato text-sm text-emerald-800">
-      <a href="#story" class="hover:text-amber-600 transition-colors">Our Story</a>
-      <a href="#products" class="hover:text-amber-600 transition-colors">Shop</a>
-      <a href="#testimonials" class="hover:text-amber-600 transition-colors">Testimonials</a>
-      <a href="#faq" class="hover:text-amber-600 transition-colors">FAQ</a>
-      <a href="#contact" class="hover:text-amber-600 transition-colors">Contact</a>
+    <!-- Desktop nav links -->
+    <div class="hidden md:flex items-center gap-7">
+      <a href="#hero"         class="nav-link">Home</a>
+      <a href="#story"        class="nav-link">About</a>
+      <a href="#products"     class="nav-link">Shop</a>
+      <a href="#testimonials" class="nav-link">Our Roots</a>
+      <a href="#contact"      class="nav-link">Contact</a>
     </div>
 
-    <div class="flex items-center gap-3">
-      <button onclick="openCart()" class="relative bg-emerald-800 hover:bg-emerald-700 text-white px-4 py-2 rounded-full font-cinzel text-xs tracking-widest flex items-center gap-2 transition-colors">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-        Cart
+    <!-- Cart button + hamburger -->
+    <div class="flex items-center gap-3 flex-shrink-0">
+      <button onclick="openCart()"
+              class="flex items-center gap-2 font-cinzel text-xs tracking-widest text-white px-4 py-2 rounded-full transition-all"
+              style="background:rgba(183,121,31,0.22); border:1px solid rgba(183,121,31,0.5);"
+              onmouseover="this.style.background='rgba(183,121,31,0.38)'"
+              onmouseout="this.style.background='rgba(183,121,31,0.22)'">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <span class="hidden sm:inline">Cart</span>
         <span id="cart-count" class="bg-amber-400 text-emerald-900 rounded-full w-5 h-5 text-xs flex items-center justify-center font-bold">0</span>
       </button>
-      <button id="hamburger" onclick="toggleMobileMenu()" class="md:hidden text-emerald-800 p-1">
-        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <button onclick="toggleMobileMenu()" class="md:hidden text-amber-300 hover:text-white p-1 transition-colors" aria-label="Menu">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
       </button>
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="md:hidden flex-col bg-emerald-900 text-white px-6 py-5 space-y-4 font-lato text-sm">
-    <a href="#story" onclick="closeMobileMenu()" class="block hover:text-amber-300 transition-colors">Our Story</a>
-    <a href="#products" onclick="closeMobileMenu()" class="block hover:text-amber-300 transition-colors">Shop</a>
-    <a href="#testimonials" onclick="closeMobileMenu()" class="block hover:text-amber-300 transition-colors">Testimonials</a>
-    <a href="#faq" onclick="closeMobileMenu()" class="block hover:text-amber-300 transition-colors">FAQ</a>
-    <a href="#contact" onclick="closeMobileMenu()" class="block hover:text-amber-300 transition-colors">Contact</a>
+  <!-- Mobile dropdown -->
+  <div id="mobile-menu" class="md:hidden flex-col px-6 py-5 space-y-4" style="background:#011a12; border-top:1px solid rgba(183,121,31,0.2);">
+    <a href="#hero"         onclick="closeMobileMenu()" class="block nav-link text-sm">Home</a>
+    <a href="#story"        onclick="closeMobileMenu()" class="block nav-link text-sm">About</a>
+    <a href="#products"     onclick="closeMobileMenu()" class="block nav-link text-sm">Shop</a>
+    <a href="#testimonials" onclick="closeMobileMenu()" class="block nav-link text-sm">Our Roots</a>
+    <a href="#faq"          onclick="closeMobileMenu()" class="block nav-link text-sm">FAQ</a>
+    <a href="#contact"      onclick="closeMobileMenu()" class="block nav-link text-sm">Contact</a>
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════════════════
-     HERO
-═══════════════════════════════════════════════ -->
-<section id="hero" class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 py-20 overflow-hidden" style="background: radial-gradient(ellipse at 60% 0%, #d1fae5 0%, #fffbeb 50%, #fef3c7 100%);">
-  <!-- Decorative rings -->
+<!-- ════════════════════════════════════════════════════
+     HERO SECTION
+════════════════════════════════════════════════════ -->
+<section id="hero"
+         class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 py-24 overflow-hidden"
+         style="background: radial-gradient(ellipse at 60% 0%, #d1fae5 0%, #fffbeb 50%, #fef3c7 100%);">
+  <!-- Subtle decorative rings -->
   <div class="absolute inset-0 pointer-events-none overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-amber-200/40 rounded-full"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-emerald-200/30 rounded-full"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full" style="border:1px solid rgba(183,121,31,0.18);"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[780px] h-[780px] rounded-full" style="border:1px solid rgba(6,78,59,0.1);"></div>
   </div>
 
-  <p class="font-cinzel text-amber-600 tracking-[0.4em] text-xs uppercase mb-6">Essentially Rooted · Est. New Orleans</p>
+  <p class="font-cinzel text-amber-600 tracking-[0.4em] text-xs uppercase mb-8">Essentially Rooted · Est. New Orleans</p>
 
-  <!-- Hero Logo -->
+  <!-- Floating hero logo -->
   <div class="float-logo mb-8">
-    <img src="hero-logo.jpg" alt="EGOFF Essentials Logo — Tree of Life" class="hero-logo rounded-full shadow-2xl mx-auto" style="width:200px;height:200px;object-fit:cover;border:4px solid rgba(183,121,31,0.5);max-width:260px;"/>
+    <img src="hero-logo.jpg"
+         alt="EGOFF Essentials — Tree of Life Logo"
+         class="hero-logo rounded-full shadow-2xl mx-auto"
+         style="width:200px;height:200px;object-fit:cover;border:4px solid rgba(183,121,31,0.55);"/>
   </div>
 
-  <h1 class="hero-title font-cinzel font-bold mb-4 leading-tight" style="font-size:clamp(2.4rem,6vw,5rem);">
+  <h1 class="hero-title font-cinzel font-bold mb-5 leading-tight" style="font-size:clamp(2.4rem,6vw,5rem);">
     <span class="gold-shimmer">EGOFF</span><br/>
-    <span class="text-emerald-900">Essentials</span>
+    <span style="color:#022c22;">Essentials</span>
   </h1>
 
-  <p class="font-cormorant text-xl md:text-2xl text-emerald-700 italic mb-2 max-w-xl">
-    "Luxury handcrafted soaps rooted in Jamaican heritage, born with New Orleans love."
+  <p class="font-cormorant text-xl md:text-2xl text-emerald-700 italic mb-3 max-w-xl leading-snug">
+    "Luxury handcrafted soaps rooted in Jamaican heritage,<br class="hidden sm:inline"/> born with New Orleans love."
   </p>
   <p class="font-cinzel text-amber-600 tracking-widest text-xs uppercase mb-10">GOD · LOVE · POWER</p>
 
   <div class="flex flex-col sm:flex-row gap-4 items-center">
-    <a href="#products" class="bg-emerald-800 hover:bg-emerald-700 text-white font-cinzel tracking-widest px-8 py-4 rounded-full text-sm transition-all hover:scale-105 shadow-lg">Shop Now ✦</a>
-    <a href="#story" class="border border-amber-400 text-amber-700 hover:bg-amber-50 font-cinzel tracking-widest px-8 py-4 rounded-full text-sm transition-all">Our Story</a>
+    <a href="#products"
+       class="font-cinzel tracking-widest px-8 py-4 rounded-full text-sm text-white transition-all hover:scale-105 shadow-lg"
+       style="background:#064e3b;">Shop Now ✦</a>
+    <a href="#story"
+       class="font-cinzel tracking-widest px-8 py-4 rounded-full text-sm transition-all"
+       style="border:1px solid #b7791f; color:#92400e;">Our Story</a>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ── GOLD DIVIDER ── -->
+<div class="gold-divider"></div>
+
+<!-- ════════════════════════════════════════════════════
      COMPANY STRUCTURE BANNER
-═══════════════════════════════════════════════ -->
-<div class="bg-emerald-900 text-white py-8 px-4 text-center">
-  <p class="font-cinzel text-amber-300 tracking-widest text-xs uppercase mb-2">Our Family of Purpose</p>
+════════════════════════════════════════════════════ -->
+<div class="py-8 px-4 text-center" style="background:#022c22;">
+  <p class="font-cinzel text-amber-400 tracking-widest text-xs uppercase mb-3">Our Family of Purpose</p>
   <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 font-cormorant text-lg">
     <span class="text-amber-200 italic">Egoff Enterprise LLC</span>
-    <span class="text-amber-500 hidden md:inline">→</span>
+    <span class="hidden md:inline text-amber-600 text-xl">→</span>
     <span class="text-white font-semibold">EGOFF Essentials</span>
     <span class="text-emerald-400 text-sm">+</span>
-    <span class="text-emerald-300 italic">Egoff Foundation <span class="text-xs text-emerald-500">(TBA)</span></span>
+    <span class="text-emerald-300 italic">Egoff Foundation <span class="text-xs text-emerald-600">(TBA)</span></span>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     OUR STORY
-═══════════════════════════════════════════════ -->
-<section id="story" class="py-20 px-4 max-w-6xl mx-auto">
-  <div class="text-center mb-14">
+<!-- ── GOLD DIVIDER ── -->
+<div class="gold-divider"></div>
+
+<!-- ════════════════════════════════════════════════════
+     OUR STORY / FOUNDER
+════════════════════════════════════════════════════ -->
+<section id="story" class="py-24 px-4 max-w-6xl mx-auto">
+  <div class="text-center mb-16">
     <p class="font-cinzel text-amber-600 tracking-widest text-xs uppercase mb-2">The Heart Behind the Bar</p>
-    <h2 class="font-cormorant text-4xl md:text-5xl text-emerald-900 font-semibold">Our Story</h2>
-    <div class="w-16 h-0.5 bg-amber-500 mx-auto mt-4 opacity-60"></div>
+    <h2 class="font-cormorant text-4xl md:text-5xl font-semibold" style="color:#022c22;">Our Story</h2>
+    <div class="w-24 h-px mx-auto mt-5" style="background:linear-gradient(90deg,transparent,#b7791f,transparent);"></div>
   </div>
 
-  <div class="grid md:grid-cols-2 gap-12 items-start">
-    <!-- Founder Illustration -->
+  <div class="grid md:grid-cols-2 gap-14 items-start">
+
+    <!-- Founder photo + ancestry panel -->
     <div class="flex flex-col items-center">
-      <div class="w-56 h-56 rounded-full border-4 border-amber-300 mb-6 relative overflow-hidden">
-        <img src="founder.jpg" alt="Ericka A. Goff — Founder of EGOFF Essentials" class="w-full h-full object-cover"/>
+      <div class="relative mb-6">
+        <div class="w-60 h-60 rounded-full overflow-hidden"
+             style="border:4px solid #b7791f; box-shadow:0 0 0 8px rgba(183,121,31,0.1), 0 16px 48px rgba(6,78,59,0.22);">
+          <img src="founder.jpg" alt="Ericka A. Goff — Founder of EGOFF Essentials" class="w-full h-full object-cover"/>
+        </div>
       </div>
-      <p class="font-cinzel text-emerald-900 text-base tracking-wide">Ericka A. Goff</p>
-      <p class="font-cormorant text-amber-600 italic text-sm">Your Soap Alchemist</p>
+      <p class="font-cinzel text-emerald-900 text-base tracking-widest">Ericka A. Goff</p>
+      <p class="font-cormorant text-amber-600 italic text-base mt-0.5">Your Soap Alchemist</p>
 
       <!-- Ancestorial Tree -->
-      <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-2xl p-6 w-full">
-        <p class="font-cinzel text-emerald-800 text-xs tracking-widest uppercase text-center mb-4">Ancestorial Tree of<br/><span class="text-amber-600">Powerful Women of God (POW)</span></p>
-        <ul class="space-y-1.5 text-center">
-          <li class="font-cormorant text-emerald-700 text-sm italic">Almarie Elizabeth Powell-Goff</li>
-          <li class="font-cormorant text-emerald-700 text-sm italic">Ina Mae Powell-Robb</li>
-          <li class="font-cormorant text-emerald-700 text-sm italic">Yvette Lorraine Powell-Goff</li>
-          <li class="font-cormorant text-emerald-700 text-sm italic">Deloris Arlene Powell-Taylor</li>
-          <li class="font-cormorant text-emerald-700 text-sm italic">Valerie Ann Powell-Goff</li>
-          <li class="font-cormorant text-emerald-700 text-sm italic">Anita Jean Powell-Wren</li>
-          <li class="font-cormorant text-emerald-700 text-sm italic">Claudette Elaine Powell-Veal</li>
-          <li class="font-cormorant text-emerald-700 text-sm italic">Pauline Yvonne Powell-Brooks</li>
-          <li class="font-cormorant text-emerald-700 text-sm italic">Ericka Almarie Powell-Goff</li>
+      <div class="mt-10 rounded-2xl p-7 w-full" style="background:#f0fdf4; border:1px solid rgba(6,78,59,0.13);">
+        <p class="font-cinzel text-emerald-800 text-xs tracking-widest uppercase text-center mb-1">Ancestorial Tree of</p>
+        <p class="font-cinzel text-amber-600 text-xs tracking-widest uppercase text-center mb-5">Powerful Women of God (POW)</p>
+        <ul class="space-y-2 text-center">
+          <li class="font-cormorant text-emerald-700 text-base italic">Almarie Elizabeth Powell-Goff</li>
+          <li class="font-cormorant text-emerald-700 text-base italic">Ina Mae Powell-Robb</li>
+          <li class="font-cormorant text-emerald-700 text-base italic">Yvette Lorraine Powell-Goff</li>
+          <li class="font-cormorant text-emerald-700 text-base italic">Deloris Arlene Powell-Taylor</li>
+          <li class="font-cormorant text-emerald-700 text-base italic">Valerie Ann Powell-Goff</li>
+          <li class="font-cormorant text-emerald-700 text-base italic">Anita Jean Powell-Wren</li>
+          <li class="font-cormorant text-emerald-700 text-base italic">Claudette Elaine Powell-Veal</li>
+          <li class="font-cormorant text-emerald-700 text-base italic">Pauline Yvonne Powell-Brooks</li>
+          <li class="font-cormorant text-emerald-700 text-base italic">Ericka Almarie Powell-Goff</li>
         </ul>
       </div>
     </div>
 
-    <!-- Bio -->
-    <div class="space-y-5 font-lato text-emerald-800 leading-relaxed">
+    <!-- Bio text -->
+    <div class="space-y-6 font-lato text-emerald-800 leading-relaxed text-sm md:text-base">
       <p>I was born and raised in New Orleans, Louisiana — a city of culture, spirit, and deep roots. But my soul stretches far beyond the bayou. My family originates from <strong class="text-emerald-900">Wait-A-Bit, Trelawny, Jamaica</strong> — a place whose name alone carries the patience and wisdom of my ancestors.</p>
-
       <p>My journey into soap-making began in the church. I was raised in faith, and it is through that same spirit of service and love that EGOFF Essentials was born. I started experimenting with natural ingredients, learning to honor the skin the way scripture honors the body — as something sacred.</p>
-
       <p>What began as a gift for family and friends grew into a calling. I discovered that natural soap — when crafted with intention, prayer, and the finest ingredients — could do more than cleanse. It could <em>heal</em>. It could soothe pain, ease hormonal shifts, calm a postpartum mother's spirit, and bring a man relief after a long day's labor.</p>
-
       <p>Every bar I create carries the legacy of the <strong class="text-emerald-900">Powerful Women of God</strong> who came before me — my grandmothers, aunts, and mother — women who nurtured with their hands and led with their faith.</p>
-
       <p>EGOFF Essentials is not just soap. It is <em>alchemy</em> — the transformation of earth's purest gifts into something that touches your skin and reaches your soul. My soaps do not rush to dissolve. They are made with substance, with texture and scent that remind you: you deserve the real thing.</p>
-
-      <p class="font-cormorant text-xl text-emerald-900 italic border-l-4 border-amber-400 pl-4">
-        "With love from my hands to your skin — essentially rooted, essentially you."<br/>
-        <span class="text-amber-600 text-base not-italic font-cinzel tracking-wide">— Ericka A. Goff, Your Soap Alchemist</span>
-      </p>
+      <blockquote class="font-cormorant text-xl text-emerald-900 italic leading-snug py-1 pl-5" style="border-left:3px solid #b7791f;">
+        "With love from my hands to your skin — essentially rooted, essentially you."
+        <br/><span class="font-cinzel text-amber-600 text-sm not-italic tracking-wide">— Ericka A. Goff, Your Soap Alchemist</span>
+      </blockquote>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     PRODUCTS — SPECIALTY
-═══════════════════════════════════════════════ -->
-<section id="products" class="py-20 px-4" style="background: linear-gradient(to bottom, #ecfdf5, #fffbeb);">
+<!-- ── GOLD DIVIDER ── -->
+<div class="gold-divider"></div>
+
+<!-- ════════════════════════════════════════════════════
+     SPECIALTY SOAPS
+════════════════════════════════════════════════════ -->
+<section id="products" class="py-24 px-4" style="background:linear-gradient(to bottom,#ecfdf5,#fffbeb);">
   <div class="max-w-7xl mx-auto">
+
     <div class="text-center mb-14">
       <p class="font-cinzel text-amber-600 tracking-widest text-xs uppercase mb-2">Handcrafted with Intention</p>
-      <h2 class="font-cormorant text-4xl md:text-5xl text-emerald-900 font-semibold">Specialty Soaps</h2>
+      <h2 class="font-cormorant text-4xl md:text-5xl font-semibold" style="color:#022c22;">Specialty Soaps</h2>
       <p class="font-lato text-emerald-700 mt-3 text-sm">$40.00 each · Premium formulations for specific wellness needs</p>
-      <div class="w-16 h-0.5 bg-amber-500 mx-auto mt-4 opacity-60"></div>
+      <div class="w-24 h-px mx-auto mt-5" style="background:linear-gradient(90deg,transparent,#b7791f,transparent);"></div>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden shadow-sm border border-emerald-100 flex flex-col">
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
         <div class="h-36 flex items-center justify-center text-5xl" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0);">🌸</div>
         <div class="p-5 flex flex-col flex-1">
           <p class="font-cinzel text-xs text-amber-600 tracking-widest uppercase mb-1">Specialty</p>
           <h3 class="font-cormorant text-xl text-emerald-900 font-semibold mb-2">Alma's Grace</h3>
-          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">A gentle, soul-soothing bar crafted for postpartum care and emotional restoration. Calms the nervous system, softens skin, and carries a quiet spiritual warmth that lingers. Named for the women who carried us.</p>
-          <div class="mt-4 flex items-center justify-between">
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">A gentle, soul-soothing bar crafted for postpartum care and emotional restoration. Calms the nervous system, softens skin, and carries a quiet spiritual warmth. Named for the women who carried us.</p>
+          <div class="mt-5 flex items-center justify-between">
             <span class="font-cinzel text-emerald-900 font-bold">$40.00</span>
-            <button onclick="addToCart('Alma\'s Grace','$40.00','🌸')" class="bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-cinzel tracking-widest px-4 py-2 rounded-full transition-colors">Add to Cart</button>
+            <button onclick="addToCart('Alma\'s Grace','$40.00','🌸')" class="btn-cart">Add to Cart</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden shadow-sm border border-emerald-100 flex flex-col">
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
         <div class="h-36 flex items-center justify-center text-5xl" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">💎</div>
         <div class="p-5 flex flex-col flex-1">
           <p class="font-cinzel text-xs text-amber-600 tracking-widest uppercase mb-1">Specialty</p>
           <h3 class="font-cormorant text-xl text-emerald-900 font-semibold mb-2">Jamaican Ruby</h3>
           <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">A bold, island-born bar infused with deep red botanicals and Jamaican heritage. Rich in moisture, it envelops your skin in warmth and vitality — a tribute to the earth and women who shaped us.</p>
-          <div class="mt-4 flex items-center justify-between">
+          <div class="mt-5 flex items-center justify-between">
             <span class="font-cinzel text-emerald-900 font-bold">$40.00</span>
-            <button onclick="addToCart('Jamaican Ruby','$40.00','💎')" class="bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-cinzel tracking-widest px-4 py-2 rounded-full transition-colors">Add to Cart</button>
+            <button onclick="addToCart('Jamaican Ruby','$40.00','💎')" class="btn-cart">Add to Cart</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden shadow-sm border border-emerald-100 flex flex-col">
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
         <div class="h-36 flex items-center justify-center text-5xl" style="background:linear-gradient(135deg,#e0e7ff,#c7d2fe);">🌙</div>
         <div class="p-5 flex flex-col flex-1">
           <p class="font-cinzel text-xs text-amber-600 tracking-widest uppercase mb-1">Specialty</p>
           <h3 class="font-cormorant text-xl text-emerald-900 font-semibold mb-2">Menstrual Relief</h3>
-          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Created for the sacred rhythm of the feminine cycle. This bar works from the very first use — easing cramps, nourishing skin, and offering a gentle, natural alternative that honors your body's wisdom.</p>
-          <div class="mt-4 flex items-center justify-between">
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Created for the sacred rhythm of the feminine cycle. Works from the very first use — easing cramps, nourishing skin, and offering a gentle, natural alternative that honors your body's wisdom.</p>
+          <div class="mt-5 flex items-center justify-between">
             <span class="font-cinzel text-emerald-900 font-bold">$40.00</span>
-            <button onclick="addToCart('Menstrual Relief Soap','$40.00','🌙')" class="bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-cinzel tracking-widest px-4 py-2 rounded-full transition-colors">Add to Cart</button>
+            <button onclick="addToCart('Menstrual Relief Soap','$40.00','🌙')" class="btn-cart">Add to Cart</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden shadow-sm border border-emerald-100 flex flex-col">
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
         <div class="h-36 flex items-center justify-center text-5xl" style="background:linear-gradient(135deg,#fee2e2,#fecaca);">🔥</div>
         <div class="p-5 flex flex-col flex-1">
           <p class="font-cinzel text-xs text-amber-600 tracking-widest uppercase mb-1">Specialty</p>
           <h3 class="font-cormorant text-xl text-emerald-900 font-semibold mb-2">Pain Relief Soap</h3>
-          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Forged for the hardworking body. Whether it's lower back pain, muscle soreness, or the aches of daily labor — this bar delivers relief that refreshes the spirit and leaves skin feeling renewed and soft.</p>
-          <div class="mt-4 flex items-center justify-between">
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Forged for the hardworking body. Lower back pain, muscle soreness, or daily aches — this bar delivers relief that refreshes the spirit and leaves skin feeling renewed and soft.</p>
+          <div class="mt-5 flex items-center justify-between">
             <span class="font-cinzel text-emerald-900 font-bold">$40.00</span>
-            <button onclick="addToCart('Pain Relief Soap','$40.00','🔥')" class="bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-cinzel tracking-widest px-4 py-2 rounded-full transition-colors">Add to Cart</button>
+            <button onclick="addToCart('Pain Relief Soap','$40.00','🔥')" class="btn-cart">Add to Cart</button>
           </div>
         </div>
       </div>
 
     </div>
 
-    <!-- REGULAR SOAPS -->
-    <div class="text-center mt-20 mb-14">
+    <!-- Regular & Seasonal heading -->
+    <div class="text-center mt-24 mb-14">
       <p class="font-cinzel text-amber-600 tracking-widest text-xs uppercase mb-2">Everyday Luxury</p>
-      <h2 class="font-cormorant text-4xl md:text-5xl text-emerald-900 font-semibold">Regular & Seasonal Soaps</h2>
+      <h2 class="font-cormorant text-4xl md:text-5xl font-semibold" style="color:#022c22;">Regular &amp; Seasonal Soaps</h2>
       <p class="font-lato text-emerald-700 mt-3 text-sm">$25.00 each · Beautifully crafted for daily ritual</p>
-      <div class="w-16 h-0.5 bg-amber-500 mx-auto mt-4 opacity-60"></div>
+      <div class="w-24 h-px mx-auto mt-5" style="background:linear-gradient(90deg,transparent,#b7791f,transparent);"></div>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden shadow-sm border border-amber-100 flex flex-col">
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(183,121,31,0.12); box-shadow:0 2px 12px rgba(6,78,59,0.06);">
         <div class="h-32 flex items-center justify-center text-4xl" style="background:linear-gradient(135deg,#fef9c3,#fde68a);">🍋</div>
         <div class="p-5 flex flex-col flex-1">
           <p class="font-cinzel text-xs text-amber-600 tracking-widest uppercase mb-1">Regular</p>
           <h3 class="font-cormorant text-lg text-emerald-900 font-semibold mb-1">Lemon Zest</h3>
           <p class="font-lato text-xs text-emerald-700 leading-relaxed flex-1">Bright and invigorating — a morning bar that awakens the senses and leaves skin luminous and clean.</p>
-          <div class="mt-3 flex items-center justify-between">
+          <div class="mt-4 flex items-center justify-between">
             <span class="font-cinzel text-emerald-900 font-bold text-sm">$25.00</span>
-            <button onclick="addToCart('Lemon Zest Soap','$25.00','🍋')" class="bg-amber-600 hover:bg-amber-500 text-white text-xs font-cinzel tracking-wide px-3 py-1.5 rounded-full transition-colors">Add</button>
+            <button onclick="addToCart('Lemon Zest Soap','$25.00','🍋')" class="btn-cart">Add to Cart</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden shadow-sm border border-amber-100 flex flex-col">
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(183,121,31,0.12); box-shadow:0 2px 12px rgba(6,78,59,0.06);">
         <div class="h-32 flex items-center justify-center text-4xl" style="background:linear-gradient(135deg,#d1fae5,#6ee7b7);">🌿</div>
         <div class="p-5 flex flex-col flex-1">
           <p class="font-cinzel text-xs text-amber-600 tracking-widest uppercase mb-1">Regular</p>
           <h3 class="font-cormorant text-lg text-emerald-900 font-semibold mb-1">Eucalyptus Mint</h3>
           <p class="font-lato text-xs text-emerald-700 leading-relaxed flex-1">Cool, clarifying, and deeply refreshing. A spa-worthy bar that clears the mind as it cleanses the body.</p>
-          <div class="mt-3 flex items-center justify-between">
+          <div class="mt-4 flex items-center justify-between">
             <span class="font-cinzel text-emerald-900 font-bold text-sm">$25.00</span>
-            <button onclick="addToCart('Eucalyptus Mint Soap','$25.00','🌿')" class="bg-amber-600 hover:bg-amber-500 text-white text-xs font-cinzel tracking-wide px-3 py-1.5 rounded-full transition-colors">Add</button>
+            <button onclick="addToCart('Eucalyptus Mint Soap','$25.00','🌿')" class="btn-cart">Add to Cart</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden shadow-sm border border-amber-100 flex flex-col">
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(183,121,31,0.12); box-shadow:0 2px 12px rgba(6,78,59,0.06);">
         <div class="h-32 flex items-center justify-center text-4xl" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8);">🌺</div>
         <div class="p-5 flex flex-col flex-1">
           <p class="font-cinzel text-xs text-amber-600 tracking-widest uppercase mb-1">Regular</p>
           <h3 class="font-cormorant text-lg text-emerald-900 font-semibold mb-1">Rose Hibiscus</h3>
           <p class="font-lato text-xs text-emerald-700 leading-relaxed flex-1">A floral celebration of femininity. Soft petals, rich lather, and a fragrance that lingers like a beautiful memory.</p>
-          <div class="mt-3 flex items-center justify-between">
+          <div class="mt-4 flex items-center justify-between">
             <span class="font-cinzel text-emerald-900 font-bold text-sm">$25.00</span>
-            <button onclick="addToCart('Rose Hibiscus Soap','$25.00','🌺')" class="bg-amber-600 hover:bg-amber-500 text-white text-xs font-cinzel tracking-wide px-3 py-1.5 rounded-full transition-colors">Add</button>
+            <button onclick="addToCart('Rose Hibiscus Soap','$25.00','🌺')" class="btn-cart">Add to Cart</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden shadow-sm border border-amber-100 flex flex-col">
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(183,121,31,0.12); box-shadow:0 2px 12px rgba(6,78,59,0.06);">
         <div class="h-32 flex items-center justify-center text-4xl" style="background:linear-gradient(135deg,#f0fdf4,#bbf7d0);">🌱</div>
         <div class="p-5 flex flex-col flex-1">
           <p class="font-cinzel text-xs text-amber-600 tracking-widest uppercase mb-1">Regular</p>
-          <h3 class="font-cormorant text-lg text-emerald-900 font-semibold mb-1">Green Tea & Honey</h3>
+          <h3 class="font-cormorant text-lg text-emerald-900 font-semibold mb-1">Green Tea &amp; Honey</h3>
           <p class="font-lato text-xs text-emerald-700 leading-relaxed flex-1">Antioxidant-rich and sweetly nourishing. A bar that protects and pampers in equal measure.</p>
-          <div class="mt-3 flex items-center justify-between">
+          <div class="mt-4 flex items-center justify-between">
             <span class="font-cinzel text-emerald-900 font-bold text-sm">$25.00</span>
-            <button onclick="addToCart('Green Tea & Honey Soap','$25.00','🌱')" class="bg-amber-600 hover:bg-amber-500 text-white text-xs font-cinzel tracking-wide px-3 py-1.5 rounded-full transition-colors">Add</button>
+            <button onclick="addToCart('Green Tea & Honey Soap','$25.00','🌱')" class="btn-cart">Add to Cart</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden shadow-sm border border-amber-100 flex flex-col">
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(183,121,31,0.12); box-shadow:0 2px 12px rgba(6,78,59,0.06);">
         <div class="h-32 flex items-center justify-center text-4xl" style="background:linear-gradient(135deg,#fef3c7,#fbbf24);">🍯</div>
         <div class="p-5 flex flex-col flex-1">
           <p class="font-cinzel text-xs text-amber-600 tracking-widest uppercase mb-1">Regular</p>
-          <h3 class="font-cormorant text-lg text-emerald-900 font-semibold mb-1">Oat & Honey</h3>
+          <h3 class="font-cormorant text-lg text-emerald-900 font-semibold mb-1">Oat &amp; Honey</h3>
           <p class="font-lato text-xs text-emerald-700 leading-relaxed flex-1">Old-fashioned nourishment made luxurious. Gentle exfoliation meets deep moisture for skin that glows.</p>
-          <div class="mt-3 flex items-center justify-between">
+          <div class="mt-4 flex items-center justify-between">
             <span class="font-cinzel text-emerald-900 font-bold text-sm">$25.00</span>
-            <button onclick="addToCart('Oat & Honey Soap','$25.00','🍯')" class="bg-amber-600 hover:bg-amber-500 text-white text-xs font-cinzel tracking-wide px-3 py-1.5 rounded-full transition-colors">Add</button>
+            <button onclick="addToCart('Oat & Honey Soap','$25.00','🍯')" class="btn-cart">Add to Cart</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden shadow-sm border border-amber-100 flex flex-col">
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(183,121,31,0.12); box-shadow:0 2px 12px rgba(6,78,59,0.06);">
         <div class="h-32 flex items-center justify-center text-4xl" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe);">🪻</div>
         <div class="p-5 flex flex-col flex-1">
           <p class="font-cinzel text-xs text-amber-600 tracking-widest uppercase mb-1">Regular</p>
           <h3 class="font-cormorant text-lg text-emerald-900 font-semibold mb-1">Lavender Dreams</h3>
           <p class="font-lato text-xs text-emerald-700 leading-relaxed flex-1">Wind down with this calming nighttime ritual bar. Pure lavender lulls the body into rest and renewal.</p>
-          <div class="mt-3 flex items-center justify-between">
+          <div class="mt-4 flex items-center justify-between">
             <span class="font-cinzel text-emerald-900 font-bold text-sm">$25.00</span>
-            <button onclick="addToCart('Lavender Dreams Soap','$25.00','🪻')" class="bg-amber-600 hover:bg-amber-500 text-white text-xs font-cinzel tracking-wide px-3 py-1.5 rounded-full transition-colors">Add</button>
+            <button onclick="addToCart('Lavender Dreams Soap','$25.00','🪻')" class="btn-cart">Add to Cart</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden shadow-sm border border-amber-100 flex flex-col">
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(183,121,31,0.12); box-shadow:0 2px 12px rgba(6,78,59,0.06);">
         <div class="h-32 flex items-center justify-center text-4xl" style="background:linear-gradient(135deg,#fef9c3,#fef08a);">🌻</div>
         <div class="p-5 flex flex-col flex-1">
           <p class="font-cinzel text-xs text-amber-600 tracking-widest uppercase mb-1">Seasonal</p>
-          <h3 class="font-cormorant text-lg text-emerald-900 font-semibold mb-1">Sunshine & Citrus</h3>
+          <h3 class="font-cormorant text-lg text-emerald-900 font-semibold mb-1">Sunshine &amp; Citrus</h3>
           <p class="font-lato text-xs text-emerald-700 leading-relaxed flex-1">A summer-bright bar bursting with vitamin-rich citrus. Pure joy in every lather — radiant skin guaranteed.</p>
-          <div class="mt-3 flex items-center justify-between">
+          <div class="mt-4 flex items-center justify-between">
             <span class="font-cinzel text-emerald-900 font-bold text-sm">$25.00</span>
-            <button onclick="addToCart('Sunshine & Citrus Soap','$25.00','🌻')" class="bg-amber-600 hover:bg-amber-500 text-white text-xs font-cinzel tracking-wide px-3 py-1.5 rounded-full transition-colors">Add</button>
+            <button onclick="addToCart('Sunshine & Citrus Soap','$25.00','🌻')" class="btn-cart">Add to Cart</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden shadow-sm border border-amber-100 flex flex-col">
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(183,121,31,0.12); box-shadow:0 2px 12px rgba(6,78,59,0.06);">
         <div class="h-32 flex items-center justify-center text-4xl" style="background:linear-gradient(135deg,#fef2f2,#fca5a5);">🍂</div>
         <div class="p-5 flex flex-col flex-1">
           <p class="font-cinzel text-xs text-amber-600 tracking-widest uppercase mb-1">Seasonal</p>
           <h3 class="font-cormorant text-lg text-emerald-900 font-semibold mb-1">Spiced Harvest</h3>
-          <p class="font-lato text-xs text-emerald-700 leading-relaxed flex-1">Warm cinnamon, clove, and earthy spice — an autumn offering that wraps your skin in the comfort of the season.</p>
-          <div class="mt-3 flex items-center justify-between">
+          <p class="font-lato text-xs text-emerald-700 leading-relaxed flex-1">Warm cinnamon, clove, and earthy spice — an autumn offering that wraps your skin in comfort.</p>
+          <div class="mt-4 flex items-center justify-between">
             <span class="font-cinzel text-emerald-900 font-bold text-sm">$25.00</span>
-            <button onclick="addToCart('Spiced Harvest Soap','$25.00','🍂')" class="bg-amber-600 hover:bg-amber-500 text-white text-xs font-cinzel tracking-wide px-3 py-1.5 rounded-full transition-colors">Add</button>
+            <button onclick="addToCart('Spiced Harvest Soap','$25.00','🍂')" class="btn-cart">Add to Cart</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden shadow-sm border border-amber-100 flex flex-col">
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(183,121,31,0.12); box-shadow:0 2px 12px rgba(6,78,59,0.06);">
         <div class="h-32 flex items-center justify-center text-4xl" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd);">❄️</div>
         <div class="p-5 flex flex-col flex-1">
           <p class="font-cinzel text-xs text-amber-600 tracking-widest uppercase mb-1">Seasonal</p>
           <h3 class="font-cormorant text-lg text-emerald-900 font-semibold mb-1">Winter Frost</h3>
           <p class="font-lato text-xs text-emerald-700 leading-relaxed flex-1">Crisp peppermint and cool botanicals — a refreshing winter bar that keeps skin hydrated through the chill.</p>
-          <div class="mt-3 flex items-center justify-between">
+          <div class="mt-4 flex items-center justify-between">
             <span class="font-cinzel text-emerald-900 font-bold text-sm">$25.00</span>
-            <button onclick="addToCart('Winter Frost Soap','$25.00','❄️')" class="bg-amber-600 hover:bg-amber-500 text-white text-xs font-cinzel tracking-wide px-3 py-1.5 rounded-full transition-colors">Add</button>
+            <button onclick="addToCart('Winter Frost Soap','$25.00','❄️')" class="btn-cart">Add to Cart</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden shadow-sm border border-amber-100 flex flex-col">
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(183,121,31,0.12); box-shadow:0 2px 12px rgba(6,78,59,0.06);">
         <div class="h-32 flex items-center justify-center text-4xl" style="background:linear-gradient(135deg,#f0fdf4,#86efac);">🌾</div>
         <div class="p-5 flex flex-col flex-1">
           <p class="font-cinzel text-xs text-amber-600 tracking-widest uppercase mb-1">Regular</p>
           <h3 class="font-cormorant text-lg text-emerald-900 font-semibold mb-1">Shea Butter Bliss</h3>
           <p class="font-lato text-xs text-emerald-700 leading-relaxed flex-1">Ultra-moisturizing and velvety smooth. Pure shea richness that melts into dry skin and restores its natural glow.</p>
-          <div class="mt-3 flex items-center justify-between">
+          <div class="mt-4 flex items-center justify-between">
             <span class="font-cinzel text-emerald-900 font-bold text-sm">$25.00</span>
-            <button onclick="addToCart('Shea Butter Bliss Soap','$25.00','🌾')" class="bg-amber-600 hover:bg-amber-500 text-white text-xs font-cinzel tracking-wide px-3 py-1.5 rounded-full transition-colors">Add</button>
+            <button onclick="addToCart('Shea Butter Bliss Soap','$25.00','🌾')" class="btn-cart">Add to Cart</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden shadow-sm border border-amber-100 flex flex-col">
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(183,121,31,0.12); box-shadow:0 2px 12px rgba(6,78,59,0.06);">
         <div class="h-32 flex items-center justify-center text-4xl" style="background:linear-gradient(135deg,#fdf2f8,#f9a8d4);">🌷</div>
         <div class="p-5 flex flex-col flex-1">
           <p class="font-cinzel text-xs text-amber-600 tracking-widest uppercase mb-1">Regular</p>
           <h3 class="font-cormorant text-lg text-emerald-900 font-semibold mb-1">Coconut Rose</h3>
           <p class="font-lato text-xs text-emerald-700 leading-relaxed flex-1">Tropical sweetness meets floral elegance. Creamy coconut base with rose botanicals for deeply soft skin.</p>
-          <div class="mt-3 flex items-center justify-between">
+          <div class="mt-4 flex items-center justify-between">
             <span class="font-cinzel text-emerald-900 font-bold text-sm">$25.00</span>
-            <button onclick="addToCart('Coconut Rose Soap','$25.00','🌷')" class="bg-amber-600 hover:bg-amber-500 text-white text-xs font-cinzel tracking-wide px-3 py-1.5 rounded-full transition-colors">Add</button>
+            <button onclick="addToCart('Coconut Rose Soap','$25.00','🌷')" class="btn-cart">Add to Cart</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden shadow-sm border border-amber-100 flex flex-col">
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(183,121,31,0.12); box-shadow:0 2px 12px rgba(6,78,59,0.06);">
         <div class="h-32 flex items-center justify-center text-4xl" style="background:linear-gradient(135deg,#1a1a2e,#16213e);">🌑</div>
         <div class="p-5 flex flex-col flex-1">
           <p class="font-cinzel text-xs text-amber-600 tracking-widest uppercase mb-1">Regular</p>
           <h3 class="font-cormorant text-lg text-emerald-900 font-semibold mb-1">Charcoal Detox</h3>
           <p class="font-lato text-xs text-emerald-700 leading-relaxed flex-1">Deep-cleansing activated charcoal draws out impurities while botanical oils keep skin balanced and breathing.</p>
-          <div class="mt-3 flex items-center justify-between">
+          <div class="mt-4 flex items-center justify-between">
             <span class="font-cinzel text-emerald-900 font-bold text-sm">$25.00</span>
-            <button onclick="addToCart('Charcoal Detox Soap','$25.00','🌑')" class="bg-amber-600 hover:bg-amber-500 text-white text-xs font-cinzel tracking-wide px-3 py-1.5 rounded-full transition-colors">Add</button>
+            <button onclick="addToCart('Charcoal Detox Soap','$25.00','🌑')" class="btn-cart">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -555,180 +672,177 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ── GOLD DIVIDER ── -->
+<div class="gold-divider"></div>
+
+<!-- ════════════════════════════════════════════════════
      TESTIMONIALS
-═══════════════════════════════════════════════ -->
-<section id="testimonials" class="py-20 px-4" style="background: linear-gradient(to bottom, #fffbeb, #f0fdf4);">
+════════════════════════════════════════════════════ -->
+<section id="testimonials" class="py-24 px-4" style="background:linear-gradient(to bottom,#fffbeb,#f0fdf4);">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-14">
       <p class="font-cinzel text-amber-600 tracking-widest text-xs uppercase mb-2">From Their Hearts</p>
-      <h2 class="font-cormorant text-4xl md:text-5xl text-emerald-900 font-semibold">Voices from Our Community</h2>
+      <h2 class="font-cormorant text-4xl md:text-5xl font-semibold" style="color:#022c22;">Voices from Our Community</h2>
       <p class="font-lato text-emerald-700 mt-3 text-sm">Real people. Real healing. Rooted in love.</p>
-      <div class="w-16 h-0.5 bg-amber-500 mx-auto mt-4 opacity-60"></div>
+      <div class="w-24 h-px mx-auto mt-5" style="background:linear-gradient(90deg,transparent,#b7791f,transparent);"></div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
-      <!-- T1 -->
-      <div class="tcard fade-up bg-white rounded-2xl p-6 flex flex-col gap-3 shadow-sm border border-emerald-50">
-        <span class="font-cormorant text-amber-300 leading-none opacity-40" style="font-size:52px;line-height:1;">&ldquo;</span>
-        <p class="font-lato text-sm text-emerald-800 leading-relaxed italic flex-1">Praise God for Ericka Goff being so creative. The swings of going from feeling like I was at the equator to feeling like I was in Antarctica were so bad I was crying sometimes. Showering with this soap before bed helped reduce my hot flashes. It does not dissolve and melt like major brand soaps — it's made with good solid natural materials that help your skin instead of drying it out.</p>
-        <div class="w-8 h-0.5 bg-amber-500 opacity-50"></div>
+      <div class="tcard fade-up bg-white rounded-2xl p-6 flex flex-col gap-3" style="box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <span class="font-cormorant text-amber-300 opacity-40" style="font-size:50px;line-height:1;">&ldquo;</span>
+        <p class="font-lato text-sm text-emerald-800 leading-relaxed italic flex-1">Praise God for Ericka Goff being so creative. The swings of going from feeling like I was at the equator to feeling like I was in Antarctica were so bad I was crying sometimes. Showering with this soap before bed helped reduce my hot flashes. It does not dissolve and melt like major brand soaps — made with good solid natural materials that help your skin instead of drying it out.</p>
+        <div class="w-8 h-px" style="background:#b7791f;opacity:0.5;"></div>
         <div>
           <p class="font-cinzel text-emerald-900 text-sm font-semibold">Theressa Ford</p>
           <p class="font-lato text-emerald-600 text-xs mt-0.5">Attorney at Law, J.D. · Thurgood Marshall School of Law</p>
         </div>
-        <span class="self-start text-xs px-3 py-1 rounded-full font-lato font-medium" style="background:#fef3c7;color:#92400e;border:0.5px solid #d97706;">🌿 Hot Flash Relief</span>
+        <span class="self-start text-xs px-3 py-1 rounded-full font-lato font-medium" style="background:#fef3c7;color:#92400e;border:1px solid rgba(183,121,31,0.4);">🌿 Hot Flash Relief</span>
       </div>
 
-      <!-- T2 -->
-      <div class="tcard fade-up bg-white rounded-2xl p-6 flex flex-col gap-3 shadow-sm border border-emerald-50">
-        <span class="font-cormorant text-amber-300 leading-none opacity-40" style="font-size:52px;line-height:1;">&ldquo;</span>
+      <div class="tcard fade-up bg-white rounded-2xl p-6 flex flex-col gap-3" style="box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <span class="font-cormorant text-amber-300 opacity-40" style="font-size:50px;line-height:1;">&ldquo;</span>
         <p class="font-lato text-sm text-emerald-800 leading-relaxed italic flex-1">Alma's Grace has always been great for my skin and my mental health. It leaves my skin nice and soft. It does not leave me dry or brittle. I am washing my worries away. It helped me calm down throughout postpartum, right to my last small piece. I used it as a ritual wash. Highly recommend — especially to first-time mothers.</p>
-        <div class="w-8 h-0.5 bg-amber-500 opacity-50"></div>
+        <div class="w-8 h-px" style="background:#b7791f;opacity:0.5;"></div>
         <div>
           <p class="font-cinzel text-emerald-900 text-sm font-semibold">Zavier</p>
           <p class="font-lato text-emerald-600 text-xs mt-0.5">Loyal Customer</p>
         </div>
-        <span class="self-start text-xs px-3 py-1 rounded-full font-lato font-medium" style="background:#fef3c7;color:#92400e;border:0.5px solid #d97706;">🌿 Alma's Grace</span>
+        <span class="self-start text-xs px-3 py-1 rounded-full font-lato font-medium" style="background:#fef3c7;color:#92400e;border:1px solid rgba(183,121,31,0.4);">🌿 Alma's Grace</span>
       </div>
 
-      <!-- T3 -->
-      <div class="tcard fade-up bg-white rounded-2xl p-6 flex flex-col gap-3 shadow-sm border border-emerald-50">
-        <span class="font-cormorant text-amber-300 leading-none opacity-40" style="font-size:52px;line-height:1;">&ldquo;</span>
+      <div class="tcard fade-up bg-white rounded-2xl p-6 flex flex-col gap-3" style="box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <span class="font-cormorant text-amber-300 opacity-40" style="font-size:50px;line-height:1;">&ldquo;</span>
         <p class="font-lato text-sm text-emerald-800 leading-relaxed italic flex-1">Egoff Essentials — just wow! Becoming a mother has brought so many blessings, along with its share of changes, challenges, and stress. Using this soap has truly made my transition easier and more enjoyable. It's been such a helpful part of my self-care routine — I'll definitely be a lifelong customer. Love it! ❤️</p>
-        <div class="w-8 h-0.5 bg-amber-500 opacity-50"></div>
+        <div class="w-8 h-px" style="background:#b7791f;opacity:0.5;"></div>
         <div>
           <p class="font-cinzel text-emerald-900 text-sm font-semibold">Barthelemy Jen</p>
-          <p class="font-lato text-emerald-600 text-xs mt-0.5">New Mother & Lifelong Customer</p>
+          <p class="font-lato text-emerald-600 text-xs mt-0.5">New Mother &amp; Lifelong Customer</p>
         </div>
-        <span class="self-start text-xs px-3 py-1 rounded-full font-lato font-medium" style="background:#fef3c7;color:#92400e;border:0.5px solid #d97706;">🌿 Alma's Grace</span>
+        <span class="self-start text-xs px-3 py-1 rounded-full font-lato font-medium" style="background:#fef3c7;color:#92400e;border:1px solid rgba(183,121,31,0.4);">🌿 Alma's Grace</span>
       </div>
 
-      <!-- T4 -->
-      <div class="tcard fade-up bg-white rounded-2xl p-6 flex flex-col gap-3 shadow-sm border border-emerald-50">
-        <span class="font-cormorant text-amber-300 leading-none opacity-40" style="font-size:52px;line-height:1;">&ldquo;</span>
+      <div class="tcard fade-up bg-white rounded-2xl p-6 flex flex-col gap-3" style="box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <span class="font-cormorant text-amber-300 opacity-40" style="font-size:50px;line-height:1;">&ldquo;</span>
         <p class="font-lato text-sm text-emerald-800 leading-relaxed italic flex-1">Even while facing a cancer diagnosis, the Egoff Essentials soap for pain has been a source of comfort and support throughout my journey. Alongside my faith, trust in God, and the love of those around me, it has truly made a difference during my treatment days. I am so grateful for this product — thank you.</p>
-        <div class="w-8 h-0.5 bg-amber-500 opacity-50"></div>
+        <div class="w-8 h-px" style="background:#b7791f;opacity:0.5;"></div>
         <div>
           <p class="font-cinzel text-emerald-900 text-sm font-semibold">Michele Gunn</p>
           <p class="font-lato text-emerald-600 text-xs mt-0.5">Warrior of Faith</p>
         </div>
-        <span class="self-start text-xs px-3 py-1 rounded-full font-lato font-medium" style="background:#fef3c7;color:#92400e;border:0.5px solid #d97706;">🌿 Pain Relief Soap</span>
+        <span class="self-start text-xs px-3 py-1 rounded-full font-lato font-medium" style="background:#fef3c7;color:#92400e;border:1px solid rgba(183,121,31,0.4);">🌿 Pain Relief Soap</span>
       </div>
 
-      <!-- T5 -->
-      <div class="tcard fade-up bg-white rounded-2xl p-6 flex flex-col gap-3 shadow-sm border border-emerald-50">
-        <span class="font-cormorant text-amber-300 leading-none opacity-40" style="font-size:52px;line-height:1;">&ldquo;</span>
-        <p class="font-lato text-sm text-emerald-800 leading-relaxed italic flex-1">Each month during my menstrual cycle I have severe cramps. I am glad to say I truly found an alternative in Egoff Essentials that works just as promised. I switched from painkillers to this menstrual relief soap — it worked from my very first cycle, lasted well, and nourished my skin beautifully. Thank you from a loyal customer.</p>
-        <div class="w-8 h-0.5 bg-amber-500 opacity-50"></div>
+      <div class="tcard fade-up bg-white rounded-2xl p-6 flex flex-col gap-3" style="box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <span class="font-cormorant text-amber-300 opacity-40" style="font-size:50px;line-height:1;">&ldquo;</span>
+        <p class="font-lato text-sm text-emerald-800 leading-relaxed italic flex-1">Each month during my menstrual cycle I have severe cramps. I am glad to say I truly found an alternative in Egoff Essentials that works just as promised. I switched from painkillers — it worked from my very first cycle, lasted well, and nourished my skin beautifully. Thank you from a loyal customer.</p>
+        <div class="w-8 h-px" style="background:#b7791f;opacity:0.5;"></div>
         <div>
           <p class="font-cinzel text-emerald-900 text-sm font-semibold">Celestine</p>
           <p class="font-lato text-emerald-600 text-xs mt-0.5">Florida</p>
         </div>
-        <span class="self-start text-xs px-3 py-1 rounded-full font-lato font-medium" style="background:#fef3c7;color:#92400e;border:0.5px solid #d97706;">🌿 Menstrual Relief</span>
+        <span class="self-start text-xs px-3 py-1 rounded-full font-lato font-medium" style="background:#fef3c7;color:#92400e;border:1px solid rgba(183,121,31,0.4);">🌿 Menstrual Relief</span>
       </div>
 
-      <!-- T6 -->
-      <div class="tcard fade-up bg-white rounded-2xl p-6 flex flex-col gap-3 shadow-sm border border-emerald-50">
-        <span class="font-cormorant text-amber-300 leading-none opacity-40" style="font-size:52px;line-height:1;">&ldquo;</span>
+      <div class="tcard fade-up bg-white rounded-2xl p-6 flex flex-col gap-3" style="box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <span class="font-cormorant text-amber-300 opacity-40" style="font-size:50px;line-height:1;">&ldquo;</span>
         <p class="font-lato text-sm text-emerald-800 leading-relaxed italic flex-1">This soap is absolutely amazing. I used it for lower back pain. I can honestly say afterwards my body feels relief and refreshed. This is the only soap I refer to.</p>
-        <div class="w-8 h-0.5 bg-amber-500 opacity-50"></div>
+        <div class="w-8 h-px" style="background:#b7791f;opacity:0.5;"></div>
         <div>
           <p class="font-cinzel text-emerald-900 text-sm font-semibold">Brandon</p>
           <p class="font-lato text-emerald-600 text-xs mt-0.5">Loyal Customer</p>
         </div>
-        <span class="self-start text-xs px-3 py-1 rounded-full font-lato font-medium" style="background:#fef3c7;color:#92400e;border:0.5px solid #d97706;">🌿 Pain Relief Soap</span>
+        <span class="self-start text-xs px-3 py-1 rounded-full font-lato font-medium" style="background:#fef3c7;color:#92400e;border:1px solid rgba(183,121,31,0.4);">🌿 Pain Relief Soap</span>
       </div>
 
-      <!-- T7 -->
-      <div class="tcard fade-up bg-white rounded-2xl p-6 flex flex-col gap-3 shadow-sm border border-emerald-50">
-        <span class="font-cormorant text-amber-300 leading-none opacity-40" style="font-size:52px;line-height:1;">&ldquo;</span>
+      <div class="tcard fade-up bg-white rounded-2xl p-6 flex flex-col gap-3" style="box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <span class="font-cormorant text-amber-300 opacity-40" style="font-size:50px;line-height:1;">&ldquo;</span>
         <p class="font-lato text-sm text-emerald-800 leading-relaxed italic flex-1">I purchased the pain soap for my husband. At first he said he couldn't tell if it was working — but I noticed he had stopped complaining about his lower back pain, and he hadn't even realized it himself. When he spoke of his back while away, that's when he realized it had been working all along. Such an excellent product!</p>
-        <div class="w-8 h-0.5 bg-amber-500 opacity-50"></div>
+        <div class="w-8 h-px" style="background:#b7791f;opacity:0.5;"></div>
         <div>
           <p class="font-cinzel text-emerald-900 text-sm font-semibold">Griffin</p>
-          <p class="font-lato text-emerald-600 text-xs mt-0.5">Devoted Wife & Customer</p>
+          <p class="font-lato text-emerald-600 text-xs mt-0.5">Devoted Wife &amp; Customer</p>
         </div>
-        <span class="self-start text-xs px-3 py-1 rounded-full font-lato font-medium" style="background:#fef3c7;color:#92400e;border:0.5px solid #d97706;">🌿 Pain Relief Soap</span>
+        <span class="self-start text-xs px-3 py-1 rounded-full font-lato font-medium" style="background:#fef3c7;color:#92400e;border:1px solid rgba(183,121,31,0.4);">🌿 Pain Relief Soap</span>
       </div>
 
-      <!-- T8 -->
-      <div class="tcard fade-up bg-white rounded-2xl p-6 flex flex-col gap-3 shadow-sm border border-emerald-50">
-        <span class="font-cormorant text-amber-300 leading-none opacity-40" style="font-size:52px;line-height:1;">&ldquo;</span>
+      <div class="tcard fade-up bg-white rounded-2xl p-6 flex flex-col gap-3" style="box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <span class="font-cormorant text-amber-300 opacity-40" style="font-size:50px;line-height:1;">&ldquo;</span>
         <p class="font-lato text-sm text-emerald-800 leading-relaxed italic flex-1">I got the pain soap from Ms. Erika. It works!! After a long day at work or those little pains that pop up throwing a baseball — the pain soap gets rid of it. It also makes you feel refreshed and your skin feel so soft afterwards.</p>
-        <div class="w-8 h-0.5 bg-amber-500 opacity-50"></div>
+        <div class="w-8 h-px" style="background:#b7791f;opacity:0.5;"></div>
         <div>
           <p class="font-cinzel text-emerald-900 text-sm font-semibold">Stephian</p>
           <p class="font-lato text-emerald-600 text-xs mt-0.5">Customer</p>
         </div>
-        <span class="self-start text-xs px-3 py-1 rounded-full font-lato font-medium" style="background:#fef3c7;color:#92400e;border:0.5px solid #d97706;">🌿 Pain Relief Soap</span>
+        <span class="self-start text-xs px-3 py-1 rounded-full font-lato font-medium" style="background:#fef3c7;color:#92400e;border:1px solid rgba(183,121,31,0.4);">🌿 Pain Relief Soap</span>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     FAQ
-═══════════════════════════════════════════════ -->
-<section id="faq" class="py-20 px-4 bg-white">
+<!-- ── GOLD DIVIDER ── -->
+<div class="gold-divider"></div>
+
+<!-- ════════════════════════════════════════════════════
+     FAQ ACCORDION
+════════════════════════════════════════════════════ -->
+<section id="faq" class="py-24 px-4 bg-white">
   <div class="max-w-3xl mx-auto">
     <div class="text-center mb-14">
       <p class="font-cinzel text-amber-600 tracking-widest text-xs uppercase mb-2">You Asked, We Answered</p>
-      <h2 class="font-cormorant text-4xl text-emerald-900 font-semibold">Frequently Asked Questions</h2>
-      <div class="w-16 h-0.5 bg-amber-500 mx-auto mt-4 opacity-60"></div>
+      <h2 class="font-cormorant text-4xl font-semibold" style="color:#022c22;">Frequently Asked Questions</h2>
+      <div class="w-24 h-px mx-auto mt-5" style="background:linear-gradient(90deg,transparent,#b7791f,transparent);"></div>
     </div>
-
     <div class="space-y-4">
 
-      <div class="faq-item border border-emerald-100 rounded-2xl overflow-hidden">
-        <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between bg-emerald-50 hover:bg-emerald-100 transition-colors" onclick="toggleFaq(this)">
-          <span class="font-cinzel text-emerald-900 text-sm tracking-wide">What makes EGOFF Essentials different from store-bought soap?</span>
-          <svg class="faq-arrow w-5 h-5 text-amber-600 flex-shrink-0 ml-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+      <div class="rounded-2xl overflow-hidden" style="border:1px solid rgba(6,78,59,0.12);">
+        <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between" style="background:#f0fdf4;" onclick="toggleFaq(this)">
+          <span class="font-cinzel text-emerald-900 text-sm tracking-wide pr-4">What makes EGOFF Essentials different from store-bought soap?</span>
+          <svg class="faq-arrow w-5 h-5 flex-shrink-0" style="color:#b7791f;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="faq-body">
-          <p class="font-lato text-sm text-emerald-700 leading-relaxed px-6 py-5">Our soaps are crafted by hand using only natural, purposeful ingredients — no synthetic detergents, no harsh chemicals, no fillers. Where commercial soaps strip the skin's natural oils, ours nourish and protect. They are also dense and long-lasting, crafted with substance and intention rather than designed to dissolve quickly.</p>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed px-6 py-5">Our soaps are crafted by hand using only natural, purposeful ingredients — no synthetic detergents, no harsh chemicals, no fillers. Where commercial soaps strip the skin's natural oils, ours nourish and protect. They are dense and long-lasting, crafted with substance and intention.</p>
         </div>
       </div>
 
-      <div class="faq-item border border-emerald-100 rounded-2xl overflow-hidden">
-        <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between bg-emerald-50 hover:bg-emerald-100 transition-colors" onclick="toggleFaq(this)">
-          <span class="font-cinzel text-emerald-900 text-sm tracking-wide">How long will a bar of soap last?</span>
-          <svg class="faq-arrow w-5 h-5 text-amber-600 flex-shrink-0 ml-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+      <div class="rounded-2xl overflow-hidden" style="border:1px solid rgba(6,78,59,0.12);">
+        <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between" style="background:#f0fdf4;" onclick="toggleFaq(this)">
+          <span class="font-cinzel text-emerald-900 text-sm tracking-wide pr-4">How long will a bar of soap last?</span>
+          <svg class="faq-arrow w-5 h-5 flex-shrink-0" style="color:#b7791f;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="faq-body">
-          <p class="font-lato text-sm text-emerald-700 leading-relaxed px-6 py-5">With proper care, typically 4–8 weeks with regular daily use. Allow your bar to fully dry between uses by keeping it on a draining soap dish away from standing water. Our customers often report their bars lasting much longer when used with intention — as a ritual rather than a rush.</p>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed px-6 py-5">With proper care, typically 4–8 weeks with regular daily use. Allow your bar to fully dry between uses by keeping it on a draining soap dish away from standing water. Many customers report bars lasting much longer when used as a daily ritual.</p>
         </div>
       </div>
 
-      <div class="faq-item border border-emerald-100 rounded-2xl overflow-hidden">
-        <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between bg-emerald-50 hover:bg-emerald-100 transition-colors" onclick="toggleFaq(this)">
-          <span class="font-cinzel text-emerald-900 text-sm tracking-wide">Are your soaps safe for sensitive skin?</span>
-          <svg class="faq-arrow w-5 h-5 text-amber-600 flex-shrink-0 ml-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+      <div class="rounded-2xl overflow-hidden" style="border:1px solid rgba(6,78,59,0.12);">
+        <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between" style="background:#f0fdf4;" onclick="toggleFaq(this)">
+          <span class="font-cinzel text-emerald-900 text-sm tracking-wide pr-4">Are your soaps safe for sensitive skin?</span>
+          <svg class="faq-arrow w-5 h-5 flex-shrink-0" style="color:#b7791f;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="faq-body">
-          <p class="font-lato text-sm text-emerald-700 leading-relaxed px-6 py-5">Yes — our formulations are gentle by design. We use no artificial dyes, no synthetic fragrances, and no harsh preservatives. That said, everyone's skin is unique. If you have known allergies or skin conditions, we encourage you to review the ingredients for each specific bar or reach out to us directly before ordering.</p>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed px-6 py-5">Yes — our formulations are gentle by design. We use no artificial dyes, no synthetic fragrances, and no harsh preservatives. If you have known allergies or skin conditions, please review ingredients for each bar or reach out to us directly before ordering.</p>
         </div>
       </div>
 
-      <div class="faq-item border border-emerald-100 rounded-2xl overflow-hidden">
-        <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between bg-emerald-50 hover:bg-emerald-100 transition-colors" onclick="toggleFaq(this)">
-          <span class="font-cinzel text-emerald-900 text-sm tracking-wide">How do I place an order?</span>
-          <svg class="faq-arrow w-5 h-5 text-amber-600 flex-shrink-0 ml-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+      <div class="rounded-2xl overflow-hidden" style="border:1px solid rgba(6,78,59,0.12);">
+        <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between" style="background:#f0fdf4;" onclick="toggleFaq(this)">
+          <span class="font-cinzel text-emerald-900 text-sm tracking-wide pr-4">How do I place an order?</span>
+          <svg class="faq-arrow w-5 h-5 flex-shrink-0" style="color:#b7791f;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="faq-body">
-          <p class="font-lato text-sm text-emerald-700 leading-relaxed px-6 py-5">Simply add your selections to the cart, then click "Send My Order." Your cart summary will be sent directly to Ericka, who will confirm availability and arrange payment via your preferred method. You can also reach us directly by phone or email — we love a personal conversation and are happy to help you find the right bar for your needs.</p>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed px-6 py-5">Add your selections to the cart and click "Send My Order." Your cart summary is sent directly to Ericka, who will confirm availability and arrange payment. You can also reach us directly by phone or email — we love a personal conversation.</p>
         </div>
       </div>
 
-      <div class="faq-item border border-emerald-100 rounded-2xl overflow-hidden">
-        <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between bg-emerald-50 hover:bg-emerald-100 transition-colors" onclick="toggleFaq(this)">
-          <span class="font-cinzel text-emerald-900 text-sm tracking-wide">What is your shipping policy?</span>
-          <svg class="faq-arrow w-5 h-5 text-amber-600 flex-shrink-0 ml-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+      <div class="rounded-2xl overflow-hidden" style="border:1px solid rgba(6,78,59,0.12);">
+        <button class="faq-toggle w-full text-left px-6 py-5 flex items-center justify-between" style="background:#f0fdf4;" onclick="toggleFaq(this)">
+          <span class="font-cinzel text-emerald-900 text-sm tracking-wide pr-4">What is your shipping policy?</span>
+          <svg class="faq-arrow w-5 h-5 flex-shrink-0" style="color:#b7791f;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="faq-body">
-          <p class="font-lato text-sm text-emerald-700 leading-relaxed px-6 py-5">We ship within 5–7 business days of order confirmation. Free shipping is available on orders over $75. We ship throughout the United States. For local New Orleans customers, pickup arrangements may be available — just ask! All orders are carefully packaged to protect your soaps during transit.</p>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed px-6 py-5">We ship within 5–7 business days. Free shipping on orders over $75. We ship throughout the United States. For local New Orleans customers, pickup may be available — just ask! All orders are carefully packaged to protect your soaps in transit.</p>
         </div>
       </div>
 
@@ -736,77 +850,79 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ── GOLD DIVIDER ── -->
+<div class="gold-divider"></div>
+
+<!-- ════════════════════════════════════════════════════
      CONTACT
-═══════════════════════════════════════════════ -->
-<section id="contact" class="py-20 px-4 bg-emerald-900 text-white">
+════════════════════════════════════════════════════ -->
+<section id="contact" class="py-24 px-4" style="background:#064e3b;">
   <div class="max-w-4xl mx-auto">
     <div class="text-center mb-14">
       <p class="font-cinzel text-amber-400 tracking-widest text-xs uppercase mb-2">Get In Touch</p>
       <h2 class="font-cormorant text-4xl text-white font-semibold">Contact Ericka</h2>
       <p class="font-lato text-emerald-300 mt-3 text-sm">We'd love to hear from you — personally.</p>
-      <div class="w-16 h-0.5 bg-amber-500 mx-auto mt-4 opacity-60"></div>
+      <div class="w-24 h-px mx-auto mt-5" style="background:linear-gradient(90deg,transparent,#b7791f,transparent);"></div>
     </div>
-
     <div class="grid md:grid-cols-2 gap-10">
-      <div class="space-y-6">
+      <div class="space-y-7">
         <div class="flex items-start gap-4">
-          <div class="w-10 h-10 rounded-full bg-emerald-700 flex items-center justify-center flex-shrink-0 text-amber-300 text-lg">📞</div>
+          <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-lg" style="background:rgba(183,121,31,0.2);border:1px solid rgba(183,121,31,0.3);">📞</div>
           <div>
-            <p class="font-cinzel text-amber-300 text-xs tracking-widest uppercase mb-1">Phone / Text</p>
+            <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-1">Phone / Text</p>
             <a href="tel:+15047228408" class="font-lato text-white hover:text-amber-300 transition-colors">(504) 722-8408</a>
           </div>
         </div>
         <div class="flex items-start gap-4">
-          <div class="w-10 h-10 rounded-full bg-emerald-700 flex items-center justify-center flex-shrink-0 text-amber-300 text-lg">✉️</div>
+          <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-lg" style="background:rgba(183,121,31,0.2);border:1px solid rgba(183,121,31,0.3);">✉️</div>
           <div>
-            <p class="font-cinzel text-amber-300 text-xs tracking-widest uppercase mb-1">Email</p>
+            <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-1">Email</p>
             <a href="mailto:egoffessentials@gmail.com" class="font-lato text-white hover:text-amber-300 transition-colors">egoffessentials@gmail.com</a>
           </div>
         </div>
         <div class="flex items-start gap-4">
-          <div class="w-10 h-10 rounded-full bg-emerald-700 flex items-center justify-center flex-shrink-0 text-amber-300 text-lg">🕐</div>
+          <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-lg" style="background:rgba(183,121,31,0.2);border:1px solid rgba(183,121,31,0.3);">🕐</div>
           <div>
-            <p class="font-cinzel text-amber-300 text-xs tracking-widest uppercase mb-1">Hours</p>
-            <p class="font-lato text-emerald-200 text-sm">Monday – Friday: 9am – 6pm CST<br/>Saturday: 10am – 4pm CST<br/>Sunday: Closed (Day of Rest)</p>
+            <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-1">Hours</p>
+            <p class="font-lato text-emerald-200 text-sm leading-relaxed">Mon–Fri: 9am–6pm CST<br/>Saturday: 10am–4pm CST<br/>Sunday: Closed (Day of Rest)</p>
           </div>
         </div>
         <div class="flex items-start gap-4">
-          <div class="w-10 h-10 rounded-full bg-emerald-700 flex items-center justify-center flex-shrink-0 text-amber-300 text-lg">📦</div>
+          <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-lg" style="background:rgba(183,121,31,0.2);border:1px solid rgba(183,121,31,0.3);">📦</div>
           <div>
-            <p class="font-cinzel text-amber-300 text-xs tracking-widest uppercase mb-1">Shipping</p>
-            <p class="font-lato text-emerald-200 text-sm">5–7 business days · US Only<br/>Free shipping on orders over $75</p>
-          </div>
-        </div>
-        <div class="flex items-start gap-4">
-          <div class="w-10 h-10 rounded-full bg-emerald-700 flex items-center justify-center flex-shrink-0 text-amber-300 text-lg">🌿</div>
-          <div>
-            <p class="font-cinzel text-amber-300 text-xs tracking-widest uppercase mb-1">Follow Along</p>
-            <div class="flex gap-3 mt-1">
-              <a href="https://instagram.com/egoffessentials" target="_blank" class="font-lato text-emerald-200 hover:text-amber-300 transition-colors text-sm">Instagram</a>
-              <span class="text-emerald-600">·</span>
-              <a href="https://facebook.com/egoffessentials" target="_blank" class="font-lato text-emerald-200 hover:text-amber-300 transition-colors text-sm">Facebook</a>
-            </div>
+            <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-1">Shipping</p>
+            <p class="font-lato text-emerald-200 text-sm leading-relaxed">5–7 business days · US Only<br/>Free shipping on orders over $75</p>
           </div>
         </div>
       </div>
-
-      <div class="bg-emerald-800 rounded-2xl p-8 border border-emerald-700">
-        <p class="font-cormorant text-2xl text-amber-300 italic mb-4">"Every bar is made with prayer, purpose, and love for you."</p>
+      <div class="rounded-2xl p-8" style="background:rgba(255,255,255,0.07);border:1px solid rgba(183,121,31,0.25);">
+        <p class="font-cormorant text-2xl text-amber-300 italic mb-4 leading-snug">"Every bar is made with prayer, purpose, and love for you."</p>
         <p class="font-lato text-emerald-200 text-sm leading-relaxed mb-6">Whether you have a question about a product, want to share your experience, or simply want to say hello — Ericka reads every message personally. This is a business built on relationship, and you matter here.</p>
-        <a href="mailto:egoffessentials@gmail.com" class="inline-block bg-amber-600 hover:bg-amber-500 text-white font-cinzel tracking-widest px-6 py-3 rounded-full text-sm transition-colors">Send a Message ✦</a>
+        <a href="mailto:egoffessentials@gmail.com"
+           class="inline-block font-cinzel tracking-widest px-6 py-3 rounded-full text-sm text-white transition-colors"
+           style="background:#b7791f;">Send a Message ✦</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════════ -->
-<footer class="bg-emerald-950 text-emerald-400 py-10 px-4 text-center">
-  <div class="max-w-4xl mx-auto">
-    <div class="flex items-center justify-center gap-3 mb-4">
-      <svg width="28" height="28" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+<!-- ── GOLD DIVIDER ── -->
+<div class="gold-divider"></div>
+
+<!-- ════════════════════════════════════════════════════
+     PREMIUM FOOTER
+════════════════════════════════════════════════════ -->
+<footer style="background:#022c22;">
+
+  <!-- Top shimmer line -->
+  <div style="height:2px;background:linear-gradient(90deg,transparent,#b7791f,#fde68a,#b7791f,transparent);"></div>
+
+  <div class="max-w-6xl mx-auto px-6 pt-16 pb-10">
+
+    <!-- Centered logo + tagline -->
+    <div class="flex flex-col items-center text-center mb-14">
+      <svg width="90" height="90" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"
+           style="filter:drop-shadow(0 0 14px rgba(183,121,31,0.4)); margin-bottom:1rem;">
         <circle cx="18" cy="18" r="18" fill="#064e3b"/>
         <path d="M2 18 L18 10 L34 18 L18 26Z" fill="#f5c518" opacity="0.18"/>
         <path d="M18 16 C13 16 7 13 7 8 C7 5 10 3 13 5 C13 2 16 1 18 4Z" fill="#166534"/>
@@ -819,45 +935,114 @@
         <path d="M15.5 30 C13 31 11 32 10 33" stroke="#5c3a1e" stroke-width="1.2" fill="none" stroke-linecap="round"/>
         <path d="M18 31 C18 32.5 17 34 16 35" stroke="#5c3a1e" stroke-width="1.2" fill="none" stroke-linecap="round"/>
         <path d="M20.5 30 C23 31 25 32 26 33" stroke="#5c3a1e" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-        <circle cx="18" cy="18" r="17" fill="none" stroke="#b7791f" stroke-width="0.8" opacity="0.5"/>
+        <circle cx="18" cy="18" r="17" fill="none" stroke="#b7791f" stroke-width="1" opacity="0.7"/>
       </svg>
-      <span class="font-cinzel text-white text-base tracking-widest">EGOFF <span class="text-amber-500">Essentials</span></span>
+
+      <h2 class="font-cinzel text-white text-xl tracking-[0.3em] mb-1">EGOFF <span style="color:#d97706;">Essentials</span></h2>
+      <p class="font-cormorant italic text-xl mb-1" style="color:#fde68a;">Essentially Rooted</p>
+      <p class="font-cinzel text-xs tracking-widest" style="color:rgba(183,121,31,0.65);">GOD · LOVE · POWER</p>
+
+      <!-- Social icons -->
+      <div class="flex items-center gap-4 mt-7">
+        <a href="https://instagram.com/egoffessentials" target="_blank" class="social-icon" aria-label="Instagram">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://facebook.com/egoffessentials" target="_blank" class="social-icon" aria-label="Facebook">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+          </svg>
+        </a>
+        <a href="mailto:egoffessentials@gmail.com" class="social-icon" aria-label="Email">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </a>
+        <a href="tel:+15047228408" class="social-icon" aria-label="Call">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </a>
+      </div>
     </div>
-    <p class="font-cormorant text-emerald-400 italic text-sm mb-2">Essentially Rooted · GOD · LOVE · POWER</p>
-    <p class="font-lato text-emerald-600 text-xs mb-4">An Egoff Enterprise LLC Brand · New Orleans, Louisiana</p>
-    <div class="w-16 h-px bg-emerald-700 mx-auto mb-4"></div>
-    <p class="font-lato text-emerald-700 text-xs">© 2026 EGOFF Essentials · All Rights Reserved · Handcrafted with Love</p>
+
+    <!-- Three-column grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 mb-12">
+
+      <div class="text-center sm:text-left">
+        <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-5">Quick Links</p>
+        <ul class="space-y-3">
+          <li><a href="#hero"         class="font-lato text-emerald-300 hover:text-amber-300 text-sm transition-colors">Home</a></li>
+          <li><a href="#story"        class="font-lato text-emerald-300 hover:text-amber-300 text-sm transition-colors">Our Story</a></li>
+          <li><a href="#products"     class="font-lato text-emerald-300 hover:text-amber-300 text-sm transition-colors">Shop All Soaps</a></li>
+          <li><a href="#testimonials" class="font-lato text-emerald-300 hover:text-amber-300 text-sm transition-colors">Testimonials</a></li>
+          <li><a href="#faq"          class="font-lato text-emerald-300 hover:text-amber-300 text-sm transition-colors">FAQ</a></li>
+          <li><a href="#contact"      class="font-lato text-emerald-300 hover:text-amber-300 text-sm transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="text-center sm:text-left">
+        <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-5">Contact</p>
+        <ul class="space-y-3">
+          <li>
+            <a href="tel:+15047228408" class="font-lato text-emerald-300 hover:text-amber-300 text-sm transition-colors flex items-center gap-2 justify-center sm:justify-start">
+              <span style="color:#b7791f;">✆</span> (504) 722-8408
+            </a>
+          </li>
+          <li>
+            <a href="mailto:egoffessentials@gmail.com" class="font-lato text-emerald-300 hover:text-amber-300 text-sm transition-colors flex items-center gap-2 justify-center sm:justify-start">
+              <span style="color:#b7791f;">✉</span> egoffessentials@gmail.com
+            </a>
+          </li>
+          <li class="font-lato text-emerald-500 text-xs leading-relaxed pt-1">
+            Mon–Fri: 9am–6pm CST<br/>
+            Saturday: 10am–4pm CST<br/>
+            Sunday: Closed
+          </li>
+        </ul>
+      </div>
+
+      <div class="text-center sm:text-left">
+        <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-5">Our Purpose</p>
+        <p class="font-lato text-emerald-300 text-sm leading-relaxed mb-4">Handcrafted in New Orleans. Rooted in Jamaican heritage. Every bar is an act of love, faith, and service.</p>
+        <p class="font-cormorant italic text-sm" style="color:rgba(183,121,31,0.8);">Egoff Enterprise LLC</p>
+        <p class="font-lato text-xs text-emerald-500 mt-1">EGOFF Essentials · Egoff Foundation (TBA)</p>
+      </div>
+
+    </div>
+
+    <!-- Copyright bar -->
+    <div class="pt-6" style="border-top:1px solid rgba(183,121,31,0.15);">
+      <p class="font-lato text-center text-xs" style="color:rgba(167,243,208,0.35);">
+        © 2026 EGOFF Essentials · An Egoff Enterprise LLC Brand · New Orleans, Louisiana · All Rights Reserved
+      </p>
+    </div>
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════════
-     JAVASCRIPT
-═══════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════════════
+     JAVASCRIPT — Cart, Toast, Menu, FAQ, Scroll
+════════════════════════════════════════════════════ -->
 <script>
-  // ─── CART STATE ───────────────────────────────
+  // ── CART ──────────────────────────────────────────────
   let cart = JSON.parse(localStorage.getItem('egoff-cart') || '[]');
 
-  function saveCart() {
-    localStorage.setItem('egoff-cart', JSON.stringify(cart));
-  }
+  function saveCart() { localStorage.setItem('egoff-cart', JSON.stringify(cart)); }
 
   function addToCart(name, priceStr, emoji) {
     const price = parseFloat(priceStr.replace('$',''));
     const existing = cart.find(i => i.name === name);
-    if (existing) {
-      existing.qty++;
-    } else {
-      cart.push({ name, price, emoji, qty: 1 });
-    }
-    saveCart();
-    renderCart();
-    showToast(`${emoji} ${name} added to cart`);
+    if (existing) { existing.qty++; } else { cart.push({ name, price, emoji, qty: 1 }); }
+    saveCart(); renderCart(); showToast(emoji + ' ' + name + ' added to cart');
   }
 
   function removeItem(name) {
     cart = cart.filter(i => i.name !== name);
-    saveCart();
-    renderCart();
+    saveCart(); renderCart();
   }
 
   function changeQty(name, delta) {
@@ -865,48 +1050,38 @@
     if (!item) return;
     item.qty += delta;
     if (item.qty <= 0) cart = cart.filter(i => i.name !== name);
-    saveCart();
-    renderCart();
+    saveCart(); renderCart();
   }
 
   function clearCartConfirm() {
-    if (confirm('Remove all items from your cart?')) {
-      cart = [];
-      saveCart();
-      renderCart();
-    }
+    if (confirm('Remove all items from your cart?')) { cart = []; saveCart(); renderCart(); }
   }
 
   function renderCart() {
     const container = document.getElementById('cart-items');
-    const count = cart.reduce((s, i) => s + i.qty, 0);
-    const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    const count = cart.reduce((s,i) => s + i.qty, 0);
+    const total = cart.reduce((s,i) => s + i.price * i.qty, 0);
     document.getElementById('cart-count').textContent = count;
     document.getElementById('cart-subtotal').textContent = '$' + total.toFixed(2);
 
     if (cart.length === 0) {
-      container.innerHTML = `
-        <div class="text-center py-16 text-emerald-400">
-          <div class="text-5xl mb-4">🌿</div>
-          <p class="font-cormorant text-lg italic">Your cart is empty</p>
-          <p class="font-lato text-xs mt-1">Add something beautiful</p>
-        </div>`;
+      container.innerHTML = '<div style="text-align:center;padding:4rem 0;color:#6ee7b7;"><div style="font-size:3rem;margin-bottom:1rem;">🌿</div><p class="font-cormorant" style="font-size:1.1rem;font-style:italic;">Your cart is empty</p><p class="font-lato" style="font-size:0.7rem;margin-top:4px;">Add something beautiful</p></div>';
       return;
     }
 
     container.innerHTML = cart.map(item => `
-      <div class="flex items-center gap-3 bg-emerald-50 rounded-xl p-3">
-        <span class="text-2xl">${item.emoji}</span>
-        <div class="flex-1 min-w-0">
-          <p class="font-cinzel text-emerald-900 text-xs truncate">${item.name}</p>
-          <p class="font-lato text-amber-600 text-xs font-bold">$${(item.price * item.qty).toFixed(2)}</p>
+      <div style="display:flex;align-items:center;gap:10px;background:#f0fdf4;border-radius:12px;padding:10px;">
+        <span style="font-size:1.4rem;">${item.emoji}</span>
+        <div style="flex:1;min-width:0;">
+          <p class="font-cinzel" style="font-size:0.65rem;color:#064e3b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${item.name}</p>
+          <p class="font-lato" style="font-size:0.7rem;color:#b7791f;font-weight:700;">$${(item.price * item.qty).toFixed(2)}</p>
         </div>
-        <div class="flex items-center gap-1">
-          <button onclick="changeQty('${item.name.replace(/'/g,"\\'")}', -1)" class="w-6 h-6 rounded-full bg-emerald-200 text-emerald-800 text-xs hover:bg-emerald-300 transition-colors flex items-center justify-center">−</button>
-          <span class="font-lato text-xs w-5 text-center">${item.qty}</span>
-          <button onclick="changeQty('${item.name.replace(/'/g,"\\'")}', 1)" class="w-6 h-6 rounded-full bg-emerald-200 text-emerald-800 text-xs hover:bg-emerald-300 transition-colors flex items-center justify-center">+</button>
+        <div style="display:flex;align-items:center;gap:4px;">
+          <button onclick="changeQty('${item.name.replace(/'/g,"\\'")}', -1)" style="width:22px;height:22px;border-radius:50%;background:#d1fae5;color:#064e3b;font-size:0.75rem;border:none;cursor:pointer;">−</button>
+          <span class="font-lato" style="font-size:0.75rem;width:18px;text-align:center;">${item.qty}</span>
+          <button onclick="changeQty('${item.name.replace(/'/g,"\\'")}', 1)" style="width:22px;height:22px;border-radius:50%;background:#d1fae5;color:#064e3b;font-size:0.75rem;border:none;cursor:pointer;">+</button>
         </div>
-        <button onclick="removeItem('${item.name.replace(/'/g,"\\'")}')` + `" class="text-red-300 hover:text-red-500 text-sm ml-1 transition-colors">✕</button>
+        <button onclick="removeItem('${item.name.replace(/'/g,"\\'")}')` + `" style="color:#fca5a5;font-size:0.9rem;border:none;background:none;cursor:pointer;margin-left:4px;">✕</button>
       </div>
     `).join('');
   }
@@ -915,72 +1090,55 @@
     if (cart.length === 0) { showToast('Your cart is empty!'); return; }
     const lines = cart.map(i => `- ${i.qty}x ${i.name} @ $${i.price.toFixed(2)}`).join('%0A');
     const total = cart.reduce((s,i) => s + i.price * i.qty, 0).toFixed(2);
-    const subject = 'EGOFF Essentials Order Request';
-    const body = `Hello Ericka,%0A%0AI would like to place the following order:%0A%0A${lines}%0A%0AOrder Total: $${total}%0A%0APlease confirm availability and payment details.%0A%0AThank you!`;
-    window.location.href = `mailto:egoffessentials@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:egoffessentials@gmail.com?subject=EGOFF%20Essentials%20Order%20Request&body=Hello%20Ericka%2C%0A%0AI%20would%20like%20to%20place%20the%20following%20order%3A%0A%0A${lines}%0A%0AOrder%20Total%3A%20%24${total}%0A%0APlease%20confirm%20availability%20and%20payment%20details.%0A%0AThank%20you!`;
   }
 
-  // ─── CART DRAWER ─────────────────────────────
-  function openCart() {
+  // ── CART DRAWER ────────────────────────────────────────
+  function openCart()  {
     document.getElementById('cart-drawer').classList.add('open');
     document.getElementById('cart-overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
-
   function closeCart() {
     document.getElementById('cart-drawer').classList.remove('open');
     document.getElementById('cart-overlay').classList.remove('open');
     document.body.style.overflow = '';
   }
 
-  // ─── TOAST ───────────────────────────────────
+  // ── TOAST ──────────────────────────────────────────────
   function showToast(msg) {
     const t = document.getElementById('toast');
     document.getElementById('toast-msg').textContent = msg;
-    t.style.opacity = '1';
-    t.style.transform = 'translateY(0)';
-    t.style.pointerEvents = 'auto';
-    setTimeout(() => {
-      t.style.opacity = '0';
-      t.style.transform = 'translateY(-10px)';
-      t.style.pointerEvents = 'none';
-    }, 2800);
+    t.style.opacity = '1'; t.style.transform = 'translateY(0)'; t.style.pointerEvents = 'auto';
+    setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateY(-10px)'; t.style.pointerEvents = 'none'; }, 2800);
   }
 
-  // ─── MOBILE MENU ─────────────────────────────
-  function toggleMobileMenu() {
-    document.getElementById('mobile-menu').classList.toggle('open');
-  }
-  function closeMobileMenu() {
-    document.getElementById('mobile-menu').classList.remove('open');
-  }
+  // ── MOBILE MENU ────────────────────────────────────────
+  function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
+  function closeMobileMenu()  { document.getElementById('mobile-menu').classList.remove('open'); }
 
-  // ─── FAQ ACCORDION ───────────────────────────
+  // ── FAQ ────────────────────────────────────────────────
   function toggleFaq(btn) {
-    const body = btn.nextElementSibling;
+    const body  = btn.nextElementSibling;
     const arrow = btn.querySelector('.faq-arrow');
     const isOpen = body.classList.contains('open');
     document.querySelectorAll('.faq-body').forEach(b => b.classList.remove('open'));
     document.querySelectorAll('.faq-arrow').forEach(a => a.classList.remove('open'));
-    if (!isOpen) {
-      body.classList.add('open');
-      arrow.classList.add('open');
-    }
+    if (!isOpen) { body.classList.add('open'); arrow.classList.add('open'); }
   }
 
-  // ─── SCROLL FADE-IN ──────────────────────────
+  // ── SCROLL FADE-IN ─────────────────────────────────────
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        setTimeout(() => entry.target.classList.add('visible'), i * 70);
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
-
+  }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // ─── INIT ─────────────────────────────────────
+  // ── INIT ──────────────────────────────────────────────
   renderCart();
 </script>
 
