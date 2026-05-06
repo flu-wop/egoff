@@ -161,124 +161,20 @@
     /* ═══ TESTIMONIAL CARD ═══ */
     .tcard { border-top: 3px solid #b7791f; }
 
-    /* ═══ PWOG TREE — new photo-based ancestral tree ═══ */
-
-    /* Dark emerald background section */
-    .pwog-tree-section {
-      margin-top: 2.5rem;
-      border-radius: 1rem;
-      padding: 1.75rem 1.25rem 1.5rem;
-      background: linear-gradient(160deg, #011a14 0%, #022c22 60%, #011a14 100%);
-      border: 1px solid rgba(183,121,31,0.35);
-      box-shadow: inset 0 0 60px rgba(29,158,117,0.07);
-      width: 100%;
-    }
-
-    /* Circular portrait — photo or monogram */
-    .pwog-circle {
-      width: 82px; height: 82px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 2.5px solid #b7791f;
-      box-shadow:
-        0 0 0 4px rgba(183,121,31,0.15),
-        0 0 16px rgba(183,121,31,0.3),
-        0 6px 16px rgba(0,0,0,0.45);
-      flex-shrink: 0;
-      background: #064e3b;
-      transition: transform 0.25s, box-shadow 0.25s;
-      cursor: default;
-    }
-    .pwog-circle:hover {
-      transform: scale(1.07);
-      box-shadow:
-        0 0 0 4px rgba(183,121,31,0.3),
-        0 0 24px rgba(183,121,31,0.55),
-        0 8px 20px rgba(0,0,0,0.45);
-    }
-    .pwog-circle img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
-      display: block;
-    }
-    .pwog-circle .pwog-mono {
-      width: 100%; height: 100%;
+    /* ═══ PWOG TREE — portrait grid ═══ */
+    .pwog-portrait {
+      width: 70px; height: 70px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #064e3b, #b7791f);
       display: flex; align-items: center; justify-content: center;
       font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: #b7791f;
-      text-align: center;
-      padding: 6px;
-      line-height: 1.3;
-      background: radial-gradient(circle, #064e3b, #022c22);
-    }
-
-    /* Large circles for deep-root ancestors */
-    .pwog-circle-lg {
-      width: 100px; height: 100px;
-    }
-
-    /* Founder highlight ring */
-    .pwog-circle-founder {
-      border-color: #EF9F27;
-      box-shadow:
-        0 0 0 5px rgba(239,159,39,0.2),
-        0 0 28px rgba(239,159,39,0.5),
-        0 6px 16px rgba(0,0,0,0.45);
-    }
-
-    /* Name label under each portrait */
-    .pwog-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.52rem;
-      font-weight: 600;
+      font-size: 0.6rem;
       color: #fef3c7;
       text-align: center;
-      letter-spacing: 0.04em;
-      line-height: 1.35;
-      max-width: 95px;
-    }
-    .pwog-label .pwog-fullname {
-      display: block;
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-size: 0.58rem;
-      color: #b7791f;
-      margin-top: 0.15rem;
-    }
-    .pwog-label .pwog-badge {
-      display: inline-block;
-      font-family: 'Lato', sans-serif;
-      font-size: 0.42rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      background: #b7791f;
-      color: #011a14;
-      padding: 0.1rem 0.35rem;
-      border-radius: 20px;
-      margin-top: 0.25rem;
-    }
-
-    /* Row era label */
-    .pwog-era-label {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.48rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(183,121,31,0.5);
-      text-align: center;
-      margin-bottom: 0.85rem;
-    }
-
-    /* SVG branch connector between rows */
-    .pwog-branch {
-      display: block;
-      width: 100%;
-      height: 36px;
-      overflow: visible;
+      padding: 4px;
+      line-height: 1.3;
+      border: 1.5px solid rgba(183,121,31,0.5);
+      flex-shrink: 0;
     }
 
     /* ═══ FDA DISCLAIMER BANNER ═══ */
@@ -309,18 +205,293 @@
     ::-webkit-scrollbar-track { background: #f0fdf4; }
     ::-webkit-scrollbar-thumb { background: #b7791f; border-radius: 3px; }
 
+    /* ═══ HERO LOGO — perfectly circular on all devices ═══ */
+    .hero-logo-wrap {
+      width: 200px;
+      height: 200px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .hero-logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ═══ PWOG TREE — photo-based ancestral tree ═══ */
+    .pwog-tree-wrap {
+      margin-top: 2rem;
+      border-radius: 1rem;
+      padding: 1.5rem 1rem 1.25rem;
+      background: linear-gradient(160deg, #011a14 0%, #022c22 60%, #011a14 100%);
+      border: 1px solid rgba(183,121,31,0.3);
+      width: 100%;
+    }
+
+    /* Portrait circle — perfectly round on all screen sizes */
+    .pwog-circle {
+      width: 72px;
+      height: 72px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #b7791f;
+      box-shadow: 0 0 0 3px rgba(183,121,31,0.12), 0 0 12px rgba(183,121,31,0.28), 0 4px 12px rgba(0,0,0,0.4);
+      flex-shrink: 0;
+      background: #064e3b;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .pwog-circle:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 0 3px rgba(183,121,31,0.28), 0 0 20px rgba(183,121,31,0.5), 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .pwog-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .pwog-circle .pwog-mono {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      font-weight: 700;
+      color: #b7791f;
+      text-align: center;
+      padding: 4px;
+      line-height: 1.3;
+      background: radial-gradient(circle, #064e3b, #022c22);
+    }
+    .pwog-circle-lg {
+      width: 88px;
+      height: 88px;
+    }
+    .pwog-circle-founder {
+      border-color: #EF9F27;
+      border-width: 3px;
+      box-shadow: 0 0 0 4px rgba(239,159,39,0.18), 0 0 22px rgba(239,159,39,0.45), 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .pwog-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.48rem;
+      font-weight: 600;
+      color: #fef3c7;
+      text-align: center;
+      letter-spacing: 0.03em;
+      line-height: 1.35;
+      max-width: 85px;
+    }
+    .pwog-label .pwog-fullname {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.52rem;
+      color: #b7791f;
+      margin-top: 0.12rem;
+    }
+    .pwog-label .pwog-badge {
+      display: inline-block;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.4rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: #b7791f;
+      color: #011a14;
+      padding: 0.08rem 0.3rem;
+      border-radius: 20px;
+      margin-top: 0.2rem;
+    }
+    .pwog-era-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.44rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(183,121,31,0.48);
+      text-align: center;
+      margin-bottom: 0.7rem;
+    }
+    /* Gold branch connector row */
+    .pwog-branch-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin: 0.4rem 0;
+      position: relative;
+      height: 18px;
+    }
+    .pwog-branch-connector::before {
+      content: '';
+      position: absolute;
+      left: 15%;
+      right: 15%;
+      top: 50%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(183,121,31,0.4), rgba(253,230,138,0.45), rgba(183,121,31,0.4), transparent);
+    }
+    .pwog-branch-connector::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, rgba(183,121,31,0.55), rgba(183,121,31,0.15));
+      transform: translateX(-50%);
+    }
+    .pwog-branch-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #b7791f;
+      opacity: 0.55;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ═══ CHECKOUT MODAL ═══ */
+    #checkout-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 300;
+      backdrop-filter: blur(4px);
+      overflow-y: auto;
+      padding: 1rem;
+    }
+    #checkout-overlay.open { display: flex; align-items: flex-start; justify-content: center; padding-top: 2rem; }
+    #checkout-modal {
+      background: #fff;
+      border-radius: 1.25rem;
+      width: 100%;
+      max-width: 540px;
+      box-shadow: 0 24px 80px rgba(2,44,34,0.35);
+      overflow: hidden;
+    }
+    .checkout-header {
+      background: #022c22;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(183,121,31,0.35);
+    }
+    .checkout-body { padding: 1.5rem; }
+    .checkout-field { margin-bottom: 1rem; }
+    .checkout-label {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #064e3b;
+      margin-bottom: 0.35rem;
+    }
+    .checkout-input {
+      width: 100%;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.875rem;
+      color: #1a1a1a;
+      background: #f0fdf4;
+      border: 1px solid rgba(6,78,59,0.2);
+      border-radius: 0.5rem;
+      padding: 0.6rem 0.85rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .checkout-input:focus { border-color: #b7791f; box-shadow: 0 0 0 3px rgba(183,121,31,0.12); }
+    .checkout-row   { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .checkout-row-3 { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 0.75rem; }
+    .checkout-order-summary {
+      background: #f0fdf4;
+      border: 1px solid rgba(6,78,59,0.12);
+      border-radius: 0.75rem;
+      padding: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .checkout-order-line {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      color: #064e3b;
+      padding: 0.3rem 0;
+      border-bottom: 1px solid rgba(6,78,59,0.07);
+    }
+    .checkout-order-line:last-child { border-bottom: none; font-weight: 700; color: #022c22; }
+    .checkout-submit-btn {
+      width: 100%;
+      background: #064e3b;
+      color: #fff;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .checkout-submit-btn:hover { background: #065f46; box-shadow: 0 4px 20px rgba(6,78,59,0.3); }
+    .checkout-success { display: none; text-align: center; padding: 2.5rem 1.5rem; }
+
+    /* ═══ LEGAL MODAL (Terms / Privacy) ═══ */
+    #legal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 400;
+      backdrop-filter: blur(3px);
+      padding: 1.5rem;
+      overflow-y: auto;
+    }
+    #legal-overlay.open { display: flex; align-items: flex-start; justify-content: center; padding-top: 2.5rem; }
+    #legal-modal {
+      background: #fff;
+      border-radius: 1rem;
+      width: 100%;
+      max-width: 600px;
+      padding: 2rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .footer-legal-link {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.7rem;
+      color: rgba(167,243,208,0.4);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: color 0.2s;
+    }
+    .footer-legal-link:hover { color: rgba(183,121,31,0.8); }
+
     /* ═══ MOBILE OVERRIDES ═══ */
     @media (max-width: 640px) {
-      /* Hero logo — perfectly circular, never oval */
-      .hero-logo-wrap {
-        width: 170px !important;
-        height: 170px !important;
-      }
+      .hero-logo-wrap { width: 160px !important; height: 160px !important; }
       h1.hero-title { font-size: clamp(1.9rem, 9vw, 2.8rem) !important; }
-      /* Founder portrait — fixed square */
       .founder-portrait { width: 200px !important; height: 200px !important; }
-      /* Section padding tighter on mobile */
       .section-pad { padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; }
+      .checkout-row, .checkout-row-3 { grid-template-columns: 1fr; }
+      .pwog-circle    { width: 60px !important; height: 60px !important; }
+      .pwog-circle-lg { width: 74px !important; height: 74px !important; }
+      .pwog-label { max-width: 68px; font-size: 0.42rem; }
+      .pwog-label .pwog-fullname { font-size: 0.46rem; }
     }
   </style>
 </head>
@@ -468,10 +639,10 @@
 
   <p class="font-cinzel text-amber-600 tracking-[0.35em] text-xs uppercase mb-8">Essentially Rooted · Est. New Orleans</p>
 
-  <!-- Hero logo — perfectly circular on all screen sizes -->
+  <!-- Hero logo — perfectly circular, aspect-ratio locked -->
   <div class="float-logo mb-8">
-    <div class="hero-logo-wrap rounded-full overflow-hidden mx-auto flex-shrink-0"
-         style="width:200px; height:200px; border:4px solid rgba(183,121,31,0.55); box-shadow:0 0 0 8px rgba(183,121,31,0.1), 0 20px 60px rgba(6,78,59,0.25);">
+    <div class="hero-logo-wrap mx-auto"
+         style="border:4px solid rgba(183,121,31,0.55); box-shadow:0 0 0 8px rgba(183,121,31,0.1), 0 20px 60px rgba(6,78,59,0.25);">
       <img src="hero-logo.jpg"
            alt="EGOFF Essentials — Tree of Life Logo"
            style="width:100%; height:100%; object-fit:cover; display:block;"/>
@@ -539,237 +710,162 @@
         <p class="font-cormorant text-amber-600 italic text-base mt-0.5">Your Soap Alchemist</p>
 
         <!-- ═══ ANCESTRAL TREE OF PWOG — Photo Edition ═══ -->
-        <div class="pwog-tree-section">
+        <div class="pwog-tree-wrap">
 
-          <!-- Header -->
-          <p class="font-cinzel text-xs tracking-widest uppercase text-center mb-0.5" style="color:rgba(183,121,31,0.7);">Ancestral Tree of</p>
+          <p class="font-cinzel text-xs tracking-widest uppercase text-center mb-0.5" style="color:rgba(183,121,31,0.65);">Ancestral Tree of</p>
           <p class="font-cinzel text-xs tracking-widest uppercase text-center mb-1" style="color:#EF9F27;">Powerful Women of God (PWOG)</p>
-          <p class="font-cormorant italic text-center text-xs mb-5" style="color:rgba(254,243,199,0.45);">Rooted in Jamaica · Planted in New Orleans · Growing in Faith</p>
-
-          <!-- SVG trunk (background art) -->
-          <svg viewBox="0 0 320 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-               style="position:absolute;left:50%;transform:translateX(-50%);width:320px;height:480px;pointer-events:none;opacity:0.55;margin-top:-1rem;">
-            <defs>
-              <linearGradient id="tg" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#8B5E3C"/><stop offset="100%" stop-color="#5c3a1e"/>
-              </linearGradient>
-              <filter id="glow2"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-            </defs>
-            <!-- Trunk -->
-            <path d="M160 470 Q161 380 160 280 Q159 180 160 60" stroke="url(#tg)" stroke-width="9" fill="none" stroke-linecap="round"/>
-            <!-- Root row branches -->
-            <path d="M160 400 Q110 385 60 370" stroke="#8B5E3C" stroke-width="4" fill="none" stroke-linecap="round"/>
-            <path d="M160 400 Q210 385 260 370" stroke="#8B5E3C" stroke-width="4" fill="none" stroke-linecap="round"/>
-            <!-- Mid branches -->
-            <path d="M160 260 Q90 245 30 230" stroke="#6B4226" stroke-width="3" fill="none" stroke-linecap="round"/>
-            <path d="M160 260 Q200 245 240 230" stroke="#6B4226" stroke-width="3" fill="none" stroke-linecap="round"/>
-            <path d="M160 260 Q270 245 300 230" stroke="#6B4226" stroke-width="3" fill="none" stroke-linecap="round"/>
-            <!-- Upper branches -->
-            <path d="M160 120 Q80 105 20 90"  stroke="#5c3a1e" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <path d="M160 120 Q130 105 100 90" stroke="#5c3a1e" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <path d="M160 120 Q175 100 160 75"  stroke="#5c3a1e" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <path d="M160 120 Q195 105 220 90" stroke="#5c3a1e" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <path d="M160 120 Q240 105 295 90" stroke="#5c3a1e" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- Gold shimmer bars -->
-            <rect x="30" y="368" width="260" height="2" rx="1" fill="#b7791f" opacity="0.5" filter="url(#glow2)"/>
-            <rect x="10" y="229" width="300" height="1.5" rx="1" fill="#b7791f" opacity="0.4" filter="url(#glow2)"/>
-            <rect x="0"  y="89"  width="320" height="1" rx="1" fill="#b7791f" opacity="0.3" filter="url(#glow2)"/>
-            <!-- Spreading roots -->
-            <path d="M160 460 Q120 455 80 465"  stroke="#5c3a1e" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
-            <path d="M160 460 Q200 455 240 465" stroke="#5c3a1e" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
-            <path d="M160 460 Q145 458 130 470" stroke="#5c3a1e" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.4"/>
-            <path d="M160 460 Q175 458 190 470" stroke="#5c3a1e" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.4"/>
-          </svg>
+          <p class="font-cormorant italic text-center text-xs mb-4" style="font-size:0.62rem;color:rgba(254,243,199,0.4);">Rooted in Jamaica · Planted in New Orleans · Growing in Faith</p>
 
           <!-- ── ROW 1: Deep Roots ── -->
-          <div style="position:relative;z-index:2;">
-            <p class="pwog-era-label">✦ Deep Roots — The Founding Mothers ✦</p>
-            <div class="flex justify-center gap-6 mb-1">
+          <p class="pwog-era-label">✦ Deep Roots — The Founding Mothers ✦</p>
+          <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;">
 
-              <!-- Julia Sanchez Thomas -->
-              <div class="flex flex-col items-center gap-1.5">
-                <div class="pwog-circle pwog-circle-lg">
-                  <img src="1000004855.JPG" alt="Julia Sanchez Thomas"
-                       onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                  <div class="pwog-mono" style="display:none;">J.S.<br/>Thomas</div>
-                </div>
-                <div class="pwog-label">
-                  J.S.T.
-                  <span class="pwog-fullname">Julia Sanchez Thomas</span>
-                </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle pwog-circle-lg">
+                <img src="1000004855.JPG" alt="Julia Sanchez Thomas"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;">J.S.<br/>Thomas</div>
               </div>
+              <div class="pwog-label">J.S.T.<span class="pwog-fullname">Julia Sanchez Thomas</span></div>
+            </div>
 
-              <!-- Ruby Caliste Sumler -->
-              <div class="flex flex-col items-center gap-1.5">
-                <div class="pwog-circle pwog-circle-lg">
-                  <img src="1000004826.JPG" alt="Ruby Caliste Sumler"
-                       style="object-position:center 15%;"
-                       onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                  <div class="pwog-mono" style="display:none;">R.C.<br/>Sumler</div>
-                </div>
-                <div class="pwog-label">
-                  R.C.S.
-                  <span class="pwog-fullname">Ruby Caliste Sumler<br/>Feb 4, 1927 – Oct 6, 2018</span>
-                </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle pwog-circle-lg">
+                <img src="1000004826.JPG" alt="Ruby Caliste Sumler"
+                     style="object-position:center 15%;"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;">R.C.<br/>Sumler</div>
               </div>
+              <div class="pwog-label">R.C.S.<span class="pwog-fullname">Ruby Caliste Sumler<br/>1927 – 2018</span></div>
+            </div>
 
-            </div><!-- end row 1 -->
           </div>
 
-          <!-- Gold branch divider -->
-          <svg class="pwog-branch" viewBox="0 0 300 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:relative;z-index:2;">
-            <path d="M150 0 L150 20 Q100 22 50 30" stroke="#8B5E3C" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/>
-            <path d="M150 20 Q200 22 250 30" stroke="#8B5E3C" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/>
-            <circle cx="150" cy="20" r="3" fill="#b7791f" opacity="0.6"/>
-          </svg>
+          <!-- Branch connector -->
+          <div class="pwog-branch-connector"><div class="pwog-branch-dot"></div></div>
 
           <!-- ── ROW 2: Bridge Generation ── -->
-          <div style="position:relative;z-index:2;">
-            <p class="pwog-era-label">✦ The Bridge Generation ✦</p>
-            <div class="flex justify-center gap-4 flex-wrap mb-1">
+          <p class="pwog-era-label">✦ The Bridge Generation ✦</p>
+          <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
 
-              <!-- Hilda Smith Caliste -->
-              <div class="flex flex-col items-center gap-1.5">
-                <div class="pwog-circle">
-                  <img src="IMG_20260419_104809046_MP.JPG" alt="Hilda Smith Caliste"
-                       style="object-position:center 20%;"
-                       onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                  <div class="pwog-mono" style="display:none;">H.S.<br/>Caliste</div>
-                </div>
-                <div class="pwog-label">
-                  H.S.C.
-                  <span class="pwog-fullname">Hilda Smith Caliste<br/>Jamaica, B.W.I. 1888</span>
-                </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle">
+                <img src="IMG_20260419_104809046_MP.JPG" alt="Hilda Smith Caliste"
+                     style="object-position:center 20%;"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;">H.S.<br/>Caliste</div>
               </div>
+              <div class="pwog-label">H.S.C.<span class="pwog-fullname">Hilda Smith Caliste<br/>Jamaica, B.W.I.</span></div>
+            </div>
 
-              <!-- Alma Snowden Thomas -->
-              <div class="flex flex-col items-center gap-1.5">
-                <div class="pwog-circle">
-                  <img src="IMG_20260419_104316778_MP.JPG" alt="Alma Snowden Thomas"
-                       style="object-position:center 15%;"
-                       onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                  <div class="pwog-mono" style="display:none;">A.S.<br/>Thomas</div>
-                </div>
-                <div class="pwog-label">
-                  A.S.T.
-                  <span class="pwog-fullname">Alma Snowden Thomas</span>
-                </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle">
+                <img src="IMG_20260419_104316778_MP.JPG" alt="Alma Snowden Thomas"
+                     style="object-position:center 15%;"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;">A.S.<br/>Thomas</div>
               </div>
+              <div class="pwog-label">A.S.T.<span class="pwog-fullname">Alma Snowden Thomas</span></div>
+            </div>
 
-              <!-- Ms. Geraldine Goff Rollins -->
-              <div class="flex flex-col items-center gap-1.5">
-                <div class="pwog-circle">
-                  <img src="IMG_20260419_113211632_MP.JPG" alt="Ms. Geraldine Goff Rollins"
-                       onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                  <div class="pwog-mono" style="display:none;">G.G.<br/>Rollins</div>
-                </div>
-                <div class="pwog-label">
-                  G.G.R.
-                  <span class="pwog-fullname">Geraldine Goff Rollins<br/>Ms. Geraldine, Chef</span>
-                </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle">
+                <img src="IMG_20260419_113211632_MP.JPG" alt="Geraldine Goff Rollins"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;">G.G.<br/>Rollins</div>
               </div>
+              <div class="pwog-label">G.G.R.<span class="pwog-fullname">Geraldine Goff Rollins<br/>Ms. Geraldine, Chef</span></div>
+            </div>
 
-            </div><!-- end row 2 -->
           </div>
 
-          <!-- Gold branch divider -->
-          <svg class="pwog-branch" viewBox="0 0 300 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:relative;z-index:2;">
-            <path d="M150 0 L150 20 Q80 22 20 30" stroke="#6B4226" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
-            <path d="M150 20 Q190 22 230 30" stroke="#6B4226" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
-            <path d="M150 20 Q260 22 290 30" stroke="#6B4226" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
-            <circle cx="150" cy="20" r="3" fill="#b7791f" opacity="0.5"/>
-          </svg>
+          <!-- Branch connector -->
+          <div class="pwog-branch-connector"><div class="pwog-branch-dot"></div></div>
 
-          <!-- ── ROW 3: Living PWOG Crown ── -->
-          <div style="position:relative;z-index:2;">
-            <p class="pwog-era-label">✦ The Crown — Powerful Women of God ✦</p>
-            <div class="grid grid-cols-3 gap-3 justify-items-center mb-3">
+          <!-- ── ROW 3: The Crown — Living PWOG ── -->
+          <p class="pwog-era-label">✦ The Crown — Powerful Women of God ✦</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem 0.5rem;justify-items:center;">
 
-              <div class="flex flex-col items-center gap-1.5">
-                <div class="pwog-circle"><div class="pwog-mono">A.E.<br/>Powell-Goff</div></div>
-                <div class="pwog-label">A.E.P.G.<span class="pwog-fullname">Almarie Elizabeth Powell-Goff</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle"><div class="pwog-mono">A.E.<br/>Powell</div></div>
+              <div class="pwog-label">A.E.P.G.<span class="pwog-fullname">Almarie Elizabeth Powell-Goff</span></div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle"><div class="pwog-mono">I.M.<br/>Powell</div></div>
+              <div class="pwog-label">I.M.P.R.<span class="pwog-fullname">Ina Mae Powell-Robb</span></div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle"><div class="pwog-mono">Y.L.<br/>Powell</div></div>
+              <div class="pwog-label">Y.L.P.G.<span class="pwog-fullname">Yvette Lorraine Powell-Goff</span></div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle"><div class="pwog-mono">D.A.<br/>Powell</div></div>
+              <div class="pwog-label">D.A.P.T.<span class="pwog-fullname">Deloris Arlene Powell-Taylor</span></div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle"><div class="pwog-mono">V.A.<br/>Powell</div></div>
+              <div class="pwog-label">V.A.P.G.<span class="pwog-fullname">Valerie Ann Powell-Goff</span></div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle"><div class="pwog-mono">A.J.<br/>Powell</div></div>
+              <div class="pwog-label">A.J.P.W.<span class="pwog-fullname">Anita Jean Powell-Wren</span></div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle"><div class="pwog-mono">C.E.<br/>Powell</div></div>
+              <div class="pwog-label">C.E.P.V.<span class="pwog-fullname">Claudette Elaine Powell-Veal</span></div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle"><div class="pwog-mono">P.Y.<br/>Powell</div></div>
+              <div class="pwog-label">P.Y.P.B.<span class="pwog-fullname">Pauline Yvonne Powell-Brooks</span></div>
+            </div>
+
+            <!-- Ericka — Founder -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle pwog-circle-founder">
+                <img src="founder.jpg" alt="Ericka Almarie Powell-Goff"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;">E.A.<br/>Powell</div>
               </div>
+              <div class="pwog-label">E.A.P.G.<span class="pwog-fullname">Ericka Almarie Powell-Goff</span><span class="pwog-badge">Founder</span></div>
+            </div>
 
-              <div class="flex flex-col items-center gap-1.5">
-                <div class="pwog-circle"><div class="pwog-mono">I.M.<br/>Powell-Robb</div></div>
-                <div class="pwog-label">I.M.P.R.<span class="pwog-fullname">Ina Mae Powell-Robb</span></div>
+            <!-- Henrietta J. Honore Jefferson -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle" style="border-color:#1e3a5f;">
+                <div class="pwog-mono" style="background:radial-gradient(circle,#1e3a5f,#011a14);">H.J.<br/>Jeff.</div>
               </div>
+              <div class="pwog-label">H.J.H.J.<span class="pwog-fullname">Henrietta J. Honore Jefferson</span></div>
+            </div>
 
-              <div class="flex flex-col items-center gap-1.5">
-                <div class="pwog-circle"><div class="pwog-mono">Y.L.<br/>Powell-Goff</div></div>
-                <div class="pwog-label">Y.L.P.G.<span class="pwog-fullname">Yvette Lorraine Powell-Goff</span></div>
+            <!-- Wonica L. Royal — BFF -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle" style="border-color:#7c3aed;">
+                <div class="pwog-mono" style="background:radial-gradient(circle,#3b1a6e,#011a14);">W.L.<br/>Royal</div>
               </div>
+              <div class="pwog-label">W.L.R.<span class="pwog-fullname">Wonica L. Royal</span><span class="pwog-badge" style="background:#7c3aed;">BFF · Honorary</span></div>
+            </div>
 
-              <div class="flex flex-col items-center gap-1.5">
-                <div class="pwog-circle"><div class="pwog-mono">D.A.<br/>Powell-Taylor</div></div>
-                <div class="pwog-label">D.A.P.T.<span class="pwog-fullname">Deloris Arlene Powell-Taylor</span></div>
-              </div>
+          </div><!-- end crown grid -->
 
-              <div class="flex flex-col items-center gap-1.5">
-                <div class="pwog-circle"><div class="pwog-mono">V.A.<br/>Powell-Goff</div></div>
-                <div class="pwog-label">V.A.P.G.<span class="pwog-fullname">Valerie Ann Powell-Goff</span></div>
-              </div>
-
-              <div class="flex flex-col items-center gap-1.5">
-                <div class="pwog-circle"><div class="pwog-mono">A.J.<br/>Powell-Wren</div></div>
-                <div class="pwog-label">A.J.P.W.<span class="pwog-fullname">Anita Jean Powell-Wren</span></div>
-              </div>
-
-              <div class="flex flex-col items-center gap-1.5">
-                <div class="pwog-circle"><div class="pwog-mono">C.E.<br/>Powell-Veal</div></div>
-                <div class="pwog-label">C.E.P.V.<span class="pwog-fullname">Claudette Elaine Powell-Veal</span></div>
-              </div>
-
-              <div class="flex flex-col items-center gap-1.5">
-                <div class="pwog-circle"><div class="pwog-mono">P.Y.<br/>Powell-Brooks</div></div>
-                <div class="pwog-label">P.Y.P.B.<span class="pwog-fullname">Pauline Yvonne Powell-Brooks</span></div>
-              </div>
-
-              <!-- Ericka — Founder, glowing ring -->
-              <div class="flex flex-col items-center gap-1.5">
-                <div class="pwog-circle pwog-circle-founder">
-                  <img src="founder.jpg" alt="Ericka Almarie Powell-Goff"
-                       onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                  <div class="pwog-mono" style="display:none;">E.A.<br/>Powell-Goff</div>
-                </div>
-                <div class="pwog-label">
-                  E.A.P.G.
-                  <span class="pwog-fullname">Ericka Almarie Powell-Goff</span>
-                  <span class="pwog-badge">Founder</span>
-                </div>
-              </div>
-
-              <!-- Henrietta J. Honore Jefferson -->
-              <div class="flex flex-col items-center gap-1.5">
-                <div class="pwog-circle" style="border-color:#1e3a5f;"><div class="pwog-mono" style="background:radial-gradient(circle,#1e3a5f,#022c22);">H.J.<br/>Jefferson</div></div>
-                <div class="pwog-label">H.J.H.J.<span class="pwog-fullname">Henrietta J. Honore Jefferson</span></div>
-              </div>
-
-              <!-- Wonica L. Royal — BFF -->
-              <div class="flex flex-col items-center gap-1.5">
-                <div class="pwog-circle" style="border-color:#7c3aed;"><div class="pwog-mono" style="background:radial-gradient(circle,#3b1a6e,#022c22);">W.L.<br/>Royal</div></div>
-                <div class="pwog-label">
-                  W.L.R.
-                  <span class="pwog-fullname">Wonica L. Royal</span>
-                  <span class="pwog-badge" style="background:#7c3aed;">BFF · Honorary</span>
-                </div>
-              </div>
-
-            </div><!-- end row 3 grid -->
-          </div>
-
-          <!-- Spreading roots -->
-          <div class="text-center mt-1 opacity-40" style="position:relative;z-index:2;">
-            <svg width="120" height="28" viewBox="0 0 120 28" xmlns="http://www.w3.org/2000/svg">
-              <path d="M60 0 L60 16 Q40 18 15 24" stroke="#5c3a1e" stroke-width="2" fill="none" stroke-linecap="round"/>
-              <path d="M60 16 Q80 18 105 24" stroke="#5c3a1e" stroke-width="2" fill="none" stroke-linecap="round"/>
-              <path d="M60 10 Q48 12 35 16" stroke="#5c3a1e" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-              <path d="M60 10 Q72 12 85 16" stroke="#5c3a1e" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <!-- Roots -->
+          <div style="text-align:center;margin-top:0.85rem;opacity:0.35;">
+            <svg width="90" height="22" viewBox="0 0 90 22" xmlns="http://www.w3.org/2000/svg">
+              <path d="M45 0 L45 14 Q30 16 12 20" stroke="#5c3a1e" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <path d="M45 14 Q60 16 78 20" stroke="#5c3a1e" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <path d="M45 8 Q36 10 25 14" stroke="#5c3a1e" stroke-width="1" fill="none" stroke-linecap="round"/>
+              <path d="M45 8 Q54 10 65 14" stroke="#5c3a1e" stroke-width="1" fill="none" stroke-linecap="round"/>
             </svg>
           </div>
-          <p class="font-cormorant italic text-center text-xs mt-1" style="color:rgba(254,243,199,0.3);position:relative;z-index:2;">Jamaica · New Orleans · Faith</p>
+          <p class="font-cormorant italic text-center" style="font-size:0.52rem;color:rgba(254,243,199,0.28);margin-top:0.2rem;">Jamaica · New Orleans · Faith</p>
 
-        </div><!-- end pwog-tree-section -->
+        </div><!-- end pwog-tree-wrap -->
       </div>
 
       <!-- RIGHT: Bio text -->
@@ -1398,18 +1494,136 @@
       </p>
     </div>
 
-    <!-- Copyright bar — updated to 2025 -->
+    <!-- Copyright bar + legal links — updated to 2025 -->
     <div class="pt-5" style="border-top:1px solid rgba(183,121,31,0.15);">
-      <p class="font-lato text-center text-xs" style="color:rgba(167,243,208,0.35);">
-        <!-- Updated copyright year to 2025 per client request -->
+      <p class="font-lato text-center text-xs mb-2" style="color:rgba(167,243,208,0.35);">
         © 2025 EGOFF Essentials · An Egoff Enterprise LLC Brand · New Orleans, Louisiana · All Rights Reserved
       </p>
+      <div class="flex items-center justify-center gap-4">
+        <button onclick="openLegal('terms')" class="footer-legal-link">Terms of Service</button>
+        <span style="color:rgba(183,121,31,0.3);font-size:0.6rem;">·</span>
+        <button onclick="openLegal('privacy')" class="footer-legal-link">Privacy Policy</button>
+      </div>
     </div>
   </div>
 </footer>
 
 <!-- ═══════════════════════════════════════════════
-     JAVASCRIPT — Cart, Drawer, Toast, Menu, FAQ, Fade
+     CHECKOUT MODAL
+     Opens when "Send My Order" is clicked from cart.
+     Collects: name, address, phone, email, notes.
+     Shows order summary + total. Submit shows success state.
+     (Real payment/email integration to be added later.)
+═══════════════════════════════════════════════ -->
+<div id="checkout-overlay" onclick="handleCheckoutOverlayClick(event)">
+  <div id="checkout-modal">
+
+    <!-- Header -->
+    <div class="checkout-header">
+      <div>
+        <p class="font-cinzel text-white text-sm tracking-widest">Complete Your Order</p>
+        <p class="font-cormorant italic text-xs mt-0.5" style="color:#6ee7b7;">EGOFF Essentials · Handcrafted with Love</p>
+      </div>
+      <button onclick="closeCheckout()" class="text-amber-300 hover:text-white text-2xl leading-none transition-colors">&times;</button>
+    </div>
+
+    <!-- Form body -->
+    <div class="checkout-body" id="checkout-form-body">
+
+      <!-- Order summary -->
+      <p class="font-cinzel text-xs tracking-widest uppercase mb-2" style="color:#064e3b;">Order Summary</p>
+      <div class="checkout-order-summary" id="checkout-summary">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Contact info -->
+      <p class="font-cinzel text-xs tracking-widest uppercase mb-3" style="color:#064e3b;">Your Information</p>
+
+      <div class="checkout-field">
+        <label class="checkout-label" for="co-name">Full Name *</label>
+        <input class="checkout-input" type="text" id="co-name" placeholder="Your full name" autocomplete="name"/>
+      </div>
+
+      <div class="checkout-row checkout-field">
+        <div>
+          <label class="checkout-label" for="co-email">Email *</label>
+          <input class="checkout-input" type="email" id="co-email" placeholder="your@email.com" autocomplete="email"/>
+        </div>
+        <div>
+          <label class="checkout-label" for="co-phone">Phone *</label>
+          <input class="checkout-input" type="tel" id="co-phone" placeholder="(504) 000-0000" autocomplete="tel"/>
+        </div>
+      </div>
+
+      <!-- Shipping address -->
+      <p class="font-cinzel text-xs tracking-widest uppercase mb-3 mt-1" style="color:#064e3b;">Shipping Address</p>
+
+      <div class="checkout-field">
+        <label class="checkout-label" for="co-street">Street Address *</label>
+        <input class="checkout-input" type="text" id="co-street" placeholder="123 Main Street, Apt 4B" autocomplete="street-address"/>
+      </div>
+
+      <div class="checkout-row-3 checkout-field">
+        <div>
+          <label class="checkout-label" for="co-city">City *</label>
+          <input class="checkout-input" type="text" id="co-city" placeholder="New Orleans" autocomplete="address-level2"/>
+        </div>
+        <div>
+          <label class="checkout-label" for="co-state">State *</label>
+          <input class="checkout-input" type="text" id="co-state" placeholder="LA" maxlength="2" autocomplete="address-level1"/>
+        </div>
+        <div>
+          <label class="checkout-label" for="co-zip">ZIP *</label>
+          <input class="checkout-input" type="text" id="co-zip" placeholder="70115" maxlength="10" autocomplete="postal-code"/>
+        </div>
+      </div>
+
+      <div class="checkout-field">
+        <label class="checkout-label" for="co-notes">Order Notes / Special Instructions</label>
+        <textarea class="checkout-input" id="co-notes" rows="2" placeholder="Gift wrapping, fragrance preferences, special requests…" style="resize:vertical;"></textarea>
+      </div>
+
+      <!-- Error message -->
+      <p id="checkout-error" class="font-lato text-xs mb-3" style="color:#dc2626;display:none;"></p>
+
+      <!-- Submit -->
+      <button class="checkout-submit-btn" onclick="submitCheckout()">Submit Order ✦</button>
+      <p class="font-lato text-center text-xs mt-3" style="color:#64748b;">Ericka will confirm your order and payment details personally within 1 business day.</p>
+    </div>
+
+    <!-- Success state -->
+    <div class="checkout-success" id="checkout-success">
+      <div style="font-size:3rem;margin-bottom:1rem;">🌿</div>
+      <p class="font-cinzel text-lg mb-2" style="color:#022c22;">Order Received!</p>
+      <p class="font-cormorant italic text-xl mb-4" style="color:#b7791f;">"Thank you for choosing EGOFF Essentials"</p>
+      <p class="font-lato text-sm text-emerald-700 leading-relaxed mb-6">Ericka will reach out personally to confirm your order, arrange payment, and answer any questions. Your skin is in loving hands. 🌿</p>
+      <button onclick="closeCheckout()" class="checkout-submit-btn" style="max-width:200px;margin:0 auto;display:block;">Close</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     LEGAL MODAL — Terms of Service & Privacy Policy
+     Placeholder text. Replace with real legal copy when ready.
+═══════════════════════════════════════════════ -->
+<div id="legal-overlay" onclick="handleLegalOverlayClick(event)">
+  <div id="legal-modal">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(6,78,59,0.12);">
+      <h2 class="font-cinzel text-lg" style="color:#022c22;" id="legal-title">Terms of Service</h2>
+      <button onclick="closeLegal()" class="text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
+    </div>
+    <div id="legal-content" class="font-lato text-sm text-emerald-800 leading-relaxed space-y-4" style="max-height:60vh;overflow-y:auto;">
+      <!-- Content injected by JS -->
+    </div>
+    <div style="margin-top:1.5rem;text-align:center;">
+      <button onclick="closeLegal()" class="font-cinzel tracking-widest px-6 py-2 rounded-full text-xs text-white" style="background:#064e3b;">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT — Cart, Checkout, Drawer, Toast, Menu, FAQ, Legal, Fade
 ═══════════════════════════════════════════════ -->
 <script>
   // ── CART STATE ──────────────────────────────────────────
@@ -1475,9 +1689,124 @@
 
   function sendOrder() {
     if (cart.length === 0) { showToast('Your cart is empty!'); return; }
-    const lines = cart.map(i => `- ${i.qty}x ${i.name} @ $${i.price.toFixed(2)}`).join('%0A');
+    closeCart();
+    openCheckout();
+  }
+
+  // ── CHECKOUT MODAL ──────────────────────────────────────
+  function openCheckout() {
+    // Populate order summary
+    const summary = document.getElementById('checkout-summary');
+    const total   = cart.reduce((s,i) => s + i.price * i.qty, 0);
+    summary.innerHTML = cart.map(i =>
+      `<div class="checkout-order-line"><span>${i.emoji} ${i.name} × ${i.qty}</span><span>$${(i.price*i.qty).toFixed(2)}</span></div>`
+    ).join('') +
+    `<div class="checkout-order-line"><span>Order Total</span><span>$${total.toFixed(2)}</span></div>` +
+    (total < 75 ? `<div style="font-family:'Lato',sans-serif;font-size:0.7rem;color:#b7791f;padding:0.4rem 0;">Add $${(75-total).toFixed(2)} more for free shipping!</div>` : `<div style="font-family:'Lato',sans-serif;font-size:0.7rem;color:#065f46;padding:0.4rem 0;">✓ Free shipping included!</div>`);
+
+    // Reset form
+    document.getElementById('checkout-form-body').style.display = 'block';
+    document.getElementById('checkout-success').style.display  = 'none';
+    document.getElementById('checkout-error').style.display    = 'none';
+    ['co-name','co-email','co-phone','co-street','co-city','co-state','co-zip','co-notes'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+
+    document.getElementById('checkout-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCheckout() {
+    document.getElementById('checkout-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function handleCheckoutOverlayClick(e) {
+    if (e.target === document.getElementById('checkout-overlay')) closeCheckout();
+  }
+
+  function submitCheckout() {
+    const name   = document.getElementById('co-name').value.trim();
+    const email  = document.getElementById('co-email').value.trim();
+    const phone  = document.getElementById('co-phone').value.trim();
+    const street = document.getElementById('co-street').value.trim();
+    const city   = document.getElementById('co-city').value.trim();
+    const state  = document.getElementById('co-state').value.trim();
+    const zip    = document.getElementById('co-zip').value.trim();
+    const notes  = document.getElementById('co-notes').value.trim();
+    const errEl  = document.getElementById('checkout-error');
+
+    if (!name || !email || !phone || !street || !city || !state || !zip) {
+      errEl.textContent = 'Please fill in all required fields (*).';
+      errEl.style.display = 'block';
+      return;
+    }
+    if (!email.includes('@')) {
+      errEl.textContent = 'Please enter a valid email address.';
+      errEl.style.display = 'block';
+      return;
+    }
+    errEl.style.display = 'none';
+
+    // Build mailto with full order details
+    const lines = cart.map(i => `  - ${i.qty}x ${i.name}  $${(i.price*i.qty).toFixed(2)}`).join('\n');
     const total = cart.reduce((s,i) => s + i.price * i.qty, 0).toFixed(2);
-    window.location.href = `mailto:egoffessentials@gmail.com?subject=EGOFF%20Essentials%20Order%20Request&body=Hello%20Ericka%2C%0A%0AI%20would%20like%20to%20place%20the%20following%20order%3A%0A%0A${lines}%0A%0AOrder%20Total%3A%20%24${total}%0A%0APlease%20confirm%20availability%20and%20payment%20details.%0A%0AThank%20you!`;
+    const body  = encodeURIComponent(
+      `Hello Ericka,\n\nNEW ORDER REQUEST\n${'─'.repeat(32)}\n\nCUSTOMER\nName:  ${name}\nEmail: ${email}\nPhone: ${phone}\n\nSHIP TO\n${street}\n${city}, ${state} ${zip}\n\nORDER ITEMS\n${lines}\n\nORDER TOTAL: $${total}\n\nNOTES\n${notes || 'None'}\n\n${'─'.repeat(32)}\nSent via EGOFF Essentials website`
+    );
+    window.open(`mailto:egoffessentials@gmail.com?subject=New%20Order%20—%20${encodeURIComponent(name)}&body=${body}`, '_blank');
+
+    // Show success, clear cart
+    document.getElementById('checkout-form-body').style.display = 'none';
+    document.getElementById('checkout-success').style.display   = 'block';
+    cart = []; saveCart(); renderCart();
+  }
+
+  // ── LEGAL MODAL ─────────────────────────────────────────
+  const legalContent = {
+    terms: {
+      title: 'Terms of Service',
+      html: `
+        <p><strong>Last updated: 2025</strong></p>
+        <p>Welcome to EGOFF Essentials. By purchasing from or using our website, you agree to these terms.</p>
+        <p><strong>Products &amp; Use</strong><br/>All EGOFF Essentials products are handcrafted natural soaps and body care items intended for external use only. They are not intended to diagnose, treat, cure, or prevent any disease.</p>
+        <p><strong>Orders &amp; Payment</strong><br/>Orders are submitted directly to Ericka Goff and confirmed personally. Payment arrangements will be communicated after order receipt. We reserve the right to cancel or modify orders at our discretion.</p>
+        <p><strong>Shipping</strong><br/>We ship within the United States. Estimated delivery is 5–7 business days after confirmation. Free shipping on orders over $75.</p>
+        <p><strong>Returns &amp; Refunds</strong><br/>Due to the handcrafted nature of our products, all sales are generally final. If you received a damaged or incorrect item, please contact us within 7 days of delivery.</p>
+        <p><strong>Intellectual Property</strong><br/>All content, branding, and imagery on this site are the property of EGOFF Essentials / Egoff Enterprise LLC. Unauthorized use is prohibited.</p>
+        <p><strong>Contact</strong><br/>Questions? Email <a href="mailto:egoffessentials@gmail.com" style="color:#b7791f;">egoffessentials@gmail.com</a> or call (504) 722-8408.</p>
+        <p style="font-style:italic;color:#888;font-size:0.75rem;">These terms are placeholder text and should be reviewed by a qualified attorney before full commercial launch.</p>
+      `
+    },
+    privacy: {
+      title: 'Privacy Policy',
+      html: `
+        <p><strong>Last updated: 2025</strong></p>
+        <p>EGOFF Essentials / Egoff Enterprise LLC respects your privacy. This policy describes how we handle information you share with us.</p>
+        <p><strong>Information We Collect</strong><br/>When you place an order, we collect your name, email, phone number, and shipping address. We use this information solely to fulfill and communicate about your order.</p>
+        <p><strong>How We Use Your Information</strong><br/>We use your contact details to confirm orders, arrange payment, and provide shipping updates. We do not sell or share your personal information with third parties for marketing purposes.</p>
+        <p><strong>Data Storage</strong><br/>Order information is retained for business records. We take reasonable precautions to protect your information, though no method of transmission or storage is 100% secure.</p>
+        <p><strong>Cookies &amp; Analytics</strong><br/>This website may use basic analytics to understand traffic. No tracking cookies are used for advertising purposes.</p>
+        <p><strong>Your Rights</strong><br/>You may request that we delete or correct your personal information at any time by contacting us.</p>
+        <p><strong>Contact</strong><br/>Privacy questions? Email <a href="mailto:egoffessentials@gmail.com" style="color:#b7791f;">egoffessentials@gmail.com</a>.</p>
+        <p style="font-style:italic;color:#888;font-size:0.75rem;">This policy is placeholder text and should be reviewed by a qualified attorney before full commercial launch.</p>
+      `
+    }
+  };
+
+  function openLegal(type) {
+    document.getElementById('legal-title').textContent   = legalContent[type].title;
+    document.getElementById('legal-content').innerHTML   = legalContent[type].html;
+    document.getElementById('legal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLegal() {
+    document.getElementById('legal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function handleLegalOverlayClick(e) {
+    if (e.target === document.getElementById('legal-overlay')) closeLegal();
   }
 
   // ── CART DRAWER ─────────────────────────────────────────
