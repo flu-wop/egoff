@@ -8,6 +8,16 @@
 <meta property="og:title" content="EGOFF Essentials | Luxury Natural Handcrafted Soap"/>
 <meta property="og:description" content="Handcrafted soaps rooted in Jamaican heritage and New Orleans love. Essentially Rooted."/>
 <meta property="og:type" content="website"/>
+<meta property="og:image" content="https://egoff.vercel.app/egoff-new-logo.jpg"/>
+<meta property="og:url" content="https://egoff.vercel.app"/>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PLACEHOLDER');
+</script>
 <title>EGOFF Essentials | Luxury Natural Handcrafted Soap</title>
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23064e3b'/><path d='M0 16 L16 8 L32 16 L16 24Z' fill='%23f5c518' opacity='0.25'/><path d='M16 14 C12 14 7 11 7 7 C7 4 10 2 13 4 C13 2 15 1 16 3Z' fill='%23166534'/><path d='M16 14 C20 14 25 11 25 7 C25 4 22 2 19 4 C19 2 17 1 16 3Z' fill='%23b7791f'/><path d='M16 13 C15 13 14 14 14 15 L14 20 C14 21 15 22 16 22 C17 22 18 21 18 20 L18 15 C18 14 17 13 16 13Z' fill='%231a1a1a'/><path d='M14 16 C12 15 9 13 8 11 C10 10 12 12 14 14Z' fill='%231a1a1a'/><path d='M18 16 C20 15 23 13 24 11 C22 10 20 12 18 14Z' fill='%231a1a1a'/><circle cx='16' cy='12' r='1.8' fill='%231a1a1a'/><path d='M15 22 C15 24 14 26 14 28 L18 28 C18 26 17 24 17 22Z' fill='%235c3a1e'/><path d='M14 27 C12 28 10 29 9 30' stroke='%235c3a1e' stroke-width='1' fill='none'/><path d='M16 28 C16 29 15 30 14 31' stroke='%235c3a1e' stroke-width='1' fill='none'/><path d='M18 27 C20 28 22 29 23 30' stroke='%235c3a1e' stroke-width='1' fill='none'/><circle cx='16' cy='16' r='15.2' fill='none' stroke='%23b7791f' stroke-width='0.8' opacity='0.6'/></svg>"/>
@@ -16,6 +26,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');</script>
 
 <style>
 /* ═══════════════════════════════════════════════
@@ -421,6 +433,16 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
 }
 .footer-legal-link:hover { color: rgba(183,121,31,0.8); }
 
+/* ═══ SEASONAL BADGE ═══ */
+.seasonal-badge {
+  position: absolute; top: 12px; right: 12px; z-index: 2;
+  background: linear-gradient(135deg, #b7791f, #d97706);
+  color: #fff; font-family: 'Cinzel', serif;
+  font-size: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(183,121,31,0.4);
+}
+
 /* ═══ PRODUCT IMAGE CONTAINERS ═══ */
 .product-img {
   width: 100%; aspect-ratio: 4 / 3;
@@ -588,6 +610,7 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
     <span class="px-10">✦ All Natural · No Harsh Chemicals</span>
     <span class="px-10">✦ Essentially Rooted · GOD · LOVE · POWER</span>
     <span class="px-10">✦ For External Use Only</span>
+    <span class="px-10">✦ Wholesale Inquiries Welcome</span>
     <span class="px-10">✦ Handcrafted with Love in New Orleans</span>
     <span class="px-10">✦ Rooted in Jamaican Heritage</span>
     <span class="px-10">✦ All Natural · No Harsh Chemicals</span>
@@ -625,7 +648,9 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
       <a href="#story" class="nav-link">About</a>
       <a href="#products" class="nav-link">Shop</a>
       <a href="#testimonials" class="nav-link">Our Roots</a>
-      <a href="#contact" class="nav-link">Contact</a>
+      <a href="#foundation" class="nav-link">Foundation</a>
+        <a href="#wholesale" class="nav-link">Wholesale</a>
+        <a href="#contact" class="nav-link">Contact</a>
     </div>
     <div class="flex items-center gap-3 flex-shrink-0">
       <button onclick="openCart()" class="flex items-center gap-2 font-cinzel text-xs tracking-widest text-white px-4 py-2 rounded-full"
@@ -654,6 +679,8 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
     <a href="#products" onclick="closeMobileMenu()" class="block nav-link">Shop</a>
     <a href="#testimonials" onclick="closeMobileMenu()" class="block nav-link">Our Roots</a>
     <a href="#faq" onclick="closeMobileMenu()" class="block nav-link">FAQ</a>
+    <a href="#foundation" onclick="closeMobileMenu()" class="block nav-link">Foundation</a>
+    <a href="#wholesale" onclick="closeMobileMenu()" class="block nav-link">Wholesale</a>
     <a href="#contact" onclick="closeMobileMenu()" class="block nav-link">Contact</a>
   </div>
 </nav>
@@ -696,7 +723,7 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
     <span class="hidden md:inline text-amber-600 text-xl">→</span>
     <span class="text-white font-semibold">EGOFF Essentials</span>
     <span class="text-emerald-400 text-sm">+</span>
-    <span class="text-emerald-300 italic">Egoff Foundation <span class="text-xs text-emerald-600">(TBA)</span></span>
+    <a href="#foundation" class="text-emerald-300 italic hover:text-amber-300 transition-colors">Egoff Foundation</a>
   </div>
 </div>
 
@@ -1229,6 +1256,7 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
       <!-- Rose / Ylang-Ylang -->
       <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
         <div class="product-img" style="background:linear-gradient(135deg,#fdf2f8,#fce7f3);">
+          <span class="seasonal-badge">✦ Coming Soon</span>
           <img src="img/rose-ylang-ylang.svg" alt="Rose / Ylang-Ylang Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="product-img-fallback" style="display:none;"><span class="fi-icon">🌹</span><span class="fi-name" style="color:#9d174d;">Rose / Ylang-Ylang</span><span class="fi-hint" style="color:#9d174d;">Photo Coming Soon</span></div>
         </div>
@@ -1243,6 +1271,7 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
       <!-- Ginger -->
       <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
         <div class="product-img" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">
+          <span class="seasonal-badge">✦ Coming Soon</span>
           <img src="img/ginger.svg" alt="Ginger Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="product-img-fallback" style="display:none;"><span class="fi-icon">🫚</span><span class="fi-name" style="color:#78350f;">Ginger</span><span class="fi-hint" style="color:#78350f;">Photo Coming Soon</span></div>
         </div>
@@ -1257,6 +1286,7 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
       <!-- Lemon / Orange / Grapefruit -->
       <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
         <div class="product-img" style="background:linear-gradient(135deg,#fefce8,#fef9c3);">
+          <span class="seasonal-badge">✦ Coming Soon</span>
           <img src="img/citrus-blend.svg" alt="Lemon / Orange / Grapefruit Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="product-img-fallback" style="display:none;"><span class="fi-icon">🍊</span><span class="fi-name" style="color:#713f12;">Lemon / Orange / Grapefruit</span><span class="fi-hint" style="color:#713f12;">Photo Coming Soon</span></div>
         </div>
@@ -1271,6 +1301,7 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
       <!-- Sandalwood / Cedarwood -->
       <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
         <div class="product-img" style="background:linear-gradient(135deg,#fef3c7,#d6bc8a);">
+          <span class="seasonal-badge">✦ Coming Soon</span>
           <img src="img/sandalwood-cedarwood.svg" alt="Sandalwood / Cedarwood Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="product-img-fallback" style="display:none;"><span class="fi-icon">🪵</span><span class="fi-name" style="color:#78350f;">Sandalwood / Cedarwood</span><span class="fi-hint" style="color:#78350f;">Photo Coming Soon</span></div>
         </div>
@@ -1285,6 +1316,7 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
       <!-- Clean Cotton / Linen (moved from Regular) -->
       <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
         <div class="product-img" style="background:linear-gradient(135deg,#f8fafc,#f1f5f9);">
+          <span class="seasonal-badge">✦ Coming Soon</span>
           <img src="img/clean-cotton-linen.svg" alt="Clean Cotton / Linen Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="product-img-fallback" style="display:none;"><span class="fi-icon">🌬️</span><span class="fi-name" style="color:#334155;">Clean Cotton / Linen</span><span class="fi-hint" style="color:#334155;">Photo Coming Soon</span></div>
         </div>
@@ -1299,6 +1331,7 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
       <!-- Vanilla / Almond (moved from Regular) -->
       <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
         <div class="product-img" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">
+          <span class="seasonal-badge">✦ Coming Soon</span>
           <img src="img/vanilla-almond.svg" alt="Vanilla / Almond Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="product-img-fallback" style="display:none;"><span class="fi-icon">🍂</span><span class="fi-name" style="color:#78350f;">Vanilla / Almond</span><span class="fi-hint" style="color:#78350f;">Photo Coming Soon</span></div>
         </div>
@@ -1498,14 +1531,71 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
 
       <div class="bg-white rounded-2xl overflow-hidden" style="border:1px solid rgba(6,78,59,0.1);">
         <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+          <span class="font-cinzel text-emerald-900 text-sm tracking-wide">Do you offer wholesale or bulk orders?</span>
+          <svg class="faq-arrow w-4 h-4 text-amber-600 flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-body px-6">
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed">Yes! Ericka welcomes wholesale and bulk inquiries for boutiques, spas, event gifting, and community organizations. Minimum quantities and pricing vary. Use the <a href="#wholesale" class="text-amber-700 underline">Wholesale Inquiry form</a> or contact Ericka directly at egoffessentials@gmail.com to start the conversation.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden" style="border:1px solid rgba(6,78,59,0.1);">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
           <span class="font-cinzel text-emerald-900 text-sm tracking-wide">What is your shipping policy?</span>
           <svg class="faq-arrow w-4 h-4 text-amber-600 flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="faq-body px-6">
-          <p class="font-lato text-sm text-emerald-700 leading-relaxed">We ship within 5–7 business days throughout the United States. For local New Orleans customers, pickup may be available — just ask!</p>
+          <div class="font-lato text-sm text-emerald-700 leading-relaxed space-y-2">
+            <p><strong>Processing:</strong> Orders are typically processed within 1–3 business days after confirmation.</p>
+            <p><strong>Delivery:</strong> Standard shipping within the United States takes 5–7 business days. Expedited shipping may be available upon request — contact Ericka directly.</p>
+            <p><strong>Shipping Cost:</strong> Calculated based on weight and destination at time of order confirmation.</p>
+            <p><strong>Local Pickup:</strong> New Orleans area customers may arrange free local pickup — just mention it in your order notes.</p>
+            <p><strong>Tracking:</strong> A tracking number will be provided by email once your order ships.</p>
+            <p><strong>International:</strong> We currently ship within the US only. Contact us for special arrangements.</p>
+          </div>
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+
+<div class="gold-divider"></div>
+
+<!-- ═══ EGOFF FOUNDATION ═══ -->
+<section id="foundation" class="section-pad py-14 md:py-24 px-4" style="background:linear-gradient(to bottom,#011a14,#022c22);">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="font-cinzel text-amber-400 tracking-widest text-xs uppercase mb-2">Giving Back · Community First</p>
+      <h2 class="font-cormorant text-4xl md:text-5xl font-semibold text-white">EGOFF Foundation</h2>
+      <p class="font-lato text-emerald-300 mt-3 text-sm italic">Under Egoff Enterprise LLC — rooted in service, growing in purpose.</p>
+      <div class="section-heading-line"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <p class="font-cormorant italic text-amber-300 text-2xl leading-relaxed">"We rise by lifting others — one bar, one community at a time."</p>
+        <p class="font-lato text-emerald-200 text-sm leading-relaxed">The EGOFF Foundation is the community heart of Egoff Enterprise LLC. Inspired by the powerful women who shaped Ericka's journey — Hilda, Alma, Alice, Ruby, and the generations they carried — the Foundation is built to give back to the communities that raised us.</p>
+        <p class="font-lato text-emerald-200 text-sm leading-relaxed">Our mission is to support women, youth, and underserved communities through outreach, education, and partnership — rooted in the same GOD · LOVE · POWER values that guide every bar of soap we craft.</p>
+        <div class="pt-2">
+          <p class="font-cinzel text-amber-600 text-xs tracking-widest uppercase mb-3">Coming Soon</p>
+          <div class="space-y-2 font-lato text-sm text-emerald-300">
+            <div class="flex items-center gap-3"><span class="text-amber-500">✦</span> Community outreach &amp; giveback programs</div>
+            <div class="flex items-center gap-3"><span class="text-amber-500">✦</span> Partnerships with local New Orleans organizations</div>
+            <div class="flex items-center gap-3"><span class="text-amber-500">✦</span> Youth education &amp; empowerment initiatives</div>
+            <div class="flex items-center gap-3"><span class="text-amber-500">✦</span> Women's wellness &amp; economic empowerment</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white/5 rounded-2xl p-8 border border-emerald-700/30 text-center">
+        <div class="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style="background:linear-gradient(135deg,#064e3b,#b7791f);">
+          <span class="text-3xl">🌱</span>
+        </div>
+        <p class="font-cinzel text-white text-lg tracking-widest mb-2">EGOFF <span style="color:#d97706;">Foundation</span></p>
+        <p class="font-cormorant italic text-amber-400 text-base mb-6">An Egoff Enterprise LLC Initiative</p>
+        <p class="font-lato text-emerald-300 text-sm leading-relaxed mb-6">The Foundation is currently in its founding phase. Stay connected to be the first to know when programs launch — and to get involved.</p>
+        <a href="mailto:egoffessentials@gmail.com?subject=EGOFF%20Foundation%20Inquiry" class="inline-block font-cinzel tracking-widest px-8 py-4 rounded-full text-sm text-white transition-all hover:scale-105" style="background:#b7791f;">Connect With Us ✦</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1561,6 +1651,64 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
   </div>
 </section>
 
+
+<div class="gold-divider"></div>
+
+<!-- ═══ NEWSLETTER + WHOLESALE ═══ -->
+<section id="wholesale" class="section-pad py-14 md:py-20 px-4" style="background:#022c22;">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-12">
+
+      <!-- Newsletter -->
+      <div>
+        <p class="font-cinzel text-amber-400 tracking-widest text-xs uppercase mb-2">Stay Connected</p>
+        <h3 class="font-cormorant text-3xl font-semibold text-white mb-3">Join the Community</h3>
+        <p class="font-lato text-emerald-300 text-sm leading-relaxed mb-6">Be the first to know about new seasonal soaps, Foundation updates, pop-up markets, and exclusive drops. No spam — just love from Ericka's kitchen.</p>
+        <form id="newsletter-form" onsubmit="submitNewsletter(event)" class="space-y-3">
+          <input id="nl-name" type="text" placeholder="Your Name" required
+            class="w-full px-4 py-3 rounded-xl text-sm font-lato outline-none"
+            style="background:rgba(255,255,255,0.07); border:1px solid rgba(183,121,31,0.3); color:#fff;"/>
+          <input id="nl-email" type="email" placeholder="Your Email Address" required
+            class="w-full px-4 py-3 rounded-xl text-sm font-lato outline-none"
+            style="background:rgba(255,255,255,0.07); border:1px solid rgba(183,121,31,0.3); color:#fff;"/>
+          <button type="submit" class="w-full font-cinzel tracking-widest py-3 rounded-xl text-sm text-white transition-all hover:scale-[1.02]" style="background:#b7791f;">
+            Subscribe ✦
+          </button>
+          <p id="nl-success" class="font-lato text-emerald-300 text-xs text-center" style="display:none;">✦ Thank you! You're on the list.</p>
+          <p id="nl-error" class="font-lato text-red-400 text-xs text-center" style="display:none;">Something went wrong. Please try again.</p>
+        </form>
+      </div>
+
+      <!-- Wholesale -->
+      <div>
+        <p class="font-cinzel text-amber-400 tracking-widest text-xs uppercase mb-2">Wholesale & Bulk</p>
+        <h3 class="font-cormorant text-3xl font-semibold text-white mb-3">Partner With Us</h3>
+        <p class="font-lato text-emerald-300 text-sm leading-relaxed mb-6">Boutiques, spas, wellness centers, event planners, and community organizations — we'd love to work with you. Tell us about your needs and Ericka will be in touch personally.</p>
+        <form id="wholesale-form" onsubmit="submitWholesale(event)" class="space-y-3">
+          <input id="ws-name" type="text" placeholder="Your Name / Business Name" required
+            class="w-full px-4 py-3 rounded-xl text-sm font-lato outline-none"
+            style="background:rgba(255,255,255,0.07); border:1px solid rgba(183,121,31,0.3); color:#fff;"/>
+          <input id="ws-email" type="email" placeholder="Email Address" required
+            class="w-full px-4 py-3 rounded-xl text-sm font-lato outline-none"
+            style="background:rgba(255,255,255,0.07); border:1px solid rgba(183,121,31,0.3); color:#fff;"/>
+          <input id="ws-phone" type="tel" placeholder="Phone (optional)"
+            class="w-full px-4 py-3 rounded-xl text-sm font-lato outline-none"
+            style="background:rgba(255,255,255,0.07); border:1px solid rgba(183,121,31,0.3); color:#fff;"/>
+          <textarea id="ws-message" rows="3" placeholder="Tell us about your business and what you need..."
+            class="w-full px-4 py-3 rounded-xl text-sm font-lato outline-none resize-none"
+            style="background:rgba(255,255,255,0.07); border:1px solid rgba(183,121,31,0.3); color:#fff;"></textarea>
+          <button type="submit" class="w-full font-cinzel tracking-widest py-3 rounded-xl text-sm text-white transition-all hover:scale-[1.02]" style="background:#064e3b; border:1px solid rgba(183,121,31,0.4);">
+            Send Inquiry ✦
+          </button>
+          <p id="ws-success" class="font-lato text-emerald-300 text-xs text-center" style="display:none;">✦ Inquiry sent! Ericka will reach out soon.</p>
+          <p id="ws-error" class="font-lato text-red-400 text-xs text-center" style="display:none;">Something went wrong. Please try again.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <div class="gold-divider"></div>
 
 <!-- ═══ FOOTER ═══ -->
@@ -1586,6 +1734,8 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
           <li><a href="#products" class="text-emerald-300 hover:text-amber-300 transition-colors">Shop All</a></li>
           <li><a href="#testimonials" class="text-emerald-300 hover:text-amber-300 transition-colors">Testimonials</a></li>
           <li><a href="#faq" class="text-emerald-300 hover:text-amber-300 transition-colors">FAQ</a></li>
+          <li><a href="#foundation" class="text-emerald-300 hover:text-amber-300 transition-colors">Foundation</a></li>
+          <li><a href="#wholesale" class="text-emerald-300 hover:text-amber-300 transition-colors">Wholesale</a></li>
           <li><a href="#contact" class="text-emerald-300 hover:text-amber-300 transition-colors">Contact</a></li>
         </ul>
       </div>
@@ -1600,7 +1750,7 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
           <p class="font-cinzel text-amber-600 text-xs tracking-widest uppercase mb-3">Our Purpose</p>
           <p class="font-lato text-xs text-emerald-500 leading-relaxed">Handcrafted in New Orleans. Rooted in Jamaican heritage. Every bar is an act of love, faith, and service.</p>
           <p class="font-cormorant italic text-sm mt-2" style="color:rgba(183,121,31,0.8);">Egoff Enterprise LLC</p>
-          <p class="font-lato text-xs text-emerald-500 mt-1">EGOFF Essentials · Egoff Foundation (TBA)</p>
+          <p class="font-lato text-xs text-emerald-500 mt-1">EGOFF Essentials · <a href="#foundation" class="hover:text-amber-400 transition-colors">Egoff Foundation</a></p>
         </div>
       </div>
     </div>
@@ -1693,6 +1843,60 @@ function closeCart() {
 }
 
 // ── CHECKOUT ─────────────────────────────────────────
+
+// ── EMAIL CONFIRMATION (EmailJS) ─────────────────────────
+function sendConfirmationEmail(name, email, orderSummary, total) {
+  // EmailJS — set up at emailjs.com with service ID + template ID
+  // Template variables: {{customer_name}}, {{order_summary}}, {{order_total}}, {{to_email}}
+  emailjs.send('YOUR_SERVICE_ID', 'YOUR_ORDER_TEMPLATE_ID', {
+    customer_name: name,
+    order_summary: orderSummary,
+    order_total: total,
+    to_email: email,
+    reply_to: 'egoffessentials@gmail.com'
+  }).catch(err => console.warn('Email confirmation failed:', err));
+}
+
+// ── NEWSLETTER ────────────────────────────────────────────
+function submitNewsletter(e) {
+  e.preventDefault();
+  const name  = document.getElementById('nl-name').value.trim();
+  const email = document.getElementById('nl-email').value.trim();
+  emailjs.send('YOUR_SERVICE_ID', 'YOUR_NEWSLETTER_TEMPLATE_ID', {
+    subscriber_name: name,
+    subscriber_email: email,
+    to_email: 'egoffessentials@gmail.com'
+  }).then(() => {
+    document.getElementById('nl-success').style.display = 'block';
+    document.getElementById('nl-error').style.display = 'none';
+    document.getElementById('newsletter-form').reset();
+  }).catch(() => {
+    document.getElementById('nl-error').style.display = 'block';
+  });
+}
+
+// ── WHOLESALE INQUIRY ────────────────────────────────────
+function submitWholesale(e) {
+  e.preventDefault();
+  const name    = document.getElementById('ws-name').value.trim();
+  const email   = document.getElementById('ws-email').value.trim();
+  const phone   = document.getElementById('ws-phone').value.trim();
+  const message = document.getElementById('ws-message').value.trim();
+  emailjs.send('YOUR_SERVICE_ID', 'YOUR_WHOLESALE_TEMPLATE_ID', {
+    business_name: name,
+    reply_email: email,
+    phone: phone || 'Not provided',
+    message: message,
+    to_email: 'egoffessentials@gmail.com'
+  }).then(() => {
+    document.getElementById('ws-success').style.display = 'block';
+    document.getElementById('ws-error').style.display = 'none';
+    document.getElementById('wholesale-form').reset();
+  }).catch(() => {
+    document.getElementById('ws-error').style.display = 'block';
+  });
+}
+
 function sendOrder() {
   if (cart.length === 0) { showToast('Your cart is empty'); return; }
   closeCart();
@@ -1735,6 +1939,10 @@ function submitCheckout() {
   window.open(`mailto:egoffessentials@gmail.com?subject=New%20Order%20—%20${encodeURIComponent(name)}&body=${body}`, '_blank');
   document.getElementById('checkout-form-body').style.display = 'none';
   document.getElementById('checkout-success').style.display = 'block';
+  // Send order confirmation email to customer
+  const orderLines = cart.map(i => `${i.qty}x ${i.name} — $${(i.price*i.qty).toFixed(2)}`).join('\n');
+  const orderTotal = cart.reduce((s,i) => s+i.price*i.qty, 0).toFixed(2);
+  sendConfirmationEmail(name, email, orderLines, '$' + orderTotal);
   cart = []; saveCart(); renderCart();
 }
 
@@ -1757,7 +1965,7 @@ const legalContent = {
       <p>EGOFF Essentials values your privacy. This policy explains how we collect and use your information.</p>
       <p><strong>Information We Collect</strong><br/>We collect your name, email, phone, and shipping address when you place an order. We do not store payment information.</p>
       <p><strong>How We Use Your Information</strong><br/>Your information is used solely to fulfill your order and communicate with you about it. We do not sell or share your personal data with third parties.</p>
-      <p><strong>Cookies</strong><br/>This site uses browser localStorage to maintain your shopping cart. No tracking cookies or third-party analytics are used.</p>
+      <p><strong>Cookies &amp; Analytics</strong><br/>This site uses browser localStorage to maintain your shopping cart. We use Google Analytics to understand how visitors use the site (pages visited, traffic sources). No personal information is shared with Google Analytics.</p>
       <p><strong>Contact</strong><br/>Questions about your data? Email egoffessentials@gmail.com.</p>`
   }
 };
