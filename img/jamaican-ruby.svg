@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="480" viewBox="0 0 600 480">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4C1D95"/>
+      <stop offset="100%" style="stop-color:#5B21B6"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#B7791F"/>
+      <stop offset="50%" style="stop-color:#F4C430"/>
+      <stop offset="100%" style="stop-color:#B7791F"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="600" height="480" fill="url(#bg)"/>
+  <rect width="600" height="480" fill="rgba(0,0,0,0.18)"/>
+  <!-- Decorative rings -->
+  <circle cx="300" cy="185" r="120" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <circle cx="300" cy="185" r="95" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
+  <!-- Product symbol -->
+  
+        <circle cx="300" cy="185" r="65" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+        <path d="M250,195 Q280,145 300,165 Q320,185 350,155" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>
+        <path d="M250,215 Q280,165 300,185 Q320,205 350,175" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+        
+  <!-- Gold accent line -->
+  <rect x="220" y="315" width="160" height="1.5" fill="url(#gold)" opacity="0.7"/>
+  <!-- Product name -->
+  <text x="300" y="350" text-anchor="middle" font-family="Georgia,serif" font-size="24" fill="rgba(255,255,255,0.92)" letter-spacing="3" font-weight="600">JAMAICAN RUBY</text>
+  <!-- EGOFF brand -->
+  <text x="300" y="390" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#F4C430" letter-spacing="6" opacity="0.85">EGOFF ESSENTIALS</text>
+  <!-- Tagline -->
+  <text x="300" y="418" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="rgba(255,255,255,0.45)" letter-spacing="4" font-style="italic">Essentially Rooted</text>
+</svg>
