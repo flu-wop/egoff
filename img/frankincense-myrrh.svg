@@ -21,7 +21,7 @@
   <!-- Gold accent line -->
   <rect x="220" y="315" width="160" height="1.5" fill="url(#gold)" opacity="0.7"/>
   <!-- Product name -->
-  <text x="300" y="350" text-anchor="middle" font-family="Georgia,serif" font-size="24" fill="rgba(255,255,255,0.92)" letter-spacing="3" font-weight="600">FRANKINCENSE & MYRRH</text>
+  <text x="300" y="350" text-anchor="middle" font-family="Georgia,serif" font-size="24" fill="rgba(255,255,255,0.92)" letter-spacing="3" font-weight="600">FRANKINCENSE &amp; MYRRH</text>
   <!-- EGOFF brand -->
   <text x="300" y="390" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#F4C430" letter-spacing="6" opacity="0.85">EGOFF ESSENTIALS</text>
   <!-- Tagline -->

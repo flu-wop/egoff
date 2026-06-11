@@ -194,13 +194,13 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
 
 /* ═══ FDA DISCLAIMER BANNER ═══ */
 .fda-banner {
-  background: rgba(183,121,31,0.08);
-  border: 1px solid rgba(183,121,31,0.25);
+  background: rgba(220,38,38,0.07);
+  border: 1px solid rgba(220,38,38,0.3);
   border-radius: 12px;
   padding: 14px 18px;
   font-family: 'Lato', sans-serif;
   font-size: 0.72rem;
-  color: #5c4215;
+  color: #991b1b;
   line-height: 1.65;
   text-align: center;
 }
@@ -610,7 +610,6 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
     <span class="px-10">✦ All Natural · No Harsh Chemicals</span>
     <span class="px-10">✦ Essentially Rooted · GOD · LOVE · POWER</span>
     <span class="px-10">✦ For External Use Only</span>
-    <span class="px-10">✦ Wholesale Inquiries Welcome</span>
     <span class="px-10">✦ Handcrafted with Love in New Orleans</span>
     <span class="px-10">✦ Rooted in Jamaican Heritage</span>
     <span class="px-10">✦ All Natural · No Harsh Chemicals</span>
@@ -649,7 +648,6 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
       <a href="#products" class="nav-link">Shop</a>
       <a href="#testimonials" class="nav-link">Our Roots</a>
       <a href="#foundation" class="nav-link">Foundation</a>
-        <a href="#wholesale" class="nav-link">Wholesale</a>
         <a href="#contact" class="nav-link">Contact</a>
     </div>
     <div class="flex items-center gap-3 flex-shrink-0">
@@ -680,7 +678,6 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
     <a href="#testimonials" onclick="closeMobileMenu()" class="block nav-link">Our Roots</a>
     <a href="#faq" onclick="closeMobileMenu()" class="block nav-link">FAQ</a>
     <a href="#foundation" onclick="closeMobileMenu()" class="block nav-link">Foundation</a>
-    <a href="#wholesale" onclick="closeMobileMenu()" class="block nav-link">Wholesale</a>
     <a href="#contact" onclick="closeMobileMenu()" class="block nav-link">Contact</a>
   </div>
 </nav>
@@ -1527,19 +1524,7 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
         <div class="faq-body px-6">
           <p class="font-lato text-sm text-emerald-700 leading-relaxed">Add your selections to the cart and click "Send My Order." Your cart summary is sent directly to Ericka, who will confirm availability and arrange payment. You can also reach us by phone or email — we love a personal conversation.</p>
         </div>
-      </div>
-
-      <div class="bg-white rounded-2xl overflow-hidden" style="border:1px solid rgba(6,78,59,0.1);">
-        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-          <span class="font-cinzel text-emerald-900 text-sm tracking-wide">Do you offer wholesale or bulk orders?</span>
-          <svg class="faq-arrow w-4 h-4 text-amber-600 flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-body px-6">
-          <p class="font-lato text-sm text-emerald-700 leading-relaxed">Yes! Ericka welcomes wholesale and bulk inquiries for boutiques, spas, event gifting, and community organizations. Minimum quantities and pricing vary. Use the <a href="#wholesale" class="text-amber-700 underline">Wholesale Inquiry form</a> or contact Ericka directly at egoffessentials@gmail.com to start the conversation.</p>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-2xl overflow-hidden" style="border:1px solid rgba(6,78,59,0.1);">
+      </div><div class="bg-white rounded-2xl overflow-hidden" style="border:1px solid rgba(6,78,59,0.1);">
         <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
           <span class="font-cinzel text-emerald-900 text-sm tracking-wide">What is your shipping policy?</span>
           <svg class="faq-arrow w-4 h-4 text-amber-600 flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1654,63 +1639,6 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
 
 <div class="gold-divider"></div>
 
-<!-- ═══ NEWSLETTER + WHOLESALE ═══ -->
-<section id="wholesale" class="section-pad py-14 md:py-20 px-4" style="background:#022c22;">
-  <div class="max-w-5xl mx-auto">
-    <div class="grid md:grid-cols-2 gap-12">
-
-      <!-- Newsletter -->
-      <div>
-        <p class="font-cinzel text-amber-400 tracking-widest text-xs uppercase mb-2">Stay Connected</p>
-        <h3 class="font-cormorant text-3xl font-semibold text-white mb-3">Join the Community</h3>
-        <p class="font-lato text-emerald-300 text-sm leading-relaxed mb-6">Be the first to know about new seasonal soaps, Foundation updates, pop-up markets, and exclusive drops. No spam — just love from Ericka's kitchen.</p>
-        <form id="newsletter-form" onsubmit="submitNewsletter(event)" class="space-y-3">
-          <input id="nl-name" type="text" placeholder="Your Name" required
-            class="w-full px-4 py-3 rounded-xl text-sm font-lato outline-none"
-            style="background:rgba(255,255,255,0.07); border:1px solid rgba(183,121,31,0.3); color:#fff;"/>
-          <input id="nl-email" type="email" placeholder="Your Email Address" required
-            class="w-full px-4 py-3 rounded-xl text-sm font-lato outline-none"
-            style="background:rgba(255,255,255,0.07); border:1px solid rgba(183,121,31,0.3); color:#fff;"/>
-          <button type="submit" class="w-full font-cinzel tracking-widest py-3 rounded-xl text-sm text-white transition-all hover:scale-[1.02]" style="background:#b7791f;">
-            Subscribe ✦
-          </button>
-          <p id="nl-success" class="font-lato text-emerald-300 text-xs text-center" style="display:none;">✦ Thank you! You're on the list.</p>
-          <p id="nl-error" class="font-lato text-red-400 text-xs text-center" style="display:none;">Something went wrong. Please try again.</p>
-        </form>
-      </div>
-
-      <!-- Wholesale -->
-      <div>
-        <p class="font-cinzel text-amber-400 tracking-widest text-xs uppercase mb-2">Wholesale & Bulk</p>
-        <h3 class="font-cormorant text-3xl font-semibold text-white mb-3">Partner With Us</h3>
-        <p class="font-lato text-emerald-300 text-sm leading-relaxed mb-6">Boutiques, spas, wellness centers, event planners, and community organizations — we'd love to work with you. Tell us about your needs and Ericka will be in touch personally.</p>
-        <form id="wholesale-form" onsubmit="submitWholesale(event)" class="space-y-3">
-          <input id="ws-name" type="text" placeholder="Your Name / Business Name" required
-            class="w-full px-4 py-3 rounded-xl text-sm font-lato outline-none"
-            style="background:rgba(255,255,255,0.07); border:1px solid rgba(183,121,31,0.3); color:#fff;"/>
-          <input id="ws-email" type="email" placeholder="Email Address" required
-            class="w-full px-4 py-3 rounded-xl text-sm font-lato outline-none"
-            style="background:rgba(255,255,255,0.07); border:1px solid rgba(183,121,31,0.3); color:#fff;"/>
-          <input id="ws-phone" type="tel" placeholder="Phone (optional)"
-            class="w-full px-4 py-3 rounded-xl text-sm font-lato outline-none"
-            style="background:rgba(255,255,255,0.07); border:1px solid rgba(183,121,31,0.3); color:#fff;"/>
-          <textarea id="ws-message" rows="3" placeholder="Tell us about your business and what you need..."
-            class="w-full px-4 py-3 rounded-xl text-sm font-lato outline-none resize-none"
-            style="background:rgba(255,255,255,0.07); border:1px solid rgba(183,121,31,0.3); color:#fff;"></textarea>
-          <button type="submit" class="w-full font-cinzel tracking-widest py-3 rounded-xl text-sm text-white transition-all hover:scale-[1.02]" style="background:#064e3b; border:1px solid rgba(183,121,31,0.4);">
-            Send Inquiry ✦
-          </button>
-          <p id="ws-success" class="font-lato text-emerald-300 text-xs text-center" style="display:none;">✦ Inquiry sent! Ericka will reach out soon.</p>
-          <p id="ws-error" class="font-lato text-red-400 text-xs text-center" style="display:none;">Something went wrong. Please try again.</p>
-        </form>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="gold-divider"></div>
-
 <!-- ═══ FOOTER ═══ -->
 <footer class="py-14 px-4" style="background:#011a14;">
   <div class="max-w-6xl mx-auto">
@@ -1735,7 +1663,6 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
           <li><a href="#testimonials" class="text-emerald-300 hover:text-amber-300 transition-colors">Testimonials</a></li>
           <li><a href="#faq" class="text-emerald-300 hover:text-amber-300 transition-colors">FAQ</a></li>
           <li><a href="#foundation" class="text-emerald-300 hover:text-amber-300 transition-colors">Foundation</a></li>
-          <li><a href="#wholesale" class="text-emerald-300 hover:text-amber-300 transition-colors">Wholesale</a></li>
           <li><a href="#contact" class="text-emerald-300 hover:text-amber-300 transition-colors">Contact</a></li>
         </ul>
       </div>
@@ -1872,28 +1799,6 @@ function submitNewsletter(e) {
     document.getElementById('newsletter-form').reset();
   }).catch(() => {
     document.getElementById('nl-error').style.display = 'block';
-  });
-}
-
-// ── WHOLESALE INQUIRY ────────────────────────────────────
-function submitWholesale(e) {
-  e.preventDefault();
-  const name    = document.getElementById('ws-name').value.trim();
-  const email   = document.getElementById('ws-email').value.trim();
-  const phone   = document.getElementById('ws-phone').value.trim();
-  const message = document.getElementById('ws-message').value.trim();
-  emailjs.send('YOUR_SERVICE_ID', 'YOUR_WHOLESALE_TEMPLATE_ID', {
-    business_name: name,
-    reply_email: email,
-    phone: phone || 'Not provided',
-    message: message,
-    to_email: 'egoffessentials@gmail.com'
-  }).then(() => {
-    document.getElementById('ws-success').style.display = 'block';
-    document.getElementById('ws-error').style.display = 'none';
-    document.getElementById('wholesale-form').reset();
-  }).catch(() => {
-    document.getElementById('ws-error').style.display = 'block';
   });
 }
 
