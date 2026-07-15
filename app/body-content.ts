@@ -1,0 +1,1250 @@
+// Auto-extracted verbatim from legacy index.html body (lift-and-shift, step 1)
+export const bodyContent = `
+
+<!-- TOAST -->
+<div id="toast" class="fixed top-6 right-6 z-[200] text-white px-5 py-3 rounded-xl shadow-2xl text-sm opacity-0 pointer-events-none flex items-center gap-2"
+  style="background:#022c22; border:1px solid rgba(183,121,31,0.45); transform:translateY(-10px);">
+  <span>🌿</span><span id="toast-msg">Added to cart</span>
+</div>
+
+<!-- CART OVERLAY -->
+<div id="cart-overlay" class="fixed inset-0 bg-black/60 z-[90] backdrop-blur-sm" onclick="closeCart()"></div>
+
+<!-- CART DRAWER -->
+<div id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-sm bg-white z-[100] shadow-2xl flex flex-col">
+  <div class="px-5 py-4 flex items-center justify-between" style="background:#022c22; border-bottom:1px solid rgba(183,121,31,0.3);">
+    <h2 class="font-cinzel text-white text-base tracking-widest">Your Selections</h2>
+    <button onclick="closeCart()" class="text-amber-300 hover:text-white text-2xl leading-none transition-colors">&times;</button>
+  </div>
+  <div id="cart-items" class="flex-1 overflow-y-auto px-4 py-4 space-y-3"></div>
+  <div class="border-t border-emerald-100 px-5 py-4 bg-amber-50">
+    <div class="flex justify-between items-center mb-1">
+      <span class="font-cinzel text-emerald-800 text-xs uppercase tracking-widest">Subtotal</span>
+      <span id="cart-subtotal" class="font-cinzel text-emerald-900 text-lg">$0.00</span>
+    </div>
+    <p class="font-lato text-xs text-emerald-600 mb-4">5–7 business days · Ships throughout the US</p>
+    <button onclick="sendOrder()" class="w-full text-white font-cinzel tracking-widest py-3 rounded-xl text-xs mb-2 transition-colors" style="background:#064e3b;">Send My Order ✦</button>
+    <button onclick="clearCartConfirm()" class="w-full border border-red-200 text-red-400 hover:bg-red-50 py-2 rounded-xl text-xs font-lato transition-colors">Clear Cart</button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div id="checkout-overlay">
+  <div id="checkout-modal">
+    <div class="checkout-header">
+      <h2 class="font-cinzel text-white text-sm tracking-widest">Complete Your Order</h2>
+      <div class="flex items-center gap-3">
+        <p class="font-cormorant italic text-amber-300 text-sm">EGOFF Essentials · Handcrafted with Love</p>
+        <button onclick="closeCheckout()" class="text-amber-300 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+    </div>
+    <div class="checkout-body">
+      <div id="checkout-form-body">
+        <div class="checkout-order-summary" id="checkout-summary-lines"></div>
+        <h3 class="font-cinzel text-emerald-900 text-xs tracking-widest uppercase mb-4">Your Information</h3>
+        <div class="checkout-field">
+          <label class="checkout-label">Full Name *</label>
+          <input id="co-name" class="checkout-input" type="text" placeholder="Full Name" required/>
+        </div>
+        <div class="checkout-row">
+          <div class="checkout-field">
+            <label class="checkout-label">Email *</label>
+            <input id="co-email" class="checkout-input" type="email" placeholder="Email" required/>
+          </div>
+          <div class="checkout-field">
+            <label class="checkout-label">Phone *</label>
+            <input id="co-phone" class="checkout-input" type="tel" placeholder="Phone"/>
+          </div>
+        </div>
+        <h3 class="font-cinzel text-emerald-900 text-xs tracking-widest uppercase mb-4 mt-2">Shipping Address</h3>
+        <div class="checkout-field">
+          <label class="checkout-label">Street Address *</label>
+          <input id="co-street" class="checkout-input" type="text" placeholder="Street Address" required/>
+        </div>
+        <div class="checkout-row-3">
+          <div class="checkout-field">
+            <label class="checkout-label">City *</label>
+            <input id="co-city" class="checkout-input" type="text" placeholder="City" required/>
+          </div>
+          <div class="checkout-field">
+            <label class="checkout-label">State *</label>
+            <input id="co-state" class="checkout-input" type="text" placeholder="LA" maxlength="2"/>
+          </div>
+          <div class="checkout-field">
+            <label class="checkout-label">ZIP *</label>
+            <input id="co-zip" class="checkout-input" type="text" placeholder="70001" maxlength="10"/>
+          </div>
+        </div>
+        <div class="checkout-field">
+          <label class="checkout-label">Order Notes / Special Instructions</label>
+          <textarea id="co-notes" class="checkout-input" rows="3" placeholder="Allergies, gift message, anything else…" style="resize:vertical;"></textarea>
+        </div>
+        <p id="checkout-error" class="text-red-600 text-xs font-lato mb-3" style="display:none;"></p>
+        <button onclick="submitCheckout()" class="checkout-submit-btn">Submit Order ✦</button>
+        <p class="font-lato text-xs text-emerald-600 text-center mt-3">Ericka will confirm your order and payment details personally within 1 business day.</p>
+      </div>
+      <div class="checkout-success" id="checkout-success">
+        <div style="font-size:2.5rem;">🌿</div>
+        <h3 class="font-cinzel text-emerald-900 text-lg tracking-widest mt-4 mb-2">Order Received!</h3>
+        <p class="font-cormorant italic text-emerald-700 text-xl mb-4">"Thank you for choosing EGOFF Essentials"</p>
+        <p class="font-lato text-sm text-emerald-700 mb-6">Ericka will reach out personally to confirm your order, arrange payment, and answer any questions. Your skin is in loving hands. 🌿</p>
+        <button onclick="closeCheckout()" class="btn-cart px-8 py-3">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LEGAL MODAL -->
+<div id="legal-overlay">
+  <div id="legal-modal">
+    <div class="flex justify-between items-center mb-4">
+      <h2 id="legal-title" class="font-cinzel text-emerald-900 text-lg tracking-wide"></h2>
+      <button onclick="closeLegal()" class="text-gray-400 hover:text-gray-700 text-2xl leading-none">&times;</button>
+    </div>
+    <div id="legal-body" class="font-lato text-sm text-gray-700 leading-relaxed space-y-4 max-h-[60vh] overflow-y-auto pr-2"></div>
+    <button onclick="closeLegal()" class="mt-6 btn-cart px-6 py-2">Close</button>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="overflow-hidden py-2" style="background:#022c22;">
+  <div class="ticker-track font-cinzel text-amber-300 text-xs tracking-widest">
+    <span class="px-10">✦ Handcrafted with Love in New Orleans</span>
+    <span class="px-10">✦ Rooted in Jamaican Heritage</span>
+    <span class="px-10">✦ All Natural · No Harsh Chemicals</span>
+    <span class="px-10">✦ Essentially Rooted · GOD · LOVE · POWER</span>
+    <span class="px-10">✦ For External Use Only</span>
+    <span class="px-10">✦ Handcrafted with Love in New Orleans</span>
+    <span class="px-10">✦ Rooted in Jamaican Heritage</span>
+    <span class="px-10">✦ All Natural · No Harsh Chemicals</span>
+    <span class="px-10">✦ Essentially Rooted · GOD · LOVE · POWER</span>
+    <span class="px-10">✦ For External Use Only</span>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+    <a href="#hero" class="flex items-center gap-3 flex-shrink-0">
+      <svg style="width:50px;height:50px;flex-shrink:0;" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="18" r="18" fill="#064e3b"/>
+        <path d="M2 18 L18 10 L34 18 L18 26Z" fill="#f5c518" opacity="0.18"/>
+        <path d="M18 16 C13 16 7 13 7 8 C7 5 10 3 13 5 C13 2 16 1 18 4Z" fill="#166534"/>
+        <path d="M18 16 C23 16 29 13 29 8 C29 5 26 3 23 5 C23 2 20 1 18 4Z" fill="#b7791f"/>
+        <circle cx="18" cy="14" r="2.2" fill="#1a1a1a"/>
+        <path d="M18 16 C16.5 16 16 17 16 18 L16 23 C16 24 17 25 18 25 C19 25 20 24 20 23 L20 18 C20 17 19.5 16 18 16Z" fill="#1a1a1a"/>
+        <path d="M16 19 C14 18 11 15 10 13" stroke="#1a1a1a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M20 19 C22 18 25 15 26 13" stroke="#1a1a1a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M17 25 C16.5 27 16 29 15.5 31 L20.5 31 C20 29 19.5 27 19 25Z" fill="#5c3a1e"/>
+        <path d="M15.5 30 C13 31 11 32 10 33" stroke="#5c3a1e" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <path d="M18 31 C18 32.5 17 34 16 35" stroke="#5c3a1e" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <path d="M20.5 30 C23 31 25 32 26 33" stroke="#5c3a1e" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <circle cx="18" cy="18" r="17" fill="none" stroke="#b7791f" stroke-width="1" opacity="0.65"/>
+      </svg>
+      <div class="hidden sm:block leading-tight">
+        <p class="font-cinzel text-white text-sm tracking-widest">EGOFF <span style="color:#d97706;">Essentials</span></p>
+        <p class="font-cormorant italic text-xs" style="color:#6ee7b7;">Essentially Rooted</p>
+      </div>
+    </a>
+    <div class="hidden md:flex items-center gap-7">
+      <a href="#hero" class="nav-link">Home</a>
+      <a href="#story" class="nav-link">About</a>
+      <a href="#products" class="nav-link">Shop</a>
+      <a href="#testimonials" class="nav-link">Our Roots</a>
+      <a href="#foundation" class="nav-link">Foundation</a>
+        <a href="#contact" class="nav-link">Contact</a>
+    </div>
+    <div class="flex items-center gap-3 flex-shrink-0">
+      <button onclick="openCart()" class="flex items-center gap-2 font-cinzel text-xs tracking-widest text-white px-4 py-2 rounded-full"
+        style="background:rgba(183,121,31,0.22); border:1px solid rgba(183,121,31,0.5);"
+        onmouseover="this.style.background='rgba(183,121,31,0.38)'" onmouseout="this.style.background='rgba(183,121,31,0.22)'">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <span class="hidden sm:inline">Cart</span>
+        <span id="cart-count" class="bg-amber-400 text-emerald-900 rounded-full w-5 h-5 text-xs flex items-center justify-center font-bold">0</span>
+      </button>
+      <button onclick="toggleMobileMenu()" class="md:hidden text-amber-300 hover:text-white p-1" aria-label="Menu">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="md:hidden flex-col px-6 py-5 space-y-4" style="background:#011a12; border-top:1px solid rgba(183,121,31,0.2);">
+    <a href="#hero" onclick="closeMobileMenu()" class="block nav-link">Home</a>
+    <a href="#story" onclick="closeMobileMenu()" class="block nav-link">About</a>
+    <a href="#products" onclick="closeMobileMenu()" class="block nav-link">Shop</a>
+    <a href="#testimonials" onclick="closeMobileMenu()" class="block nav-link">Our Roots</a>
+    <a href="#faq" onclick="closeMobileMenu()" class="block nav-link">FAQ</a>
+    <a href="#foundation" onclick="closeMobileMenu()" class="block nav-link">Foundation</a>
+    <a href="#contact" onclick="closeMobileMenu()" class="block nav-link">Contact</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero" class="section-pad relative min-h-screen flex flex-col items-center justify-center text-center px-4 py-24 overflow-hidden"
+  style="background: radial-gradient(ellipse at 60% 0%, #d1fae5 0%, #fffbeb 50%, #fef3c7 100%);">
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] rounded-full" style="border:1px solid rgba(183,121,31,0.16);"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[720px] rounded-full" style="border:1px solid rgba(6,78,59,0.09);"></div>
+  </div>
+  <p class="font-cinzel text-amber-600 tracking-[0.35em] text-xs uppercase mb-8">Essentially Rooted · Est. New Orleans</p>
+  <div class="float-logo mb-8">
+    <div class="hero-logo-wrap mx-auto" style="border:4px solid rgba(183,121,31,0.55); box-shadow:0 0 0 8px rgba(183,121,31,0.1), 0 20px 60px rgba(6,78,59,0.25);">
+      <img src="hero-logo.jpg" alt="EGOFF Essentials — Tree of Life Logo" style="width:100%; height:100%; object-fit:cover; display:block;"/>
+    </div>
+  </div>
+  <h1 class="hero-title font-cinzel font-bold mb-5 leading-tight" style="font-size:clamp(2.2rem,6vw,5rem);">
+    <span class="gold-shimmer">EGOFF</span><br/>
+    <span style="color:#022c22;">Essentials</span>
+  </h1>
+  <!-- RESTORED: "born with" — original wording -->
+  <p class="font-cormorant text-xl md:text-2xl text-emerald-700 italic mb-3 max-w-xl leading-snug px-2">
+    "Luxury handcrafted soaps rooted in Jamaican heritage,<br class="hidden sm:inline"/> born with New Orleans love."
+  </p>
+  <p class="font-cinzel text-amber-600 tracking-widest text-xs uppercase mb-10">GOD · LOVE · POWER</p>
+  <div class="flex flex-col sm:flex-row gap-4 items-center">
+    <a href="#products" class="font-cinzel tracking-widest px-8 py-4 rounded-full text-sm text-white transition-all hover:scale-105 shadow-lg" style="background:#064e3b;">Shop Now ✦</a>
+    <a href="#story" class="font-cinzel tracking-widest px-8 py-4 rounded-full text-sm transition-all" style="border:1px solid #b7791f; color:#92400e;">Our Story</a>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- COMPANY BANNER -->
+<div class="py-8 px-4 text-center" style="background:#022c22;">
+  <p class="font-cinzel text-amber-400 tracking-widest text-xs uppercase mb-3">Our Family of Purpose</p>
+  <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 font-cormorant text-lg">
+    <span class="text-amber-200 italic">Egoff Enterprise LLC</span>
+    <span class="hidden md:inline text-amber-600 text-xl">→</span>
+    <span class="text-white font-semibold">EGOFF Essentials</span>
+    <span class="text-emerald-400 text-sm">+</span>
+    <a href="#foundation" class="text-emerald-300 italic hover:text-amber-300 transition-colors">Egoff Foundation</a>
+  </div>
+</div>
+
+<div class="gold-divider"></div>
+
+<!-- ═══ OUR STORY — ERICKA'S ORIGINAL WORDING RESTORED ═══ -->
+<section id="story" class="section-pad py-14 md:py-24 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="font-cinzel text-amber-600 tracking-widest text-xs uppercase mb-2">The Heart Behind the Bar</p>
+      <h2 class="font-cormorant text-4xl md:text-5xl font-semibold" style="color:#022c22;">Our Story</h2>
+      <div class="section-heading-line"></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10 md:gap-14 items-start">
+
+      <!-- LEFT: Founder + PWOG Tree -->
+      <div class="flex flex-col items-center">
+        <div class="founder-portrait rounded-full overflow-hidden mb-5 flex-shrink-0"
+          style="width:230px; height:230px; border:4px solid #b7791f; box-shadow:0 0 0 8px rgba(183,121,31,0.1), 0 16px 48px rgba(6,78,59,0.22);">
+          <img src="founder.jpg" alt="Ericka A. Goff — Founder of EGOFF Essentials"
+            style="width:100%; height:100%; object-fit:cover; display:block;"/>
+        </div>
+        <p class="font-cinzel text-emerald-900 text-base tracking-widest">Ericka A. Goff</p>
+        <p class="font-cormorant text-amber-600 italic text-base mt-0.5">Your Soap Alchemist</p>
+
+        <!-- PWOG ANCESTRAL TREE -->
+        <div class="pwog-tree-wrap">
+          <p class="font-cinzel text-xs tracking-widest uppercase text-center mb-0.5" style="color:rgba(183,121,31,0.65);">Ancestoral Tree of</p>
+          <p class="font-cinzel text-xs tracking-widest uppercase text-center mb-1" style="color:#EF9F27;">Powerful Women of God (PWOG)</p>
+          <p class="font-cormorant italic text-center text-xs mb-4" style="font-size:0.62rem;color:rgba(254,243,199,0.4);">Rooted in Jamaica · Planted in New Orleans · Growing in Faith</p>
+
+          <!-- ROW 1: Deep Roots — Hilda Smith Caliste + empty circle -->
+          <p class="pwog-era-label">✦ Deep Roots — The Founding Mothers ✦</p>
+          <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;padding-bottom:0.25rem;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle pwog-circle-lg">
+                <img src="tree-hilda.jpg" alt="Hilda Smith Caliste" style="object-position:center 20%;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;">H.S.<br/>Caliste</div>
+              </div>
+              <div class="pwog-label"><span class="pwog-fullname">Hilda Smith Caliste<br/>Jamaica, B.W.I.</span></div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle pwog-circle-lg" style="opacity:0.35;"></div>
+              <div class="pwog-label" style="visibility:hidden;"><span class="pwog-fullname">&nbsp;</span></div>
+            </div>
+          </div>
+
+          <div class="pwog-branch-connector"><div class="pwog-branch-dot"></div></div>
+
+          <!-- ROW 2: Lucy Bush Snowden (no pic), Julia Sanchez Thomas, Alice Fields Goff -->
+          <p class="pwog-era-label">✦ The Bridge Generation ✦</p>
+          <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;padding-bottom:0.25rem;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle">
+                <img src="tree-lucy.jpg" alt="Lucy Bush Snowden" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;">L.B.<br/>Snowden</div>
+              </div>
+              <div class="pwog-label"><span class="pwog-fullname">Lucy Bush Snowden</span></div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle">
+                <img src="tree-julia.jpg" alt="Julia Sanchez Thomas" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;">J.S.<br/>Thomas</div>
+              </div>
+              <div class="pwog-label"><span class="pwog-fullname">Julia Sanchez Thomas</span></div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle">
+                <img src="tree-alice.jpg" alt="Alice Fields Goff" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;">A.F.<br/>Goff</div>
+              </div>
+              <div class="pwog-label"><span class="pwog-fullname">Alice Fields Goff</span></div>
+            </div>
+          </div>
+
+          <div class="pwog-branch-connector"><div class="pwog-branch-dot"></div></div>
+
+          <!-- ROW 3: Geraldine Goff Rollins, Alma Snowden Thomas, Henrietta J. Honore Jefferson -->
+          <p class="pwog-era-label">✦ The Crown — Powerful Women of God ✦</p>
+          <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;padding-bottom:0.25rem;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle">
+                <img src="tree-geraldine.jpg" alt="Geraldine Goff Rollins" style="object-fit:cover; object-position:center 15%;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;">G.G.<br/>Rollins</div>
+              </div>
+              <div class="pwog-label"><span class="pwog-fullname">Geraldine Goff Rollins</span></div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle">
+                <img src="tree-alma.jpg" alt="Alma Snowden Thomas" style="object-position:center 15%;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;">A.S.<br/>Thomas</div>
+              </div>
+              <div class="pwog-label"><span class="pwog-fullname">Alma Snowden Thomas</span></div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle" style="border-color:#1e3a5f;">
+                <img src="tree-henrietta.jpg" alt="Henrietta J. Honore Jefferson" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;background:radial-gradient(circle,#1e3a5f,#011a14);">H.J.<br/>Jeff.</div>
+              </div>
+              <div class="pwog-label"><span class="pwog-fullname">Henrietta J. Honore Jefferson</span></div>
+            </div>
+          </div>
+
+          <div class="pwog-branch-connector"><div class="pwog-branch-dot"></div></div>
+
+          <!-- ROW 4: Lorchid B. Thomas, Ruby Caliste Sumler, Elizabeth Collins Taylor -->
+          <p class="pwog-era-label">✦ The Legacy ✦</p>
+          <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;padding-bottom:0.25rem;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle">
+                <img src="tree-lorchid.jpg" alt="Lorchid B. Thomas" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;">L.B.<br/>Thomas</div>
+              </div>
+              <div class="pwog-label"><span class="pwog-fullname">Lorchid B. Thomas</span></div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle">
+                <img src="tree-ruby.jpg" alt="Ruby Caliste Sumler" style="object-position:center 15%;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;">R.C.<br/>Sumler</div>
+              </div>
+              <div class="pwog-label"><span class="pwog-fullname">Ruby Caliste Sumler</span></div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle">
+                <img src="tree-elizabeth-collins.jpg" alt="Elizabeth Collins Taylor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;">E.C.<br/>Taylor</div>
+              </div>
+              <div class="pwog-label"><span class="pwog-fullname">Elizabeth Collins Taylor</span></div>
+            </div>
+          </div>
+
+          <div class="pwog-branch-connector"><div class="pwog-branch-dot"></div></div>
+
+          <!-- Founder + Honorary BFF -->
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem 0.5rem;justify-items:center;">
+            <div style="grid-column:2;display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle pwog-circle-founder">
+                <img src="founder.jpg" alt="Ericka Almarie Powell-Goff" style="object-position:center 20%; transform:scale(1.4); transform-origin:center 20%;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;">E.A.<br/>Powell</div>
+              </div>
+              <div class="pwog-label"><span class="pwog-fullname">Ericka Almarie Powell-Goff</span><span class="pwog-badge">Founder</span></div>
+            </div>
+          </div>
+
+          <!-- Honorary BFF -->
+          <div style="display:flex;justify-content:center;margin-top:0.75rem;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="pwog-circle" style="border-color:#7c3aed;">
+                <img src="tree-wonica.jpg" alt="Wonica Lynn Royal" style="object-position:center 20%;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;background:radial-gradient(circle,#3b1a6e,#011a14);">W.L.<br/>Royal</div>
+              </div>
+              <div class="pwog-label"><span class="pwog-fullname">Wonica Lynn Royal</span><span class="pwog-badge" style="background:#7c3aed;">BFF · Honorary</span></div>
+            </div>
+          </div>
+
+          <div style="text-align:center;margin-top:0.85rem;opacity:0.35;">
+            <svg width="90" height="22" viewBox="0 0 90 22" xmlns="http://www.w3.org/2000/svg">
+              <path d="M45 0 L45 14 Q30 16 12 20" stroke="#5c3a1e" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <path d="M45 14 Q60 16 78 20" stroke="#5c3a1e" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <path d="M45 8 Q36 10 25 14" stroke="#5c3a1e" stroke-width="1" fill="none" stroke-linecap="round"/>
+              <path d="M45 8 Q54 10 65 14" stroke="#5c3a1e" stroke-width="1" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="font-cormorant italic text-center" style="font-size:0.52rem;color:rgba(254,243,199,0.28);margin-top:0.2rem;">Jamaica · New Orleans · Faith</p>
+        </div>
+      </div>
+
+      <!-- RIGHT: Bio — ERICKA'S NEW WORDING 5/24/26 -->
+      <div class="space-y-6 font-lato text-emerald-800 leading-relaxed text-sm md:text-base">
+
+        <p>EGOFF Essentials was born from a great source of pain, a deep love of family, heritage, and the healing power of nature and prayer.</p>
+
+        <p>As Founder &amp; CEO, Ericka A. Goff, the brand is a living tribute to my Jamaican family's botanical wisdom passed down through generations of the Goff-Caliste family tree.</p>
+
+        <blockquote class="font-cormorant text-xl text-emerald-900 italic leading-snug py-1 pl-5" style="border-left:3px solid #b7791f;">
+          "Unearthing my roots and truth with products that produce essential fruits for generations."
+        </blockquote>
+
+        <p class="font-cinzel text-amber-700 text-xs tracking-widest uppercase">As we Lather our way to the top one bar at a time.</p>
+
+        <p>I was born in New Orleans but my roots originated in <strong class="text-emerald-900">Wait-A-Bit, Trelawny, Jamaica</strong> and what we call "The Big Easy aka The Dirty South" (New Orleans, Louisiana). I was named after my mother's best friend who passed decades ago, per her request — a name I carry with honor.</p>
+
+        <p>Reared in the church — <em>Corpus Christi, Hartzell United MC (Lower 9th Ward), Greater Saint Stephens, Franklin Avenue BC &amp; currently Light House Church &amp; Ministries, Humble TX</em> — at a very young age is when my relationship with God evolved. My life has never been the same since accepting Christ. Prayer is always my comfort and solitude to keep striving.</p>
+
+        <p>Every bar is created for you — to embody, cleanse, embrace, and refresh one's sensual elements. Whether you're discovering your body's needs and scents, or seeking subtleness through texture and smell — we strive to understand and personalize every bar with grace, love, honor, earth's elements, all natural ingredients, skill, and craftsmanship.</p>
+
+        <p>My/Our mission is to dig deep internally, connect fully with nature, and respond and respect humanness continuously. Your selection allows us to get a sense of your needs and preferences as you explore our curated collection.</p>
+
+        <p>It is my honor and mission to help you find a soap that tells your unique story and suits your current and future needs.</p>
+
+        <p class="font-cormorant italic text-emerald-700 text-base">With love and great intention,<br/>
+          <span class="font-cinzel text-amber-700 text-sm not-italic tracking-widest">Your Soap/Suop Alchemist</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ═══ SPECIALTY SOAPS — ORIGINAL WORDING RESTORED, FDA FLAGS IN RED ═══ -->
+<section id="products" class="section-pad py-14 md:py-24 px-4" style="background:linear-gradient(to bottom,#ecfdf5,#fffbeb);">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="text-center mb-14">
+      <p class="font-cinzel text-amber-600 tracking-widest text-xs uppercase mb-2">Handcrafted with Intention</p>
+      <h2 class="font-cormorant text-4xl md:text-5xl font-semibold" style="color:#022c22;">Specialty Soaps</h2>
+      <p class="font-cinzel text-amber-700 tracking-widest text-xs uppercase mt-2">Hand-Crafted with Purpose!</p>
+      <p class="font-cormorant italic text-emerald-800 mt-3 text-lg">An all natural, earthly &amp; lathering approach to common symptoms and pleasures.</p>
+      <p class="font-lato text-emerald-700 mt-2 text-sm italic">Each bar is formulated with intention — Jamaica's finest botanicals for real body and spirit needs.</p>
+      <p class="font-lato text-emerald-700 mt-1 text-sm">$55.00 each · Premium formulations for specific wellness support</p>
+      <div class="section-heading-line"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Elizabeth's Power — green block -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#d1fae5,#ecfdf5);">
+          <img src="img/elizabeths-power.png" alt="Elizabeth's Power Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="product-img-fallback" style="display:none;">
+            <span class="fi-icon">🌸</span>
+            <span class="fi-name" style="color:#064e3b;">Elizabeth's Power</span>
+            <span class="fi-hint" style="color:#064e3b;">Photo Coming Soon</span>
+          </div>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">🌸 Specialty</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Elizabeth's Power</h3>
+          <!-- ORIGINAL: hot flash/menstrual wellness — FDA flagged -->
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">A wellness bar crafted to support comfort and balance during life's natural transitions. Softens skin and carries a quiet spiritual warmth. Named for the women who carried us.</p>
+          <div class="mt-4 flex items-center justify-between">
+            <span class="font-cinzel text-emerald-900 font-bold">$55.00</span>
+            <button class="btn-cart" onclick="addToCart('Elizabeth\\'s Power', 55)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alma's Grace — red/ruby block -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#fef2f2,#fee2e2);">
+          <img src="img/almas-grace.png" alt="Alma's Grace Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="product-img-fallback" style="display:none;">
+            <span class="fi-icon">💎</span>
+            <span class="fi-name" style="color:#7f1d1d;">Alma's Grace</span>
+            <span class="fi-hint" style="color:#7f1d1d;">Photo Coming Soon</span>
+          </div>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">💎 Specialty</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Alma's Grace</h3>
+          <!-- ORIGINAL: migraine/anxiety/stress — FDA flagged -->
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">A deliverance bar crafted for <span class="fda-flag">migraines, anxiety, and stress</span>. A nourishing, natural bar with botanical care — honoring your body and spirit's need for calm.</p>
+          <div class="mt-4 flex items-center justify-between">
+            <span class="font-cinzel text-emerald-900 font-bold">$55.00</span>
+            <button class="btn-cart" onclick="addToCart('Alma\\'s Grace', 55)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jamaican Ruby — purple block -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe);">
+          <img src="img/jamaican-ruby.png" alt="Jamaican Ruby Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="product-img-fallback" style="display:none;">
+            <span class="fi-icon">🌙</span>
+            <span class="fi-name" style="color:#4c1d95;">Jamaican Ruby</span>
+            <span class="fi-hint" style="color:#4c1d95;">Photo Coming Soon</span>
+          </div>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">🌙 Specialty</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Jamaican Ruby</h3>
+          <!-- ORIGINAL: pain — FDA flagged -->
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">A rich, island-rooted bar made with red Jamaican botanicals formulated for <span class="fda-flag">pain relief</span>. Deep moisture, vibrant energy, and the scent of heritage — a bar that honors where we come from.</p>
+          <div class="mt-4 flex items-center justify-between">
+            <span class="font-cinzel text-emerald-900 font-bold">$55.00</span>
+            <button class="btn-cart" onclick="addToCart('Jamaican Ruby', 55)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alice's Way — gold block -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">
+          <img src="img/alices-way.png" alt="Alice's Way Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="product-img-fallback" style="display:none;">
+            <span class="fi-icon">🔥</span>
+            <span class="fi-name" style="color:#78350f;">Alice's Way</span>
+            <span class="fi-hint" style="color:#78350f;">Photo Coming Soon</span>
+          </div>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">🔥 Specialty</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Alice's Way</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">A botanical bar crafted as a natural <span class="fda-flag">mosquito repellent</span>. Formulation details coming soon. Named in honor of the women who paved the way.</p>
+          <div class="mt-4 flex items-center justify-between">
+            <span class="font-cinzel text-emerald-900 font-bold">$55.00</span>
+            <button class="btn-cart" onclick="addToCart('Alice\\'s Way', 55)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Y-Rose (Eczema) — new card -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#fdf2f8,#fce7f3);">
+          <img src="img/y-rose.png" alt="Y-Rose Eczema Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="product-img-fallback" style="display:none;">
+            <span class="fi-icon">🌹</span>
+            <span class="fi-name" style="color:#9d174d;">Y-Rose (Eczema)</span>
+            <span class="fi-hint" style="color:#9d174d;">Photo Coming Soon</span>
+          </div>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">🌹 Specialty</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Y-Rose <span class="font-lato text-xs text-emerald-600 normal-case not-italic font-normal">(Eczema)</span></h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">A soothing botanical bar crafted with care for sensitive, eczema-prone skin. Gentle, calming, and nourishing — rooted in nature's most delicate botanicals.</p>
+          <div class="mt-4 flex items-center justify-between">
+            <span class="font-cinzel text-emerald-900 font-bold">$55.00</span>
+            <button class="btn-cart" onclick="addToCart('Y-Rose (Eczema)', 55)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end specialty grid -->
+
+    <!-- BODY BUTTER section -->
+    <div class="text-center mt-20 mb-14">
+      <span class="inline-block font-cinzel text-amber-600 tracking-widest text-xs uppercase mb-2 px-4 py-1 rounded-full" style="background:rgba(183,121,31,0.08); border:1px solid rgba(183,121,31,0.2);">New Addition</span>
+      <h2 class="font-cormorant text-4xl md:text-5xl font-semibold mt-3" style="color:#022c22;">Body Butter</h2>
+      <p class="font-lato text-emerald-700 mt-3 text-sm">$30.00 · Specialty whipped body butter for deep nourishment</p>
+      <div class="section-heading-line"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#d1fae5,#ecfdf5);">
+          <img src="img/elizabeths-power-butter.png" alt="Elizabeth's Power Body Butter" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">🧈 Body Butter · Specialty</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Elizabeth's Power Body Butter</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Rich, whipped shea and botanical butter to deeply nourish and soften skin. Pairs beautifully with Elizabeth's Power soap for a complete daily ritual.</p>
+          <div class="mt-4 flex items-center justify-between">
+            <span class="font-cinzel text-emerald-900 font-bold">$30.00</span>
+            <button class="btn-cart" onclick="addToCart('Elizabeth\\'s Power Body Butter', 30)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#fef2f2,#fee2e2);">
+          <img src="img/almas-grace-butter.png" alt="Alma's Grace Body Butter" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">🧈 Body Butter · Specialty</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Alma's Grace Body Butter</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Floral, feminine, and luxurious. A whipped butter to complement Alma's Grace soap — calming botanicals for soft, glowing skin.</p>
+          <div class="mt-4 flex items-center justify-between">
+            <span class="font-cinzel text-emerald-900 font-bold">$30.00</span>
+            <button class="btn-cart" onclick="addToCart('Alma\\'s Grace Body Butter', 30)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe);">
+          <img src="img/jamaican-ruby-butter.png" alt="Jamaican Ruby Body Butter" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">🧈 Body Butter · Specialty</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Jamaican Ruby Body Butter</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Island-inspired botanicals whipped into a cloud of moisture. Celebrates Jamaican heritage in every nourishing scoop. Pairs with Jamaican Ruby soap.</p>
+          <div class="mt-4 flex items-center justify-between">
+            <span class="font-cinzel text-emerald-900 font-bold">$30.00</span>
+            <button class="btn-cart" onclick="addToCart('Jamaican Ruby Body Butter', 30)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">
+          <img src="img/alices-way-butter.png" alt="Alice's Way Body Butter" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">🧈 Body Butter · Specialty</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Alice's Way Body Butter</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">A botanical whipped butter to complement Alice's Way soap. Deep nourishment honoring the women who paved the way.</p>
+          <div class="mt-4 flex items-center justify-between">
+            <span class="font-cinzel text-emerald-900 font-bold">$30.00</span>
+            <button class="btn-cart" onclick="addToCart('Alice\\'s Way Body Butter', 30)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#fdf2f8,#fce7f3);">
+          <img src="img/y-rose-butter.png" alt="Y-Rose Body Butter" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">🧈 Body Butter · Specialty</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Y-Rose Body Butter</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">A soothing whipped body butter crafted to complement the Y-Rose Eczema bar. Gentle, calming botanicals for sensitive and eczema-prone skin.</p>
+          <div class="mt-4 flex items-center justify-between">
+            <span class="font-cinzel text-emerald-900 font-bold">$30.00</span>
+            <button class="btn-cart" onclick="addToCart('Y-Rose Body Butter', 30)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FDA DISCLAIMER -->
+    <div class="fda-banner max-w-3xl mx-auto mb-16">
+      <strong>⚠️ Legal Disclaimer:</strong> These statements have not been evaluated by the Food &amp; Drug Administration (FDA). Our products are not intended to diagnose, treat, cure, or prevent any disease. Results may vary by individual. All EGOFF Essentials products are intended <strong>for external use only</strong>. If you have a medical condition or skin sensitivity, consult your healthcare provider before use.
+    </div>
+
+    <!-- REGULAR SOAPS -->
+    <div class="text-center mb-14">
+      <p class="font-cinzel text-amber-600 tracking-widest text-xs uppercase mb-2">Everyday Luxury</p>
+      <h2 class="font-cormorant text-4xl md:text-5xl font-semibold" style="color:#022c22;">Regular Soaps</h2>
+      <p class="font-lato text-emerald-700 mt-3 text-sm">$25.00 each · Beautifully crafted for daily ritual</p>
+      <div class="section-heading-line"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Eucalyptus -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);">
+          <img src="img/eucalyptus.png" alt="Eucalyptus Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Regular</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Eucalyptus</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Cool and clarifying — a refreshing daily bar with a crisp, natural scent that awakens the senses.</p>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">$25.00</span><button class="btn-cart" onclick="addToCart('Eucalyptus', 25)">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <!-- Peppermint -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#f0fdf4,#bbf7d0);">
+          <img src="img/peppermint.png" alt="Peppermint Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Regular</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Peppermint</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Invigorating and clean — a tingly bar that refreshes the body and energizes the spirit.</p>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">$25.00</span><button class="btn-cart" onclick="addToCart('Peppermint', 25)">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <!-- Tea Tree -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);">
+          <img src="img/tea-tree.png" alt="Tea Tree Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Regular</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Tea Tree</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Naturally purifying and botanical — a grounding bar for clean, balanced skin.</p>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">$25.00</span><button class="btn-cart" onclick="addToCart('Tea Tree', 25)">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <!-- Lavender -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe);">
+          <img src="img/lavender.png" alt="Lavender Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Regular</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Lavender</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">A calming bar to wind down with. Pure lavender lulls the body into rest and renewal.</p>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">$25.00</span><button class="btn-cart" onclick="addToCart('Lavender', 25)">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <!-- Chamomile -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#fefce8,#fef9c3);">
+          <img src="img/chamomile.png" alt="Chamomile Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Regular</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Chamomile</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Gentle and golden — a soft bar that soothes sensitive skin and calms the spirit.</p>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">$25.00</span><button class="btn-cart" onclick="addToCart('Chamomile', 25)">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <!-- Lemongrass -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#fefce8,#fef9c3);">
+          <img src="img/lemongrass.png" alt="Lemongrass Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Regular</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Lemongrass</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Bright and earthy — a vibrant bar with a fresh citrus-herbal scent that lifts the mood.</p>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">$25.00</span><button class="btn-cart" onclick="addToCart('Lemongrass', 25)">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <!-- Frankincense & Myrrh -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">
+          <img src="img/frankincense-myrrh.png" alt="Frankincense & Myrrh Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Regular</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Frankincense &amp; Myrrh</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Ancient and sacred — a rich, resinous bar rooted in spiritual tradition and deep skin nourishment.</p>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">$25.00</span><button class="btn-cart" onclick="addToCart('Frankincense & Myrrh', 25)">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <!-- Oatmeal / Milk & Honey -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">
+          <img src="img/oatmeal-milk-honey.png" alt="Oatmeal / Milk & Honey Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Regular</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Oatmeal / Milk &amp; Honey</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Old-fashioned nourishment made luxurious. Gentle oat exfoliation meets deep milk and honey moisture.</p>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">$25.00</span><button class="btn-cart" onclick="addToCart('Oatmeal / Milk & Honey', 25)">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <!-- Goat Milk -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#fafaf9,#f5f5f4);">
+          <img src="img/goat-milk.png" alt="Goat Milk Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Regular</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Goat Milk</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Creamy and ultra-gentle. Goat milk's natural lactic acid softens and hydrates even the most sensitive skin.</p>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">$25.00</span><button class="btn-cart" onclick="addToCart('Goat Milk', 25)">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <!-- Coconut -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);">
+          <img src="img/coconut.png" alt="Coconut Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Regular</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Coconut</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Tropical and deeply moisturizing — a bar that wraps your skin in island richness from root to tip.</p>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">$25.00</span><button class="btn-cart" onclick="addToCart('Coconut', 25)">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <!-- [moved to Seasonal] -->
+
+    </div><!-- end regular grid -->
+
+    <!-- ═══ SEASONAL SOAPS ═══ -->
+    <div class="text-center mt-20 mb-14">
+      <p class="font-cinzel text-amber-600 tracking-widest text-xs uppercase mb-2">Limited by Season</p>
+      <h2 class="font-cormorant text-4xl md:text-5xl font-semibold" style="color:#022c22;">Seasonal Soaps</h2>
+      <p class="font-lato text-emerald-700 mt-3 text-sm">TBA · Available while in season</p>
+      <div class="section-heading-line"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Rose / Ylang-Ylang -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#fdf2f8,#fce7f3);">
+          <span class="seasonal-badge">✦ Coming Soon</span>
+          <img src="img/rose-ylang-ylang.png" alt="Rose / Ylang-Ylang Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="product-img-fallback" style="display:none;"><span class="fi-icon">🌹</span><span class="fi-name" style="color:#9d174d;">Rose / Ylang-Ylang</span><span class="fi-hint" style="color:#9d174d;">Photo Coming Soon</span></div>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Seasonal</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Rose / Ylang-Ylang</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">A floral, feminine blend — romantic rose meets exotic ylang-ylang for deeply soft, fragrant skin.</p>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">TBA</span><button class="btn-cart" style="opacity:0.5;cursor:not-allowed;" disabled>Coming Soon</button></div>
+        </div>
+      </div>
+
+      <!-- Ginger -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">
+          <span class="seasonal-badge">✦ Coming Soon</span>
+          <img src="img/ginger.png" alt="Ginger Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="product-img-fallback" style="display:none;"><span class="fi-icon">🫚</span><span class="fi-name" style="color:#78350f;">Ginger</span><span class="fi-hint" style="color:#78350f;">Photo Coming Soon</span></div>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Seasonal</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Ginger</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Warm and spiced — a bold bar with the invigorating heat of ginger root to awaken the senses.</p>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">TBA</span><button class="btn-cart" style="opacity:0.5;cursor:not-allowed;" disabled>Coming Soon</button></div>
+        </div>
+      </div>
+
+      <!-- Lemon / Orange / Grapefruit -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#fefce8,#fef9c3);">
+          <span class="seasonal-badge">✦ Coming Soon</span>
+          <img src="img/citrus-blend.png" alt="Lemon / Orange / Grapefruit Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="product-img-fallback" style="display:none;"><span class="fi-icon">🍊</span><span class="fi-name" style="color:#713f12;">Lemon / Orange / Grapefruit</span><span class="fi-hint" style="color:#713f12;">Photo Coming Soon</span></div>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Seasonal</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Lemon / Orange / Grapefruit</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">A bright citrus burst — three sun-ripened fruits blended into one uplifting, luminous bar.</p>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">TBA</span><button class="btn-cart" style="opacity:0.5;cursor:not-allowed;" disabled>Coming Soon</button></div>
+        </div>
+      </div>
+
+      <!-- Sandalwood / Cedarwood -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#fef3c7,#d6bc8a);">
+          <span class="seasonal-badge">✦ Coming Soon</span>
+          <img src="img/sandalwood-cedarwood.png" alt="Sandalwood / Cedarwood Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="product-img-fallback" style="display:none;"><span class="fi-icon">🪵</span><span class="fi-name" style="color:#78350f;">Sandalwood / Cedarwood</span><span class="fi-hint" style="color:#78350f;">Photo Coming Soon</span></div>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Seasonal</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Sandalwood / Cedarwood</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Earthy, warm, and grounding — a woodsy bar that anchors the spirit and deeply nourishes the skin.</p>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">TBA</span><button class="btn-cart" style="opacity:0.5;cursor:not-allowed;" disabled>Coming Soon</button></div>
+        </div>
+      </div>
+
+      <!-- Clean Cotton / Linen (moved from Regular) -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#f8fafc,#f1f5f9);">
+          <span class="seasonal-badge">✦ Coming Soon</span>
+          <img src="img/clean-cotton-linen.png" alt="Clean Cotton / Linen Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="product-img-fallback" style="display:none;"><span class="fi-icon">🌬️</span><span class="fi-name" style="color:#334155;">Clean Cotton / Linen</span><span class="fi-hint" style="color:#334155;">Photo Coming Soon</span></div>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Seasonal</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Clean Cotton / Linen</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Fresh and light — a crisp, clean bar that leaves skin feeling like a warm breeze through white linens.</p>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">TBA</span><button class="btn-cart" style="opacity:0.5;cursor:not-allowed;" disabled>Coming Soon</button></div>
+        </div>
+      </div>
+
+      <!-- Vanilla / Almond (moved from Regular) -->
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">
+          <span class="seasonal-badge">✦ Coming Soon</span>
+          <img src="img/vanilla-almond.png" alt="Vanilla / Almond Soap" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="product-img-fallback" style="display:none;"><span class="fi-icon">🍂</span><span class="fi-name" style="color:#78350f;">Vanilla / Almond</span><span class="fi-hint" style="color:#78350f;">Photo Coming Soon</span></div>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Seasonal</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Vanilla / Almond</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Warm, sweet, and utterly comforting — a bar that nourishes deeply and lingers on the skin like a soft embrace.</p>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">TBA</span><button class="btn-cart" style="opacity:0.5;cursor:not-allowed;" disabled>Coming Soon</button></div>
+        </div>
+      </div>
+
+    </div><!-- end seasonal grid -->
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="testimonials" class="section-pad py-14 md:py-24 px-4" style="background:linear-gradient(to bottom,#022c22,#011a14);">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="font-cinzel text-amber-400 tracking-widest text-xs uppercase mb-2">From Their Hearts</p>
+      <h2 class="font-cormorant text-4xl md:text-5xl font-semibold text-white">Voices from Our Community</h2>
+      <p class="font-lato text-emerald-300 mt-3 text-sm italic">Real people. Real experiences. Rooted in love.</p>
+      <div class="section-heading-line"></div>
+      <p class="font-lato text-xs mt-4" style="color:rgba(253,230,138,0.6);">Individual results vary. Testimonials reflect personal experiences and are not a guarantee of results.<br/>Products are for external use only and not intended to treat any medical condition.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Theressa Ford -->
+      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+        <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
+        <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Praise God for Ericka Goff being so creative. The swings of going from feeling like I was at the equator to feeling like I was in Antarctica were so bad I was crying sometimes. Showering with this soap before bed <span class="fda-flag">helped me so much</span>. It does not dissolve and melt like major brand soaps — it's made with good solid natural materials that <span class="fda-flag">help your skin</span> instead of drying it out.</p>
+        <div class="border-t border-emerald-700 pt-4">
+          <p class="font-cinzel text-amber-300 text-xs tracking-wide">Theressa Ford</p>
+          <p class="font-lato text-emerald-400 text-xs mt-0.5">Maryland</p>
+          <p class="font-lato text-emerald-400 text-xs mt-0.5">Attorney at Law, J.D. · Thurgood Marshall School of Law</p>
+          <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Elizabeth's Power</p>
+        </div>
+      </div>
+      <!-- Zavier -->
+      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+        <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
+        <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Alma's Grace has always been great for my skin and my mental health. It leaves my skin nice and soft. It does not leave me dry or brittle. I am washing my worries away. <span class="fda-flag">It helped me calm down throughout postpartum</span>, right to my last small piece. I used it as a ritual wash. Highly recommend — especially to first-time mothers.</p>
+        <div class="border-t border-emerald-700 pt-4">
+          <p class="font-cinzel text-amber-300 text-xs tracking-wide">Zavier</p>
+          <p class="font-lato text-emerald-400 text-xs mt-0.5">Texas</p>
+          <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Alma's Grace</p>
+        </div>
+      </div>
+      <!-- Barthelemy Jen -->
+      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+        <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
+        <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Egoff Essentials — just wow! Becoming a mother has brought so many blessings, along with its share of changes, challenges, and stress. Using this soap has truly <span class="fda-flag">made my transition easier and more enjoyable</span>. It's been such a helpful part of my self-care routine — I'll definitely be a lifelong customer. Love it! ❤️</p>
+        <div class="border-t border-emerald-700 pt-4">
+          <p class="font-cinzel text-amber-300 text-xs tracking-wide">Barthelemy Jenn</p>
+          <p class="font-lato text-emerald-400 text-xs mt-0.5">New Orleans, Louisiana</p>
+          <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Alma's Grace</p>
+        </div>
+      </div>
+      <!-- Michele Gunn -->
+      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+        <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
+        <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Even while facing a cancer diagnosis, the Egoff Essentials soap has been a source of comfort and support throughout my journey. Alongside my faith, trust in God, and the love of those around me, it has truly <span class="fda-flag">made a difference during my treatment days</span>. I am so grateful for this product — thank you.</p>
+        <div class="border-t border-emerald-700 pt-4">
+          <p class="font-cinzel text-amber-300 text-xs tracking-wide">Michelle Gunn</p>
+          <p class="font-lato text-emerald-400 text-xs mt-0.5">New Orleans, Louisiana</p>
+          <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Jamaican Ruby</p>
+        </div>
+      </div>
+      <!-- Celestine -->
+      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+        <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
+        <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Each month during my cycle I experience severe discomfort. I am glad to say I truly <span class="fda-flag">found a natural alternative in Egoff Essentials that works just as promised</span>. I switched from over-the-counter options — this nourished my skin beautifully and I've been a loyal customer since my very first use. Thank you.</p>
+        <div class="border-t border-emerald-700 pt-4">
+          <p class="font-cinzel text-amber-300 text-xs tracking-wide">Celestine</p>
+          <p class="font-lato text-emerald-400 text-xs mt-0.5">Florida</p>
+          <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Jamaican Ruby</p>
+        </div>
+      </div>
+      <!-- Brandon -->
+      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+        <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
+        <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">This soap is absolutely amazing. I used it for <span class="fda-flag">lower back discomfort</span> and I can honestly say afterwards my body feels refreshed. This is the only soap I refer to.</p>
+        <div class="border-t border-emerald-700 pt-4">
+          <p class="font-cinzel text-amber-300 text-xs tracking-wide">Brandon</p>
+          <p class="font-lato text-emerald-400 text-xs mt-0.5">New Orleans, Louisiana</p>
+          <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Jamaican Ruby</p>
+        </div>
+      </div>
+      <!-- Griffin -->
+      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+        <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
+        <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">I purchased the soap for my husband. At first he said he couldn't tell if it was working — but I noticed he had stopped complaining about his lower back and he hadn't even realized it himself. When he mentioned the discomfort again while away, that's when he realized what had changed. Such an excellent product!</p>
+        <div class="border-t border-emerald-700 pt-4">
+          <p class="font-cinzel text-amber-300 text-xs tracking-wide">Griffin</p>
+          <p class="font-lato text-emerald-400 text-xs mt-0.5">Slidell, Louisiana</p>
+          <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Jamaican Ruby</p>
+        </div>
+      </div>
+      <!-- Stephian -->
+      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+        <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
+        <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">I got the soap from Ms. Erika. It works!! After a long day at work or those little aches that pop up throwing a baseball — <span class="fda-flag">it helps so much</span>. It also makes you feel refreshed and your skin feel so soft afterwards.</p>
+        <div class="border-t border-emerald-700 pt-4">
+          <p class="font-cinzel text-amber-300 text-xs tracking-wide">Stephan</p>
+          <p class="font-lato text-emerald-400 text-xs mt-0.5">Slidell, Louisiana</p>
+          <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Jamaican Ruby</p>
+        </div>
+      </div>
+      <!-- Yesey -->
+      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+        <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
+        <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">I've struggled with eczema for years and most soaps either dry out my skin or make it worse. This soap has been a game changer — it's gentle, doesn't irritate my flare-ups, and actually helps soothe the itching. My skin feels so much calmer after using it. Highly recommend for anyone with sensitive skin.</p>
+        <div class="border-t border-emerald-700 pt-4">
+          <p class="font-cinzel text-amber-300 text-xs tracking-wide">Yesey</p>
+          <p class="font-lato text-emerald-400 text-xs mt-0.5">New Orleans, Louisiana</p>
+          <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Alma's Grace</p>
+        </div>
+      </div>
+      <!-- Brandie -->
+      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+        <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
+        <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Jamaican Ruby's body cream turned my inflamed, burning, itching skin into a normal size in less than an hour. The moment it touched my skin I felt the tingles instantly and the pain and itching stopped completely. Within an hour my redness and puffiness began to fade and by the next morning it was as if nothing was there. A little goes a long way with this cream.</p>
+        <div class="border-t border-emerald-700 pt-4">
+          <p class="font-cinzel text-amber-300 text-xs tracking-wide">Brandie</p>
+          <p class="font-lato text-emerald-400 text-xs mt-0.5">New Orleans, Louisiana</p>
+          <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Jamaican Ruby Body Butter</p>
+        </div>
+      </div>
+
+      <!-- Robert -->
+      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+        <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
+        <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Finally, bars of soap that lather up and last. I will never buy soap from the store again. Eucalyptus and the peppermint are my favorites.</p>
+        <div class="border-t border-emerald-700 pt-4">
+          <p class="font-cinzel text-amber-300 text-xs tracking-wide">Robert</p>
+          <p class="font-lato text-emerald-400 text-xs mt-0.5">New Orleans, Louisiana</p>
+          <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Eucalyptus · Peppermint</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ═══ FAQ — ORIGINAL BAR LONGEVITY RESTORED ═══ -->
+<section id="faq" class="section-pad py-14 md:py-24 px-4" style="background:#fffdf7;">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="font-cinzel text-amber-600 tracking-widest text-xs uppercase mb-2">You Asked, We Answered</p>
+      <h2 class="font-cormorant text-4xl md:text-5xl font-semibold" style="color:#022c22;">Frequently Asked Questions</h2>
+      <div class="section-heading-line"></div>
+    </div>
+    <div class="space-y-3">
+
+      <div class="bg-white rounded-2xl overflow-hidden" style="border:1px solid rgba(6,78,59,0.1);">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+          <span class="font-cinzel text-emerald-900 text-sm tracking-wide">What makes EGOFF Essentials different from store-bought soap?</span>
+          <svg class="faq-arrow w-4 h-4 text-amber-600 flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-body px-6">
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed">Our soaps are crafted by hand using only natural, purposeful ingredients — no synthetic detergents, no harsh chemicals, no fillers. Where commercial soaps strip the skin's natural oils, ours nourish and protect. They are dense and long-lasting, crafted with substance and intention.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden" style="border:1px solid rgba(6,78,59,0.1);">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+          <span class="font-cinzel text-emerald-900 text-sm tracking-wide">How long will a bar of soap last?</span>
+          <svg class="faq-arrow w-4 h-4 text-amber-600 flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-body px-6">
+          <!-- RESTORED: "4–6 weeks" original wording -->
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed">With proper care, typically 4–6 weeks with regular daily use. Allow your bar to fully dry between uses on a draining soap dish away from standing water. Many customers report bars lasting much longer when used as a daily ritual.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden" style="border:1px solid rgba(6,78,59,0.1);">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+          <span class="font-cinzel text-emerald-900 text-sm tracking-wide">Are your soaps safe for sensitive skin?</span>
+          <svg class="faq-arrow w-4 h-4 text-amber-600 flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-body px-6">
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed">Our formulations are gentle by design — no artificial dyes, no synthetic fragrances, no harsh preservatives. Many of our bars include goat milk and all natural ingredients specifically suited for sensitive skin. If you have known allergies or skin conditions, please review ingredients for each bar or reach out before ordering. For external use only.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden" style="border:1px solid rgba(6,78,59,0.1);">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+          <span class="font-cinzel text-emerald-900 text-sm tracking-wide">How do I place an order?</span>
+          <svg class="faq-arrow w-4 h-4 text-amber-600 flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-body px-6">
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed">Add your selections to the cart and click "Send My Order." Your cart summary is sent directly to Ericka, who will confirm availability and arrange payment. You can also reach us by phone or email — we love a personal conversation.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden" style="border:1px solid rgba(6,78,59,0.1);">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+          <span class="font-cinzel text-emerald-900 text-sm tracking-wide">What is your shipping policy?</span>
+          <svg class="faq-arrow w-4 h-4 text-amber-600 flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-body px-6">
+          <div class="font-lato text-sm text-emerald-700 leading-relaxed space-y-2">
+            <p><strong>Processing:</strong> Orders are typically processed within 1–3 business days after confirmation.</p>
+            <p><strong>Delivery:</strong> Standard shipping within the United States takes 5–7 business days. Expedited shipping may be available upon request — contact Ericka directly.</p>
+            <p><strong>Shipping Cost:</strong> Calculated based on weight and destination at time of order confirmation.</p>
+            <p><strong>Local Pickup:</strong> No local pickup.</p>
+            <p><strong>Tracking:</strong> A tracking number will be provided by email once your order ships.</p>
+            <p><strong>International:</strong> We currently ship within the US only. Contact us for special arrangements.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<div class="gold-divider"></div>
+
+<!-- ═══ EGOFF FOUNDATION ═══ -->
+<section id="foundation" class="section-pad py-14 md:py-24 px-4" style="background:linear-gradient(to bottom,#011a14,#022c22);">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="font-cinzel text-amber-400 tracking-widest text-xs uppercase mb-2">Giving Back · Community First</p>
+      <h2 class="font-cormorant text-4xl md:text-5xl font-semibold text-white">EGOFF Foundation</h2>
+      <p class="font-lato text-emerald-300 mt-3 text-sm italic">Under Egoff Enterprise LLC — rooted in service, growing in purpose.</p>
+      <div class="section-heading-line"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <p class="font-cormorant italic text-amber-300 text-2xl leading-relaxed">"We rise by lifting others — one bar, one community at a time."</p>
+        <p class="font-lato text-emerald-200 text-sm leading-relaxed">The EGOFF Foundation is the community heart of Egoff Enterprise LLC. Inspired by the powerful women who shaped Ericka's journey — Hilda, Lucy, Alice, Julia, and the generations they carried — the Foundation is built to give back to the communities that raised her.</p>
+        <p class="font-lato text-emerald-200 text-sm leading-relaxed">Our mission is to support women, youth, and underserved communities through outreach, education, and partnership — rooted in the same GOD · LOVE · POWER values that guide every bar of soap we craft.</p>
+        <div class="pt-2">
+          <p class="font-cinzel text-amber-600 text-xs tracking-widest uppercase mb-3">Coming Soon</p>
+          <div class="space-y-2 font-lato text-sm text-emerald-300">
+            <div class="flex items-center gap-3"><span class="text-amber-500">✦</span> Community outreach &amp; giveback programs</div>
+            <div class="flex items-center gap-3"><span class="text-amber-500">✦</span> Partnerships with local New Orleans organizations</div>
+            <div class="flex items-center gap-3"><span class="text-amber-500">✦</span> Youth education &amp; empowerment initiatives</div>
+            <div class="flex items-center gap-3"><span class="text-amber-500">✦</span> Wellness &amp; economic empowerment</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white/5 rounded-2xl p-8 border border-emerald-700/30 text-center">
+        <div class="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style="background:linear-gradient(135deg,#064e3b,#b7791f);">
+          <span class="text-3xl">🌱</span>
+        </div>
+        <p class="font-cinzel text-white text-lg tracking-widest mb-2">EGOFF <span style="color:#d97706;">Foundation</span></p>
+        <p class="font-cormorant italic text-amber-400 text-base mb-6">An Egoff Enterprise LLC Initiative</p>
+        <p class="font-lato text-emerald-300 text-sm leading-relaxed mb-6">The Foundation is currently in its founding phase. Stay connected to be the first to know when programs launch — and to get involved.</p>
+        <a href="mailto:egoffessentials@gmail.com?subject=EGOFF%20Foundation%20Inquiry" class="inline-block font-cinzel tracking-widest px-8 py-4 rounded-full text-sm text-white transition-all hover:scale-105" style="background:#b7791f;">Connect With Us ✦</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact" class="section-pad py-14 md:py-24 px-4" style="background:linear-gradient(to bottom,#022c22,#011a14);">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="font-cinzel text-amber-400 tracking-widest text-xs uppercase mb-2">Get In Touch</p>
+      <h2 class="font-cormorant text-4xl md:text-5xl font-semibold text-white">Contact Ericka</h2>
+      <p class="font-lato text-emerald-300 mt-3 text-sm italic">We'd love to hear from you — personally.</p>
+      <div class="section-heading-line"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      <div class="space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="social-icon flex-shrink-0">📞</div>
+          <div>
+            <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-1">Phone / Text</p>
+            <a href="tel:+15049570324" class="font-cormorant text-white text-xl hover:text-amber-300 transition-colors">(504) 957-0324</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="social-icon flex-shrink-0">✉️</div>
+          <div>
+            <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-1">Email</p>
+            <a href="mailto:egoffessentials@gmail.com" class="font-cormorant text-white text-xl hover:text-amber-300 transition-colors">egoffessentials@gmail.com</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="social-icon flex-shrink-0">🕐</div>
+          <div>
+            <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-1">Hours</p>
+            <p class="font-lato text-emerald-200 text-sm leading-relaxed">Tue–Friday: 9am–4pm CST<br/>Saturday: Community / Outdoor Marketing, Networking &amp; Sales<br/>Sunday &amp; Monday: Closed</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="social-icon flex-shrink-0">📦</div>
+          <div>
+            <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-1">Shipping</p>
+            <p class="font-lato text-emerald-200 text-sm">5–7 business days · US Only</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white/5 rounded-2xl p-8 border border-emerald-700/30">
+        <p class="font-cormorant italic text-amber-300 text-xl mb-5">"Every bar is made with prayer, purpose, and love for you."</p>
+        <p class="font-lato text-emerald-200 text-sm leading-relaxed mb-6">Whether you have a question about a product, want to share your experience, or simply want to say hello — Ericka reads every message personally. This is a business built on relationship, and you matter here.</p>
+        <a href="mailto:egoffessentials@gmail.com" class="inline-block font-cinzel tracking-widest px-8 py-4 rounded-full text-sm text-white transition-all hover:scale-105" style="background:#b7791f;">Send a Message ✦</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="gold-divider"></div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="py-14 px-4" style="background:#011a14;">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-10 mb-10">
+      <div>
+        <p class="font-cinzel text-white text-lg tracking-widest mb-1">EGOFF <span style="color:#d97706;">Essentials</span></p>
+        <p class="font-cormorant italic text-amber-400 text-base mb-4">Essentially Rooted</p>
+        <p class="font-cinzel text-amber-600 text-xs tracking-widest mb-5">GOD · LOVE · POWER</p>
+        <div class="flex gap-3">
+          <a href="https://instagram.com/egoffessentials" target="_blank" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://facebook.com/egoffessentials" target="_blank" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="mailto:egoffessentials@gmail.com" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+          <a href="tel:+15049570324" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.06-1.06a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <p class="font-cinzel text-amber-600 text-xs tracking-widest uppercase mb-4">Quick Links</p>
+        <ul class="space-y-2 font-lato text-sm">
+          <li><a href="#hero" class="text-emerald-300 hover:text-amber-300 transition-colors">Home</a></li>
+          <li><a href="#story" class="text-emerald-300 hover:text-amber-300 transition-colors">Our Story</a></li>
+          <li><a href="#products" class="text-emerald-300 hover:text-amber-300 transition-colors">Shop All</a></li>
+          <li><a href="#testimonials" class="text-emerald-300 hover:text-amber-300 transition-colors">Testimonials</a></li>
+          <li><a href="#faq" class="text-emerald-300 hover:text-amber-300 transition-colors">FAQ</a></li>
+          <li><a href="#foundation" class="text-emerald-300 hover:text-amber-300 transition-colors">Foundation</a></li>
+          <li><a href="#contact" class="text-emerald-300 hover:text-amber-300 transition-colors">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-cinzel text-amber-600 text-xs tracking-widest uppercase mb-4">Contact</p>
+        <ul class="space-y-2 font-lato text-sm text-emerald-300">
+          <li><a href="tel:+15049570324" class="hover:text-amber-300 transition-colors">✆ (504) 957-0324</a></li>
+          <li><a href="mailto:egoffessentials@gmail.com" class="hover:text-amber-300 transition-colors">✉ egoffessentials@gmail.com</a></li>
+          <li class="leading-relaxed pt-1 text-emerald-500">Tue–Fri: 9am–4pm CST<br/>Saturday: Outdoor Marketing &amp; Sales<br/>Sunday &amp; Monday: Closed</li>
+        </ul>
+        <div class="mt-6">
+          <p class="font-cinzel text-amber-600 text-xs tracking-widest uppercase mb-3">Our Purpose</p>
+          <p class="font-lato text-xs text-emerald-500 leading-relaxed">Handcrafted in New Orleans. Rooted in Jamaican heritage. Every bar is an act of love, faith, and service.</p>
+          <p class="font-cormorant italic text-sm mt-2" style="color:rgba(183,121,31,0.8);">Egoff Enterprise LLC</p>
+          <p class="font-lato text-xs text-emerald-500 mt-1">EGOFF Essentials · <a href="#foundation" class="hover:text-amber-400 transition-colors">Egoff Foundation</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FDA Footer disclaimer -->
+    <div class="fda-banner mb-8">
+      <strong>⚠️ These statements have not been evaluated by the FDA.</strong> Our products are not intended to diagnose, treat, cure, or prevent any disease.
+      Results may vary. For external use only. All product descriptions reflect customer experiences and are not medical claims.
+    </div>
+
+    <div class="pt-6" style="border-top:1px solid rgba(183,121,31,0.15);">
+      <!-- FIXED: copyright year corrected to 2026 -->
+      <p class="font-lato text-center text-xs" style="color:rgba(167,243,208,0.35);">© 2026 EGOFF Essentials · An Egoff Enterprise LLC Brand · New Orleans, Louisiana · All Rights Reserved</p>
+      <div class="flex justify-center gap-4 mt-3">
+        <button onclick="openLegal('terms')" class="footer-legal-link">Terms of Service</button>
+        <span style="color:rgba(167,243,208,0.2);">·</span>
+        <button onclick="openLegal('privacy')" class="footer-legal-link">Privacy Policy</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════ -->
+`;
