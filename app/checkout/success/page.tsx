@@ -40,7 +40,7 @@ export default function CheckoutSuccessPage() {
           ESSENTIALLY ROOTED
         </div>
         <h1 style={{ fontSize: 24, color: "#1a1a1a", marginBottom: 12 }}>
-          Thank you — your order is confirmed
+          Payment received — thank you!
         </h1>
         <p style={{ color: "#6b6b6b", fontSize: 14, lineHeight: 1.6 }}>
           A confirmation email is on its way to you. We&apos;ll follow up with shipping updates.

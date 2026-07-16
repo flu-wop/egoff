@@ -136,12 +136,12 @@ function submitCheckout() {
     })
   }).then(async (res) => {
     const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Checkout failed');
-    if (data.url) {
-      window.location.href = data.url; // hand off to Stripe Checkout
-    } else {
-      throw new Error('No checkout URL returned');
-    }
+    if (!res.ok) throw new Error(data.error || 'Something went wrong.');
+    // This is a REQUEST, not a payment — Ericka confirms availability and
+    // sends a secure payment link by email. No charge happens here.
+    document.getElementById('checkout-form-body').style.display = 'none';
+    document.getElementById('checkout-success').style.display = 'block';
+    cart = []; saveCart(); renderCart();
   }).catch((err) => {
     errEl.textContent = err.message || 'Something went wrong. Please try again or call (504) 957-0324.';
     errEl.style.display = 'block';

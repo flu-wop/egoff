@@ -48,11 +48,6 @@ function itemsRowsHtml(items: OrderItem[]): string {
     .join("");
 }
 
-// Minimal escaping — item names come from our server-validated catalog, but
-// the customer's own name/notes fields are free text, so escape everywhere.
-// Escaping is for HTML body content. Subject lines are plaintext but still
-// need control characters stripped — an unsanitized value in a subject line
-// is a classic email-header-injection vector (CRLF could add fake headers).
 function sanitizeForHeader(str: string): string {
   return String(str).replace(/[\r\n\t]/g, " ").slice(0, 200);
 }
@@ -83,55 +78,122 @@ function emailShell(bodyHtml: string): string {
   </div>`;
 }
 
-export async function sendOrderEmails(order: OrderEmailPayload): Promise<void> {
+function orderTable(items: OrderItem[], total: string): string {
+  return `
+    <table style="width:100%;border-collapse:collapse;margin:20px 0;">
+      ${itemsRowsHtml(items)}
+      <tr>
+        <td colspan="2" style="padding:14px 0 0;font-weight:bold;color:#006400;">Total</td>
+        <td style="padding:14px 0 0;text-align:right;font-weight:bold;color:#006400;">$${total}</td>
+      </tr>
+    </table>`;
+}
+
+function shippingBlockHtml(order: OrderEmailPayload): string {
+  return `${escapeHtml(order.shipping_street)}<br/>${escapeHtml(order.shipping_city)}, ${escapeHtml(
+    order.shipping_state
+  )} ${escapeHtml(order.shipping_zip)}`;
+}
+
+// ── STAGE 1: order request submitted (no payment yet) ──────────────────
+// Customer gets "we received it, Ericka will confirm availability."
+// Ericka gets "review this in the admin panel and send a payment link."
+export async function sendOrderRequestEmails(order: OrderEmailPayload): Promise<void> {
   const resend = getResend();
   const from = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
   const owner = process.env.RESEND_TO_EMAIL!;
   const items = parseItems(order.items);
   const total = (Number(order.amount_cents) / 100).toFixed(2);
-  const shippingBlock = `${escapeHtml(order.shipping_street)}<br/>${escapeHtml(
-    order.shipping_city
-  )}, ${escapeHtml(order.shipping_state)} ${escapeHtml(order.shipping_zip)}`;
 
   await resend.emails.send({
     from,
     to: order.customer_email,
-    subject: "Your EGOFF Essentials order is confirmed",
+    subject: "We received your EGOFF Essentials order request",
     html: emailShell(`
       <p style="color:#1a1a1a;font-size:16px;">Thank you, ${escapeHtml(
         order.customer_name
-      )} — your order is confirmed.</p>
-      <table style="width:100%;border-collapse:collapse;margin:20px 0;">
-        ${itemsRowsHtml(items)}
-        <tr>
-          <td colspan="2" style="padding:14px 0 0;font-weight:bold;color:#006400;">Total</td>
-          <td style="padding:14px 0 0;text-align:right;font-weight:bold;color:#006400;">$${total}</td>
-        </tr>
-      </table>
-      <p style="color:#1a1a1a;font-size:14px;margin-top:24px;"><strong>Shipping to:</strong><br/>${shippingBlock}</p>
-      <p style="color:#6b6b6b;font-size:13px;margin-top:24px;">We'll be in touch with shipping updates. Questions? Call (504) 957-0324, Tue–Fri 9am–4pm CST.</p>
+      )} — we've received your order request.</p>
+      ${orderTable(items, total)}
+      <p style="color:#1a1a1a;font-size:14px;margin-top:24px;"><strong>Shipping to:</strong><br/>${shippingBlockHtml(order)}</p>
+      <p style="color:#6b6b6b;font-size:13px;margin-top:24px;">We'll confirm availability and send you a secure payment link shortly. Questions? Call (504) 957-0324, Tue–Fri 9am–4pm CST.</p>
     `),
   });
 
   await resend.emails.send({
     from,
     to: owner,
-    subject: `New order — ${sanitizeForHeader(order.customer_name)} — $${total}`,
+    subject: `New order request — ${sanitizeForHeader(order.customer_name)} — $${total}`,
     html: emailShell(`
-      <p style="color:#1a1a1a;font-size:16px;font-weight:bold;">New order received</p>
+      <p style="color:#1a1a1a;font-size:16px;font-weight:bold;">New order request — review needed</p>
       <p style="color:#1a1a1a;font-size:14px;">
         ${escapeHtml(order.customer_name)}<br/>
         ${escapeHtml(order.customer_email)}${order.customer_phone ? " · " + escapeHtml(order.customer_phone) : ""}
       </p>
-      <table style="width:100%;border-collapse:collapse;margin:20px 0;">
-        ${itemsRowsHtml(items)}
-        <tr>
-          <td colspan="2" style="padding:14px 0 0;font-weight:bold;color:#006400;">Total</td>
-          <td style="padding:14px 0 0;text-align:right;font-weight:bold;color:#006400;">$${total}</td>
-        </tr>
-      </table>
-      <p style="color:#1a1a1a;font-size:14px;"><strong>Ship to:</strong><br/>${shippingBlock}</p>
+      ${orderTable(items, total)}
+      <p style="color:#1a1a1a;font-size:14px;"><strong>Ship to:</strong><br/>${shippingBlockHtml(order)}</p>
       ${order.notes ? `<p style="color:#1a1a1a;font-size:14px;"><strong>Notes:</strong> ${escapeHtml(order.notes)}</p>` : ""}
+      <p style="color:#6b6b6b;font-size:13px;margin-top:20px;">Confirm availability, then send the payment link from /admin/orders.</p>
+    `),
+  });
+}
+
+// ── STAGE 2: Ericka confirmed availability, payment link sent ──────────
+export async function sendPaymentLinkEmail(
+  order: OrderEmailPayload,
+  paymentUrl: string
+): Promise<void> {
+  const resend = getResend();
+  const from = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
+  const items = parseItems(order.items);
+  const total = (Number(order.amount_cents) / 100).toFixed(2);
+
+  await resend.emails.send({
+    from,
+    to: order.customer_email,
+    subject: "Your EGOFF Essentials order is confirmed — payment link inside",
+    html: emailShell(`
+      <p style="color:#1a1a1a;font-size:16px;">Good news, ${escapeHtml(
+        order.customer_name
+      )} — your order is available and ready to go.</p>
+      ${orderTable(items, total)}
+      <p style="text-align:center;margin:28px 0;">
+        <a href="${paymentUrl}" style="display:inline-block;background:#006400;color:#F4C430;padding:14px 32px;text-decoration:none;font-weight:bold;">Pay $${total} Now</a>
+      </p>
+      <p style="color:#6b6b6b;font-size:13px;">This secure link is powered by Stripe. Questions? Call (504) 957-0324, Tue–Fri 9am–4pm CST.</p>
+    `),
+  });
+}
+
+// ── STAGE 3: payment actually completed (fired from the Stripe webhook) ─
+export async function sendPaymentConfirmedEmails(order: OrderEmailPayload): Promise<void> {
+  const resend = getResend();
+  const from = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
+  const owner = process.env.RESEND_TO_EMAIL!;
+  const items = parseItems(order.items);
+  const total = (Number(order.amount_cents) / 100).toFixed(2);
+
+  await resend.emails.send({
+    from,
+    to: order.customer_email,
+    subject: "Payment received — your EGOFF Essentials order is confirmed",
+    html: emailShell(`
+      <p style="color:#1a1a1a;font-size:16px;">Thank you, ${escapeHtml(
+        order.customer_name
+      )} — your payment was received.</p>
+      ${orderTable(items, total)}
+      <p style="color:#1a1a1a;font-size:14px;margin-top:24px;"><strong>Shipping to:</strong><br/>${shippingBlockHtml(order)}</p>
+      <p style="color:#6b6b6b;font-size:13px;margin-top:24px;">We'll follow up with shipping updates. Questions? Call (504) 957-0324, Tue–Fri 9am–4pm CST.</p>
+    `),
+  });
+
+  await resend.emails.send({
+    from,
+    to: owner,
+    subject: `Payment received — ${sanitizeForHeader(order.customer_name)} — $${total}`,
+    html: emailShell(`
+      <p style="color:#1a1a1a;font-size:16px;font-weight:bold;">Payment received</p>
+      <p style="color:#1a1a1a;font-size:14px;">${escapeHtml(order.customer_name)} · ${escapeHtml(order.customer_email)}</p>
+      ${orderTable(items, total)}
     `),
   });
 }

@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
-import { getStripe } from "@/lib/stripe";
 import { priceCart, type CartInput } from "@/lib/products";
 import { rateLimit } from "@/lib/rate-limit";
+import { getDb, initDb } from "@/lib/db";
+import { sendOrderRequestEmails } from "@/lib/email";
 
 export const runtime = "nodejs";
 
@@ -21,18 +22,20 @@ function getIp(req: Request): string {
   return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
 }
 
-// Stripe metadata values are capped at 500 chars each — truncate defensively
-// rather than let a large cart silently corrupt the webhook's saved order.
 function cap(str: string, max: number): string {
   return String(str || "").trim().slice(0, max);
 }
 
+// This is an ORDER REQUEST, not a payment. No card is charged here — Ericka
+// reviews it in /admin/orders, confirms availability, then sends a Stripe
+// Payment Link for the customer to actually pay. See lib/products.ts for
+// the server-side price catalog that locks in the amount at request time.
 export async function POST(req: Request) {
   const ip = getIp(req);
   const allowed = await rateLimit(`checkout:${ip}`, 10, 10 * 60);
   if (!allowed) {
     return NextResponse.json(
-      { error: "Too many checkout attempts. Please wait a few minutes and try again." },
+      { error: "Too many attempts. Please wait a few minutes and try again." },
       { status: 429 }
     );
   }
@@ -72,51 +75,50 @@ export async function POST(req: Request) {
 
   const itemsJson = JSON.stringify(lineItems);
   if (itemsJson.length > 480) {
-    // Extremely large cart — reject cleanly rather than silently truncate
-    // order data that the webhook will later save.
     return NextResponse.json(
       { error: "Cart is too large to process in one order. Please split into multiple orders." },
       { status: 400 }
     );
   }
 
-  const stripe = getStripe();
-  let session;
+  await initDb();
+  const db = getDb();
+  let orderId: number;
   try {
-    session = await stripe.checkout.sessions.create({
-      mode: "payment",
-      payment_method_types: ["card"],
-      line_items: lineItems.map((item) => ({
-        quantity: item.qty,
-        price_data: {
-          currency: "usd",
-          unit_amount: Math.round(item.price * 100),
-          product_data: { name: item.name },
-        },
-      })),
-      success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/?canceled=1`,
-      customer_email: email,
-      metadata: {
-        customer_name: name,
-        customer_email: email,
-        customer_phone: phone,
-        shipping_street: street,
-        shipping_city: city,
-        shipping_state: state,
-        shipping_zip: zip,
-        notes,
-        items: itemsJson,
-        amount_cents: String(amountCents),
-      },
+    const result = await db.execute({
+      sql: `INSERT INTO orders
+              (customer_name, customer_email, customer_phone, shipping_street,
+               shipping_city, shipping_state, shipping_zip, notes, items,
+               amount_cents, status)
+            VALUES (?,?,?,?,?,?,?,?,?,?, 'pending_review')`,
+      args: [name, email, phone, street, city, state, zip, notes, itemsJson, amountCents],
     });
+    orderId = Number(result.lastInsertRowid);
   } catch (err) {
-    console.error("[checkout] Stripe session creation failed:", err);
+    console.error("[checkout] order save failed:", err);
     return NextResponse.json(
-      { error: "Payment setup failed. Please try again or call (504) 957-0324." },
-      { status: 502 }
+      { error: "Something went wrong saving your order. Please try again or call (504) 957-0324." },
+      { status: 500 }
     );
   }
 
-  return NextResponse.json({ url: session.url });
+  try {
+    await sendOrderRequestEmails({
+      customer_name: name,
+      customer_email: email,
+      customer_phone: phone,
+      shipping_street: street,
+      shipping_city: city,
+      shipping_state: state,
+      shipping_zip: zip,
+      notes,
+      items: itemsJson,
+      amount_cents: String(amountCents),
+    });
+  } catch (err) {
+    // Order is already saved — don't fail the request over an email hiccup.
+    console.error("[checkout] order-request email send failed:", err);
+  }
+
+  return NextResponse.json({ ok: true, orderId });
 }

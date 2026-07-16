@@ -1,9 +1,23 @@
 import { getStripe } from "@/lib/stripe";
 import { getDb, initDb } from "@/lib/db";
-import { sendOrderEmails } from "@/lib/email";
+import { sendPaymentConfirmedEmails } from "@/lib/email";
 import type Stripe from "stripe";
 
 export const runtime = "nodejs";
+
+type OrderRow = {
+  id: number;
+  customer_name: string;
+  customer_email: string;
+  customer_phone: string;
+  shipping_street: string;
+  shipping_city: string;
+  shipping_state: string;
+  shipping_zip: string;
+  notes: string;
+  items: string;
+  amount_cents: number;
+};
 
 export async function POST(req: Request) {
   const stripe = getStripe();
@@ -25,57 +39,56 @@ export async function POST(req: Request) {
 
   if (event.type === "checkout.session.completed") {
     const s = event.data.object as Stripe.Checkout.Session;
-    const m = s.metadata || {};
+    // order_id is copied through from the Payment Link's metadata (set in
+    // /api/admin/orders/send-payment-link) — this is how we reconcile the
+    // payment back to the order row that already exists in our DB.
+    const orderId = Number(s.metadata?.order_id);
+
+    if (!orderId || !Number.isInteger(orderId)) {
+      console.error("[webhook] checkout.session.completed with no valid order_id metadata:", s.id);
+      // Not something a retry would fix — 200 to stop Stripe from retrying,
+      // but this is logged for manual investigation.
+      return new Response("ok (no order_id)", { status: 200 });
+    }
 
     await initDb();
     const db = getDb();
 
-    // IDEMPOTENCY: stripe_session_id is UNIQUE. Stripe retries the same
-    // event on timeout/non-200 responses — INSERT OR IGNORE means a retry
-    // never creates a duplicate order or fires duplicate emails.
+    // IDEMPOTENCY: only flip pending/awaiting orders to paid, never twice.
+    // A retry of the same event hits `status = 'paid'` already and updates 0 rows.
     const result = await db.execute({
-      sql: `INSERT OR IGNORE INTO orders
-              (customer_name, customer_email, customer_phone, shipping_street,
-               shipping_city, shipping_state, shipping_zip, notes, items,
-               amount_cents, stripe_session_id, status)
-            VALUES (?,?,?,?,?,?,?,?,?,?,?, 'paid')`,
-      args: [
-        m.customer_name ?? "",
-        m.customer_email ?? "",
-        m.customer_phone ?? "",
-        m.shipping_street ?? "",
-        m.shipping_city ?? "",
-        m.shipping_state ?? "",
-        m.shipping_zip ?? "",
-        m.notes ?? "",
-        m.items ?? "[]",
-        Number(m.amount_cents ?? 0),
-        s.id,
-      ],
+      sql: `UPDATE orders SET status = 'paid', stripe_session_id = ?
+            WHERE id = ? AND status != 'paid'`,
+      args: [s.id, orderId],
     });
 
     if (result.rowsAffected === 0) {
-      // Duplicate delivery of an event we already processed — do not resend emails.
-      return new Response("ok (duplicate)", { status: 200 });
+      return new Response("ok (duplicate or unknown order)", { status: 200 });
     }
 
-    // Never fail the webhook (and never trigger a Stripe retry / duplicate
-    // order) just because email sending had a problem.
-    try {
-      await sendOrderEmails({
-        customer_name: m.customer_name ?? "",
-        customer_email: m.customer_email ?? "",
-        customer_phone: m.customer_phone ?? "",
-        shipping_street: m.shipping_street ?? "",
-        shipping_city: m.shipping_city ?? "",
-        shipping_state: m.shipping_state ?? "",
-        shipping_zip: m.shipping_zip ?? "",
-        notes: m.notes ?? "",
-        items: m.items ?? "[]",
-        amount_cents: m.amount_cents ?? "0",
-      });
-    } catch (err) {
-      console.error("[webhook] order email send failed:", err);
+    const orderResult = await db.execute({
+      sql: `SELECT * FROM orders WHERE id = ?`,
+      args: [orderId],
+    });
+    const order = orderResult.rows[0] as unknown as OrderRow | undefined;
+
+    if (order) {
+      try {
+        await sendPaymentConfirmedEmails({
+          customer_name: order.customer_name,
+          customer_email: order.customer_email,
+          customer_phone: order.customer_phone,
+          shipping_street: order.shipping_street,
+          shipping_city: order.shipping_city,
+          shipping_state: order.shipping_state,
+          shipping_zip: order.shipping_zip,
+          notes: order.notes,
+          items: order.items,
+          amount_cents: String(order.amount_cents),
+        });
+      } catch (err) {
+        console.error("[webhook] payment-confirmed email send failed:", err);
+      }
     }
   }
 

@@ -1,4 +1,5 @@
 import { getDb, initDb } from "@/lib/db";
+import SendPaymentLinkButton from "./SendPaymentLinkButton";
 
 export const dynamic = "force-dynamic";
 
@@ -69,6 +70,7 @@ export default async function AdminOrdersPage() {
                 <th style={{ padding: 10 }}>Total</th>
                 <th style={{ padding: 10 }}>Status</th>
                 <th style={{ padding: 10 }}>Ship To</th>
+                <th style={{ padding: 10 }}>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -94,9 +96,29 @@ export default async function AdminOrdersPage() {
                     <td style={{ padding: 10, fontSize: 13, fontWeight: "bold", color: "#006400" }}>
                       ${(o.amount_cents / 100).toFixed(2)}
                     </td>
-                    <td style={{ padding: 10, fontSize: 13 }}>{o.status}</td>
+                    <td style={{ padding: 10, fontSize: 13 }}>
+                      <span
+                        style={{
+                          padding: "3px 8px",
+                          fontSize: 11,
+                          fontWeight: "bold",
+                          background:
+                            o.status === "paid"
+                              ? "#006400"
+                              : o.status === "awaiting_payment"
+                              ? "#F4C430"
+                              : "#e5e0d5",
+                          color: o.status === "paid" ? "#F4C430" : "#1a1a1a",
+                        }}
+                      >
+                        {o.status.replace("_", " ").toUpperCase()}
+                      </span>
+                    </td>
                     <td style={{ padding: 10, fontSize: 13 }}>
                       {o.shipping_street}, {o.shipping_city}, {o.shipping_state} {o.shipping_zip}
+                    </td>
+                    <td style={{ padding: 10 }}>
+                      <SendPaymentLinkButton orderId={o.id} status={o.status} />
                     </td>
                   </tr>
                 );
