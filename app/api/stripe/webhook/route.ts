@@ -1,6 +1,6 @@
 import { getStripe } from "@/lib/stripe";
 import { getDb, initDb } from "@/lib/db";
-import { sendPaymentConfirmedEmails } from "@/lib/email";
+import { sendPaymentConfirmedEmails, sendReconciliationAlert } from "@/lib/email";
 import type Stripe from "stripe";
 
 export const runtime = "nodejs";
@@ -17,6 +17,7 @@ type OrderRow = {
   notes: string;
   items: string;
   amount_cents: number;
+  status: string;
 };
 
 export async function POST(req: Request) {
@@ -46,8 +47,14 @@ export async function POST(req: Request) {
 
     if (!orderId || !Number.isInteger(orderId)) {
       console.error("[webhook] checkout.session.completed with no valid order_id metadata:", s.id);
-      // Not something a retry would fix — 200 to stop Stripe from retrying,
-      // but this is logged for manual investigation.
+      try {
+        await sendReconciliationAlert({
+          stripeSessionId: s.id,
+          reason: "Payment completed with no order_id in its metadata.",
+        });
+      } catch (err) {
+        console.error("[webhook] reconciliation alert failed to send:", err);
+      }
       return new Response("ok (no order_id)", { status: 200 });
     }
 
@@ -55,7 +62,6 @@ export async function POST(req: Request) {
     const db = getDb();
 
     // IDEMPOTENCY: only flip pending/awaiting orders to paid, never twice.
-    // A retry of the same event hits `status = 'paid'` already and updates 0 rows.
     const result = await db.execute({
       sql: `UPDATE orders SET status = 'paid', stripe_session_id = ?
             WHERE id = ? AND status != 'paid'`,
@@ -63,6 +69,31 @@ export async function POST(req: Request) {
     });
 
     if (result.rowsAffected === 0) {
+      // Two very different cases hide behind "0 rows updated" — distinguish
+      // them instead of treating both as a harmless duplicate.
+      const check = await db.execute({
+        sql: `SELECT status FROM orders WHERE id = ?`,
+        args: [orderId],
+      });
+      const existing = check.rows[0] as unknown as { status: string } | undefined;
+
+      if (!existing) {
+        // The order_id doesn't exist at all — real money moved, no matching
+        // record. This is the case the audit flagged: don't let it be silent.
+        console.error("[webhook] payment references unknown order_id:", orderId, s.id);
+        try {
+          await sendReconciliationAlert({
+            stripeSessionId: s.id,
+            orderId: String(orderId),
+            reason: `Payment references order_id ${orderId}, which doesn't exist in the orders table.`,
+          });
+        } catch (err) {
+          console.error("[webhook] reconciliation alert failed to send:", err);
+        }
+      }
+      // else: existing.status === 'paid' already — genuine Stripe retry of
+      // an event we've already processed. Expected, harmless, no alert needed.
+
       return new Response("ok (duplicate or unknown order)", { status: 200 });
     }
 

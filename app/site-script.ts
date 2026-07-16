@@ -219,10 +219,4 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
 // ── INIT ──────────────────────────────────────────────
 renderCart();
-if (new URLSearchParams(window.location.search).get('canceled') === '1') {
-  showToast('Checkout canceled — your cart is still here');
-  const url = new URL(window.location.href);
-  url.searchParams.delete('canceled');
-  window.history.replaceState({}, '', url.toString());
-}
 `;

@@ -197,3 +197,33 @@ export async function sendPaymentConfirmedEmails(order: OrderEmailPayload): Prom
     `),
   });
 }
+
+// ── ALERT: payment received but couldn't be matched to any order ──────
+// This should be rare (only if metadata is missing/corrupted, or a payment
+// link gets created outside the normal admin flow), but if it happens, real
+// money moved with no order record — Ericka needs to know immediately, not
+// find out from a Stripe dashboard reconciliation weeks later.
+export async function sendReconciliationAlert(details: {
+  stripeSessionId: string;
+  reason: string;
+  orderId?: string;
+}): Promise<void> {
+  const resend = getResend();
+  const from = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
+  const owner = process.env.RESEND_TO_EMAIL!;
+
+  await resend.emails.send({
+    from,
+    to: owner,
+    subject: "ACTION NEEDED — payment received but not matched to an order",
+    html: emailShell(`
+      <p style="color:#b91c1c;font-size:16px;font-weight:bold;">A payment came in that we couldn't automatically match to an order.</p>
+      <p style="color:#1a1a1a;font-size:14px;">${escapeHtml(details.reason)}</p>
+      <p style="color:#1a1a1a;font-size:14px;">
+        Stripe Checkout Session: <code>${escapeHtml(details.stripeSessionId)}</code><br/>
+        ${details.orderId ? `Referenced order ID: <code>${escapeHtml(details.orderId)}</code><br/>` : ""}
+      </p>
+      <p style="color:#1a1a1a;font-size:14px;">Please check the Stripe dashboard directly to find this payment and reconcile it manually — the customer was charged but won't get an automated confirmation.</p>
+    `),
+  });
+}
