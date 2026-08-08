@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
+import { randomUUID } from "crypto";
 import { getDb, initDb } from "@/lib/db";
-import { getStripe } from "@/lib/stripe";
+import { getSquare } from "@/lib/square";
 import { sendPaymentLinkEmail } from "@/lib/email";
 
 export const runtime = "nodejs";
@@ -59,34 +60,48 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Order has no items" }, { status: 400 });
   }
 
-  const stripe = getStripe();
-  let paymentLink;
+  const square = getSquare();
+  let paymentLinkUrl: string;
+  let squareOrderId: string;
   try {
-    paymentLink = await stripe.paymentLinks.create({
-      line_items: items.map((item) => ({
-        quantity: item.qty,
-        price_data: {
-          currency: "usd",
-          unit_amount: Math.round(item.price * 100),
-          product_data: { name: item.name },
-        },
-      })),
-      // Copied through to the resulting checkout.session.completed webhook
-      // event — this is how we reconcile payment back to this exact order.
-      metadata: { order_id: String(order.id) },
-      after_completion: {
-        type: "redirect",
-        redirect: { url: `${process.env.NEXT_PUBLIC_SITE_URL}/checkout/success` },
+    const response = await square.checkout.paymentLinks.create({
+      idempotencyKey: randomUUID(),
+      order: {
+        locationId: process.env.SQUARE_LOCATION_ID!,
+        // referenceId round-trips onto the Square Order and is the
+        // reconciliation key the webhook uses to find this exact order —
+        // same role order_id metadata played on the Stripe Payment Link.
+        referenceId: String(order.id),
+        lineItems: items.map((item) => ({
+          name: item.name,
+          quantity: String(item.qty),
+          basePriceMoney: {
+            amount: BigInt(Math.round(item.price * 100)),
+            currency: "USD",
+          },
+        })),
+      },
+      checkoutOptions: {
+        redirectUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/checkout/success`,
       },
     });
+
+    if (!response.paymentLink?.url || !response.paymentLink?.orderId) {
+      throw new Error("Square returned no payment link URL/order ID");
+    }
+    paymentLinkUrl = response.paymentLink.url;
+    squareOrderId = response.paymentLink.orderId;
   } catch (err) {
-    console.error("[send-payment-link] Stripe payment link creation failed:", err);
+    console.error("[send-payment-link] Square payment link creation failed:", err);
     return NextResponse.json({ error: "Failed to create payment link" }, { status: 502 });
   }
 
   await db.execute({
+    // Column keeps its original name to keep this diff small — it now
+    // holds the Square Order ID (the webhook matches on this), not a
+    // Stripe session ID.
     sql: `UPDATE orders SET status = 'awaiting_payment', stripe_session_id = ? WHERE id = ?`,
-    args: [paymentLink.id, order.id],
+    args: [squareOrderId, order.id],
   });
 
   try {
@@ -103,17 +118,17 @@ export async function POST(req: Request) {
         items: order.items,
         amount_cents: String(order.amount_cents),
       },
-      paymentLink.url
+      paymentLinkUrl
     );
   } catch (err) {
     console.error("[send-payment-link] email send failed:", err);
     // Link was created and order updated — surface this so the admin knows
     // to share the link manually rather than assuming the customer got it.
     return NextResponse.json(
-      { ok: true, url: paymentLink.url, emailFailed: true },
+      { ok: true, url: paymentLinkUrl, emailFailed: true },
       { status: 200 }
     );
   }
 
-  return NextResponse.json({ ok: true, url: paymentLink.url });
+  return NextResponse.json({ ok: true, url: paymentLinkUrl });
 }

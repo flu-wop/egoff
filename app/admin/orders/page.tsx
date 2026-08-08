@@ -15,7 +15,7 @@ type OrderRow = {
   notes: string;
   items: string;
   amount_cents: number;
-  stripe_session_id: string;
+  stripe_session_id: string; // holds the Square Order ID now — column name kept as-is (see webhook route.ts)
   status: string;
   created_at: string;
 };

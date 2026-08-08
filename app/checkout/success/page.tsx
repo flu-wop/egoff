@@ -8,7 +8,7 @@ export default function CheckoutSuccessPage() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setSessionId(params.get("session_id"));
-    // Payment succeeded (we only get here via Stripe's success_url) — safe to clear the cart now.
+    // Payment succeeded (we only get here via Square's redirect_url) — safe to clear the cart now.
     localStorage.setItem("egoff-cart", "[]");
   }, []);
 

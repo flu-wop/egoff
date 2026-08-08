@@ -27,7 +27,7 @@ function cap(str: string, max: number): string {
 }
 
 // This is an ORDER REQUEST, not a payment. No card is charged here — Ericka
-// reviews it in /admin/orders, confirms availability, then sends a Stripe
+// reviews it in /admin/orders, confirms availability, then sends a Square
 // Payment Link for the customer to actually pay. See lib/products.ts for
 // the server-side price catalog that locks in the amount at request time.
 export async function POST(req: Request) {

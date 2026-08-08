@@ -159,12 +159,12 @@ export async function sendPaymentLinkEmail(
       <p style="text-align:center;margin:28px 0;">
         <a href="${paymentUrl}" style="display:inline-block;background:#006400;color:#F4C430;padding:14px 32px;text-decoration:none;font-weight:bold;">Pay $${total} Now</a>
       </p>
-      <p style="color:#6b6b6b;font-size:13px;">This secure link is powered by Stripe. Questions? Call (504) 957-0324, Tue–Fri 9am–4pm CST.</p>
+      <p style="color:#6b6b6b;font-size:13px;">This secure link is powered by Square. Questions? Call (504) 957-0324, Tue–Fri 9am–4pm CST.</p>
     `),
   });
 }
 
-// ── STAGE 3: payment actually completed (fired from the Stripe webhook) ─
+// ── STAGE 3: payment actually completed (fired from the Square webhook) ─
 export async function sendPaymentConfirmedEmails(order: OrderEmailPayload): Promise<void> {
   const resend = getResend();
   const from = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
@@ -199,12 +199,13 @@ export async function sendPaymentConfirmedEmails(order: OrderEmailPayload): Prom
 }
 
 // ── ALERT: payment received but couldn't be matched to any order ──────
-// This should be rare (only if metadata is missing/corrupted, or a payment
-// link gets created outside the normal admin flow), but if it happens, real
-// money moved with no order record — Ericka needs to know immediately, not
-// find out from a Stripe dashboard reconciliation weeks later.
+// This should be rare (only if the Square Order's referenceId is
+// missing/corrupted, or a payment link gets created outside the normal
+// admin flow), but if it happens, real money moved with no order record —
+// Ericka needs to know immediately, not find out from a Square dashboard
+// reconciliation weeks later.
 export async function sendReconciliationAlert(details: {
-  stripeSessionId: string;
+  stripeSessionId: string; // holds the Square payment ID — see webhook route.ts note
   reason: string;
   orderId?: string;
 }): Promise<void> {
@@ -220,10 +221,10 @@ export async function sendReconciliationAlert(details: {
       <p style="color:#b91c1c;font-size:16px;font-weight:bold;">A payment came in that we couldn't automatically match to an order.</p>
       <p style="color:#1a1a1a;font-size:14px;">${escapeHtml(details.reason)}</p>
       <p style="color:#1a1a1a;font-size:14px;">
-        Stripe Checkout Session: <code>${escapeHtml(details.stripeSessionId)}</code><br/>
+        Square Payment ID: <code>${escapeHtml(details.stripeSessionId)}</code><br/>
         ${details.orderId ? `Referenced order ID: <code>${escapeHtml(details.orderId)}</code><br/>` : ""}
       </p>
-      <p style="color:#1a1a1a;font-size:14px;">Please check the Stripe dashboard directly to find this payment and reconcile it manually — the customer was charged but won't get an automated confirmation.</p>
+      <p style="color:#1a1a1a;font-size:14px;">Please check the Square dashboard directly to find this payment and reconcile it manually — the customer was charged but won't get an automated confirmation.</p>
     `),
   });
 }
