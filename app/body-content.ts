@@ -363,10 +363,10 @@ export const bodyContent = `
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem 0.5rem;justify-items:center;">
             <div style="grid-column:2;display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
               <div class="pwog-circle pwog-circle-founder">
-                <img src="founder.jpg" alt="Ericka Almarie Powell-Goff" style="object-position:center 20%; transform:scale(1.4); transform-origin:center 20%;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                <div class="pwog-mono" style="display:none;">E.A.<br/>Powell</div>
+                <img src="founder.jpg" alt="Ericka Asante' Goff" style="object-position:center 20%; transform:scale(1.4); transform-origin:center 20%;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="pwog-mono" style="display:none;">E.A.<br/>Goff</div>
               </div>
-              <div class="pwog-label"><span class="pwog-fullname">Ericka Almarie Powell-Goff</span><span class="pwog-badge">Founder</span></div>
+              <div class="pwog-label"><span class="pwog-fullname">Ericka Asante' Goff</span><span class="pwog-badge">Founder</span></div>
             </div>
           </div>
 
