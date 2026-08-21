@@ -1,6 +1,4 @@
 import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
-import { safeEq, sessionToken } from "@/lib/admin-auth";
 import {
   checkEnvVars,
   checkSquare,
@@ -12,13 +10,8 @@ import {
 
 export const runtime = "nodejs";
 
+// Auth is enforced by proxy.ts (matcher covers /api/admin/:path*).
 export async function GET() {
-  const cookieStore = await cookies();
-  const session = cookieStore.get("egoff_admin")?.value || "";
-  if (!process.env.ADMIN_PASSWORD || !safeEq(session, sessionToken())) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
   const [envVars, square, lastOrder, resend, turso, apiUsage] = await Promise.all([
     Promise.resolve(checkEnvVars()),
     checkSquare(),

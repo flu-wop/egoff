@@ -3,11 +3,14 @@
 import { useEffect, useState } from "react";
 
 export default function CheckoutSuccessPage() {
-  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [orderId, setOrderId] = useState<string | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    setSessionId(params.get("session_id"));
+    // Square appends checkoutId/orderId/transactionId/referenceId to the
+    // redirect URL (not session_id — that was Stripe's param name, left
+    // over from before the Square migration and never actually firing).
+    setOrderId(params.get("referenceId") || params.get("orderId"));
     // Payment succeeded (we only get here via Square's redirect_url) — safe to clear the cart now.
     localStorage.setItem("egoff-cart", "[]");
   }, []);
@@ -46,9 +49,9 @@ export default function CheckoutSuccessPage() {
           A confirmation email is on its way to you. We&apos;ll follow up with shipping updates.
           Questions? Call (504) 957-0324, Tue–Fri 9am–4pm CST.
         </p>
-        {sessionId && (
+        {orderId && (
           <p style={{ color: "#a3a3a3", fontSize: 11, marginTop: 24 }}>
-            Order reference: {sessionId.slice(0, 24)}…
+            Order reference: {orderId.slice(0, 24)}…
           </p>
         )}
         <a

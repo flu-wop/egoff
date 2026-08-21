@@ -1,17 +1,8 @@
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import { safeEq, sessionToken } from "@/lib/admin-auth";
 import SystemHealthClient from "./SystemHealthClient";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminSystemPage() {
-  const cookieStore = await cookies();
-  const session = cookieStore.get("egoff_admin")?.value || "";
-  if (!process.env.ADMIN_PASSWORD || !safeEq(session, sessionToken())) {
-    redirect("/admin/login");
-  }
-
   return (
     <div style={{ fontFamily: "Georgia, serif", background: "#FAF8F2", minHeight: "100vh" }}>
       <div

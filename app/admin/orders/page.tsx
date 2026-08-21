@@ -1,7 +1,4 @@
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import { getDb, initDb } from "@/lib/db";
-import { safeEq, sessionToken } from "@/lib/admin-auth";
 import SendPaymentLinkButton from "./SendPaymentLinkButton";
 
 export const dynamic = "force-dynamic";
@@ -24,12 +21,6 @@ type OrderRow = {
 };
 
 export default async function AdminOrdersPage() {
-  const cookieStore = await cookies();
-  const session = cookieStore.get("egoff_admin")?.value || "";
-  if (!process.env.ADMIN_PASSWORD || !safeEq(session, sessionToken())) {
-    redirect("/admin/login");
-  }
-
   await initDb();
   const db = getDb();
   const result = await db.execute("SELECT * FROM orders ORDER BY created_at DESC");
