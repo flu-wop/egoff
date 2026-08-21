@@ -1,4 +1,7 @@
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import { getDb, initDb } from "@/lib/db";
+import { safeEq, sessionToken } from "@/lib/admin-auth";
 import SendPaymentLinkButton from "./SendPaymentLinkButton";
 
 export const dynamic = "force-dynamic";
@@ -21,6 +24,12 @@ type OrderRow = {
 };
 
 export default async function AdminOrdersPage() {
+  const cookieStore = await cookies();
+  const session = cookieStore.get("egoff_admin")?.value || "";
+  if (!process.env.ADMIN_PASSWORD || !safeEq(session, sessionToken())) {
+    redirect("/admin/login");
+  }
+
   await initDb();
   const db = getDb();
   const result = await db.execute("SELECT * FROM orders ORDER BY created_at DESC");
@@ -43,19 +52,34 @@ export default async function AdminOrdersPage() {
             ORDERS — {orders.length} total
           </div>
         </div>
-        <a
-          href="/api/admin/logout"
-          style={{
-            background: "transparent",
-            border: "1px solid #F4C430",
-            color: "#F4C430",
-            padding: "6px 14px",
-            textDecoration: "none",
-            fontSize: 13,
-          }}
-        >
-          Log Out
-        </a>
+        <div style={{ display: "flex", gap: 10 }}>
+          <a
+            href="/admin/system"
+            style={{
+              background: "transparent",
+              border: "1px solid #F4C430",
+              color: "#F4C430",
+              padding: "6px 14px",
+              textDecoration: "none",
+              fontSize: 13,
+            }}
+          >
+            System Health
+          </a>
+          <a
+            href="/api/admin/logout"
+            style={{
+              background: "transparent",
+              border: "1px solid #F4C430",
+              color: "#F4C430",
+              padding: "6px 14px",
+              textDecoration: "none",
+              fontSize: 13,
+            }}
+          >
+            Log Out
+          </a>
+        </div>
       </div>
 
       <div style={{ padding: 32 }}>

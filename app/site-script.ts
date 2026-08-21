@@ -160,7 +160,7 @@ const legalContent = {
       <p><strong>Shipping</strong><br/>We ship within the United States. Estimated delivery is 5–7 business days after confirmation.</p>
       <p><strong>Returns &amp; Refunds</strong><br/>Due to the handcrafted nature of our products, all sales are generally final. If you received a damaged or incorrect item, please contact us within 7 days of delivery.</p>
       <p><strong>Intellectual Property</strong><br/>All content, branding, and imagery on this site are the property of EGOFF Essentials / Egoff Enterprise LLC. Unauthorized use is prohibited.</p>
-      <p><strong>Contact</strong><br/>Questions? Email egoffessentials@gmail.com.</p>\`
+      <p><strong>Contact</strong><br/>Questions? Email admin@egoffessentials.com.</p>\`
   },
   privacy: {
     title: 'Privacy Policy',
@@ -169,7 +169,7 @@ const legalContent = {
       <p><strong>Information We Collect</strong><br/>We collect your name, email, phone, and shipping address when you place an order. We do not store payment information.</p>
       <p><strong>How We Use Your Information</strong><br/>Your information is used solely to fulfill your order and communicate with you about it. We do not sell or share your personal data with third parties.</p>
       <p><strong>Cookies &amp; Analytics</strong><br/>This site uses browser localStorage to maintain your shopping cart. We use Google Analytics to understand how visitors use the site (pages visited, traffic sources). No personal information is shared with Google Analytics.</p>
-      <p><strong>Contact</strong><br/>Questions about your data? Email egoffessentials@gmail.com.</p>\`
+      <p><strong>Contact</strong><br/>Questions about your data? Email admin@egoffessentials.com.</p>\`
   }
 };
 function openLegal(type) {

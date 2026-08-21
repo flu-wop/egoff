@@ -1123,7 +1123,7 @@ export const bodyContent = `
         <p class="font-cinzel text-white text-lg tracking-widest mb-2">EGOFF <span style="color:#d97706;">Foundation</span></p>
         <p class="font-cormorant italic text-amber-400 text-base mb-6">An Egoff Enterprise LLC Initiative</p>
         <p class="font-lato text-emerald-300 text-sm leading-relaxed mb-6">The Foundation is currently in its founding phase. Stay connected to be the first to know when programs launch — and to get involved.</p>
-        <a href="mailto:egoffessentials@gmail.com?subject=EGOFF%20Foundation%20Inquiry" class="inline-block font-cinzel tracking-widest px-8 py-4 rounded-full text-sm text-white transition-all hover:scale-105" style="background:#b7791f;">Connect With Us ✦</a>
+        <a href="mailto:admin@egoffessentials.com?subject=EGOFF%20Foundation%20Inquiry" class="inline-block font-cinzel tracking-widest px-8 py-4 rounded-full text-sm text-white transition-all hover:scale-105" style="background:#b7791f;">Connect With Us ✦</a>
       </div>
     </div>
   </div>
@@ -1153,7 +1153,7 @@ export const bodyContent = `
           <div class="social-icon flex-shrink-0">✉️</div>
           <div>
             <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-1">Email</p>
-            <a href="mailto:egoffessentials@gmail.com" class="font-cormorant text-white text-xl hover:text-amber-300 transition-colors">egoffessentials@gmail.com</a>
+            <a href="mailto:admin@egoffessentials.com" class="font-cormorant text-white text-xl hover:text-amber-300 transition-colors">admin@egoffessentials.com</a>
           </div>
         </div>
         <div class="flex items-start gap-4">
@@ -1174,7 +1174,7 @@ export const bodyContent = `
       <div class="bg-white/5 rounded-2xl p-8 border border-emerald-700/30">
         <p class="font-cormorant italic text-amber-300 text-xl mb-5">"Every bar is made with prayer, purpose, and love for you."</p>
         <p class="font-lato text-emerald-200 text-sm leading-relaxed mb-6">Whether you have a question about a product, want to share your experience, or simply want to say hello — Ericka reads every message personally. This is a business built on relationship, and you matter here.</p>
-        <a href="mailto:egoffessentials@gmail.com" class="inline-block font-cinzel tracking-widest px-8 py-4 rounded-full text-sm text-white transition-all hover:scale-105" style="background:#b7791f;">Send a Message ✦</a>
+        <a href="mailto:admin@egoffessentials.com" class="inline-block font-cinzel tracking-widest px-8 py-4 rounded-full text-sm text-white transition-all hover:scale-105" style="background:#b7791f;">Send a Message ✦</a>
       </div>
     </div>
   </div>
@@ -1194,7 +1194,7 @@ export const bodyContent = `
         <div class="flex gap-3">
           <a href="https://instagram.com/egoffessentials" target="_blank" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
           <a href="https://facebook.com/egoffessentials" target="_blank" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-          <a href="mailto:egoffessentials@gmail.com" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+          <a href="mailto:admin@egoffessentials.com" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
           <a href="tel:+15049570324" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.06-1.06a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
         </div>
       </div>
@@ -1214,7 +1214,7 @@ export const bodyContent = `
         <p class="font-cinzel text-amber-600 text-xs tracking-widest uppercase mb-4">Contact</p>
         <ul class="space-y-2 font-lato text-sm text-emerald-300">
           <li><a href="tel:+15049570324" class="hover:text-amber-300 transition-colors">✆ (504) 957-0324</a></li>
-          <li><a href="mailto:egoffessentials@gmail.com" class="hover:text-amber-300 transition-colors">✉ egoffessentials@gmail.com</a></li>
+          <li><a href="mailto:admin@egoffessentials.com" class="hover:text-amber-300 transition-colors">✉ admin@egoffessentials.com</a></li>
           <li class="leading-relaxed pt-1 text-emerald-500">Tue–Fri: 9am–4pm CST<br/>Saturday: Outdoor Marketing &amp; Sales<br/>Sunday &amp; Monday: Closed</li>
         </ul>
         <div class="mt-6">
@@ -1240,6 +1240,11 @@ export const bodyContent = `
         <span style="color:rgba(167,243,208,0.2);">·</span>
         <button onclick="openLegal('privacy')" class="footer-legal-link">Privacy Policy</button>
       </div>
+      <p class="font-lato text-center text-xs mt-4" style="color:rgba(167,243,208,0.25);">
+        Designed by <a href="https://in-flu-ential.vercel.app" target="_blank" rel="noopener" style="color:rgba(217,119,6,0.6);">IN-FLU-ENTIAL LLC</a>
+        <span style="color:rgba(167,243,208,0.2);"> · </span>
+        <a href="/admin/login" style="color:rgba(217,119,6,0.6);">Admin</a>
+      </p>
     </div>
   </div>
 </footer>

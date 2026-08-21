@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     description:
       "Handcrafted soaps rooted in Jamaican heritage and New Orleans love. Essentially Rooted.",
     type: "website",
-    url: "https://egoff.vercel.app",
-    images: ["https://egoff.vercel.app/egoff-new-logo.jpg"],
+    url: "https://egoffessentials.com",
+    images: ["https://egoffessentials.com/hero-logo.jpg"],
   },
 };
 
