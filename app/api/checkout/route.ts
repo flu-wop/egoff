@@ -117,7 +117,19 @@ export async function POST(req: Request) {
     });
   } catch (err) {
     // Order is already saved — don't fail the request over an email hiccup.
+    // But a swallowed failure here means Ericka has no idea a new order
+    // exists unless she happens to check /admin/orders anyway. Record it so
+    // it surfaces as a visible flag there and on /admin/system, instead of
+    // living only in a Vercel log nobody's watching.
     console.error("[checkout] order-request email send failed:", err);
+    try {
+      await db.execute({
+        sql: `UPDATE orders SET notification_failed = 1 WHERE id = ?`,
+        args: [orderId],
+      });
+    } catch (dbErr) {
+      console.error("[checkout] failed to record notification_failed flag:", dbErr);
+    }
   }
 
   return NextResponse.json({ ok: true, orderId });

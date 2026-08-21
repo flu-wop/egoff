@@ -107,6 +107,20 @@ export async function checkApiUsage(): Promise<CheckResult> {
   }
 }
 
+export async function checkFailedNotifications(): Promise<CheckResult> {
+  try {
+    const db = getDb();
+    const result = await db.execute(
+      "SELECT COUNT(*) as count FROM orders WHERE notification_failed = 1"
+    );
+    const count = Number((result.rows[0] as unknown as { count: number }).count || 0);
+    if (count === 0) return { status: "ok", detail: "All order notifications sent successfully" };
+    return { status: "error", detail: `${count} order(s) with a failed notification email — check /admin/orders` };
+  } catch (err) {
+    return { status: "warn", detail: `Check failed: ${(err as Error).message}` };
+  }
+}
+
 // Note: EGOFF has no `products` table (catalog lives in lib/products.ts, not
 // Printify-synced), so there is no Product Sync panel here — that panel is
 // conditional per the admin-dashboard skill and only applies to Printify-backed

@@ -32,61 +32,52 @@ export default function AdminLoginPage() {
 
   return (
     <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "#FAF8F2",
-        fontFamily: "Georgia, serif",
-      }}
+      className="min-h-screen flex items-center justify-center px-5"
+      style={{ background: "linear-gradient(135deg, #022c22 0%, #0a2218 100%)" }}
     >
       <form
         onSubmit={handleSubmit}
-        style={{
-          background: "#fff",
-          border: "1px solid #e5e0d5",
-          padding: 40,
-          width: 320,
-        }}
+        className="rounded-lg p-10 w-full"
+        style={{ background: "#fffdf7", maxWidth: 360, border: "1px solid rgba(183,121,31,0.3)" }}
       >
-        <div style={{ color: "#006400", fontSize: 20, fontWeight: "bold", marginBottom: 4 }}>
-          EGOFF ESSENTIALS
-        </div>
-        <div style={{ color: "#6b6b6b", fontSize: 12, letterSpacing: 1, marginBottom: 24 }}>
-          ADMIN
-        </div>
+        <p className="font-cinzel text-sm tracking-[0.2em] mb-1" style={{ color: "#b7791f" }}>
+          EGOFF <span style={{ color: "#0a2218" }}>ESSENTIALS</span>
+        </p>
+        <p className="font-lato text-[11px] tracking-widest mb-8" style={{ color: "#9a9a9a" }}>
+          ADMIN LOGIN
+        </p>
+
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          style={{
-            width: "100%",
-            padding: 10,
-            border: "1px solid #ccc",
-            marginBottom: 12,
-            fontSize: 14,
-            boxSizing: "border-box",
-          }}
+          autoFocus
+          className="w-full rounded-md px-3.5 py-2.5 text-sm mb-3 outline-none transition-colors"
+          style={{ border: "1px solid #e5e0d5", background: "#fff" }}
         />
+
         {error && (
-          <div style={{ color: "#b91c1c", fontSize: 13, marginBottom: 12 }}>{error}</div>
+          <div
+            className="rounded-md px-3 py-2 text-xs mb-3"
+            style={{ background: "#fde8e8", color: "#b91c1c" }}
+          >
+            {error}
+          </div>
         )}
+
         <button
           type="submit"
           disabled={loading}
+          className="w-full rounded-full font-cinzel text-xs tracking-widest uppercase py-3 transition-opacity"
           style={{
-            width: "100%",
-            padding: 10,
-            background: "#006400",
-            color: "#F4C430",
-            border: "none",
-            fontWeight: "bold",
-            cursor: "pointer",
+            background: "#b7791f",
+            color: "#fffdf7",
+            cursor: loading ? "default" : "pointer",
+            opacity: loading ? 0.6 : 1,
           }}
         >
-          {loading ? "Checking..." : "Log In"}
+          {loading ? "Checking…" : "Log In"}
         </button>
       </form>
     </div>

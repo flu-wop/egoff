@@ -46,6 +46,18 @@ export async function initDb() {
     )
   `);
 
+  // Migration: track when the order-request notification email to Ericka
+  // failed to send. The order itself is never lost (it's already in this
+  // table), but without this flag a failed notification is silent — she'd
+  // have no way to know a new order is waiting unless she happens to check
+  // /admin/orders anyway. ALTER TABLE ADD COLUMN throws if the column
+  // already exists, which is expected on every run after the first.
+  try {
+    await db.execute(`ALTER TABLE orders ADD COLUMN notification_failed INTEGER DEFAULT 0`);
+  } catch {
+    // Column already exists — fine.
+  }
+
   // rate_limits table is created lazily by lib/rate-limit.ts in step 9
   // (site-security skill) — not duplicated here.
 }

@@ -33,7 +33,7 @@ export default function SendPaymentLinkButton({
   }
 
   if (status === "paid") {
-    return <span style={{ color: "#6b6b6b", fontSize: 12 }}>—</span>;
+    return <span className="text-xs" style={{ color: "#c0c0c0" }}>—</span>;
   }
 
   return (
@@ -41,20 +41,22 @@ export default function SendPaymentLinkButton({
       <button
         onClick={handleClick}
         disabled={loading}
+        className="font-cinzel text-[11px] tracking-widest uppercase px-3.5 py-2 rounded-full transition-opacity"
         style={{
-          background: status === "awaiting_payment" ? "#F4C430" : "#006400",
-          color: status === "awaiting_payment" ? "#1a1a1a" : "#F4C430",
+          background: status === "awaiting_payment" ? "#f4c430" : "#b7791f",
+          color: status === "awaiting_payment" ? "#1a1a1a" : "#fffdf7",
           border: "none",
-          padding: "6px 12px",
-          fontSize: 12,
-          fontWeight: "bold",
           cursor: loading ? "default" : "pointer",
           opacity: loading ? 0.6 : 1,
         }}
       >
-        {loading ? "..." : status === "awaiting_payment" ? "Resend Link" : "Send Payment Link"}
+        {loading ? "…" : status === "awaiting_payment" ? "Resend Link" : "Send Payment Link"}
       </button>
-      {result && <div style={{ fontSize: 11, marginTop: 4, color: "#6b6b6b" }}>{result}</div>}
+      {result && (
+        <div className="text-[11px] mt-1.5" style={{ color: "#8a8a8a" }}>
+          {result}
+        </div>
+      )}
     </div>
   );
 }
