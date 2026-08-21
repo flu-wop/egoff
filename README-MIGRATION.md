@@ -30,7 +30,7 @@ incoming payments back to an order via that column, not the column name.
 
 ```bash
 cp .env.example .env.local
-# fill in TURSO_DATABASE_URL, TURSO_AUTH_TOKEN, SQUARE_ACCESS_TOKEN,
+# fill in TURSO_URL, TURSO_TOKEN, SQUARE_ACCESS_TOKEN,
 # SQUARE_LOCATION_ID, RESEND_API_KEY, ADMIN_PASSWORD
 npm install
 npm run init-db     # creates orders + newsletter tables on the real Turso DB

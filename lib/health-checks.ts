@@ -6,8 +6,8 @@ export type CheckResult = { status: "ok" | "warn" | "error"; detail: string };
 
 // ---- 1. Env Var Status ----
 const REQUIRED_ENV_VARS = [
-  "TURSO_DATABASE_URL",
-  "TURSO_AUTH_TOKEN",
+  "TURSO_URL",
+  "TURSO_TOKEN",
   "SQUARE_ACCESS_TOKEN",
   "SQUARE_LOCATION_ID",
   "SQUARE_ENVIRONMENT",

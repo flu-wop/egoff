@@ -1,5 +1,5 @@
 // Run once after creating the Turso DB and setting env vars locally:
-//   TURSO_DATABASE_URL=... TURSO_AUTH_TOKEN=... npx tsx scripts/init-db.ts
+//   TURSO_URL=... TURSO_TOKEN=... npx tsx scripts/init-db.ts
 import { initDb } from "../lib/db";
 
 initDb()
