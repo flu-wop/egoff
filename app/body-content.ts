@@ -184,7 +184,7 @@ export const bodyContent = `
   <p class="font-cinzel text-amber-600 tracking-[0.35em] text-xs uppercase mb-8">Essentially Rooted · Est. New Orleans</p>
   <div class="float-logo mb-8">
     <div class="hero-logo-wrap mx-auto" style="border:4px solid rgba(183,121,31,0.55); box-shadow:0 0 0 8px rgba(183,121,31,0.1), 0 20px 60px rgba(6,78,59,0.25);">
-      <img src="hero-logo-emblem.jpg" alt="EGOFF Essentials — Tree of Life Logo" style="width:100%; height:100%; object-fit:cover; display:block;"/>
+      <img src="hero-logo.jpg" alt="EGOFF Essentials — Tree of Life Logo" style="width:100%; height:100%; object-fit:cover; display:block;"/>
     </div>
   </div>
   <h1 class="hero-title font-cinzel font-bold mb-5 leading-tight" style="font-size:clamp(2.2rem,6vw,5rem);">
@@ -912,7 +912,7 @@ export const bodyContent = `
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Theressa Ford -->
-      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+      <div class="tcard fade-up backdrop-blur rounded-2xl p-6" style="background:rgba(6,78,59,0.55);">
         <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Praise God for Ericka Goff being so creative. The swings of going from feeling like I was at the equator to feeling like I was in Antarctica were so bad I was crying sometimes. Showering with this soap before bed <span class="fda-flag">helped me so much</span>. It does not dissolve and melt like major brand soaps — it's made with good solid natural materials that <span class="fda-flag">help your skin</span> instead of drying it out.</p>
         <div class="border-t border-emerald-700 pt-4">
@@ -923,7 +923,7 @@ export const bodyContent = `
         </div>
       </div>
       <!-- Zavier -->
-      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+      <div class="tcard fade-up backdrop-blur rounded-2xl p-6" style="background:rgba(6,78,59,0.55);">
         <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Alma's Grace has always been great for my skin and my mental health. It leaves my skin nice and soft. It does not leave me dry or brittle. I am washing my worries away. <span class="fda-flag">It helped me calm down throughout postpartum</span>, right to my last small piece. I used it as a ritual wash. Highly recommend — especially to first-time mothers.</p>
         <div class="border-t border-emerald-700 pt-4">
@@ -933,7 +933,7 @@ export const bodyContent = `
         </div>
       </div>
       <!-- Barthelemy Jen -->
-      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+      <div class="tcard fade-up backdrop-blur rounded-2xl p-6" style="background:rgba(6,78,59,0.55);">
         <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Egoff Essentials — just wow! Becoming a mother has brought so many blessings, along with its share of changes, challenges, and stress. Using this soap has truly <span class="fda-flag">made my transition easier and more enjoyable</span>. It's been such a helpful part of my self-care routine — I'll definitely be a lifelong customer. Love it! ❤️</p>
         <div class="border-t border-emerald-700 pt-4">
@@ -943,7 +943,7 @@ export const bodyContent = `
         </div>
       </div>
       <!-- Michele Gunn -->
-      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+      <div class="tcard fade-up backdrop-blur rounded-2xl p-6" style="background:rgba(6,78,59,0.55);">
         <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Even while facing a cancer diagnosis, the Egoff Essentials soap has been a source of comfort and support throughout my journey. Alongside my faith, trust in God, and the love of those around me, it has truly <span class="fda-flag">made a difference during my treatment days</span>. I am so grateful for this product — thank you.</p>
         <div class="border-t border-emerald-700 pt-4">
@@ -953,7 +953,7 @@ export const bodyContent = `
         </div>
       </div>
       <!-- Celestine -->
-      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+      <div class="tcard fade-up backdrop-blur rounded-2xl p-6" style="background:rgba(6,78,59,0.55);">
         <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Each month during my cycle I experience severe discomfort. I am glad to say I truly <span class="fda-flag">found a natural alternative in Egoff Essentials that works just as promised</span>. I switched from over-the-counter options — this nourished my skin beautifully and I've been a loyal customer since my very first use. Thank you.</p>
         <div class="border-t border-emerald-700 pt-4">
@@ -963,7 +963,7 @@ export const bodyContent = `
         </div>
       </div>
       <!-- Brandon -->
-      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+      <div class="tcard fade-up backdrop-blur rounded-2xl p-6" style="background:rgba(6,78,59,0.55);">
         <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">This soap is absolutely amazing. I used it for <span class="fda-flag">lower back discomfort</span> and I can honestly say afterwards my body feels refreshed. This is the only soap I refer to.</p>
         <div class="border-t border-emerald-700 pt-4">
@@ -973,7 +973,7 @@ export const bodyContent = `
         </div>
       </div>
       <!-- Griffin -->
-      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+      <div class="tcard fade-up backdrop-blur rounded-2xl p-6" style="background:rgba(6,78,59,0.55);">
         <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">I purchased the soap for my husband. At first he said he couldn't tell if it was working — but I noticed he had stopped complaining about his lower back and he hadn't even realized it himself. When he mentioned the discomfort again while away, that's when he realized what had changed. Such an excellent product!</p>
         <div class="border-t border-emerald-700 pt-4">
@@ -983,7 +983,7 @@ export const bodyContent = `
         </div>
       </div>
       <!-- Stephian -->
-      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+      <div class="tcard fade-up backdrop-blur rounded-2xl p-6" style="background:rgba(6,78,59,0.55);">
         <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">I got the soap from Ms. Erika. It works!! After a long day at work or those little aches that pop up throwing a baseball — <span class="fda-flag">it helps so much</span>. It also makes you feel refreshed and your skin feel so soft afterwards.</p>
         <div class="border-t border-emerald-700 pt-4">
@@ -993,7 +993,7 @@ export const bodyContent = `
         </div>
       </div>
       <!-- Yesey -->
-      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+      <div class="tcard fade-up backdrop-blur rounded-2xl p-6" style="background:rgba(6,78,59,0.55);">
         <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">I've struggled with eczema for years and most soaps either dry out my skin or make it worse. This soap has been a game changer — it's gentle, doesn't irritate my flare-ups, and actually helps soothe the itching. My skin feels so much calmer after using it. Highly recommend for anyone with sensitive skin.</p>
         <div class="border-t border-emerald-700 pt-4">
@@ -1003,7 +1003,7 @@ export const bodyContent = `
         </div>
       </div>
       <!-- Brandie -->
-      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+      <div class="tcard fade-up backdrop-blur rounded-2xl p-6" style="background:rgba(6,78,59,0.55);">
         <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Jamaican Ruby's body cream turned my inflamed, burning, itching skin into a normal size in less than an hour. The moment it touched my skin I felt the tingles instantly and the pain and itching stopped completely. Within an hour my redness and puffiness began to fade and by the next morning it was as if nothing was there. A little goes a long way with this cream.</p>
         <div class="border-t border-emerald-700 pt-4">
@@ -1014,7 +1014,7 @@ export const bodyContent = `
       </div>
 
       <!-- Robert -->
-      <div class="tcard fade-up bg-white/5 backdrop-blur rounded-2xl p-6">
+      <div class="tcard fade-up backdrop-blur rounded-2xl p-6" style="background:rgba(6,78,59,0.55);">
         <p class="font-cormorant text-3xl text-amber-400 leading-none mb-3">"</p>
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Finally, bars of soap that lather up and last. I will never buy soap from the store again. Eucalyptus and the peppermint are my favorites.</p>
         <div class="border-t border-emerald-700 pt-4">
