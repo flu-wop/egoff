@@ -10,6 +10,11 @@ function addToCart(name, price) {
   saveCart(); renderCart(); showToast('🌿 ' + name + ' added to cart');
 }
 
+function addPumpToCart(selectEl) {
+  const scent = selectEl.value;
+  addToCart('10oz Body Butter Pump — ' + scent, 125);
+}
+
 function removeItem(name) { cart = cart.filter(i => i.name !== name); saveCart(); renderCart(); }
 
 function changeQty(name, delta) {

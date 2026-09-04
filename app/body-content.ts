@@ -126,21 +126,9 @@ export const bodyContent = `
 <nav id="navbar">
   <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
     <a href="#hero" class="flex items-center gap-3 flex-shrink-0">
-      <svg style="width:50px;height:50px;flex-shrink:0;" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="18" cy="18" r="18" fill="#064e3b"/>
-        <path d="M2 18 L18 10 L34 18 L18 26Z" fill="#f5c518" opacity="0.18"/>
-        <path d="M18 16 C13 16 7 13 7 8 C7 5 10 3 13 5 C13 2 16 1 18 4Z" fill="#166534"/>
-        <path d="M18 16 C23 16 29 13 29 8 C29 5 26 3 23 5 C23 2 20 1 18 4Z" fill="#b7791f"/>
-        <circle cx="18" cy="14" r="2.2" fill="#1a1a1a"/>
-        <path d="M18 16 C16.5 16 16 17 16 18 L16 23 C16 24 17 25 18 25 C19 25 20 24 20 23 L20 18 C20 17 19.5 16 18 16Z" fill="#1a1a1a"/>
-        <path d="M16 19 C14 18 11 15 10 13" stroke="#1a1a1a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <path d="M20 19 C22 18 25 15 26 13" stroke="#1a1a1a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <path d="M17 25 C16.5 27 16 29 15.5 31 L20.5 31 C20 29 19.5 27 19 25Z" fill="#5c3a1e"/>
-        <path d="M15.5 30 C13 31 11 32 10 33" stroke="#5c3a1e" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-        <path d="M18 31 C18 32.5 17 34 16 35" stroke="#5c3a1e" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-        <path d="M20.5 30 C23 31 25 32 26 33" stroke="#5c3a1e" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-        <circle cx="18" cy="18" r="17" fill="none" stroke="#b7791f" stroke-width="1" opacity="0.65"/>
-      </svg>
+      <div style="width:50px;height:50px;flex-shrink:0;border-radius:50%;overflow:hidden;border:2px solid #b7791f;">
+        <img src="nav-baby.jpg" alt="EGOFF Essentials" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+      </div>
       <div class="hidden sm:block leading-tight">
         <p class="font-cinzel text-white text-sm tracking-widest">EGOFF <span style="color:#d97706;">Essentials</span></p>
         <p class="font-cormorant italic text-xs" style="color:#6ee7b7;">Essentially Rooted</p>
@@ -196,7 +184,7 @@ export const bodyContent = `
   <p class="font-cinzel text-amber-600 tracking-[0.35em] text-xs uppercase mb-8">Essentially Rooted · Est. New Orleans</p>
   <div class="float-logo mb-8">
     <div class="hero-logo-wrap mx-auto" style="border:4px solid rgba(183,121,31,0.55); box-shadow:0 0 0 8px rgba(183,121,31,0.1), 0 20px 60px rgba(6,78,59,0.25);">
-      <img src="hero-logo.jpg" alt="EGOFF Essentials — Tree of Life Logo" style="width:100%; height:100%; object-fit:cover; display:block;"/>
+      <img src="hero-logo-emblem.jpg" alt="EGOFF Essentials — Tree of Life Logo" style="width:100%; height:100%; object-fit:cover; display:block;"/>
     </div>
   </div>
   <h1 class="hero-title font-cinzel font-bold mb-5 leading-tight" style="font-size:clamp(2.2rem,6vw,5rem);">
@@ -374,7 +362,7 @@ export const bodyContent = `
           <div style="display:flex;justify-content:center;margin-top:0.75rem;">
             <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
               <div class="pwog-circle" style="border-color:#7c3aed;">
-                <img src="tree-wonica.jpg" alt="Wonica Lynn Royal" style="object-position:center 20%;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <img src="tree-wonica.jpg" alt="Wonica Lynn Royal" style="object-position:center 25%; transform:scale(2.1); transform-origin:center 25%;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                 <div class="pwog-mono" style="display:none;background:radial-gradient(circle,#3b1a6e,#011a14);">W.L.<br/>Royal</div>
               </div>
               <div class="pwog-label"><span class="pwog-fullname">Wonica Lynn Royal</span><span class="pwog-badge" style="background:#7c3aed;">BFF · Honorary</span></div>
@@ -408,7 +396,7 @@ export const bodyContent = `
 
         <p>I was born in New Orleans but my roots originated in <strong class="text-emerald-900">Wait-A-Bit, Trelawny, Jamaica</strong> and what we call "The Big Easy aka The Dirty South" (New Orleans, Louisiana). I was named after my mother's best friend who passed decades ago, per her request — a name I carry with honor.</p>
 
-        <p>Reared in the church — <em>Corpus Christi, Hartzell United MC (Lower 9th Ward), Greater Saint Stephens, Franklin Avenue BC &amp; currently Light House Church &amp; Ministries, Humble TX</em> — at a very young age is when my relationship with God evolved. My life has never been the same since accepting Christ. Prayer is always my comfort and solitude to keep striving.</p>
+        <p>Reared in the church — <em>Corpus Christi, Hartzell United MC (Lower 9th Ward), Greater Saint Stephens, Zion Travelers First Baptist Church, Franklin Avenue BC &amp; currently Light House Church &amp; Ministries, Humble TX</em> — at a very young age is when my relationship with God evolved. My life has never been the same since accepting Christ. Prayer is always my comfort and solitude to keep striving.</p>
 
         <p>Every bar is created for you — to embody, cleanse, embrace, and refresh one's sensual elements. Whether you're discovering your body's needs and scents, or seeking subtleness through texture and smell — we strive to understand and personalize every bar with grace, love, honor, earth's elements, all natural ingredients, skill, and craftsmanship.</p>
 
@@ -628,6 +616,30 @@ export const bodyContent = `
           <div class="mt-4 flex items-center justify-between">
             <span class="font-cinzel text-emerald-900 font-bold">$30.00</span>
             <button class="btn-cart" onclick="addToCart('Y-Rose Body Butter', 30)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
+        <div class="product-img" style="background:linear-gradient(135deg,#fef3c7,#fef9e7);">
+          <img src="img/body-butter-pump.jpg" alt="10oz Body Butter Pump" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">🧈 Body Butter · 10oz Pump</span>
+          <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">10oz Body Butter Pump</h3>
+          <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Our whipped body butter in a larger 10oz pump vessel — easy, no-mess dispensing for your daily ritual. Available in any of our specialty scents.</p>
+          <div class="checkout-field mt-3 mb-1">
+            <label class="checkout-label">Choose Scent</label>
+            <select id="pump-scent-select" class="checkout-input">
+              <option value="Elizabeth's Power">Elizabeth's Power</option>
+              <option value="Alma's Grace">Alma's Grace</option>
+              <option value="Jamaican Ruby">Jamaican Ruby</option>
+              <option value="Alice's Way">Alice's Way</option>
+              <option value="Y-Rose">Y-Rose</option>
+            </select>
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+            <span class="font-cinzel text-emerald-900 font-bold">$125.00</span>
+            <button class="btn-cart" onclick="addPumpToCart(document.getElementById('pump-scent-select'))">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -889,7 +901,7 @@ export const bodyContent = `
 <div class="gold-divider"></div>
 
 <!-- ═══ TESTIMONIALS ═══ -->
-<section id="testimonials" class="section-pad py-14 md:py-24 px-4" style="background:linear-gradient(to bottom,#022c22,#011a14);">
+<section id="testimonials" class="section-pad py-14 md:py-24 px-4" style="background:linear-gradient(to bottom,#4a0e0e,#2a0808);">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-14">
       <p class="font-cinzel text-amber-400 tracking-widest text-xs uppercase mb-2">From Their Hearts</p>
@@ -905,7 +917,7 @@ export const bodyContent = `
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Praise God for Ericka Goff being so creative. The swings of going from feeling like I was at the equator to feeling like I was in Antarctica were so bad I was crying sometimes. Showering with this soap before bed <span class="fda-flag">helped me so much</span>. It does not dissolve and melt like major brand soaps — it's made with good solid natural materials that <span class="fda-flag">help your skin</span> instead of drying it out.</p>
         <div class="border-t border-emerald-700 pt-4">
           <p class="font-cinzel text-amber-300 text-xs tracking-wide">Theressa Ford</p>
-          <p class="font-lato text-emerald-400 text-xs mt-0.5">Maryland</p>
+          <p class="font-lato text-red-400 text-xs mt-0.5">Maryland</p>
           <p class="font-lato text-emerald-400 text-xs mt-0.5">Attorney at Law, J.D. · Thurgood Marshall School of Law</p>
           <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Elizabeth's Power</p>
         </div>
@@ -916,7 +928,7 @@ export const bodyContent = `
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Alma's Grace has always been great for my skin and my mental health. It leaves my skin nice and soft. It does not leave me dry or brittle. I am washing my worries away. <span class="fda-flag">It helped me calm down throughout postpartum</span>, right to my last small piece. I used it as a ritual wash. Highly recommend — especially to first-time mothers.</p>
         <div class="border-t border-emerald-700 pt-4">
           <p class="font-cinzel text-amber-300 text-xs tracking-wide">Zavier</p>
-          <p class="font-lato text-emerald-400 text-xs mt-0.5">Texas</p>
+          <p class="font-lato text-red-400 text-xs mt-0.5">Texas</p>
           <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Alma's Grace</p>
         </div>
       </div>
@@ -926,7 +938,7 @@ export const bodyContent = `
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Egoff Essentials — just wow! Becoming a mother has brought so many blessings, along with its share of changes, challenges, and stress. Using this soap has truly <span class="fda-flag">made my transition easier and more enjoyable</span>. It's been such a helpful part of my self-care routine — I'll definitely be a lifelong customer. Love it! ❤️</p>
         <div class="border-t border-emerald-700 pt-4">
           <p class="font-cinzel text-amber-300 text-xs tracking-wide">Barthelemy Jenn</p>
-          <p class="font-lato text-emerald-400 text-xs mt-0.5">New Orleans, Louisiana</p>
+          <p class="font-lato text-red-400 text-xs mt-0.5">New Orleans, Louisiana</p>
           <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Alma's Grace</p>
         </div>
       </div>
@@ -936,7 +948,7 @@ export const bodyContent = `
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Even while facing a cancer diagnosis, the Egoff Essentials soap has been a source of comfort and support throughout my journey. Alongside my faith, trust in God, and the love of those around me, it has truly <span class="fda-flag">made a difference during my treatment days</span>. I am so grateful for this product — thank you.</p>
         <div class="border-t border-emerald-700 pt-4">
           <p class="font-cinzel text-amber-300 text-xs tracking-wide">Michelle Gunn</p>
-          <p class="font-lato text-emerald-400 text-xs mt-0.5">New Orleans, Louisiana</p>
+          <p class="font-lato text-red-400 text-xs mt-0.5">New Orleans, Louisiana</p>
           <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Jamaican Ruby</p>
         </div>
       </div>
@@ -946,7 +958,7 @@ export const bodyContent = `
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Each month during my cycle I experience severe discomfort. I am glad to say I truly <span class="fda-flag">found a natural alternative in Egoff Essentials that works just as promised</span>. I switched from over-the-counter options — this nourished my skin beautifully and I've been a loyal customer since my very first use. Thank you.</p>
         <div class="border-t border-emerald-700 pt-4">
           <p class="font-cinzel text-amber-300 text-xs tracking-wide">Celestine</p>
-          <p class="font-lato text-emerald-400 text-xs mt-0.5">Florida</p>
+          <p class="font-lato text-red-400 text-xs mt-0.5">Florida</p>
           <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Jamaican Ruby</p>
         </div>
       </div>
@@ -956,7 +968,7 @@ export const bodyContent = `
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">This soap is absolutely amazing. I used it for <span class="fda-flag">lower back discomfort</span> and I can honestly say afterwards my body feels refreshed. This is the only soap I refer to.</p>
         <div class="border-t border-emerald-700 pt-4">
           <p class="font-cinzel text-amber-300 text-xs tracking-wide">Brandon</p>
-          <p class="font-lato text-emerald-400 text-xs mt-0.5">New Orleans, Louisiana</p>
+          <p class="font-lato text-red-400 text-xs mt-0.5">New Orleans, Louisiana</p>
           <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Jamaican Ruby</p>
         </div>
       </div>
@@ -966,7 +978,7 @@ export const bodyContent = `
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">I purchased the soap for my husband. At first he said he couldn't tell if it was working — but I noticed he had stopped complaining about his lower back and he hadn't even realized it himself. When he mentioned the discomfort again while away, that's when he realized what had changed. Such an excellent product!</p>
         <div class="border-t border-emerald-700 pt-4">
           <p class="font-cinzel text-amber-300 text-xs tracking-wide">Griffin</p>
-          <p class="font-lato text-emerald-400 text-xs mt-0.5">Slidell, Louisiana</p>
+          <p class="font-lato text-red-400 text-xs mt-0.5">Slidell, Louisiana</p>
           <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Jamaican Ruby</p>
         </div>
       </div>
@@ -976,7 +988,7 @@ export const bodyContent = `
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">I got the soap from Ms. Erika. It works!! After a long day at work or those little aches that pop up throwing a baseball — <span class="fda-flag">it helps so much</span>. It also makes you feel refreshed and your skin feel so soft afterwards.</p>
         <div class="border-t border-emerald-700 pt-4">
           <p class="font-cinzel text-amber-300 text-xs tracking-wide">Stephan</p>
-          <p class="font-lato text-emerald-400 text-xs mt-0.5">Slidell, Louisiana</p>
+          <p class="font-lato text-red-400 text-xs mt-0.5">Slidell, Louisiana</p>
           <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Jamaican Ruby</p>
         </div>
       </div>
@@ -986,7 +998,7 @@ export const bodyContent = `
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">I've struggled with eczema for years and most soaps either dry out my skin or make it worse. This soap has been a game changer — it's gentle, doesn't irritate my flare-ups, and actually helps soothe the itching. My skin feels so much calmer after using it. Highly recommend for anyone with sensitive skin.</p>
         <div class="border-t border-emerald-700 pt-4">
           <p class="font-cinzel text-amber-300 text-xs tracking-wide">Yesey</p>
-          <p class="font-lato text-emerald-400 text-xs mt-0.5">New Orleans, Louisiana</p>
+          <p class="font-lato text-red-400 text-xs mt-0.5">New Orleans, Louisiana</p>
           <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Alma's Grace</p>
         </div>
       </div>
@@ -996,7 +1008,7 @@ export const bodyContent = `
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Jamaican Ruby's body cream turned my inflamed, burning, itching skin into a normal size in less than an hour. The moment it touched my skin I felt the tingles instantly and the pain and itching stopped completely. Within an hour my redness and puffiness began to fade and by the next morning it was as if nothing was there. A little goes a long way with this cream.</p>
         <div class="border-t border-emerald-700 pt-4">
           <p class="font-cinzel text-amber-300 text-xs tracking-wide">Brandie</p>
-          <p class="font-lato text-emerald-400 text-xs mt-0.5">New Orleans, Louisiana</p>
+          <p class="font-lato text-red-400 text-xs mt-0.5">New Orleans, Louisiana</p>
           <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Jamaican Ruby Body Butter</p>
         </div>
       </div>
@@ -1007,7 +1019,7 @@ export const bodyContent = `
         <p class="font-lato text-sm text-emerald-100 leading-relaxed mb-5">Finally, bars of soap that lather up and last. I will never buy soap from the store again. Eucalyptus and the peppermint are my favorites.</p>
         <div class="border-t border-emerald-700 pt-4">
           <p class="font-cinzel text-amber-300 text-xs tracking-wide">Robert</p>
-          <p class="font-lato text-emerald-400 text-xs mt-0.5">New Orleans, Louisiana</p>
+          <p class="font-lato text-red-400 text-xs mt-0.5">New Orleans, Louisiana</p>
           <p class="font-lato text-emerald-600 text-xs mt-1">🌿 Eucalyptus · Peppermint</p>
         </div>
       </div>
