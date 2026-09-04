@@ -362,7 +362,7 @@ export const bodyContent = `
           <div style="display:flex;justify-content:center;margin-top:0.75rem;">
             <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
               <div class="pwog-circle" style="border-color:#7c3aed;">
-                <img src="tree-wonica.jpg" alt="Wonica Lynn Royal" style="object-position:center 25%; transform:scale(1.5); transform-origin:center 25%;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <img src="tree-wonica-face.jpg" alt="Wonica Lynn Royal" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                 <div class="pwog-mono" style="display:none;background:radial-gradient(circle,#3b1a6e,#011a14);">W.L.<br/>Royal</div>
               </div>
               <div class="pwog-label"><span class="pwog-fullname">Wonica Lynn Royal</span><span class="pwog-badge" style="background:#7c3aed;">BFF · Honorary</span></div>
