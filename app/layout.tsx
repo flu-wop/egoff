@@ -26,7 +26,7 @@ export const metadata: Metadata = {
       "Handcrafted soaps rooted in Jamaican heritage and New Orleans love. Essentially Rooted.",
     type: "website",
     url: "https://egoffessentials.com",
-    images: ["https://egoffessentials.com/hero-logo.jpg"],
+    images: ["https://egoffessentials.com/og-image.jpg"],
   },
 };
 
