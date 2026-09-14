@@ -58,9 +58,11 @@ export default function TermsPage() {
         <h2 style={{ fontSize: 18, color: "#006400", marginTop: 28, marginBottom: 10 }}>
           Returns & Refunds
         </h2>
-        <p style={{ color: "#8a6d3b", fontSize: 14, lineHeight: 1.7, marginBottom: 20, fontStyle: "italic" }}>
-          [Placeholder — no return policy has been defined yet. Update this section
-          before relying on it for a customer dispute.]
+        <p style={{ color: "#3a3a3a", fontSize: 15, lineHeight: 1.7, marginBottom: 20 }}>
+          Due to the hygienic nature of our products, all sales are final. We do not
+          accept returns or offer refunds for change of mind. If you receive a damaged
+          item or the wrong product, contact us within 7 days of delivery and we&apos;ll
+          make it right with a replacement or refund.
         </p>
 
         <h2 style={{ fontSize: 18, color: "#006400", marginTop: 28, marginBottom: 10 }}>
