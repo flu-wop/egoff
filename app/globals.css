@@ -218,7 +218,7 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
   margin-top: 2rem;
   border-radius: 1rem;
   padding: 1.5rem 1rem 1.25rem;
-  background: linear-gradient(160deg, #011a14 0%, #022c22 60%, #011a14 100%);
+  background: linear-gradient(160deg, #2e2007 0%, #5c3d0f 60%, #2e2007 100%);
   border: 1px solid rgba(183,121,31,0.3);
   width: 100%;
 }

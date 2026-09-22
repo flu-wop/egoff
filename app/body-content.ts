@@ -760,7 +760,7 @@ export const bodyContent = `
           <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Regular</span>
           <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Oatmeal / Milk &amp; Honey</h3>
           <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Old-fashioned nourishment made luxurious. Gentle oat exfoliation meets deep milk and honey moisture.</p>
-          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">$25.00</span><button class="btn-cart" onclick="addToCart('Oatmeal / Milk & Honey', 25)">Add to Cart</button></div>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">TBD</span><button class="btn-cart" style="opacity:0.5;cursor:not-allowed;" disabled>TBD</button></div>
         </div>
       </div>
 
@@ -773,7 +773,7 @@ export const bodyContent = `
           <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Regular</span>
           <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Goat Milk</h3>
           <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Creamy and ultra-gentle. Goat milk's natural lactic acid softens and hydrates even the most sensitive skin.</p>
-          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">$25.00</span><button class="btn-cart" onclick="addToCart('Goat Milk', 25)">Add to Cart</button></div>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">TBD</span><button class="btn-cart" style="opacity:0.5;cursor:not-allowed;" disabled>TBD</button></div>
         </div>
       </div>
 
@@ -786,7 +786,7 @@ export const bodyContent = `
           <span class="inline-block font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-2">Regular</span>
           <h3 class="font-cormorant text-xl font-semibold text-emerald-900 mb-2">Coconut</h3>
           <p class="font-lato text-sm text-emerald-700 leading-relaxed flex-1">Tropical and deeply moisturizing — a bar that wraps your skin in island richness from root to tip.</p>
-          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">$25.00</span><button class="btn-cart" onclick="addToCart('Coconut', 25)">Add to Cart</button></div>
+          <div class="mt-4 flex items-center justify-between"><span class="font-cinzel text-emerald-900 font-bold">TBD</span><button class="btn-cart" style="opacity:0.5;cursor:not-allowed;" disabled>TBD</button></div>
         </div>
       </div>
 
@@ -1144,7 +1144,7 @@ export const bodyContent = `
 <div class="gold-divider"></div>
 
 <!-- ═══ CONTACT ═══ -->
-<section id="contact" class="section-pad py-14 md:py-24 px-4" style="background:linear-gradient(to bottom,#022c22,#011a14);">
+<section id="contact" class="section-pad py-14 md:py-24 px-4" style="background:#0a0a0a;">
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-14">
       <p class="font-cinzel text-amber-400 tracking-widest text-xs uppercase mb-2">Get In Touch</p>
@@ -1183,7 +1183,7 @@ export const bodyContent = `
           </div>
         </div>
       </div>
-      <div class="bg-white/5 rounded-2xl p-8 border border-emerald-700/30">
+      <div class="bg-white/5 rounded-2xl p-8 border border-amber-700/30">
         <p class="font-cormorant italic text-amber-300 text-xl mb-5">"Every bar is made with prayer, purpose, and love for you."</p>
         <p class="font-lato text-emerald-200 text-sm leading-relaxed mb-6">Whether you have a question about a product, want to share your experience, or simply want to say hello — Ericka reads every message personally. This is a business built on relationship, and you matter here.</p>
         <a href="mailto:admin@egoffessentials.com" class="inline-block font-cinzel tracking-widest px-8 py-4 rounded-full text-sm text-white transition-all hover:scale-105" style="background:#b7791f;">Send a Message ✦</a>
