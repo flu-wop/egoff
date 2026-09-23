@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from "next";
+import "@flu-wop/design-system/core.css";
+import "@flu-wop/design-system/themes/egoff.css";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -34,7 +36,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html data-theme="egoff" lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
