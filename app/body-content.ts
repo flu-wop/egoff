@@ -1254,8 +1254,9 @@ export const bodyContent = `
       </div>
       <p class="font-lato text-center text-xs mt-4" style="color:rgba(167,243,208,0.25);">
         Designed by <a href="https://in-flu-ential.vercel.app" target="_blank" rel="noopener" style="color:rgba(217,119,6,0.6);">IN-FLU-ENTIAL LLC</a>
-        <span style="color:rgba(167,243,208,0.2);"> · </span>
-        <a href="/admin/login" style="color:rgba(217,119,6,0.6);">Admin</a>
+      </p>
+      <p class="font-lato text-center mt-2" style="font-size:0.65rem;">
+        <a href="/admin/login" style="color:rgba(167,243,208,0.18);">Store Login</a>
       </p>
     </div>
   </div>
