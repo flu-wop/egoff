@@ -79,6 +79,13 @@ export const bodyContent = `
           <label class="checkout-label">Order Notes / Special Instructions</label>
           <textarea id="co-notes" class="checkout-input" rows="3" placeholder="Allergies, gift message, anything else…" style="resize:vertical;"></textarea>
         </div>
+        <h3 class="font-cinzel text-emerald-900 text-xs tracking-widest uppercase mb-4 mt-2">Payment · Zelle</h3>
+        <div class="checkout-field" style="text-align:center; background:rgba(6,78,59,0.04); border-radius:14px; padding:16px;">
+          <p class="font-lato text-sm text-emerald-700 mb-3">Send payment via <strong>Zelle</strong> to:</p>
+          <p class="font-cinzel text-emerald-900 text-lg tracking-wide mb-3">(504) 957-0324</p>
+          <img src="zelle-qr.png" alt="Scan for Zelle number — (504) 957-0324" style="width:140px;height:140px;margin:0 auto 10px;display:block;border:1px solid rgba(6,78,59,0.15);border-radius:12px;padding:8px;background:#fff;"/>
+          <p class="font-lato text-xs text-emerald-600">Scan with your phone's camera to grab the number, then send from your Zelle app.</p>
+        </div>
         <p id="checkout-error" class="text-red-600 text-xs font-lato mb-3" style="display:none;"></p>
         <button onclick="submitCheckout()" class="checkout-submit-btn">Submit Order ✦</button>
         <p class="font-lato text-xs text-emerald-600 text-center mt-3">Ericka will confirm your order and payment details personally within 1 business day.</p>
@@ -87,7 +94,7 @@ export const bodyContent = `
         <div style="font-size:2.5rem;">🌿</div>
         <h3 class="font-cinzel text-emerald-900 text-lg tracking-widest mt-4 mb-2">Order Received!</h3>
         <p class="font-cormorant italic text-emerald-700 text-xl mb-4">"Thank you for choosing EGOFF Essentials"</p>
-        <p class="font-lato text-sm text-emerald-700 mb-6">Ericka will reach out personally to confirm your order, arrange payment, and answer any questions. Your skin is in loving hands. 🌿</p>
+        <p class="font-lato text-sm text-emerald-700 mb-6">Ericka will reach out personally to confirm your order and answer any questions. If you haven't already, send your Zelle payment to (504) 957-0324. Your skin is in loving hands. 🌿</p>
         <button onclick="closeCheckout()" class="btn-cart px-8 py-3">Close</button>
       </div>
     </div>
