@@ -96,12 +96,15 @@ function sendOrder() {
   if (cart.length === 0) { showToast('Your cart is empty'); return; }
   closeCart();
   const lines = cart.map(i => \`<div class="checkout-order-line"><span>\${i.qty}× \${i.name}</span><span>$\${(i.price*i.qty).toFixed(2)}</span></div>\`).join('');
-  const total = cart.reduce((s,i) => s+i.price*i.qty, 0);
-  const freeShip = false;
+  const subtotal = cart.reduce((s,i) => s+i.price*i.qty, 0);
+  const freeShip = subtotal >= 75;
+  const shipping = freeShip ? 0 : 5.99;
+  const total = subtotal + shipping;
   document.getElementById('checkout-summary-lines').innerHTML =
     lines +
-    \`<div class="checkout-order-line" style="margin-top:4px;"><span>Shipping</span><span>Calculated at confirmation</span></div>\` +
-    \`<div class="checkout-order-line"><span>Order Total</span><span>$\${total.toFixed(2)}</span></div>\`;
+    \`<div class="checkout-order-line" style="margin-top:4px;"><span>Shipping\${freeShip ? ' (orders $75+)' : ''}</span><span>\${freeShip ? 'FREE' : '$' + shipping.toFixed(2)}</span></div>\` +
+    \`<div class="checkout-order-line"><span>Order Total</span><span>$\${total.toFixed(2)}</span></div>\` +
+    \`<p class="font-lato text-xs text-emerald-500 mt-1">Sales tax, if applicable, is calculated when your payment link is sent.</p>\`;
   document.getElementById('checkout-form-body').style.display = 'block';
   document.getElementById('checkout-success').style.display = 'none';
   document.getElementById('checkout-overlay').classList.add('open');

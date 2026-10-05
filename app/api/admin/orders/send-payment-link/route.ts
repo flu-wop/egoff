@@ -80,6 +80,15 @@ export async function POST(req: Request) {
             currency: "USD",
           },
         })),
+        // Without this, Square does NOT apply the location's configured
+        // sales tax to an order built from ad-hoc line items like these —
+        // auto-apply has to be requested explicitly per Order. This is
+        // what makes her dashboard tax setting actually show up at
+        // checkout; the tax itself (rate, which categories it covers) is
+        // all controlled in Square, not here.
+        pricingOptions: {
+          autoApplyTaxes: true,
+        },
       },
       checkoutOptions: {
         redirectUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/checkout/success`,

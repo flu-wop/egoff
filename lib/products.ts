@@ -29,9 +29,24 @@ export const PRODUCTS: Record<string, { cents: number; category: string }> = {
   "Oatmeal / Milk & Honey": { cents: 2500, category: "Regular Soap" },
   "Goat Milk": { cents: 2500, category: "Regular Soap" },
   Coconut: { cents: 2500, category: "Regular Soap" },
+
+  // 10oz Body Butter Pump — $125, one entry per scent (addPumpToCart in
+  // site-script.ts sends "10oz Body Butter Pump — <Scent>" as the name).
+  "10oz Body Butter Pump — Elizabeth's Power": { cents: 12500, category: "Body Butter Pump" },
+  "10oz Body Butter Pump — Alma's Grace": { cents: 12500, category: "Body Butter Pump" },
+  "10oz Body Butter Pump — Jamaican Ruby": { cents: 12500, category: "Body Butter Pump" },
+  "10oz Body Butter Pump — Alice's Way": { cents: 12500, category: "Body Butter Pump" },
+  "10oz Body Butter Pump — Y-Rose": { cents: 12500, category: "Body Butter Pump" },
 };
 
 export type CartInput = { name: string; qty: number };
+
+// Flat shipping — free once the product subtotal (before shipping) hits
+// the threshold. Added as its own line item so it flows through to the
+// stored order, the admin table, the order-request/confirmation emails,
+// and the Square payment link line items without any special-casing.
+const SHIPPING_CENTS = 599;
+const FREE_SHIPPING_THRESHOLD_CENTS = 7500;
 
 // Validates a client-submitted cart against the real catalog and returns
 // server-computed line items + total. Throws on any unknown product name.
@@ -51,5 +66,11 @@ export function priceCart(cart: CartInput[]) {
       qty,
     };
   });
+
+  if (amountCents < FREE_SHIPPING_THRESHOLD_CENTS) {
+    lineItems.push({ name: "Shipping", price: SHIPPING_CENTS / 100, qty: 1 });
+    amountCents += SHIPPING_CENTS;
+  }
+
   return { lineItems, amountCents };
 }
