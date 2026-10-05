@@ -156,7 +156,7 @@ export default async function AdminOrdersPage() {
                       </span>
                     </div>
                     <div className="mt-3">
-                      <SendPaymentLinkButton orderId={o.id} status={o.status} />
+                      <SendPaymentLinkButton orderId={o.id} status={o.status} notificationFailed={o.notification_failed === 1} />
                     </div>
                   </div>
                 );
@@ -230,7 +230,7 @@ export default async function AdminOrdersPage() {
                           {o.shipping_street}, {o.shipping_city}, {o.shipping_state} {o.shipping_zip}
                         </td>
                         <td className="px-4 py-3.5 align-top">
-                          <SendPaymentLinkButton orderId={o.id} status={o.status} />
+                          <SendPaymentLinkButton orderId={o.id} status={o.status} notificationFailed={o.notification_failed === 1} />
                         </td>
                       </tr>
                     );

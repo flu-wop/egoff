@@ -5,14 +5,19 @@ import { useState } from "react";
 export default function SendPaymentLinkButton({
   orderId,
   status,
+  notificationFailed,
 }: {
   orderId: number;
   status: string;
+  notificationFailed?: boolean;
 }) {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<string | null>(null);
   const [markPaidLoading, setMarkPaidLoading] = useState(false);
   const [markPaidResult, setMarkPaidResult] = useState<string | null>(null);
+  const [resendLoading, setResendLoading] = useState(false);
+  const [resendResult, setResendResult] = useState<string | null>(null);
+  const [resendDone, setResendDone] = useState(false);
 
   async function handleClick() {
     setLoading(true);
@@ -57,8 +62,58 @@ export default function SendPaymentLinkButton({
     }
   }
 
+  async function handleResendNotification() {
+    setResendLoading(true);
+    setResendResult(null);
+    try {
+      const res = await fetch("/api/admin/orders/resend-notification", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ orderId }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed");
+      setResendResult("Resent!");
+      setResendDone(true);
+      setTimeout(() => window.location.reload(), 1000);
+    } catch (err) {
+      setResendResult(err instanceof Error ? err.message : "Failed");
+    } finally {
+      setResendLoading(false);
+    }
+  }
+
+  const resendButton = notificationFailed && !resendDone ? (
+    <div className="flex flex-col items-start gap-1.5 mt-1.5">
+      <button
+        onClick={handleResendNotification}
+        disabled={resendLoading}
+        className="font-cinzel text-[10px] tracking-widest uppercase px-3.5 py-1.5 rounded-full transition-opacity"
+        style={{
+          background: "#fde8e8",
+          color: "#b91c1c",
+          border: "1px solid #f3c7c7",
+          cursor: resendLoading ? "default" : "pointer",
+          opacity: resendLoading ? 0.6 : 1,
+        }}
+      >
+        {resendLoading ? "…" : "Resend Notification Email"}
+      </button>
+      {resendResult && (
+        <div className="text-[11px]" style={{ color: "#8a8a8a" }}>
+          {resendResult}
+        </div>
+      )}
+    </div>
+  ) : null;
+
   if (status === "paid") {
-    return <span className="text-xs" style={{ color: "#c0c0c0" }}>—</span>;
+    return (
+      <div className="flex flex-col items-start gap-1.5">
+        <span className="text-xs" style={{ color: "#c0c0c0" }}>—</span>
+        {resendButton}
+      </div>
+    );
   }
 
   return (
@@ -101,6 +156,7 @@ export default function SendPaymentLinkButton({
           {markPaidResult}
         </div>
       )}
+      {resendButton}
     </div>
   );
 }
