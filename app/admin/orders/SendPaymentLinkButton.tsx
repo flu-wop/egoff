@@ -11,6 +11,8 @@ export default function SendPaymentLinkButton({
 }) {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<string | null>(null);
+  const [markPaidLoading, setMarkPaidLoading] = useState(false);
+  const [markPaidResult, setMarkPaidResult] = useState<string | null>(null);
 
   async function handleClick() {
     setLoading(true);
@@ -32,12 +34,35 @@ export default function SendPaymentLinkButton({
     }
   }
 
+  async function handleMarkPaid() {
+    if (!window.confirm("Mark this order as paid? Use this once you've confirmed payment yourself — Zelle, cash, or anything outside Square.")) {
+      return;
+    }
+    setMarkPaidLoading(true);
+    setMarkPaidResult(null);
+    try {
+      const res = await fetch("/api/admin/orders/mark-paid", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ orderId }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed");
+      setMarkPaidResult("Marked paid!");
+      setTimeout(() => window.location.reload(), 1000);
+    } catch (err) {
+      setMarkPaidResult(err instanceof Error ? err.message : "Failed");
+    } finally {
+      setMarkPaidLoading(false);
+    }
+  }
+
   if (status === "paid") {
     return <span className="text-xs" style={{ color: "#c0c0c0" }}>—</span>;
   }
 
   return (
-    <div>
+    <div className="flex flex-col items-start gap-1.5">
       <button
         onClick={handleClick}
         disabled={loading}
@@ -53,8 +78,27 @@ export default function SendPaymentLinkButton({
         {loading ? "…" : status === "awaiting_payment" ? "Resend Link" : "Send Payment Link"}
       </button>
       {result && (
-        <div className="text-[11px] mt-1.5" style={{ color: "#8a8a8a" }}>
+        <div className="text-[11px]" style={{ color: "#8a8a8a" }}>
           {result}
+        </div>
+      )}
+      <button
+        onClick={handleMarkPaid}
+        disabled={markPaidLoading}
+        className="font-cinzel text-[10px] tracking-widest uppercase px-3.5 py-1.5 rounded-full transition-opacity"
+        style={{
+          background: "transparent",
+          color: "#0a2218",
+          border: "1px solid #0a2218",
+          cursor: markPaidLoading ? "default" : "pointer",
+          opacity: markPaidLoading ? 0.6 : 1,
+        }}
+      >
+        {markPaidLoading ? "…" : "Mark Paid (Zelle/Cash)"}
+      </button>
+      {markPaidResult && (
+        <div className="text-[11px]" style={{ color: "#8a8a8a" }}>
+          {markPaidResult}
         </div>
       )}
     </div>
