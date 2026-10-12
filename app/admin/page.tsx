@@ -5,6 +5,7 @@ export const dynamic = "force-dynamic";
 // Admin home. proxy.ts gates every /admin route, so signed-out visitors
 // never reach this page.
 const PAGES = [
+  { href: "/admin/insights", title: "Insights", desc: "Sales, order requests, visitors and the order funnel." },
   { href: "/admin/orders", title: "Orders", desc: "Incoming orders, payment links and fulfilment." },
   { href: "/admin/system", title: "System Health", desc: "Env vars, integrations and API usage." },
 ];

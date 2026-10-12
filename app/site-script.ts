@@ -135,6 +135,7 @@ function submitCheckout() {
   const originalBtnText = btn ? btn.textContent : '';
   if (btn) { btn.disabled = true; btn.textContent = 'Processing…'; }
 
+  try { const sb = sessionStorage.getItem('egoff_sid'); if (sb) navigator.sendBeacon('/api/beacon', JSON.stringify({ type: 'checkout_click', sid: sb, path: location.pathname })); } catch (e) {}
   fetch('/api/checkout', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

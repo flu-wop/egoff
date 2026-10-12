@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "@flu-wop/design-system/core.css";
 import "@flu-wop/design-system/themes/egoff.css";
 import "./globals.css";
+import { SiteAnalytics } from "@/components/analytics/SiteAnalytics";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -44,7 +45,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <SiteAnalytics />
+      </body>
     </html>
   );
 }

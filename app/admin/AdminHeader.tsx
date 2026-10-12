@@ -1,5 +1,6 @@
 const NAV_LINKS = [
   { href: "/admin", label: "Home" },
+  { href: "/admin/insights", label: "Insights" },
   { href: "/admin/orders", label: "Orders" },
   { href: "/admin/system", label: "System Health" },
 ];
@@ -8,7 +9,7 @@ export default function AdminHeader({
   active,
   subtitle,
 }: {
-  active: "home" | "orders" | "system";
+  active: "home" | "insights" | "orders" | "system";
   subtitle: string;
 }) {
   return (
