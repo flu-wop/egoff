@@ -1,4 +1,5 @@
 const NAV_LINKS = [
+  { href: "/admin", label: "Home" },
   { href: "/admin/orders", label: "Orders" },
   { href: "/admin/system", label: "System Health" },
 ];
@@ -7,7 +8,7 @@ export default function AdminHeader({
   active,
   subtitle,
 }: {
-  active: "orders" | "system";
+  active: "home" | "orders" | "system";
   subtitle: string;
 }) {
   return (
@@ -31,7 +32,7 @@ export default function AdminHeader({
 
         <nav className="flex items-center gap-2">
           {NAV_LINKS.map((link) => {
-            const isActive = link.href === `/admin/${active}`;
+            const isActive = link.href === (active === "home" ? "/admin" : `/admin/${active}`);
             return (
               <a
                 key={link.href}
