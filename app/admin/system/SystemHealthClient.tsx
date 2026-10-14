@@ -43,7 +43,7 @@ function Card({
 }) {
   return (
     <div
-      className="rounded-lg p-5"
+      className=" p-5"
       style={{
         background: "#fff",
         border: status ? `1px solid ${STATUS_COLOR[status]}33` : "1px solid #e5e0d5",
@@ -92,7 +92,7 @@ const WEBHOOK_LABELS: Record<string, string> = {
 
 function SkeletonCard() {
   return (
-    <div className="rounded-lg p-5 animate-pulse" style={{ background: "#fff", border: "1px solid #e5e0d5" }}>
+    <div className=" p-5 animate-pulse" style={{ background: "#fff", border: "1px solid #e5e0d5" }}>
       <div className="h-3 w-24 rounded mb-4" style={{ background: "#eee2c8" }} />
       <div className="h-2.5 w-full rounded mb-2" style={{ background: "#f0ece0" }} />
       <div className="h-2.5 w-4/5 rounded mb-2" style={{ background: "#f0ece0" }} />
@@ -147,10 +147,10 @@ export default function SystemHealthClient() {
     : null;
 
   return (
-    <div className="max-w-7xl mx-auto px-5 sm:px-8 py-8">
+    <div>
       {error && (
         <div
-          className="rounded-lg px-4 py-3 mb-6 text-sm"
+          className=" px-4 py-3 mb-6 text-sm"
           style={{ background: "#fde8e8", color: "#b91c1c" }}
         >
           {error}

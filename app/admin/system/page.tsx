@@ -1,13 +1,14 @@
-import AdminHeader from "../AdminHeader";
+import { AdminPage, AdminPageHeader } from "@/components/admin/page-frame";
 import SystemHealthClient from "./SystemHealthClient";
 
 export const dynamic = "force-dynamic";
+export const metadata = { title: "System · Admin", robots: { index: false } };
 
 export default async function AdminSystemPage() {
   return (
-    <div style={{ background: "#fffdf7", minHeight: "100vh" }}>
-      <AdminHeader active="system" subtitle="SYSTEM HEALTH" />
+    <AdminPage>
+      <AdminPageHeader eyebrow="Health" title="System Health" description="Env vars, integrations and API usage — is everything actually working." />
       <SystemHealthClient />
-    </div>
+    </AdminPage>
   );
 }

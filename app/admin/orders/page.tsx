@@ -1,5 +1,5 @@
 import { getDb, initDb } from "@/lib/db";
-import AdminHeader from "../AdminHeader";
+import { AdminPage, AdminPageHeader } from "@/components/admin/page-frame";
 import SendPaymentLinkButton from "./SendPaymentLinkButton";
 
 export const dynamic = "force-dynamic";
@@ -33,7 +33,7 @@ function StatusPill({ status }: { status: string }) {
   const s = STATUS_STYLE[status] || { bg: "#e5e0d5", fg: "#4a4a4a", label: status.replace(/_/g, " ") };
   return (
     <span
-      className="inline-block font-cinzel text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-full"
+      className="inline-block font-cinzel text-[10px] tracking-widest uppercase px-2.5 py-1 "
       style={{ background: s.bg, color: s.fg }}
     >
       {s.label}
@@ -68,10 +68,9 @@ export default async function AdminOrdersPage() {
   };
 
   return (
-    <div style={{ background: "#fffdf7", minHeight: "100vh" }}>
-      <AdminHeader active="orders" subtitle={`ORDERS · ${orders.length} TOTAL`} />
-
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 py-8">
+    <AdminPage>
+      <AdminPageHeader eyebrow="Shop" title={`Orders (${orders.length})`} description="Incoming order requests, payment links and fulfilment." />
+      <div>
         {/* Summary stat cards */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
           {[
@@ -82,7 +81,7 @@ export default async function AdminOrdersPage() {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="rounded-lg px-4 py-3.5"
+              className="px-4 py-3.5"
               style={{ background: "#fff", border: "1px solid #e5e0d5" }}
             >
               <p className="font-cinzel text-[10px] tracking-widest uppercase mb-1" style={{ color: "#9a9a9a" }}>
@@ -96,7 +95,7 @@ export default async function AdminOrdersPage() {
         </div>
 
         {orders.length === 0 && (
-          <div className="text-center py-20 rounded-lg" style={{ background: "#fff", border: "1px dashed #e5e0d5" }}>
+          <div className="text-center py-20" style={{ background: "#fff", border: "1px dashed #e5e0d5" }}>
             <p className="font-cormorant text-xl" style={{ color: "#9a9a9a" }}>
               No orders yet — new order requests will appear here.
             </p>
@@ -115,7 +114,7 @@ export default async function AdminOrdersPage() {
                 return (
                   <div
                     key={o.id}
-                    className="rounded-lg p-4"
+                    className="p-4"
                     style={{ background: "#fff", border: "1px solid #e5e0d5" }}
                   >
                     <div className="flex items-start justify-between gap-2 mb-2">
@@ -165,7 +164,7 @@ export default async function AdminOrdersPage() {
 
             {/* Desktop: table */}
             <div
-              className="hidden sm:block rounded-lg overflow-hidden"
+              className="hidden sm:block overflow-hidden"
               style={{ background: "#fff", border: "1px solid #e5e0d5" }}
             >
               <table className="w-full border-collapse">
@@ -241,6 +240,6 @@ export default async function AdminOrdersPage() {
           </>
         )}
       </div>
-    </div>
+    </AdminPage>
   );
 }

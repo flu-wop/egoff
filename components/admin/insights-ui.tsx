@@ -12,7 +12,7 @@ export function longDate(d: string) {
 
 export function Card({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="bg-white border border-[#d9c79a] rounded-sm p-6">
+    <div className="bg-white border border-[#d9c79a] p-6">
       <h3 className="font-cinzel text-xl text-[#b7791f] mb-4">{title}</h3>
       {children}
     </div>
@@ -23,13 +23,13 @@ function Delta({ cur, prev }: { cur: number; prev: number }) {
   if (!prev && !cur) return <span className="text-[#6b6b6b]/70 text-xs">no data yet</span>
   if (!prev) return <span className="text-[#6b6b6b]/70 text-xs">new this period</span>
   const pct = Math.round(((cur - prev) / prev) * 100)
-  const tone = pct > 0 ? "text-emerald-400" : pct < 0 ? "text-red-400" : "text-[#6b6b6b]"
+  const tone = pct > 0 ? "text-emerald-700" : pct < 0 ? "text-red-700" : "text-[#6b6b6b]"
   return <span className={`text-xs ${tone}`}>{pct > 0 ? "+" : ""}{pct}% vs previous period</span>
 }
 
 export function Stat({ label, value, cur, prev }: { label: string; value: string; cur: number; prev: number }) {
   return (
-    <div className="bg-white border border-[#d9c79a] rounded-sm p-5">
+    <div className="bg-white border border-[#d9c79a] p-5">
       <div className="text-xs text-[#6b6b6b] uppercase tracking-wide mb-1">{label}</div>
       <div className="font-cinzel text-3xl text-[#1a1a1a] mb-1">{value}</div>
       <Delta cur={cur} prev={prev} />
@@ -65,7 +65,7 @@ export function Overview({ data }: { data: Insights }) {
       {data.attention.length > 0 && (
         <div className="grid sm:grid-cols-3 gap-3">
           {data.attention.map((a) => (
-            <div key={a.label} className={`border rounded-sm px-4 py-3 text-sm ${a.tone === "alert" && a.value > 0 ? "border-red-400/50 text-red-300" : "border-[#d9c79a] text-[#6b6b6b]"}`}>
+            <div key={a.label} className={`border px-4 py-3 text-sm ${a.tone === "alert" && a.value > 0 ? "border-red-300 text-red-700" : "border-[#d9c79a] text-[#6b6b6b]"}`}>
               <b className="text-[#1a1a1a]">{num(a.value)}</b> {a.label}
             </div>
           ))}
@@ -143,7 +143,7 @@ export function FunnelTab({ data }: { data: Insights }) {
                   <span className="text-[#1a1a1a]">{s.label}</span>
                   <span className="text-[#6b6b6b]">{num(s.value)}{i > 0 && f.steps[i - 1].value ? ` · ${Math.round((s.value / f.steps[i - 1].value) * 100)}% of previous` : ""}</span>
                 </div>
-                <div className="h-2 bg-[#e9dfc8] rounded-sm"><div className="h-2 bg-[#b7791f] rounded-sm" style={{ width: `${(s.value / top) * 100}%` }} /></div>
+                <div className="h-2 bg-[#e9dfc8]"><div className="h-2 bg-[#b7791f]" style={{ width: `${(s.value / top) * 100}%` }} /></div>
               </div>
             ))}
             {sales && <div className="text-xs text-[#6b6b6b] mt-4">Completed purchases in this range: <b className="text-[#1a1a1a]">{num(sales.total)}</b> (from Stripe, counted separately from visitor tracking).</div>}
