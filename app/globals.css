@@ -470,3 +470,7 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
   .pwog-tree-wrap { padding: 1.5rem 1.25rem !important; }
   #story .grid { gap: 3rem !important; }
 }
+
+/* Admin: hide scrollbars on horizontally scrolling tab rows. */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
