@@ -1176,6 +1176,13 @@ export const bodyContent = `
           </div>
         </div>
         <div class="flex items-start gap-4">
+          <div class="social-icon flex-shrink-0">📬</div>
+          <div>
+            <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-1">Mailing Address</p>
+            <p class="font-lato text-emerald-200 text-sm leading-relaxed">P.O. Box 129<br/>1950 2nd Street<br/>Slidell, LA 70459</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
           <div class="social-icon flex-shrink-0">🕐</div>
           <div>
             <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-1">Hours</p>
@@ -1211,8 +1218,9 @@ export const bodyContent = `
         <p class="font-cormorant italic text-amber-400 text-base mb-4">Essentially Rooted</p>
         <p class="font-cinzel text-amber-600 text-xs tracking-widest mb-5">GOD · LOVE · POWER</p>
         <div class="flex gap-3">
-          <a href="https://instagram.com/egoffessentials" target="_blank" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-          <a href="https://facebook.com/egoffessentials" target="_blank" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="https://instagram.com/blessed_annointed_fish" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+<!-- FACEBOOK: add link here once Ericka sends her real page URL -->
+          <a href="https://tiktok.com/@fish_chosen-powerful" target="_blank" rel="noopener" aria-label="TikTok" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg></a>
           <a href="mailto:admin@egoffessentials.com" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
           <a href="tel:+15049570324" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.06-1.06a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
         </div>
@@ -1234,6 +1242,7 @@ export const bodyContent = `
         <ul class="space-y-2 font-lato text-sm text-emerald-300">
           <li><a href="tel:+15049570324" class="hover:text-amber-300 transition-colors">✆ (504) 957-0324</a></li>
           <li><a href="mailto:admin@egoffessentials.com" class="hover:text-amber-300 transition-colors">✉ admin@egoffessentials.com</a></li>
+          <li class="leading-relaxed pt-1">✉ P.O. Box 129<br/>&nbsp;&nbsp;&nbsp;1950 2nd Street<br/>&nbsp;&nbsp;&nbsp;Slidell, LA 70459</li>
           <li class="leading-relaxed pt-1 text-emerald-500">Tue–Fri: 9am–4pm CST<br/>Saturday: Outdoor Marketing &amp; Sales<br/>Sunday &amp; Monday: Closed</li>
         </ul>
         <div class="mt-6">
@@ -1262,8 +1271,8 @@ export const bodyContent = `
       <p class="font-lato text-center text-xs mt-4" style="color:rgba(167,243,208,0.25);">
         Designed by <a href="https://influential.live" target="_blank" rel="noopener" style="color:rgba(217,119,6,0.6);">IN-FLU-ENTIAL</a>
       </p>
-      <p class="font-lato text-center mt-2" style="font-size:0.65rem;">
-        <a href="/admin/login" style="color:rgba(167,243,208,0.18);">Store Login</a>
+      <p class="font-lato text-center mt-4">
+        <a href="/admin/login" class="font-cinzel" style="display:inline-block;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#d9a441;border:1px solid rgba(217,164,65,0.55);border-radius:9999px;padding:6px 18px;text-decoration:none;">Store Login</a>
       </p>
     </div>
   </div>
