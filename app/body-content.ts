@@ -119,11 +119,13 @@ export const bodyContent = `
     <span class="px-10">✦ Handcrafted with Love in New Orleans</span>
     <span class="px-10">✦ Rooted in Jamaican Heritage</span>
     <span class="px-10">✦ All Natural · No Harsh Chemicals</span>
+    <span class="px-10">✦ Free Shipping on Orders $75+</span>
     <span class="px-10">✦ Essentially Rooted · GOD · LOVE · POWER</span>
     <span class="px-10">✦ For External Use Only</span>
     <span class="px-10">✦ Handcrafted with Love in New Orleans</span>
     <span class="px-10">✦ Rooted in Jamaican Heritage</span>
     <span class="px-10">✦ All Natural · No Harsh Chemicals</span>
+    <span class="px-10">✦ Free Shipping on Orders $75+</span>
     <span class="px-10">✦ Essentially Rooted · GOD · LOVE · POWER</span>
     <span class="px-10">✦ For External Use Only</span>
   </div>
@@ -389,7 +391,7 @@ export const bodyContent = `
       </div>
 
       <!-- RIGHT: Bio — ERICKA'S NEW WORDING 5/24/26 -->
-      <div class="space-y-6 font-lato text-emerald-800 leading-relaxed text-sm md:text-base">
+      <div id="story-body" class="story-collapsible space-y-6 font-lato text-emerald-800 leading-relaxed text-sm md:text-base">
 
         <p>EGOFF Essentials was born from a great source of pain, a deep love of family, heritage, and the healing power of nature and prayer.</p>
 
@@ -415,6 +417,7 @@ export const bodyContent = `
           <span class="font-cinzel text-amber-700 text-sm not-italic tracking-widest">Your Soap/Suop Alchemist</span>
         </p>
       </div>
+      <button type="button" class="story-toggle md:hidden font-cinzel text-xs tracking-widest uppercase" onclick="toggleStory(this)">Read Ericka's full story ↓</button>
     </div>
   </div>
 </section>
@@ -435,7 +438,7 @@ export const bodyContent = `
       <div class="section-heading-line"></div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 center-grid-4">
 
       <!-- Elizabeth's Power — green block -->
       <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
@@ -555,7 +558,7 @@ export const bodyContent = `
       <div class="section-heading-line"></div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 center-grid-3">
       <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
         <div class="product-img" style="background:linear-gradient(135deg,#d1fae5,#ecfdf5);">
           <img src="img/elizabeths-power-butter.png" alt="Elizabeth's Power Body Butter" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
@@ -665,7 +668,7 @@ export const bodyContent = `
       <div class="section-heading-line"></div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 center-grid-4">
 
       <!-- Eucalyptus -->
       <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
@@ -809,7 +812,7 @@ export const bodyContent = `
       <div class="section-heading-line"></div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 center-grid-4">
 
       <!-- Rose / Ylang-Ylang -->
       <div class="product-card fade-up bg-white rounded-2xl overflow-hidden flex flex-col" style="border:1px solid rgba(6,78,59,0.1); box-shadow:0 2px 16px rgba(6,78,59,0.07);">
@@ -1151,56 +1154,56 @@ export const bodyContent = `
 <div class="gold-divider"></div>
 
 <!-- ═══ CONTACT ═══ -->
-<section id="contact" class="section-pad py-14 md:py-24 px-4" style="background:#0a0a0a;">
+<section id="contact" class="section-pad py-14 md:py-24 px-4" style="background: radial-gradient(ellipse at 60% 0%, #d1fae5 0%, #fffbeb 50%, #fef3c7 100%);">
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-14">
-      <p class="font-cinzel text-amber-400 tracking-widest text-xs uppercase mb-2">Get In Touch</p>
-      <h2 class="font-cormorant text-4xl md:text-5xl font-semibold text-white">Contact Ericka</h2>
-      <p class="font-lato text-emerald-300 mt-3 text-sm italic">We'd love to hear from you — personally.</p>
+      <p class="font-cinzel text-amber-700 tracking-widest text-xs uppercase mb-2">Get In Touch</p>
+      <h2 class="font-cormorant text-4xl md:text-5xl font-semibold text-emerald-950">Contact Ericka</h2>
+      <p class="font-lato text-emerald-700 mt-3 text-sm italic">We'd love to hear from you — personally.</p>
       <div class="section-heading-line"></div>
     </div>
     <div class="grid md:grid-cols-2 gap-10 items-start">
       <div class="space-y-6">
         <div class="flex items-start gap-4">
-          <div class="social-icon flex-shrink-0">📞</div>
+          <div class="social-icon flex-shrink-0 contact-icon">📞</div>
           <div>
-            <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-1">Phone / Text</p>
-            <a href="tel:+15049570324" class="font-cormorant text-white text-xl hover:text-amber-300 transition-colors">(504) 957-0324</a>
+            <p class="font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-1">Phone / Text</p>
+            <a href="tel:+15049570324" class="font-cormorant text-emerald-950 text-xl hover:text-amber-600 transition-colors">(504) 957-0324</a>
           </div>
         </div>
         <div class="flex items-start gap-4">
-          <div class="social-icon flex-shrink-0">✉️</div>
+          <div class="social-icon flex-shrink-0 contact-icon">✉️</div>
           <div>
-            <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-1">Email</p>
-            <a href="mailto:admin@egoffessentials.com" class="font-cormorant text-white text-xl hover:text-amber-300 transition-colors">admin@egoffessentials.com</a>
+            <p class="font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-1">Email</p>
+            <a href="mailto:admin@egoffessentials.com" class="font-cormorant text-emerald-950 text-xl hover:text-amber-600 transition-colors">admin@egoffessentials.com</a>
           </div>
         </div>
         <div class="flex items-start gap-4">
-          <div class="social-icon flex-shrink-0">📬</div>
+          <div class="social-icon flex-shrink-0 contact-icon">📬</div>
           <div>
-            <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-1">Mailing Address</p>
-            <p class="font-lato text-emerald-200 text-sm leading-relaxed">P.O. Box 129<br/>1950 2nd Street<br/>Slidell, LA 70459</p>
+            <p class="font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-1">Mailing Address</p>
+            <p class="font-lato text-emerald-800 text-sm leading-relaxed">P.O. Box 129<br/>1950 2nd Street<br/>Slidell, LA 70459</p>
           </div>
         </div>
         <div class="flex items-start gap-4">
-          <div class="social-icon flex-shrink-0">🕐</div>
+          <div class="social-icon flex-shrink-0 contact-icon">🕐</div>
           <div>
-            <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-1">Hours</p>
-            <p class="font-lato text-emerald-200 text-sm leading-relaxed">Tue–Friday: 9am–4pm CST<br/>Saturday: Community / Outdoor Marketing, Networking &amp; Sales<br/>Sunday &amp; Monday: Closed</p>
+            <p class="font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-1">Hours</p>
+            <p class="font-lato text-emerald-800 text-sm leading-relaxed">Tue–Friday: 9am–4pm CST<br/>Saturday: Community / Outdoor Marketing, Networking &amp; Sales<br/>Sunday &amp; Monday: Closed</p>
           </div>
         </div>
         <div class="flex items-start gap-4">
-          <div class="social-icon flex-shrink-0">📦</div>
+          <div class="social-icon flex-shrink-0 contact-icon">📦</div>
           <div>
-            <p class="font-cinzel text-amber-400 text-xs tracking-widest uppercase mb-1">Shipping</p>
-            <p class="font-lato text-emerald-200 text-sm">5–7 business days · US Only</p>
+            <p class="font-cinzel text-amber-700 text-xs tracking-widest uppercase mb-1">Shipping</p>
+            <p class="font-lato text-emerald-800 text-sm">5–7 business days · US Only</p>
           </div>
         </div>
       </div>
-      <div class="bg-white/5 rounded-2xl p-8 border border-amber-700/30">
-        <p class="font-cormorant italic text-amber-300 text-xl mb-5">"Every bar is made with prayer, purpose, and love for you."</p>
-        <p class="font-lato text-emerald-200 text-sm leading-relaxed mb-6">Whether you have a question about a product, want to share your experience, or simply want to say hello — Ericka reads every message personally. This is a business built on relationship, and you matter here.</p>
-        <a href="mailto:admin@egoffessentials.com" class="inline-block font-cinzel tracking-widest px-8 py-4 rounded-full text-sm text-white transition-all hover:scale-105" style="background:#b7791f;">Send a Message ✦</a>
+      <div class="rounded-2xl p-8" style="background:rgba(255,255,255,0.65);border:1px solid rgba(183,121,31,0.3);box-shadow:0 10px 40px rgba(6,78,59,0.08);">
+        <p class="font-cormorant italic text-amber-700 text-xl mb-5">"Every bar is made with prayer, purpose, and love for you."</p>
+        <p class="font-lato text-emerald-800 text-sm leading-relaxed mb-6">Whether you have a question about a product, want to share your experience, or simply want to say hello — Ericka reads every message personally. This is a business built on relationship, and you matter here.</p>
+        <a href="mailto:admin@egoffessentials.com" class="inline-block font-cinzel tracking-widest px-8 py-4 rounded-full text-sm text-emerald-950 transition-all hover:scale-105" style="background:#b7791f;">Send a Message ✦</a>
       </div>
     </div>
   </div>

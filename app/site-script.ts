@@ -205,6 +205,13 @@ function showToast(msg) {
 function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
 function closeMobileMenu() { document.getElementById('mobile-menu').classList.remove('open'); }
 
+// ── STORY (mobile read-more) ─────────────────────────
+function toggleStory(btn) {
+  const body = document.getElementById('story-body');
+  const open = body.classList.toggle('open');
+  btn.textContent = open ? 'Show less ↑' : "Read Ericka's full story ↓";
+}
+
 // ── FAQ ───────────────────────────────────────────────
 function toggleFaq(btn) {
   const body = btn.nextElementSibling;

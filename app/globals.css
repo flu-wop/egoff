@@ -474,3 +474,27 @@ body { font-family: 'Lato', sans-serif; background: var(--cream); color: #1a1a1a
 /* Admin: hide scrollbars on horizontally scrolling tab rows. */
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
+
+
+/* ── Polish pass: centered product grids (no orphan cards) ── */
+@media (min-width: 1024px) {
+  .center-grid-4, .center-grid-3 { display: flex; flex-wrap: wrap; justify-content: center; }
+  .center-grid-4 > * { flex: 0 0 calc(25% - 1.125rem); max-width: calc(25% - 1.125rem); }
+  .center-grid-3 > * { flex: 0 0 calc(33.333% - 1rem); max-width: calc(33.333% - 1rem); }
+}
+
+/* ── Polish pass: Contact section now sits on the light hero gradient ── */
+#contact .contact-icon { color: #047857; border-color: rgba(183,121,31,0.45); background: rgba(255,255,255,0.6); }
+#contact .section-heading-line { margin-left: auto; margin-right: auto; }
+
+/* ── Polish pass: collapse the long founder story on phones ── */
+.story-toggle { display: none; }
+@media (max-width: 767px) {
+  .story-collapsible:not(.open) { max-height: 360px; overflow: hidden; position: relative; }
+  .story-collapsible:not(.open)::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 120px;
+    background: linear-gradient(to bottom, rgba(255,253,247,0), var(--cream) 85%); pointer-events: none;
+  }
+  .story-toggle { display: block; margin: 1rem auto 0; padding: 10px 22px; border-radius: 9999px;
+    color: #b7791f; border: 1px solid rgba(183,121,31,0.55); background: transparent; }
+}
